@@ -1,0 +1,71 @@
+@import "whitespace-reset.css";
+body {
+  font: normal 12px Helvetica, Arial, sans-serif;
+}
+a {
+  color: #dfd6bc;
+}
+.button {
+  display: inline-block;
+  cursor: pointer;
+  padding: 4px;
+  text-decoration: none;
+  color: #888;
+  border: 1px solid #888;
+  border-radius: 4px;
+  background: #1be5af;
+  margin: 10px 0;
+  outline: none;
+}
+.button:hover {
+  background: #0bba91;
+}
+.button:focus {
+  background: #f00;
+}
+.delete a {
+  position: relative;
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px 0 0;
+  overflow: hidden;
+  text-indent: 9999px;
+  transform: rotate(45deg);
+}
+.delete a:before,
+.delete a:after {
+  position: absolute;
+  content: "";
+  background: #b00b00;
+}
+.delete a:before {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+  width: 2px;
+}
+.delete a:after {
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-top: -1px;
+  height: 2px;
+}
+.delete a.button {
+  float: right;
+  margin: 10px 0 5px 0;
+  padding: 4px 8px;
+  width: auto;
+  height: auto;
+  text-indent: 0;
+  transform: none;
+  font-size: 15px;
+  color: #1be5af;
+  background: transparent;
+}
+.delete a.button:before,
+.delete a.button:after {
+  background: transparent;
+}

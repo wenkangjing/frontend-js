@@ -1,0 +1,71 @@
+colors = {
+  body: #FFFFFF,
+  primary: #DFD6BC,
+  secondary: #EDEBEC,
+  border: #888888,
+  delete: #b00b00,
+  button: {
+    fg: #888,
+    bg: #1be5af
+    hover: #0bba91,
+    focus: red
+  }
+}
+
+button()
+  display: inline-block
+  cursor: pointer
+  padding: 4px
+  text-decoration: none
+  color: colors.button.fg
+  border: 1px solid colors.border
+  border-radius: 4px
+  background: colors.button.bg
+  margin: 10px 0;
+  outline: none
+  &:hover
+    background: colors.button.hover
+  &:focus
+    background: colors.button.focus
+
+delete()
+  a
+    position: relative
+    float: left
+    width: 12px
+    height: 12px
+    margin: 0 5px 0 0
+    overflow: hidden
+    text-indent: 9999px
+    transform: rotate(45deg)
+  a:before,
+  a:after 
+    position: absolute
+    content: ""
+    background: #b00b00
+  a:before 
+    top: 0
+    bottom: 0
+    left: 50%
+    margin-left: -1px
+    width: 2px
+  a:after 
+    top: 50%
+    right: 0
+    left: 0
+    margin-top: -1px
+    height: 2px
+  a.button 
+    float: right
+    margin: 10px 0 5px 0
+    padding: 4px 8px
+    width: auto
+    height: auto
+    text-indent: 0
+    transform: none
+    font-size: 15px
+    color: #1be5af
+    background: transparent
+  a.button:before,
+  a.button:after 
+    background: transparent

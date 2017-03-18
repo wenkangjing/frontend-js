@@ -1,7 +1,23 @@
+include _mixins
+include _functions
+
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Music Store
+    +stylesheet_link_tag("style")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")    
   body
-    block content
+    header
+      #cart
+    main
+      block content
+    
+    +javascript_include_tag("application")
+    +javascript_include_tag("models/album")
+    +javascript_include_tag("collections/albums", "collections/cart_items")
+    +javascript_include_tag("views/album", "views/new_album", "views/index", "views/cart", "views/checkout")
+    script(type="text/javascript").
+      App.albums = new Albums(!{JSON.stringify(albums)})
+    +javascript_include_tag("router")

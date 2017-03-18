@@ -1,3 +1,5 @@
+font = normal 14px Helvetica, Arial, sans-serif
+
 colors = {
   body: #FFFFFF,
   primary: #DFD6BC,
@@ -21,7 +23,7 @@ button()
   border: 1px solid colors.border
   border-radius: 4px
   background: colors.button.bg
-  margin: 10px 0;
+  margin: 10px 10px 10px 0;
   outline: none
   &:hover
     background: colors.button.hover
@@ -29,33 +31,32 @@ button()
     background: colors.button.focus
 
 delete()
-  a
-    position: relative
-    float: left
-    width: 12px
-    height: 12px
-    margin: 0 5px 0 0
-    overflow: hidden
-    text-indent: 9999px
-    transform: rotate(45deg)
-  a:before,
-  a:after 
+  position: relative
+  float:left
+  width: 12px
+  height: 12px
+  margin: 0 5px 0 0
+  overflow: hidden
+  text-indent: 9999px
+  transform: rotate(45deg)
+  &:before,
+  &:after
     position: absolute
     content: ""
-    background: #b00b00
-  a:before 
+    background: colors.delete
+  &:before
     top: 0
     bottom: 0
     left: 50%
     margin-left: -1px
     width: 2px
-  a:after 
+  &:after
     top: 50%
     right: 0
     left: 0
     margin-top: -1px
     height: 2px
-  a.button 
+  &.button
     float: right
     margin: 10px 0 5px 0
     padding: 4px 8px
@@ -64,8 +65,8 @@ delete()
     text-indent: 0
     transform: none
     font-size: 15px
-    color: #1be5af
-    background: transparent
-  a.button:before,
-  a.button:after 
-    background: transparent
+    color: colors.button.bg
+    background: colors.button.text
+    &:before,
+    &:after
+      background: transparent

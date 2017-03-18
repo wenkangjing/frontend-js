@@ -1,0 +1,20 @@
+{{#if quantity}}
+<label for="cart_toggle">{{quantity}} items
+  <input id="cart_toggle" type="checkbox" />
+  <div id="items">
+    <ul>
+      {{#each items}}
+      <li>
+        <a class="delete" data-id="{{id}}" href="#"></a>
+        {{title}} x {{quantity}}
+        <small>${{format_price price}}</small>
+      </li>
+      {{/each}}
+    </ul>
+    <p>${{format_price total}}</p>
+    <a class="button checkout" href="/checkout">Check out</a>
+  </div>
+</label>
+{{else}}
+<p>0 items</p>
+{{/if}}

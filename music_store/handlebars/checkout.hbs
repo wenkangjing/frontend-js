@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    <tr>
+      <td><img src="{{cover}}"/></td>
+      <td>{{title}} by {{artist}} {{date}}</td>
+      <td>{{quantity}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+  <tfoot>
+    <a class="button" href="/">Pay</a>
+    <a class="button" href="/">Continue shopping</a>
+  </tfoot>
+</table>
+

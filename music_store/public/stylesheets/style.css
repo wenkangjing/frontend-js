@@ -1,9 +1,57 @@
 @import "whitespace-reset.css";
-body {
-  font: normal 12px Helvetica, Arial, sans-serif;
+/* box-sizing reset */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-a {
-  color: #dfd6bc;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+/* native implementationi reset */
+textarea,
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+body {
+  font: normal 14px Helvetica, Arial, sans-serif;
+  padding: 10px;
+}
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  clear: both;
+}
+h1 {
+  margin: 20px 0 10px 0;
+}
+h2 {
+  font-size: 1.3em;
+}
+h3 {
+  font-size: 1.2em;
+}
+#index li {
+  display: inline-block;
+  width: 150px;
+  margin: 0 20px 20px 0;
+  vertical-align: top;
+}
+#index li img {
+  display: block;
+  width: 100%;
+  margin: 0 10px 10px 0;
+}
+#index li div {
+  width: 100%;
+  height: 100px;
 }
 .button {
   display: inline-block;
@@ -14,7 +62,7 @@ a {
   border: 1px solid #888;
   border-radius: 4px;
   background: #1be5af;
-  margin: 10px 0;
+  margin: 10px 10px 10px 0;
   outline: none;
 }
 .button:hover {
@@ -23,7 +71,7 @@ a {
 .button:focus {
   background: #f00;
 }
-.delete a {
+.delete {
   position: relative;
   float: left;
   width: 12px;
@@ -33,27 +81,27 @@ a {
   text-indent: 9999px;
   transform: rotate(45deg);
 }
-.delete a:before,
-.delete a:after {
+.delete:before,
+.delete:after {
   position: absolute;
   content: "";
   background: #b00b00;
 }
-.delete a:before {
+.delete:before {
   top: 0;
   bottom: 0;
   left: 50%;
   margin-left: -1px;
   width: 2px;
 }
-.delete a:after {
+.delete:after {
   top: 50%;
   right: 0;
   left: 0;
   margin-top: -1px;
   height: 2px;
 }
-.delete a.button {
+.delete.button {
   float: right;
   margin: 10px 0 5px 0;
   padding: 4px 8px;
@@ -63,9 +111,94 @@ a {
   transform: none;
   font-size: 15px;
   color: #1be5af;
+  background: ;
+}
+.delete.button:before,
+.delete.button:after {
   background: transparent;
 }
-.delete a.button:before,
-.delete a.button:after {
-  background: transparent;
+form dt {
+  padding: 0 0 5px 0;
+}
+form dd {
+  padding: 0 0 20px 0;
+}
+form input[type="text"],
+form input[type="date"],
+form input[type="url"],
+form input[type="number"] {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #888;
+  border-radius: 6px;
+}
+header {
+  max-width: 800px;
+  margin: 0 auto;
+}
+#cart {
+  position: relative;
+  float: right;
+  width: 50%;
+  z-index: 2;
+  text-align: right;
+}
+#cart label,
+#cart p,
+#cart a {
+  padding: 2px 3px;
+  cursor: pointer;
+}
+#cart label,
+#cart a {
+  display: inline-block;
+}
+#cart input {
+  display: none;
+}
+#cart input:checked + #items {
+  display: block;
+}
+#items {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 5px;
+  color: #888;
+  background: #1be5af;
+}
+#items li {
+  text-align: left;
+  padding: 5px 0;
+  font-size: 12px;
+}
+#items small {
+  float: right;
+  margin-left: 10px;
+}
+#items li:hover {
+  background: #0bba91;
+}
+#checkout {
+  border-collapse: collapse;
+  width: 100%;
+}
+#checkout th {
+  background-color: #1be5af;
+  color: #fff;
+}
+#checkout th,
+#checkout td {
+  text-align: left;
+}
+#checkout th:last-child,
+#checkout td:last-child {
+  text-align: right;
+}
+#checkout tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#checkout img {
+  width: 50px;
 }

@@ -1,6 +1,6 @@
 var CheckoutView = Backbone.View.extend({
   template: App.templates.checkout,
-  tagName: "table",
+  tagName: "div",
   attributes: {
     id: "checkout"
   },

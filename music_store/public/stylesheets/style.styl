@@ -52,7 +52,10 @@ h3
 .button
   button() 
 
-.delete
+.admin
+  color: colors.delete
+
+#cart .delete
   delete()
 
 form
@@ -110,14 +113,19 @@ header
 #checkout
   border-collapse: collapse
   width: 100%;
-  th 
-    background-color: colors.button.bg
-    color: white
-  th, td
-    text-align: left
-  th:last-child, td:last-child
-    text-align: right
-  tr:nth-child(even) 
-    background-color: #f2f2f2
-  img
-    width: 50px
+  table
+    width: 100%
+    th 
+      background-color: colors.button.bg
+      color: white
+    th, td
+      text-align: left
+    th:first-child, td:first-child
+      width: 50px;
+    th:last-child, td:last-child
+      width: 50px;
+      text-align: center
+    tr:nth-child(even) 
+      background-color: #f2f2f2
+    img
+      width: 50px

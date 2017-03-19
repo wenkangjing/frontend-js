@@ -62,16 +62,19 @@ h3 {
   border: 1px solid #888;
   border-radius: 4px;
   background: #1be5af;
-  margin: 10px 10px 10px 0;
+  margin: 5px 5px 5px 0;
   outline: none;
 }
 .button:hover {
   background: #0bba91;
 }
 .button:focus {
-  background: #f00;
+  background: #b00b00;
 }
-.delete {
+.admin {
+  color: #b00b00;
+}
+#cart .delete {
   position: relative;
   float: left;
   width: 12px;
@@ -81,27 +84,27 @@ h3 {
   text-indent: 9999px;
   transform: rotate(45deg);
 }
-.delete:before,
-.delete:after {
+#cart .delete:before,
+#cart .delete:after {
   position: absolute;
   content: "";
   background: #b00b00;
 }
-.delete:before {
+#cart .delete:before {
   top: 0;
   bottom: 0;
   left: 50%;
   margin-left: -1px;
   width: 2px;
 }
-.delete:after {
+#cart .delete:after {
   top: 50%;
   right: 0;
   left: 0;
   margin-top: -1px;
   height: 2px;
 }
-.delete.button {
+#cart .delete.button {
   float: right;
   margin: 10px 0 5px 0;
   padding: 4px 8px;
@@ -113,8 +116,8 @@ h3 {
   color: #1be5af;
   background: ;
 }
-.delete.button:before,
-.delete.button:after {
+#cart .delete.button:before,
+#cart .delete.button:after {
   background: transparent;
 }
 form dt {
@@ -184,21 +187,29 @@ header {
   border-collapse: collapse;
   width: 100%;
 }
-#checkout th {
+#checkout table {
+  width: 100%;
+}
+#checkout table th {
   background-color: #1be5af;
   color: #fff;
 }
-#checkout th,
-#checkout td {
+#checkout table th,
+#checkout table td {
   text-align: left;
 }
-#checkout th:last-child,
-#checkout td:last-child {
-  text-align: right;
+#checkout table th:first-child,
+#checkout table td:first-child {
+  width: 50px;
 }
-#checkout tr:nth-child(even) {
+#checkout table th:last-child,
+#checkout table td:last-child {
+  width: 50px;
+  text-align: center;
+}
+#checkout table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-#checkout img {
+#checkout table img {
   width: 50px;
 }

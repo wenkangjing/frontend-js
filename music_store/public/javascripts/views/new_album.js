@@ -4,9 +4,9 @@ var NewAlbumView = Backbone.View.extend({
     id: "album_new"
   },
   events: {
-    "submit": "create",
+    "submit": "createOrUpdate",
   },
-  create: function(e) {
+  createOrUpdate: function(e) {
     e.preventDefault();
     $f = this.$("form");
     $.ajax({
@@ -14,12 +14,17 @@ var NewAlbumView = Backbone.View.extend({
      url: $f.attr("action"),
      data: $f.serializeArray(),
     }).done(function(json) {
-      App.albums.add(json);
-      history.back();
+      var album = new Album(json);
+      App.albms.set(album);
+      App.router.navigate("", {trigger: true});
     });
   },
   render: function() {
-    this.$el.html(this.template());
+    if(!!this.model) {
+      this.$el.html(this.template(this.model.toJSON()));
+    } else {
+      this.$el.html(this.template());
+    }
     App.$el.html(this.$el);
   },
   initialize: function() {

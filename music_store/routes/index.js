@@ -5,7 +5,7 @@ var Albums = require("./_Albums");
 module.exports = function(router) {
   
   router.get('/', function(req, res) {
-    res.render('index', {
+    res.render('layout', {
       albums: Albums.get()
     });
   });

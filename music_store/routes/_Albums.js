@@ -24,14 +24,17 @@ module.exports = {
   update: function(album) {
     var existings = this.get();
     var old = _(existings).findWhere({id: album.id});
+    console.log("old", old);
     Object.assign(old, album);
     this.set({last_id: this.getLastID(), data: existings});
   },
   delete: function(id) {
+    if (!id) {
+      return;
+    }
     var existings = this.get();
-    var albums = _(Albums.get()).reject({id: id});
-    Albums.set(Albums.getLastID(), albums);
-    
+    var albums = _(existings).reject({id: id});
+    this.set({last_id: this.getLastID(), data: albums});
   },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id;

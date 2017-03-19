@@ -1,38 +1,47 @@
 <form action="/albums" method="post">
+{{#if id}}
+<h1>Edit Album</h1>
+{{else}}
 <h1>New Album</h1>
+{{/if}}
   <fieldset>
     <dl>
       <dt>
         <label>Title</label>
       </dt>
       <dd>
-        <input type="text" name="title"/>
+        <input type="text" name="title" value="{{title}}"/>
+        <input type="hidden" name="id" value="{{id}}"/>
       </dd>
       <dt>
         <label>Artist</label>
       </dt>
       <dd>
-        <input type="text" name="artist"/>
+        <input type="text" name="artist" value="{{artist}}"/>
       <dt>
         <label>Date</label>
       </dd>
       </dt>  
       <dd>
-        <input type="date" name="date" />
+        <input type="date" name="date"  value="{{date}}"/>
       </dd>  
       <dt>
         <label>Covor</label>
       </dt>  
       <dd>
-        <input type="url" name="cover" />
+        <input type="url" name="cover" value="{{cover}}"/>
       </dd>  
       <dt>
         <label>Price</label>
       </dt>  
      <dd>
-        <input type="text" name="price" />
+        <input type="text" name="price" value="{{price}}"/>
       </dd>
     </dl>
   </fieldset>
-  <input type="submit" value="Create"/>
+  {{#if id}}
+    <input class="button" type="submit" value="Update"/>
+  {{else}}
+    <input class="button" type="submit" value="Create"/>
+  {{/if}}
 </form>

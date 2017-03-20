@@ -35,10 +35,11 @@ var App = {
   },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
-    this.on("add_to_cart", this.cart.addItem.bind(this.cart));
-    this.on("remove_from_cart", this.cart.removeItem.bind(this.cart));
-    this.on("edit_album", this.editAlbum.bind(this));
-    this.on("new_album", this.newAlbum.bind(this));
+    this.off()
+        .on("add_to_cart", this.cart.addItem.bind(this.cart))
+        .on("remove_from_cart", this.cart.removeItem.bind(this.cart))
+        .on("edit_album", this.editAlbum.bind(this))
+        .on("new_album", this.newAlbum.bind(this));
     //this.listenTo(this.index, "new_album", this.newAlbum);
   },
 };

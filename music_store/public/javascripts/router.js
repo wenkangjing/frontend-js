@@ -1,4 +1,4 @@
-App.router = new (Backbone.Router.extend({
+var router = new (Backbone.Router.extend({
   routes: {
     "": "index", // root route
     "albums/new": "new",
@@ -24,6 +24,10 @@ App.router = new (Backbone.Router.extend({
 Backbone.history.start({
   pushState: true
 });
+
+App.goto = function(fregment) {
+  router.navigate(fregment, {trigger: true});
+};
 
 // get ride of '/', backbone assumming / will be there
 // $(document).on("click", "a[href^='/']", function(e) {

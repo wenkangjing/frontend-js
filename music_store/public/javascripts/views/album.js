@@ -13,10 +13,11 @@ var AlbumView = Backbone.View.extend({
   edit: function(e) {
     e.preventDefault();
     var id = +$(e.target).closest("li").attr("id").slice(6);
-    App.router.navigate(`albums/edit/${id}`, {trigger: true});
+    App.goto(`albums/edit/${id}`);
   },
   delete: function(e) {
     e.preventDefault();
+    var id = this.model.get("id");
     if (confirm("Are you sure to delete the ablum?")) {
       $.ajax({
         method: "delete",
@@ -24,9 +25,13 @@ var AlbumView = Backbone.View.extend({
         data: {
           id: this.model.get("id")
         }
-      }).done(function(json) {
-        history.go();
-      });
+      }).done(function() {
+        var id = this.model.id;
+        var model = App.albums.get(id);
+        App.albums.remove(model);
+        App.trigger("remove_from_cart", id);
+        App.indexView();
+      }.bind(this));
     }
   },
   render: function() {

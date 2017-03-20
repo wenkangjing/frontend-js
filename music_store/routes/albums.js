@@ -8,6 +8,11 @@ module.exports = function(router) {
       albums: Albums.get()
     });
   });
+  router.get('/albums/edit/:id', function(req, res) {
+    res.render('layout', {
+      albums: Albums.get()
+    });
+  });
   router.post('/albums', function(req, res) {
     var album = req.body;
     album.id = parseInt(album.id, 10);
@@ -17,12 +22,11 @@ module.exports = function(router) {
     } else { // new
       Albums.add(album);
     }
-    console.log(album);
-    res.json(album);
+    res.json(album).end();
   });
   router.delete('/albums', function(req, res) {
-    console.log(req.body.id);
     Albums.delete(parseInt(req.body.id, 10));
     res.status(200).end();
+    //res.json(req.body).end(); 
   });
 };

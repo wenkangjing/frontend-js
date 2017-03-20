@@ -4,6 +4,18 @@ var CheckoutView = Backbone.View.extend({
   attributes: {
     id: "checkout"
   },
+  events: {
+    "click a.pay": "pay",
+    "click a.continue_shopping": "continueShopping",
+  },
+  pay: function(e) {
+    e.preventDefault();
+    App.goto("");
+  },
+  continueShopping: function(e) {
+    e.preventDefault();
+    App.goto("");
+  },
   render: function() {
     $('#cart_toggle').prop('checked', false);
     this.$el.html(this.template({

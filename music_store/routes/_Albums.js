@@ -17,14 +17,13 @@ module.exports = {
   // add
   add: function(album) {
     var existings = this.get();
-    album.id = getLastID() + 1;
+    album.id = this.getLastID() + 1;
     existings.push(album);
     this.set({last_id: album.id, data: existings});
   },
   update: function(album) {
     var existings = this.get();
     var old = _(existings).findWhere({id: album.id});
-    console.log("old", old);
     Object.assign(old, album);
     this.set({last_id: this.getLastID(), data: existings});
   },

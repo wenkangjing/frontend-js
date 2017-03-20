@@ -24,7 +24,7 @@ describe("albums", function() {
       done();
     });
   });
-  xit("returns a filled form", function(done) {
+  it("returns a filled form", function(done) {
     request(getURL("albums/edit/1"), function(error, response, body) {
       expect(response.toJSON().statusCode).toEqual(200);
       done();
@@ -38,12 +38,13 @@ describe("albums", function() {
       done();
     });
   });
+  // fixme: cant attach body on delete in requestjs 
   xit("deletes the created album", function(done) {
-    request.delete(getURL("albums"), function(error, response, body) {
+    console.log(id);
+    request.delete(getURL("albums"), JSON.stringify({id: id}), function(error, response, body) {
       expect(response.toJSON().statusCode).toEqual(200);
       done();
     });
   });
 });
-
 

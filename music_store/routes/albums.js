@@ -3,13 +3,16 @@ var _ = require("underscore");
 
 // to extend the router object passing from all.js
 module.exports = function(router) {
+  router.param('id', function (req, res, next, id) {
+    next();
+  });
   router.get('/albums/new', function(req, res) {
     res.render('layout', {
       albums: Albums.get()
     });
   });
   router.get('/albums/edit/:id', function(req, res) {
-    console.log(id);
+    //console.log("test", id);
     res.render('layout', {
       albums: Albums.get()
     });

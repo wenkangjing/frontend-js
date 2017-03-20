@@ -1,5 +1,5 @@
 var Album = Backbone.Model.extend({
-  default: {
+  defaults: {
     "cover": "http://placehold.it/150/f88/000"
   },
 });

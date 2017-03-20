@@ -39,9 +39,9 @@ describe("albums", function() {
     });
   });
   // fixme: cant attach body on delete in requestjs 
-  xit("deletes the created album", function(done) {
+  it("deletes the created album", function(done) {
     console.log(id);
-    request.delete(getURL("albums"), JSON.stringify({id: id}), function(error, response, body) {
+    request.delete(getURL("albums"), JSON.stringify({body: {id: id}}), function(error, response, body) {
       expect(response.toJSON().statusCode).toEqual(200);
       done();
     });

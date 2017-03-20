@@ -9,6 +9,7 @@ module.exports = function(router) {
     });
   });
   router.get('/albums/edit/:id', function(req, res) {
+    console.log(id);
     res.render('layout', {
       albums: Albums.get()
     });
@@ -27,6 +28,5 @@ module.exports = function(router) {
   router.delete('/albums', function(req, res) {
     Albums.delete(parseInt(req.body.id, 10));
     res.status(200).end();
-    //res.json(req.body).end(); 
   });
 };

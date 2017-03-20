@@ -26,5 +26,6 @@ var CheckoutView = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    this.listenTo(App, "remove_from_cart", this.render);
   }
 });

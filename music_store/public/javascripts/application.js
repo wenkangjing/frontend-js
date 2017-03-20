@@ -29,6 +29,7 @@ var App = {
     if (!this.cart) {
       this.createCart();
     }
+    this.bindEvents();
     new CheckoutView({
       collection: this.cart
     });

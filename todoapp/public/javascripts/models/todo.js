@@ -9,12 +9,12 @@ var Todo = Backbone.Model.extend({
   },
   formatDate: function() {
     var date_string = "No Due Date";
-    if (this.month !== "Month" && this.year !== "Year") {
-        date_string = this.month + "/" + String(this.year).slice(2)
+    if (this.get("month") !== "Month" && this.get("year") !== "Year") {
+        date_string = this.get("month") + "/" + String(this.get("year")).slice(2)
     }
     return date_string;
   },
   initialize: function() {
-    this.due_date = this.formatDate();
+    this.set("due_date", this.formatDate());
   }
 });

@@ -11,9 +11,9 @@ html
     main
       block content
     +javascript_include_tag("application")
-    +javascript_include_tag("models/todo")
+    +javascript_include_tag("models/todo", "models/group")
     +javascript_include_tag("collections/todos")
-    +javascript_include_tag("views/todo", "views/index")
+    +javascript_include_tag("views/index", "views/todo", "views/group")
     script(type="text/javascript").
       App.todos  = new Todos(!{JSON.stringify(todos)});
       App.indexView();

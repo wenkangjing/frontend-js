@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     },
     clean: {
       build: {
-        src: ["public/stylesheets/style.css", "public/javascripts/handlebars_templates.js"]
+        src: ["public/javascripts/vendor/all.js", "public/stylesheets/style.css", "public/javascripts/handlebars_templates.js"]
       }
     }    
   });

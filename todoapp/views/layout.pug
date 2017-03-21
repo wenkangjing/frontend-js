@@ -1,7 +1,19 @@
+include _mixins
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Todo App
+    link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+    +stylesheet_link_tag("style")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
   body
-    block content
+    main
+      block content
+    +javascript_include_tag("application")
+    +javascript_include_tag("models/todo")
+    +javascript_include_tag("collections/todos")
+    +javascript_include_tag("views/todo", "views/index")
+    script(type="text/javascript").
+      App.todos  = new Todos(!{JSON.stringify(todos)});
+      App.indexView();

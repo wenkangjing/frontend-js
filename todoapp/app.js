@@ -4,26 +4,35 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var index = require('./routes/index');
-var users = require('./routes/users');
+var stylus = require('stylus'); // stylesheets
+var nib = require('nib'); // for stylus mixins
+var router = require('./routes/index'); // routes
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.locals.basedir = path.join(__dirname, "views");// Set the basedir of pug
+
+// middleware of stylus and nib
+app.use(stylus.middleware({
+  src: path.join(__dirname, "public"),
+  compile: function(str, p) {
+    return stylus(str).set("filename", p).use(nib());
+  }
+}));
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // serve static at the end
 
-app.use('/', index);
-app.use('/users', users);
+// use routers
+app.use('/', router); // one and only one router in this SPA project without app state
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,5 +51,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

@@ -1,0 +1,55 @@
+basics()
+  /* box-sizing reset */
+  *
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+
+  *, *:before, *:after
+    -webkit-box-sizing: inherit
+    -moz-box-sizing: inherit
+    box-sizing: inherit
+
+  /* native implementationi reset */
+  textarea, input, button, select 
+    font-family: inherit
+    font-size: inherit
+
+  body
+    font: normal 16px Helvetica, Arial, sans-serif
+
+  a
+    text-decoration: none
+
+  .clearfix::after 
+    content: ""
+    display: block
+    visibility: hidden
+    clear: both
+
+  .badge 
+    display: inline-block
+    height: 20px
+    min-width: 20px
+    line-height: 20px
+    font-size: 14px
+    font-weight: normal
+    padding: 0 5px
+    border-radius: 10px
+    color: rgba(255, 255, 255, 0.6)
+    background: #6b7292
+    opacity: 0.6
+    text-align: center
+
+  .active .badge,
+  .active.badge 
+    opacity: 1
+    color: rgba(255, 255, 255, 1)
+    background: #148fd5
+
+  .delete 
+    display: inline-block
+    width: 16px
+    height: 17px
+    vertical-align: middle 
+    background: transparent url("../images/delete.png") 0 center no-repeat

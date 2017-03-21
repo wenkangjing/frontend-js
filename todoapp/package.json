@@ -23,6 +23,7 @@
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-bower-concat": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-handlebars": "^1.0.0",
     "grunt-contrib-uglify": "^2.2.0"
   }

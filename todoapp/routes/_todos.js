@@ -18,21 +18,28 @@ module.exports = {
     todo.id = this.getLastID() + 1;
     todos.push(todo);
     this.set({last_id: todo.id, data: todos});
+    return todo;
   },
   update: function(todo) {
     var todos = this.get();
-    var old = _(todos).findWhere({id: todo.id});
-    Object.assign(old, todo);
-    this.set({last_id: this.getLastID(), data: todos});
+    var found = _(todos).findWhere({id: todo.id});
+    if (found) {
+      Object.assign(found, todo);
+      this.set({last_id: this.getLastID(), data: todos});
+      return found;
+    } else {
+      console.warn(JSON.stringify(todo) + " not found");
+      return false;
+    }
   },
   delete: function(id) {
     if (!id) {
-      console.error("id is not provided");
-      return;
+      console.warn(String(id) + " not found");
+      return false;
+    } else {
+      var todos = _(this.get()).reject({id: id});
+      this.set({last_id: this.getLastID(), data: todos});
     }
-    var todos = this.get();
-    todos = _(todos).reject({id: id});
-    this.set({last_id: this.getLastID(), data: todos});
   },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id;

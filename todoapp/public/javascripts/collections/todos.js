@@ -1,3 +1,3 @@
 var Todos = Backbone.Collection.extend({
-  model: Todo
+  model: Todo,
 })

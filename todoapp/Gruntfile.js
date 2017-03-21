@@ -33,14 +33,20 @@ module.exports = function(grunt) {
           processName: extractFileName
         }
       }
-    }
+    },
+    clean: {
+      build: {
+        src: ["public/stylesheets/style.css", "public/javascripts/handlebars_templates.js"]
+      }
+    }    
   });
 
   // Load any Grunt plugins by name here
   [
     "grunt-bower-concat",
     "grunt-contrib-uglify",
-    "grunt-contrib-handlebars"
+    "grunt-contrib-handlebars",
+    "grunt-contrib-clean"
   ].forEach(function(plugin) {
     grunt.loadNpmTasks(plugin);
   });
@@ -48,7 +54,7 @@ module.exports = function(grunt) {
   // Register task names here. These are run by calling the task by name when
   // using the Grunt CLI. The "default" task is run when running the Grunt CLI
   // without a task name.
-  grunt.registerTask("default", ["bower_concat", "uglify", "handlebars"]);
+  grunt.registerTask("default", ["clean", "bower_concat", "uglify", "handlebars"]);
 };
 
 

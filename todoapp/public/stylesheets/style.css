@@ -1,0 +1,375 @@
+@import "whitespace-reset.css";
+/* box-sizing reset */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+/* native implementationi reset */
+textarea,
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.badge {
+  display: inline-block;
+  height: 20px;
+  min-width: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0 5px;
+  border-radius: 10px;
+  color: rgba(255,255,255,0.6);
+  background: #6b7292;
+  opacity: 0.6;
+  text-align: center;
+}
+.active .badge,
+.active.badge {
+  opacity: 1;
+  color: #fff;
+  background: #148fd5;
+}
+.delete {
+  display: inline-block;
+  width: 16px;
+  height: 17px;
+  vertical-align: middle;
+  background: transparent url("../images/delete.png") 0 center no-repeat;
+}
+/*
+-----------------------------------------
+Layout - 2 column
+-----------------------------------------
+*/
+#columns {
+  margin-left: 335px;
+  position: relative;
+}
+#sidebar {
+  float: left;
+  width: 335px;
+  height: 100vh;
+  margin-left: -335px;
+}
+#content {
+  width: 100%;
+  height: 100vh;
+}
+#menu {
+  display: none;
+  position: absolute;
+  top: 23px;
+  left: 32px;
+  width: 23px;
+  height: 18px;
+  background: transparent url("../images/menu.png") center center no-repeat;
+}
+#sidebar-toggle {
+  display: none;
+  position: absolute;
+  top: 23px;
+  left: 32px;
+}
+/*
+-----------------------------------------
+Sidebar - Left
+-----------------------------------------
+*/
+#sidebar {
+  color: #fff;
+  background: #464f77;
+  padding: 60px 0;
+}
+#sidebar h1 {
+  font-size: 18px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: normal;
+  padding: 0 32px 0 138px;
+  color: #fff;
+}
+#sidebar .all h1 {
+  background: transparent url("../images/all-todos.png") 100px center no-repeat;
+}
+#sidebar .completed h1 {
+  background: transparent url("../images/completed.png") 100px center no-repeat;
+}
+#sidebar li {
+  opacity: 0.5;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 32px 0 138px;
+}
+#sidebar h1:hover,
+li:hover {
+  cursor: pointer;
+}
+#sidebar .group.active {
+  opacity: 1;
+  color: #ccc;
+  background-color: #383f5f;
+}
+#sidebar .completed.group {
+  text-decoration: line-through;
+}
+#sidebar h1 .badge {
+  float: right;
+  width: 30px;
+  margin: 15px 0;
+}
+#sidebar li .badge {
+  float: right;
+  margin: 10px 0;
+}
+#sidebar section + section {
+  margin-top: 40px;
+}
+/*
+-----------------------------------------
+Content - Right
+-----------------------------------------
+*/
+#content {
+  background: #fff;
+  padding: 60px 100px 60px 20px;
+}
+#content h2 {
+  font-size: 21px;
+  font-weight: normal;
+  height: 50px;
+  line-height: 50px;
+  color: #050505;
+  padding-left: 15px;
+  margin-bottom: 5px;
+}
+#content h2 span {
+  vertical-align: middle;
+}
+#content h2 .badge {
+  margin-left: 19px;
+}
+#content .add {
+  margin-left: 12px;
+}
+#content .add a {
+  height: 50px;
+  line-height: 50px;
+  color: #148fd5;
+  background: transparent url("../images/add.png") 0 center no-repeat;
+/* space for + sign */
+  padding-left: 27px;
+}
+#content table {
+  border-collapse: collapse;
+  color: #060606;
+  width: 100%;
+}
+#content .todo {
+  border-top: 1px solid #e7e7e7;
+}
+#content .todo td:first-child {
+  text-align: left;
+}
+#content .todo td:first-child:hover {
+  background-color: rgba(0,100,205,0.2);
+}
+#content .todo td:last-child {
+  width: 40px;
+  text-align: center;
+}
+#content .todo td:last-child:hover {
+  cursor: pointer;
+  background-color: rgba(255,0,0,0.4);
+}
+#content .todo td {
+  height: 50px;
+  line-height: 50px;
+}
+#content .todo .title {
+  padding-left: 42px;
+  background: transparent url("../images/unchecked.png") 14px 0 no-repeat;
+}
+#content .todo.completed .title {
+  color: #b3b3b3;
+  text-decoration: line-through;
+  background: transparent url("../images/checked.png") 14px 0 no-repeat;
+}
+#content .todo .title:hover {
+  color: #148fd5;
+  cursor: pointer;
+}
+/*
+-----------------------------------------
+checkbox hack to show modal
+-----------------------------------------
+*/
+#modal-toggle {
+  display: none;
+}
+#modal_background {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(0,0,0,0.2);
+}
+#modal_form {
+  display: none;
+  position: absolute;
+  top: 100px;
+  z-index: 2;
+}
+/*
+-----------------------------------------
+form 
+-----------------------------------------
+*/
+form {
+  display: block;
+  width: 575px;
+  height: 400px;
+  padding: 37px 37px 39px 30px;
+  color: #070707;
+  background: #fff;
+  cursor: default;
+  font-size: 0;
+}
+/* layout */
+form fieldset div > label {
+  display: inline-block;
+  width: 109px;
+  line-height: 36px;
+  font-size: 16px;
+  height: 36px;
+  color: #060606;
+  vertical-align: top;
+}
+form input[type="text"],
+form input[type="number"],
+form select {
+  padding: 8px;
+  width: 396px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+  color: #070707;
+}
+form .three-columns {
+  display: inline-block;
+  width: 396px;
+}
+form .three-columns input[type="text"],
+form .three-columns input[type="number"],
+form .three-columns select {
+  width: 115px;
+  font-size: 16px;
+}
+form .three-columns span {
+  display: inline-block;
+  font-size: 16px;
+  width: 24px;
+  height: 36px;
+  line-height: 36px;
+  color: #070707;
+  text-align: center;
+}
+form fieldset > div {
+  height: 36px;
+}
+form fieldset > .task-description {
+  height: 144px;
+}
+form fieldset > div + div {
+  margin-top: 24px;
+}
+form fieldset > div:last-of-type {
+  height: 36px;
+  margin-left: 109px;
+  margin-top: 24px;
+}
+form input,
+form select,
+form textarea {
+  padding: 8px;
+  border-color: #b3b3b3;
+}
+form textarea {
+  padding: 8px;
+  height: 144px;
+  width: 396px;
+  font-size: 16px;
+  resize: none;
+}
+form input[type="button"],
+form input[type="submit"] {
+  text-shadow: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #148fd5;
+  color: #fff;
+  width: 184px;
+  height: 36px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+form input[type="button"]:hover,
+form input[type="submit"]:hover {
+  cursor: pointer;
+}
+form input[type="button"] {
+  margin-left: 18px;
+}
+/*
+-----------------------------------------
+Responsible layout 
+-----------------------------------------
+*/
+@media (max-width: 768px) {
+  #sidebar {
+    display: none;
+  }
+  #content {
+    width: 100vw;
+    margin-left: -335px;
+  }
+  #menu {
+    display: block;
+    left: -303px;
+  }
+  #sidebar-toggle:checked ~ #menu {
+    left: 32px;
+  }
+  #sidebar-toggle:checked ~ #sidebar {
+    display: block;
+  }
+  #sidebar-toggle:checked ~ #content {
+    margin-left: 0;
+  }
+}

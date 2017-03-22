@@ -3,5 +3,5 @@ var Group = Backbone.Model.extend({
     due_date: "",
     count: 0,
     completed: false
-  },
+  }
 });

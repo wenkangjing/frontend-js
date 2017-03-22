@@ -22,18 +22,38 @@ this["JST"]["form"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
     + "\"></textarea></div><div><input type=\"submit\" value=\"Save\"><input type=\"button\" value=\"Mark As Complete\"></div></fieldset></form>";
 },"useData":true});
 
-this["JST"]["group"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+this["JST"]["groups"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<span class=\"due-date\">"
+  return "<li class=\""
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\"><span class=\"due-date\">"
     + alias4(((helper = (helper = helpers.due_date || (depth0 != null ? depth0.due_date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"due_date","hash":{},"data":data}) : helper)))
     + "</span><span class=\"badge\">"
     + alias4(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"count","hash":{},"data":data}) : helper)))
-    + "</span>";
+    + "</span></li>";
+},"2":function(container,depth0,helpers,partials,data) {
+    return " completed ";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<h1 class=\"group\">"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "<span class=\"badge\">"
+    + alias4(((helper = (helper = helpers.total || (depth0 != null ? depth0.total : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"total","hash":{},"data":data}) : helper)))
+    + "</span></h1><ul>"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.groups : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>";
 },"useData":true});
 
 this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"><section class=\"all\"><h1 class=\"group\">All Todos<span class=\"badge\"></span></h1><ul></ul></section><section class=\"completed\"><h1 class=\"group\">Completed<span class=\"badge\"></span></h1><ul></ul></section></div><div id=\"content\"><h2><span class=\"title\">All Todos</span><span class=\"badge active\"></span></h2><p class=\"add\"><a href=\"#\">Add new to do</a></p> <!--todos--><table><tbody id=\"todos\"></tbody></table><div id=\"modal_background\"></div><div id=\"modal_form\"></div></div></div>";
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"></div><div id=\"content\"><h2><span class=\"title\">"
+    + alias4(((helper = (helper = helpers.content_title || (depth0 != null ? depth0.content_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_title","hash":{},"data":data}) : helper)))
+    + "</span><span class=\"badge active\">"
+    + alias4(((helper = (helper = helpers.content_total || (depth0 != null ? depth0.content_total : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_total","hash":{},"data":data}) : helper)))
+    + "</span></h2><p class=\"add\"><a href=\"#\">Add new to do</a></p> <!--todos--><table><tbody id=\"todos\"></tbody></table><div id=\"modal_background\"></div><div id=\"modal_form\"></div></div></div>";
 },"useData":true});
 
 this["JST"]["todo"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

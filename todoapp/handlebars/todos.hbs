@@ -1,0 +1,12 @@
+<h2><span class="title">{{content_title}}</span><span class="badge active">{{content_total}}</span></h2>
+<p class="add"><a href="#">Add new to do</a></p> 
+<table>
+  <tbody id="todos">
+    {{#each todos}}
+      <tr class="todo {{#if completed}} completed {{/if}}" data-id="{{id}}">
+        <td><label class="title">{{title}} - {{due_date}}</label></td>
+        <td><span class="delete"></span></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

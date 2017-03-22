@@ -2,21 +2,42 @@ var App = {
   $el: $("main"),
   templates: JST, // handlebars
   indexView: function() {
-    this.index = new IndexView();
-    this.renderTodos();
-    this.renderGroupsAll();
-    this.renderGroupsCompleted();
+    this.index = new IndexView(); // the layout and anchor elements
+    this.renderSidebar(); // all and completed
+    this.renderContent(); // visible todos
   },
-  renderTodos: function() {
-    this.todos.each(function(todo) {
-      new TodoView({model: todo});
-    });
+  //
+  // filter should contain 
+  //   completed:bool 
+  //   due_date:string
+  //
+  renderContent: function(filter) {
+    filter = filter || {}; 
+    var title = "All Todos";
+    var total = this.todos.length;
+    var visible = this.todos.toJSON();
+
+    if (filter.completed) {
+      title = "Completed";
+      visible = visible.filter(function(t) {
+        return t.completed;
+      });
+    }
+    if (filter.due_date) {
+      title = filter.due_date;
+      visible = visible.filter(function(t) {
+        return t.due_date === filter.due_date;
+      });
+    }
+    total = visible.length;
+
+    var collection = new Todos(visible, {title: title, total: total});
+    new TodosView({collection: collection});
   },
-  renderGroupsAll: function() {
+  renderSidebar: function() {
+    this.$el.find("#sidebar").html("");
     var groups = this.getGroups({title: "All Todos", className: "all"});
     new GroupsView({collection: groups});
-  },
-  renderGroupsCompleted: function() {
     var groups = this.getGroups({title: "Completed", className: "completed", completed: true});
     new GroupsView({collection: groups});
   },

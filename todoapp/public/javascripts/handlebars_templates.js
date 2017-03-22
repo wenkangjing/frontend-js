@@ -47,21 +47,31 @@ this["JST"]["groups"] = Handlebars.template({"1":function(container,depth0,helpe
 },"useData":true});
 
 this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"></div><div id=\"content\"><h2><span class=\"title\">"
-    + alias4(((helper = (helper = helpers.content_title || (depth0 != null ? depth0.content_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_title","hash":{},"data":data}) : helper)))
-    + "</span><span class=\"badge active\">"
-    + alias4(((helper = (helper = helpers.content_total || (depth0 != null ? depth0.content_total : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_total","hash":{},"data":data}) : helper)))
-    + "</span></h2><p class=\"add\"><a href=\"#\">Add new to do</a></p> <!--todos--><table><tbody id=\"todos\"></tbody></table><div id=\"modal_background\"></div><div id=\"modal_form\"></div></div></div>";
+    return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"></div><div id=\"content\"></div><div id=\"modal_background\"></div><div id=\"modal_form\"></div></div>";
 },"useData":true});
 
-this["JST"]["todo"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+this["JST"]["todos"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<td><label class=\"title\">"
+  return "<tr class=\"todo "
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.completed : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\" data-id=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\"><td><label class=\"title\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + " - "
     + alias4(((helper = (helper = helpers.due_date || (depth0 != null ? depth0.due_date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"due_date","hash":{},"data":data}) : helper)))
-    + "</label></td><td><span class=\"delete\"></span></td>";
+    + "</label></td><td><span class=\"delete\"></span></td></tr>";
+},"2":function(container,depth0,helpers,partials,data) {
+    return " completed ";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<h2><span class=\"title\">"
+    + alias4(((helper = (helper = helpers.content_title || (depth0 != null ? depth0.content_title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_title","hash":{},"data":data}) : helper)))
+    + "</span><span class=\"badge active\">"
+    + alias4(((helper = (helper = helpers.content_total || (depth0 != null ? depth0.content_total : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_total","hash":{},"data":data}) : helper)))
+    + "</span></h2><p class=\"add\"><a href=\"#\">Add new to do</a></p> <table><tbody id=\"todos\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.todos : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</tbody></table>";
 },"useData":true});

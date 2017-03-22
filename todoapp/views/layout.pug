@@ -13,7 +13,7 @@ html
     +javascript_include_tag("application")
     +javascript_include_tag("models/index", "models/todo", "models/group")
     +javascript_include_tag("collections/todos", "collections/groups")
-    +javascript_include_tag("views/index", "views/todo", "views/groups")
+    +javascript_include_tag("views/index", "views/todos", "views/groups")
     script(type="text/javascript").
       App.todos  = new Todos(!{JSON.stringify(todos)});
       App.init();

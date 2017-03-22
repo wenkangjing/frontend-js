@@ -19,14 +19,37 @@ var TodosView = Backbone.View.extend({
     console.log(id);
   },
   render: function() {
+    var visible = this.getVisible();
     this.$el.html(this.template({
-      content_title: this.collection.title,
-      content_total: this.collection.total,
-      todos: this.collection.toJSON()
+      content_title: visible.title,
+      content_total: visible.todos.length,
+      todos: visible.todos
     }));
+  },
+  getVisible: function() {
+    var visible = {
+      title: "All Todos",
+      todos: this.collection.toJSON()
+    };
+    visible.todos = visible.todos.filter(function(t) {
+      if (App.filter.completed) {
+        visible.title = "Completed";
+        return App.filter.completed;
+      } else {
+        return true;
+      }
+    }).filter(function(t) {
+      if (App.filter.due_date) {
+        visible.title = App.filter.due_date;
+        return t.due_date === App.filter.due_date;
+      } else {
+        return true;
+      }
+    });
+    return visible;
   },
   initialize: function() {
     this.render();
-    this.listenTo(this.collection, "change update all", this.render);
+    this.listenTo(this.collection, "change update", this.render);
   }
 });

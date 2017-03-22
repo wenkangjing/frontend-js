@@ -11,28 +11,8 @@ var App = {
   //   completed:bool 
   //   due_date:string
   //
-  renderContent: function(filter) {
-    filter = filter || {}; 
-    var title = "All Todos";
-    var total = this.todos.length;
-    var visible = this.todos.toJSON();
-
-    if (filter.completed) {
-      title = "Completed";
-      visible = visible.filter(function(t) {
-        return t.completed;
-      });
-    }
-    if (filter.due_date) {
-      title = filter.due_date;
-      visible = visible.filter(function(t) {
-        return t.due_date === filter.due_date;
-      });
-    }
-    total = visible.length;
-
-    var collection = new Todos(visible, {title: title, total: total});
-    new TodosView({collection: collection});
+  renderContent: function() {
+    new TodosView({collection: this.todos});
   },
   renderSidebar: function() {
     this.$el.find("#sidebar").html("");
@@ -76,6 +56,7 @@ var App = {
         .on("toggle_complete", this.todos.toggleComplete.bind(this.todos));
   },
   init: function() {
+    this.filter = { completed: false, due_date: undefined };
     this.bindEvents();
     this.indexView();
   }

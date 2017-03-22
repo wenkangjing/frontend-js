@@ -72,6 +72,8 @@ var App = {
   },
   bindEvents: function() {
     _.extend(this, Backbone.Events);
+    this.off()
+        .on("toggle_complete", this.todos.toggleComplete.bind(this.todos));
   },
   init: function() {
     this.bindEvents();

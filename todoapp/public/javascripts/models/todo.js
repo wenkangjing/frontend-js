@@ -1,5 +1,6 @@
 var Todo = Backbone.Model.extend({
   defaults: {
+    id: -1,
     title: "",
     day: "Day",
     month: "Month",

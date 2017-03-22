@@ -47,7 +47,7 @@ this["JST"]["groups"] = Handlebars.template({"1":function(container,depth0,helpe
 },"useData":true});
 
 this["JST"]["index"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"></div><div id=\"content\"></div><div id=\"modal_background\"></div><div id=\"modal_form\"></div></div>";
+    return "<div id=\"columns\"><input type=\"checkbox\" id=\"sidebar-toggle\"/><label for=\"sidebar-toggle\" id=\"menu\"></label><div id=\"sidebar\"></div><div id=\"content\"></div></div>";
 },"useData":true});
 
 this["JST"]["todos"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -73,5 +73,5 @@ this["JST"]["todos"] = Handlebars.template({"1":function(container,depth0,helper
     + alias4(((helper = (helper = helpers.content_total || (depth0 != null ? depth0.content_total : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content_total","hash":{},"data":data}) : helper)))
     + "</span></h2><p class=\"add\"><a href=\"#\">Add new to do</a></p> <table><tbody id=\"todos\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.todos : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</tbody></table>";
+    + "</tbody></table><div id=\"modal_background\"></div><div id=\"modal_form\"></div>";
 },"useData":true});

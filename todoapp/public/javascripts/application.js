@@ -5,6 +5,7 @@ var App = {
     this.index = new IndexView();
     this.renderTodos();
     this.renderAllGroups();
+    this.renderCompletedGroups();
   },
   renderTodos: function() {
     this.todos.each(function(todo) {
@@ -12,22 +13,20 @@ var App = {
     }.bind(this));
   },
   renderAllGroups: function() {
-    var counter = {};
-    this.todos.forEach(function(t) {
-      var due_date = t.get("due_date");
-      if (counter[due_date]) {
-        counter[due_date]++;
-      } else {
-        counter[due_date] = 1;
-      }
-    });
-    for (var g in counter) {
-      var model = new Group(g);
+    this.todos.getGroups().each(function(group) {
       new GroupView({
-        model: model, 
+        model: group, 
         parent: App.$el.find("#sidebar .all ul")
       });
-    }
+    });
+  },
+  renderCompletedGroups: function() {
+    this.todos.getGroups({completed: true}).each(function(group) {
+      new GroupView({
+        model: group, 
+        parent: App.$el.find("#sidebar .completed ul")
+      });
+    });
   },
   bindEvents: function() {
     _.extend(this, Backbone.Events);

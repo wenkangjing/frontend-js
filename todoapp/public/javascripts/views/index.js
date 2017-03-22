@@ -6,9 +6,6 @@ var IndexView = Backbone.View.extend({
     } else {
       this.$el.html(this.template());
     }
-    // this.$el.find("#sidebar .all .badge").text("10");
-    // this.$el.find("#sidebar .completed .badge").text("10");
-    // this.$el.find("#content .badge").text("10");
     App.$el.html(this.$el);
   },
   initialize: function() {

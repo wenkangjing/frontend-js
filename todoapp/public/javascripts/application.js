@@ -5,7 +5,7 @@ var App = {
     this.index = new IndexView();
     this.renderTodos();
     this.renderGroupsAll();
-    //this.renderGroupsCompleted();
+    this.renderGroupsCompleted();
   },
   renderTodos: function() {
     this.todos.each(function(todo) {
@@ -17,7 +17,7 @@ var App = {
     new GroupsView({collection: groups});
   },
   renderGroupsCompleted: function() {
-    var groups = this.getGroups({title: "Completed", className: "completed"});
+    var groups = this.getGroups({title: "Completed", className: "completed", completed: true});
     new GroupsView({collection: groups});
   },
   getGroups: function(options) {

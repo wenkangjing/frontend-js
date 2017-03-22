@@ -1,7 +1,7 @@
 <h1 class="group">{{title}}<span class="badge">{{total}}</span></h1>
 <ul>
   {{#each groups}}
-    <li class="{{#if completed}} completed {{/if}}">
+    <li class="group {{#if completed}} completed {{/if}}">
       <span class="due-date">{{due_date}}</span><span class="badge">{{count}}</span>
     </li>
   {{/each}}

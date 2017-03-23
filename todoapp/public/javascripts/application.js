@@ -1,8 +1,7 @@
 var App = {
   $el: $("main"),
   templates: JST, // handlebars
-  indexView: function() {
-    this.index = new IndexView(); // the layout and anchor elements
+  render: function() {
     this.renderSidebar(); // all and completed
     this.renderContent(); // visible todos
   },
@@ -16,12 +15,12 @@ var App = {
     if (this.allView) {
       this.allView.remove();
     }
-    this.allView = new GroupsView({
-      collection: this.getGroups({title: "All Todos", className: "all"})
-    });
     if (this.completedView) {
       this.completedView.remove();
     }
+    this.allView = new GroupsView({
+      collection: this.getGroups({title: "All Todos", className: "all"})
+    });
     this.completedView = new GroupsView({
       collection: this.getGroups({title: "Completed", className: "completed"})
     });
@@ -58,14 +57,16 @@ var App = {
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.off()
-        .on("toggle_complete", this.todos.toggleComplete.bind(this.todos))
+        .on("toggle_complete", this.todos.toggleTodo.bind(this.todos))
         .on("update_todo", this.todos.updateTodo.bind(this.todos))
         .on("complete_todo", this.todos.completeTodo.bind(this.todos))
-        .on("delete_todo", this.todos.deleteTodo.bind(this.todos));
+        .on("delete_todo", this.todos.deleteTodo.bind(this.todos))
+        .on("filter", this.render.bind(this));
   },
   init: function() {
     this.filter = { completed: false, due_date: undefined };
+    this.index = new IndexView(); // the layout and anchor elements    
     this.bindEvents();
-    this.indexView();
+    this.render();
   }
 }

@@ -1,6 +1,6 @@
 var Todos = Backbone.Collection.extend({
   model: Todo,
-  toggleComplete: function(id) {
+  toggleTodo: function(id) {
     var t = this.get(id);
     t.set("completed", !t.get("completed"));
   },

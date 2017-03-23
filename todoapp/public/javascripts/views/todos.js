@@ -1,6 +1,4 @@
 var TodosView = Backbone.View.extend({
-  el: "#content",
-  className: "todo",
   template: App.templates.todos,
   events: {
     "click #todos tr.todo td:first-child": "toggleComplete",
@@ -39,6 +37,7 @@ var TodosView = Backbone.View.extend({
       content_total: visible.todos.length,
       todos: visible.todos
     }));
+    this.$el.appendTo(App.$el.find("#content"));
     this.$modal = this.$el.find("#modal_form");
     this.$modal_bg = this.$el.find("#modal_background");
   },
@@ -50,7 +49,7 @@ var TodosView = Backbone.View.extend({
     visible.todos = visible.todos.filter(function(t) {
       if (App.filter.completed) {
         visible.title = "Completed";
-        return App.filter.completed;
+        return t.completed;
       } else {
         return true;
       }
@@ -72,6 +71,5 @@ var TodosView = Backbone.View.extend({
     }); 
     this.render();
     this.listenTo(this.collection, "change update", this.render);
-    this.listenTo(App, "filter", this.render);
   }
 });

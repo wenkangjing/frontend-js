@@ -8,21 +8,24 @@ var GroupsView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
     var $el = $(e.currentTarget);
-    $("#sidebar").find(".active").removeClass("active");
-    $el.addClass("active");
-    App.filter.completed = $el.closest("section")[0].className === "completed" ? true : false;
-    App.filter.due_date = $el.find(".due-date").text() || undefined;
+    App.filter = {
+      completed: $el.closest("section")[0].className === "completed" ? true : false,
+      due_date: $el.find(".due-date").text() || undefined
+    };
     App.trigger("filter");
   },
   hightlight: function() {
-    if (App.filter.completed ? "completed" : "all" === this.collection.className) {
+    if ((App.filter.completed ? "completed" : "all") === this.collection.className) {
+      this.$el.find(".active").removeClass("active");
       var $active = this.$el.find(".due-date").filter(function(idx, item) {
-        $(item).text() === App.filter.due_date;
+        return $(item).text() === App.filter.due_date;
       });
       if ($active.length === 0) {
         $active = this.$el.find("h1.group");
+        $active.addClass("active");
+      } else {
+        $active.closest(".group").addClass("active");
       }
-      $active.addClass("active");
     }
   },
   render: function() { // deply attach to the DOM
@@ -33,10 +36,10 @@ var GroupsView = Backbone.View.extend({
     }));
     this.$el.addClass(this.collection.className);
     this.$el.appendTo(App.$el.find("#sidebar"));
+    this.hightlight();
   },
   initialize: function(options) {
     this.render();
-    this.hightlight();
-    this.listenTo(App.todos, "change update", App.renderSidebar.bind(App));
+    this.listenTo(App.todos, "change", App.renderSidebar.bind(App));
   }
 });

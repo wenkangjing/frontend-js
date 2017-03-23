@@ -72,5 +72,6 @@ var TodosView = Backbone.View.extend({
     }); 
     this.render();
     this.listenTo(this.collection, "change update", this.render);
+    this.listenTo(App, "filter", this.render);
   }
 });

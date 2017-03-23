@@ -6,7 +6,6 @@ var App = {
     this.renderSidebar(); // all and completed
     this.renderContent(); // visible todos
   },
-
   renderContent: function() {
     if (this.todosView) {
       this.todosView.remove();

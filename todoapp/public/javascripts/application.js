@@ -6,20 +6,26 @@ var App = {
     this.renderSidebar(); // all and completed
     this.renderContent(); // visible todos
   },
-  //
-  // filter should contain 
-  //   completed:bool 
-  //   due_date:string
-  //
+
   renderContent: function() {
-    this.todos.view = new TodosView({collection: this.todos});
+    if (this.todosView) {
+      this.todosView.remove();
+    }
+    this.todosView = new TodosView({collection: this.todos});
   },
   renderSidebar: function() {
-    this.$el.find("#sidebar").html("");
-    var groups = this.getGroups({title: "All Todos", className: "all"});
-    new GroupsView({collection: groups});
-    var groups = this.getGroups({title: "Completed", className: "completed", completed: true});
-    new GroupsView({collection: groups});
+    if (this.allView) {
+      this.allView.remove();
+    }
+    this.allView = new GroupsView({
+      collection: this.getGroups({title: "All Todos", className: "all"})
+    });
+    if (this.completedView) {
+      this.completedView.remove();
+    }
+    this.completedView = new GroupsView({
+      collection: this.getGroups({title: "Completed", className: "completed"})
+    });
   },
   getGroups: function(options) {
     options = options || {};
@@ -44,7 +50,7 @@ var App = {
       var group = new Group({
         due_date: g, 
         count: counter[g],
-        completed: options.completed || false,
+        completed: options.className === "completed" ? true : false,
       });
       groups.push(group);
     }

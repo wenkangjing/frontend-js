@@ -12,7 +12,7 @@ var App = {
   //   due_date:string
   //
   renderContent: function() {
-    new TodosView({collection: this.todos});
+    this.todos.view = new TodosView({collection: this.todos});
   },
   renderSidebar: function() {
     this.$el.find("#sidebar").html("");
@@ -53,7 +53,10 @@ var App = {
   bindEvents: function() {
     _.extend(this, Backbone.Events);
     this.off()
-        .on("toggle_complete", this.todos.toggleComplete.bind(this.todos));
+        .on("toggle_complete", this.todos.toggleComplete.bind(this.todos))
+        .on("update_todo", this.todos.updateTodo.bind(this.todos))
+        .on("complete_todo", this.todos.completeTodo.bind(this.todos))
+        .on("delete_todo", this.todos.deleteTodo.bind(this.todos));
   },
   init: function() {
     this.filter = { completed: false, due_date: undefined };

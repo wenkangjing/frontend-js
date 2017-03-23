@@ -3,20 +3,34 @@ var TodosView = Backbone.View.extend({
   className: "todo",
   template: App.templates.todos,
   events: {
-    "click #todos tr.todo": "completeByClick",
-    "click #todos tr.todo .title": "editTodo"
+    "click #todos tr.todo td:first-child": "toggleComplete",
+    "click #todos tr.todo td:last-child": "delete",
+    "click #todos tr.todo .title": "edit",
+    "click .add": "add",
   },
-  completeByClick: function(e) {
+  getId: function(e) {
+    return Number($(e.target).closest(".todo").data("id"));
+  },
+  add: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var id = $(e.target).closest(".todo").data("id");
-    App.trigger("toggle_complete", id);
+    new Form({model: new Todo()});
   },
-  editTodo: function(e) {
+  edit: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var id = $(e.target).closest(".todo").data("id");
-    console.log(id);
+    var todo = this.collection.get(this.getId(e));
+    new Form({model: todo});
+  },
+  delete: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    App.trigger("delete_todo", this.getId(e));
+  },
+  toggleComplete: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    App.trigger("toggle_complete", this.getId(e));
   },
   render: function() {
     var visible = this.getVisible();
@@ -25,6 +39,8 @@ var TodosView = Backbone.View.extend({
       content_total: visible.todos.length,
       todos: visible.todos
     }));
+    this.$modal = this.$el.find("#modal_form");
+    this.$modal_bg = this.$el.find("#modal_background");
   },
   getVisible: function() {
     var visible = {
@@ -49,6 +65,11 @@ var TodosView = Backbone.View.extend({
     return visible;
   },
   initialize: function() {
+    Handlebars.registerHelper('select', function( value, options ){
+        var $el = $('<select />').html( options.fn(this) );
+        $el.find('[value="' + value + '"]').attr({'selected':'selected'});
+        return $el.html();
+    }); 
     this.render();
     this.listenTo(this.collection, "change update", this.render);
   }

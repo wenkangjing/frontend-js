@@ -12,5 +12,6 @@ var GroupsView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.render();
+    this.listenTo(this.collection, "change update", this.render);
   }
 });

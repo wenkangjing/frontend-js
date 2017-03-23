@@ -1,5 +1,8 @@
 @import "whitespace-reset.css";
 /* box-sizing reset */
+html {
+  box-sizing: border-box;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -313,12 +316,6 @@ form fieldset > div:last-of-type {
   height: 36px;
   margin-left: 109px;
   margin-top: 24px;
-}
-form input,
-form select,
-form textarea {
-  padding: 8px;
-  border-color: #b3b3b3;
 }
 form textarea {
   padding: 8px;

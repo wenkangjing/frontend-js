@@ -22,11 +22,7 @@ router.post('/todos', function(req, res) {
   todos.forEach(function(todo) {
     var todo = normalize(todo);
     console.log(todo);
-    if(todo.id) {
-      Todos.update(todo);
-    } else {
-      Todos.add(todo);
-    }
+    Todos.add(todo);
   });
   res.status(200).end();
 });

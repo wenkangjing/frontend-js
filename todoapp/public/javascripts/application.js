@@ -73,7 +73,7 @@ var App = {
 }
 
 // sync todos back to server
-$(window).on("unload", sync);
+$(window).on("beforeunload", sync);
 
 function sync() {
   var todos = [];

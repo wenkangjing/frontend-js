@@ -21,9 +21,9 @@ this["JST"]["form"] = Handlebars.template({"1":function(container,depth0,helpers
     + ((stack1 = (helpers.select || (depth0 && depth0.select) || alias2).call(alias1,(depth0 != null ? depth0.month : depth0),{"name":"select","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</select><span>/</span><select name=\"year\" size=\"1\"> "
     + ((stack1 = (helpers.select || (depth0 && depth0.select) || alias2).call(alias1,(depth0 != null ? depth0.year : depth0),{"name":"select","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</select></div></div><div class=\"task-description\"><label>Description</label><textarea name=\"description\" cols=\"30\" rows=\"10\" placeholder=\"Description\" value=\""
+    + "</select></div></div><div class=\"task-description\"><label>Description</label><textarea name=\"description\" cols=\"30\" rows=\"10\" placeholder=\"Description\">"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "\"></textarea></div><div><input type=\"submit\" value=\"Save\"><input type=\"button\" value=\"Mark As Complete\"></div></fieldset></form></div>";
+    + "</textarea></div><div><input type=\"submit\" value=\"Save\"><input type=\"button\" value=\"Mark As Complete\"></div></fieldset></form></div>";
 },"useData":true});
 
 this["JST"]["groups"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

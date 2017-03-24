@@ -79,13 +79,18 @@ function sync() {
   var todos = [];
   App.todos.toJSON().forEach(function(todo) {
     delete todo.cid;
-    if (todo.day === "0") { delete todo.day; }
+    if (todo.day === "0")         { delete todo.day; }
+    if (todo.month === "0")       { delete todo.month; }
+    if (todo.year === "0")        { delete todo.year; }
+    if (todo.title === "")        { delete todo.title; }
+    if (todo.description === "")  { delete todo.description; }
     todos.push(todo);
   });
 
   $.ajax({
     method: "POST",
     url: "/todos",
+    async: false,
     data: {
       todos: JSON.stringify(todos)
     },

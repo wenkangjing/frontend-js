@@ -27,6 +27,8 @@ var Form = Backbone.View.extend({
     var formdata = this.$el.find("form").serializeArray();
     var data = {};
     formdata.forEach(function(field){
+      if (field.value === "false") { field.value = false; } 
+      if (field.value === "true") { field.value = true; } 
       data[field.name] = field.value;
     });
     return data;

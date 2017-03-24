@@ -67,7 +67,7 @@ this["JST"]["todos"] = Handlebars.template({"1":function(container,depth0,helper
     + alias4(((helper = (helper = helpers.due_date || (depth0 != null ? depth0.due_date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"due_date","hash":{},"data":data}) : helper)))
     + "</label></td><td><span class=\"delete\"></span></td></tr>";
 },"2":function(container,depth0,helpers,partials,data) {
-    return " completed ";
+    return "completed";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 

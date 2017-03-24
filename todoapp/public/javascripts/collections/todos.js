@@ -10,14 +10,11 @@ var Todos = Backbone.Collection.extend({
     model.set("completed", true);
   },
   updateTodo: function(todo) {
-    if (!todo.cid) {
-      delete todo.cid;
-      this.push(new Todo(todo));
+    var model = this.get(todo.cid);
+    if (model) {
+      model.set(todo);
     } else {
-      var model = this.get(todo.cid);
-      if (model) {
-        model.set(todo);
-      }
+      this.add(todo);
     }
   },
   deleteTodo: function(cid) {

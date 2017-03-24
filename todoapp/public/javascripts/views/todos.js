@@ -32,6 +32,11 @@ var TodosView = Backbone.View.extend({
   },
   render: function() {
     var visible = this.getVisible();
+    if (visible.todos.length === 0) {
+      App.trigger("filter", { completed: false, due_date: undefined });
+      this.remove();
+      return;
+    }
     this.$el.html(this.template({
       content_title: visible.title,
       content_total: visible.todos.length,

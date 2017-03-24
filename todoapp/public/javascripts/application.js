@@ -1,7 +1,8 @@
 var App = {
   $el: $("main"),
   templates: JST, // handlebars
-  render: function() {
+  render: function(filter) {
+    App.filter = filter || { completed: false, due_date: undefined };
     this.renderSidebar(); // all and completed
     this.renderContent(); // visible todos
   },
@@ -64,9 +65,8 @@ var App = {
         .on("filter", this.render.bind(this));
   },
   init: function() {
-    this.filter = { completed: false, due_date: undefined };
     this.index = new IndexView(); // the layout and anchor elements    
     this.bindEvents();
-    this.render();
+    this.render({ completed: false, due_date: undefined });
   }
 }

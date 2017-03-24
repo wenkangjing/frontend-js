@@ -8,11 +8,11 @@ var GroupsView = Backbone.View.extend({
     e.preventDefault();
     e.stopPropagation();
     var $el = $(e.currentTarget);
-    App.filter = {
+    var filter = {
       completed: $el.closest("section")[0].className === "completed" ? true : false,
       due_date: $el.find(".due-date").text() || undefined
     };
-    App.trigger("filter");
+    App.trigger("filter", filter);
   },
   hightlight: function() {
     if ((App.filter.completed ? "completed" : "all") === this.collection.className) {

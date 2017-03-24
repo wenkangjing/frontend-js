@@ -66,9 +66,6 @@ var App = {
         .on("filter", this.render.bind(this));
   },
   init: function() {
-    this.$el = $("main");
-    this.templates = JST; // handlebars
-    this.filter = { completed: false, due_date: undefined };
     this.index = new IndexView(); // the layout and anchor elements
     this.bindEvents();
     this.render();
@@ -82,9 +79,9 @@ function sync() {
   var todos = [];
   App.todos.toJSON().forEach(function(todo) {
     delete todo.cid;
-    if (todo.day === "0")         { delete todo.day; }
-    if (todo.month === "0")       { delete todo.month; }
-    if (todo.year === "0")        { delete todo.year; }
+    if (todo.day === "Day")         { delete todo.day; }
+    if (todo.month === "Month")       { delete todo.month; }
+    if (todo.year === "Year")        { delete todo.year; }
     if (todo.title === "")        { delete todo.title; }
     if (todo.description === "")  { delete todo.description; }
     todos.push(todo);

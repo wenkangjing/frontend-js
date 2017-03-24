@@ -17,7 +17,19 @@
   <script src="lib/jasmine-2.5.2/jasmine.js"></script>
   <script src="lib/jasmine-2.5.2/jasmine-html.js"></script>
   <script src="lib/jasmine-2.5.2/boot.js"></script>
-  
+
+
+</head>
+
+<body>
+  <main>
+    <div id="columns">
+    <input type="checkbox" id="sidebar-toggle"/>  
+    <label for="sidebar-toggle" id="menu"></label>  
+    <div id="sidebar"></div>
+    <div id="content"></div>
+  </main>
+</div>
   <!-- include source files here... -->
   <script type="text/javascript" src="../application.js"></script>
   <script type="text/javascript" src="../models/index.js"></script>
@@ -35,17 +47,5 @@
   <script src="spec/SidebarSpec.js"></script>
   <script src="spec/ContentSpec.js"></script>
   <script src="spec/FormSpec.js"></script>
-
-</head>
-
-<body>
-  <main>
-    <div id="columns">
-    <input type="checkbox" id="sidebar-toggle"/>  
-    <label for="sidebar-toggle" id="menu"></label>  
-    <div id="sidebar"></div>
-    <div id="content"></div>
-  </main>
-</div>
 </body>
 </html>

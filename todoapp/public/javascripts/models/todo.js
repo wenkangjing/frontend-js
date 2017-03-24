@@ -2,9 +2,9 @@ var Todo = Backbone.Model.extend({
   defaults: {
     cid: "",
     title: "",
-    day: 0,
-    month: 0,
-    year: 0,
+    day: "Day",
+    month: "Month",
+    year: "Year",
     description: "",
     completed: false,
   },
@@ -12,7 +12,7 @@ var Todo = Backbone.Model.extend({
     var date_string = "No Due Date";
     var month = String(this.get("month"));
     var year = String(this.get("year"));
-    if (month !== "0" && year  !== "0") {
+    if (month !== "Month" && year  !== "Year") {
         date_string = month + "/" + year.slice(2)
     }
     this.set("due_date", date_string);

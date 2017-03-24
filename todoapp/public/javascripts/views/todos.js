@@ -6,8 +6,8 @@ var TodosView = Backbone.View.extend({
     "click #todos tr.todo .title": "edit",
     "click .add": "add",
   },
-  getId: function(e) {
-    return Number($(e.target).closest(".todo").data("id"));
+  getCId: function(e) {
+    return $(e.target).closest(".todo").data("cid");
   },
   add: function(e) {
     e.preventDefault();
@@ -17,23 +17,23 @@ var TodosView = Backbone.View.extend({
   edit: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var todo = this.collection.get(this.getId(e));
+    var todo = this.collection.get(this.getCId(e));
     new Form({model: todo});
   },
   delete: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    App.trigger("delete_todo", this.getId(e));
+    App.trigger("delete_todo", this.getCId(e));
   },
   toggleComplete: function(e) {
     e.preventDefault();
     e.stopPropagation();
-    App.trigger("toggle_complete", this.getId(e));
+    App.trigger("toggle_complete", this.getCId(e));
   },
   render: function() {
     var visible = this.getVisible();
-    if (visible.todos.length === 0) {
-      App.trigger("filter", { completed: false, due_date: undefined });
+    if (visible.todos.length === 0 && App.todos.length > 0) {
+      App.trigger("filter");
       this.remove();
       return;
     }
@@ -75,6 +75,6 @@ var TodosView = Backbone.View.extend({
         return $el.html();
     }); 
     this.render();
-    this.listenTo(this.collection, "change update", this.render);
+    this.listenTo(App.todos, "change update", App.renderContent.bind(App));
   }
 });

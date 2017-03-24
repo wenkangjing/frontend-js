@@ -40,6 +40,6 @@ var GroupsView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.render();
-    this.listenTo(App.todos, "change", App.renderSidebar.bind(App));
+    this.listenTo(App.todos, "change update", App.renderSidebar.bind(App));
   }
 });

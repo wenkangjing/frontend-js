@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Todos = require("./_todos");
+var _ = require("underscore");
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -16,8 +17,28 @@ router.get('/todos', function(req, res) {
 
 // create or update
 router.post('/todos', function(req, res) {
+  var todos = JSON.parse(req.body.todos);
+  Todos.clear();
+  todos.forEach(function(todo) {
+    var todo = normalize(todo);
+    console.log(todo);
+    if(todo.id) {
+      Todos.update(todo);
+    } else {
+      Todos.add(todo);
+    }
+  });
+  res.status(200).end();
+});
+
+router.param('id', function (req, res, next, id) {
+  next();
+});
+
+// create or update
+router.post('/todos/:id', function(req, res) {
   var todo = normalize(req.body);
-  if(!!todo.id) {
+  if(!!id) {
     if (!Todos.update(todo)) {
       res.status(404).end();
     }
@@ -28,11 +49,11 @@ router.post('/todos', function(req, res) {
 });
 
 // delete
-router.delete('/todos', function(req, res) {
-  var todo = normalize(req.body);
-  if(!!todo.id) {
+router.delete('/todos/:id', function(req, res) {
+  if(!!id) {
     res.status(404).end();
   } else {
+    Todos.delete(id);
     res.status(200).end();
   }
 });

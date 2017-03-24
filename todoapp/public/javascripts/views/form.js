@@ -15,7 +15,7 @@ var Form = Backbone.View.extend({
   completeAndExit: function(e) {
     e.preventDefault();
     var todo = this.getTodo(); 
-    App.trigger("complete_todo", todo.id);
+    App.trigger("complete_todo", todo.cid);
     this.exit();
   },
   exit: function(e) {

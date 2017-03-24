@@ -1,6 +1,6 @@
 var Todo = Backbone.Model.extend({
   defaults: {
-    id: -1,
+    cid: "",
     title: "",
     day: 0,
     month: 0,
@@ -17,8 +17,12 @@ var Todo = Backbone.Model.extend({
     }
     this.set("due_date", date_string);
   },
+  setCId: function() {
+    this.set("cid", this.cid);
+  },
   initialize: function() {
     this.setDueDate();
+    this.setCId();
     this.on("change", this.setDueDate.bind(this));
   }
 });

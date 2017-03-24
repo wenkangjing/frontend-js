@@ -33,6 +33,10 @@ describe("CRUD todos.json", function() {
     Todos.delete(temp_todo.id);
     expect(Todos.get().length).toEqual(last_length);
   });
+  it("clear all todos and set last_id to 0", function() {
+    Todos.clear();
+    expect(Todos.getLastID()).toEqual(0);
+  });
 });
 
 

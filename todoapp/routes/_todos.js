@@ -41,6 +41,9 @@ module.exports = {
       this.set({last_id: this.getLastID(), data: todos});
     }
   },
+  clear: function() {
+    this.set({last_id: 0, data:[]});
+  },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(file_path, "utf8")).last_id;
   }

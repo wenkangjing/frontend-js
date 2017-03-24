@@ -1,6 +1,7 @@
 var App = {
   $el: $("main"),
   templates: JST, // handlebars
+  filter: { completed: false, due_date: undefined },
   render: function(filter) {
     App.filter = filter || { completed: false, due_date: undefined };
     this.renderSidebar(); // all and completed
@@ -67,6 +68,32 @@ var App = {
   init: function() {
     this.index = new IndexView(); // the layout and anchor elements    
     this.bindEvents();
-    this.render({ completed: false, due_date: undefined });
+    this.render();
   }
+}
+
+// sync todos back to server
+$(window).on("unload", sync);
+
+function sync() {
+  var todos = [];
+  App.todos.toJSON().forEach(function(todo) {
+    delete todo.cid;
+    if (todo.day === "0") { delete todo.day; }
+    todos.push(todo);
+  });
+
+  $.ajax({
+    method: "POST",
+    url: "/todos",
+    data: {
+      todos: JSON.stringify(todos)
+    },
+    success: function(obj) {
+      console.log(obj);
+    },
+    error: function(obj) {
+      console.log(obj);
+    }
+  });
 }

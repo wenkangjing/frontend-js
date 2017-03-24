@@ -66,7 +66,10 @@ var App = {
         .on("filter", this.render.bind(this));
   },
   init: function() {
-    this.index = new IndexView(); // the layout and anchor elements    
+    this.$el = $("main");
+    this.templates = JST; // handlebars
+    this.filter = { completed: false, due_date: undefined };
+    this.index = new IndexView(); // the layout and anchor elements
     this.bindEvents();
     this.render();
   }

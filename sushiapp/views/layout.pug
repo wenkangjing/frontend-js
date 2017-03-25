@@ -2,8 +2,7 @@ include _mixins
 doctype html
 html
   head
-    title Todo App
-    link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+    title SUSHI
     +stylesheet_link_tag("style")
     +javascript_include_tag("vendor/all")
     +javascript_include_tag("handlebars_templates")
@@ -15,5 +14,5 @@ html
     //- +javascript_include_tag("collections/todos", "collections/groups")
     //- +javascript_include_tag("views/index", "views/todos", "views/groups", "views/form")
     script(type="text/javascript").
-      App.menus  = new Todos(!{JSON.stringify(menus)});
+      App.items  = !{JSON.stringify(menu_items)};
       App.init();

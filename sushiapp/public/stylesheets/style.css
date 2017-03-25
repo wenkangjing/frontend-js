@@ -45,12 +45,17 @@ h3 {
 #application {
   margin: 50px 0 50px 0;
 }
+#application #wrapper {
+  position: relative;
+  max-width: 1000px;
+  min-width: 300px;
+  min-height: 800px;
+  margin: 0 auto;
+}
 #application header,
 #application main,
 #application footer {
-  max-width: 1000px;
-  min-width: 300px;
-  margin: 0 auto;
+  width: 100%;
 }
 #logo {
   height: 80px;
@@ -123,6 +128,26 @@ h3 {
 .menu-item a.add-to-cart:hover {
   color: #fff;
   background: #d60041;
+}
+#menu-detail {
+  position: absolute;
+  z-index: 1;
+  top: 130px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent url("./images/sushi-preview.png") 0 0 no-repeat;
+}
+#menu-detail div {
+  height: 200px;
+}
+#menu-detail .prev,
+#menu-detail height: 100% {
+  width: 100px;
+}
+#menu-detail .next {
+  height: 100%;
+  width: 100px;
 }
 #application footer {
   color: #999;

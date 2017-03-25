@@ -9,12 +9,17 @@ basics()
 #application
   margin: 50px 0 50px 0
 
+#application #wrapper
+  position: relative
+  max-width: 1000px
+  min-width: 300px
+  min-height: 800px
+  margin:  0 auto
+
 #application header,
 #application main,
 #application footer 
-  max-width: 1000px
-  min-width: 300px
-  margin:  0 auto
+  width: 100%
 
 #logo
   height: 80px
@@ -34,7 +39,7 @@ basics()
 
 
 //
-// menu - static
+// menu 
 // 
 .menu-item
   position relative
@@ -86,7 +91,29 @@ basics()
       background: colors.menu.button.bgHover
 
 
+//
+// menu detail
+//
 
+#menu-detail
+  position: absolute
+  z-index: 1
+  top: 130px
+  left: 0
+  right: 0
+  bottom: 0
+  background: transparent url("./images/sushi-preview.png") 0 0 no-repeat
+  div
+    height: 200px;
+  .prev,
+    height: 100%
+    width: 100px
+  .next
+    height: 100%
+    width: 100px
+  
+
+    
 #application footer
   color: colors.footer.text
   font-size: 0.8em

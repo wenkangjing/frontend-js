@@ -7,12 +7,11 @@ html
     +javascript_include_tag("vendor/all")
     +javascript_include_tag("handlebars_templates")
   body
-    main
-      block content
+    block content
     +javascript_include_tag("application")
-    //- +javascript_include_tag("models/index", "models/todo", "models/group")
-    //- +javascript_include_tag("collections/todos", "collections/groups")
-    //- +javascript_include_tag("views/index", "views/todos", "views/groups", "views/form")
+    +javascript_include_tag("models/menu_item")
+    +javascript_include_tag("collections/menu")
+    +javascript_include_tag("views/menu")
     script(type="text/javascript").
-      App.items  = !{JSON.stringify(menu_items)};
+      App.menu  = new Menu(!{JSON.stringify(menu_items)});
       App.init();

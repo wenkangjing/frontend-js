@@ -26,14 +26,108 @@ select {
 html {
   font: 75% 'Droid Sans', sans-serif;
   height: 100%;
+  color: #fff;
   background: #0c0c0c url("images/background-image.png") repeat left top;
 }
 a {
   text-decoration: none;
+}
+h3 {
+  font-weight: normal;
+  font-size: 1.3em;
 }
 .clearfix::after {
   content: "";
   display: block;
   visibility: hidden;
   clear: both;
+}
+#application {
+  margin: 50px 0 50px 0;
+}
+#application header,
+#application main,
+#application footer {
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+}
+#logo {
+  height: 80px;
+  padding: 0 0 40px 0;
+  background: url("images/logo.png") no-repeat;
+}
+#cart-info .button,
+#cart-detail .button {
+  background: -webkit-linear-gradient(#d60041 0%, #a90040 100%);
+  background: -moz-linear-gradient(#d60041 0%, #a90040 100%);
+  background: -o-linear-gradient(#d60041 0%, #a90040 100%);
+  background: linear-gradient(#d60041 0%, #a90040 100%);
+}
+.menu-item {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 20px;
+  background: #fff;
+}
+.menu-item + .menu-item {
+  border-left: 1px solid #999;
+}
+.menu-item .info .mask {
+  position: absolute;
+  display: none;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+}
+.menu-item .info:hover {
+  cursor: pointer;
+}
+.menu-item .info:hover h3 {
+  color: #2e2e2e;
+}
+.menu-item .info:hover .mask {
+  display: block;
+  background: rgba(0,0,0,0.8) url("./images/arrow-right.png") center center no-repeat;
+}
+.menu-item img {
+  margin: 0 0 30px 0;
+}
+.menu-item h3 {
+  color: #ab7829;
+  margin: 0 0 10px 0;
+}
+.menu-item p {
+  color: #9e9e9e;
+  margin: 0 0 10px 0;
+}
+.menu-item a.add-to-cart {
+  display: block;
+  height: 37px;
+  line-height: 37px;
+  font-size: 0.8em;
+  color: #d60041;
+  border-top: 1px dotted #999;
+  text-transform: uppercase;
+}
+.menu-item a.add-to-cart:before {
+  content: "+ ";
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.menu-item a.add-to-cart:hover {
+  color: #fff;
+  background: #d60041;
+}
+#application footer {
+  color: #999;
+  font-size: 0.8em;
+}
+#application footer p {
+  margin: 5px 0 5px 0;
 }

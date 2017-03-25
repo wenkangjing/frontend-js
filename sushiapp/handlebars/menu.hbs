@@ -1,0 +1,11 @@
+{{#each items}}
+<div class="menu-item">
+  <div class="info">
+    <img src="/images/{{image}}" alt="{{name}}">
+    <div class="mask"></div>
+    <h3>{{name}}</h3>
+    <p>${{price}}</p>
+  </div>
+  <a class="add-to-cart" href="{{href}}">add to cart</a>
+</div>
+{{/each}}

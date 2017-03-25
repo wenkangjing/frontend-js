@@ -2,3 +2,93 @@
 @import "mixins"
 
 basics()
+
+//
+// layout
+//
+#application
+  margin: 50px 0 50px 0
+
+#application header,
+#application main,
+#application footer 
+  max-width: 1000px
+  min-width: 300px
+  margin:  0 auto
+
+#logo
+  height: 80px
+  padding: 0 0 40px 0
+  background: url("images/logo.png") no-repeat
+
+// 
+// cart
+// 
+#cart-info,
+#cart-detail
+  .button
+   background: -webkit-linear-gradient(rgba(214,0,65,1) 0%, rgba(169,0,64,1) 100%)
+   background: -moz-linear-gradient(rgba(214,0,65,1) 0%, rgba(169,0,64,1) 100%)
+   background: -o-linear-gradient(rgba(214,0,65,1) 0%, rgba(169,0,64,1) 100%)
+   background: linear-gradient(rgba(214,0,65,1) 0%, rgba(169,0,64,1) 100%)
+
+
+//
+// menu - static
+// 
+.menu-item
+  position relative
+  display: inline-block
+  width: 200px
+  text-align: center
+  margin-bottom: 20px
+  background: colors.menu.bg
+  + .menu-item
+    border-left: 1px solid colors.menu.border
+  .info .mask
+    position: absolute
+    display: none
+    content: ""
+    top: 0
+    left: 0
+    width: 200px
+    height: 200px
+  .info:hover
+    cursor: pointer
+    h3
+      color: colors.menu.nameHover
+    .mask
+      display: block
+      background: rgba(0,0,0,0.8) url("./images/arrow-right.png") center center no-repeat
+  img
+    margin: 0 0 30px 0
+  h3
+    color: colors.menu.name
+    margin: 0 0 10px 0
+  p
+    color: colors.menu.price
+    margin: 0 0 10px 0
+  a.add-to-cart
+    display: block
+    height: 37px
+    line-height: 37px
+    font-size: 0.8em
+    color: colors.menu.button.text
+    border-top: 1px dotted colors.menu.border
+    text-transform: uppercase
+    &:before
+      content:"+ "
+      font-size: 14px
+      font-family: Arial, Helvetica, sans-serif
+      font-weight: bold
+    &:hover
+      color: colors.menu.button.textHover
+      background: colors.menu.button.bgHover
+
+
+
+#application footer
+  color: colors.footer.text
+  font-size: 0.8em
+  p 
+    margin: 5px 0 5px 0

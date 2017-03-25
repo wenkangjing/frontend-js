@@ -1,0 +1,37 @@
+@import "whitespace-reset.css";
+/* box-sizing reset */
+html {
+  box-sizing: border-box;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+/* native implementationi reset */
+textarea,
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+}

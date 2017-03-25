@@ -1,0 +1,30 @@
+{
+  "name": "sushiapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "jasmine-node spec --verbose --autotest --color --watch ."
+  },
+  "dependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "jasmine-node": "^1.14.5",
+    "morgan": "~1.7.0",
+    "nib": "^1.1.2",
+    "pug": "~2.0.0-beta10",
+    "request": "^2.81.0",
+    "serve-favicon": "~2.3.2",
+    "stylus": "^0.54.5",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-bower-concat": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-uglify": "^2.2.0"
+  }
+}

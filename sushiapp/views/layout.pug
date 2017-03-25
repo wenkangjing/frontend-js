@@ -1,0 +1,19 @@
+include _mixins
+doctype html
+html
+  head
+    title Todo App
+    link(rel="shortcut icon" href="/favicon.ico" type="image/x-icon")
+    +stylesheet_link_tag("style")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
+  body
+    main
+      block content
+    +javascript_include_tag("application")
+    //- +javascript_include_tag("models/index", "models/todo", "models/group")
+    //- +javascript_include_tag("collections/todos", "collections/groups")
+    //- +javascript_include_tag("views/index", "views/todos", "views/groups", "views/form")
+    script(type="text/javascript").
+      App.menus  = new Todos(!{JSON.stringify(menus)});
+      App.init();

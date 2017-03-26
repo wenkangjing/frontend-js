@@ -1,22 +1,26 @@
-<a class="prev" href="#"></a>
-<img src="/images/{{image}}" alt="{{name}}">
-<div class="description">
-  <h3>{{name}}</h3>
-  <p>{{description}}</p>
-  <div>
-    <h3 class="price">${{price}}</h3>
-    <a class="add-to-cart" href="#"></a>
+<div class="badge">
+  <a class="prev" href="#"></a>
+  <img src="/images/{{image}}" alt="{{name}}">
+  <div class="description">
+    <div>
+      <h3>{{name}}</h3>
+      <p>{{description}}</p>
+    </div>
+    <div>
+      <h3 class="price">${{toFixed price}}</h3>
+      <a class="add-to-cart button" href="#">Add to cart</a>
+    </div>
   </div>
+  <div class="nutrition">
+    <h4>Nutritional Information</h4>
+    <ul>
+      <li>Protein<span>{{nutrition.protein}}</span></li>
+      <li>Fat(total)<span>{{nutrition.fat}}</span></li>
+      <li>Carbohydrate<span>{{nutrition.carbohydrate}}</span></li>
+      <li>Energy(kj)<span>{{nutrition.energy}}</span></li>
+      <li>Energy(kcal)<span>{{toKcar nutrition.energy}}</span></li>
+      <li>Sugar<span>{{nutrition.sugar}}</span></li>
+    </ul>
+  </div>
+  <a class="next" href="#"></a>
 </div>
-<div class="nutrition">
-  <h4>Nutritional Information</h4>
-  <ul>
-    <li>Protein<span>{{protein}}</span></li>
-    <li>Fat(total)<span>{{fat}}</span></li>
-    <li>Carbohydrate<span>{{carbohydrate}}</span></li>
-    <li>Energy(kj)<span>{{energy}}</span></li>
-    <li>Energy(kcal)<span>{{energy}}</span></li>
-    <li>Sugar<span>{{sugar}}</span></li>
-  </ul>
-</div>
-<a class="next" href="#"></a>

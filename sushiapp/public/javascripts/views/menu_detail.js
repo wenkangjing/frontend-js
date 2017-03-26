@@ -9,6 +9,13 @@ var MenuDetailView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.parent = options.parent;
-    this.render();
+    Handlebars.registerHelper('toFixed', function(amount, options) {
+      amount = Number(amount);
+      return amount.toFixed(2);
+    });
+    Handlebars.registerHelper('toKcar', function(amount, options) {
+      amount = Number(amount);
+      return (amount * 0.239).toFixed(4);
+    });
   }
 }); 

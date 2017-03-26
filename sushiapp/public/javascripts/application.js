@@ -4,21 +4,22 @@ var App = {
   renderMenu: function() {
     if (!this.menuView) {
       this.menuView = new MenuView({collection: App.menu_items});
-    }
-    this.menuView.$el.show();
+    } 
+    this.menuView.render();
   },
   renderDetail: function(id) {
-    if (this.detailView) { 
-      this.detailView.remove(); 
-    }
-    this.menuView.$el.hide();
+    this.menuView.hide();
     var model = App.menu_items.get(id);
-    this.detailView = new MenuDetailView({
-      model: model,
-      parent: this.$el.find("#wrapper")
-    });
+    if (!this.detailView) {
+      this.detailView = new MenuDetailView({
+        parent: this.$el.find("#wrapper")
+      });
+    } 
+    this.detailView.model = model;
+    this.detailView.render();
   },
   removeDetail: function(e) {
+
   },
   bindEvents: function() {
     // close detail view when click outside element

@@ -1,31 +1,31 @@
 this["JST"] = this["JST"] || {};
 
 this["JST"]["menu_detail"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 
-  return "<a class=\"prev\" href=\"#\"></a><img src=\"/images/"
+  return "<div class=\"badge\"><a class=\"prev\" href=\"#\"></a><img src=\"/images/"
     + alias4(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"image","hash":{},"data":data}) : helper)))
     + "\" alt=\""
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\"><div class=\"description\"><h3>"
+    + "\"><div class=\"description\"><div><h3>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</h3><p>"
     + alias4(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"description","hash":{},"data":data}) : helper)))
-    + "</p><div><h3 class=\"price\">$"
-    + alias4(((helper = (helper = helpers.price || (depth0 != null ? depth0.price : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"price","hash":{},"data":data}) : helper)))
-    + "</h3><a class=\"add-to-cart\" href=\"#\"></a></div></div><div class=\"nutrition\"><h4>Nutritional Information</h4><ul><li>Protein<span>"
-    + alias4(((helper = (helper = helpers.protein || (depth0 != null ? depth0.protein : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"protein","hash":{},"data":data}) : helper)))
+    + "</p></div><div><h3 class=\"price\">$"
+    + alias4((helpers.toFixed || (depth0 && depth0.toFixed) || alias2).call(alias1,(depth0 != null ? depth0.price : depth0),{"name":"toFixed","hash":{},"data":data}))
+    + "</h3><a class=\"add-to-cart button\" href=\"#\">Add to cart</a></div></div><div class=\"nutrition\"><h4>Nutritional Information</h4><ul><li>Protein<span>"
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.protein : stack1), depth0))
     + "</span></li><li>Fat(total)<span>"
-    + alias4(((helper = (helper = helpers.fat || (depth0 != null ? depth0.fat : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fat","hash":{},"data":data}) : helper)))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.fat : stack1), depth0))
     + "</span></li><li>Carbohydrate<span>"
-    + alias4(((helper = (helper = helpers.carbohydrate || (depth0 != null ? depth0.carbohydrate : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"carbohydrate","hash":{},"data":data}) : helper)))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.carbohydrate : stack1), depth0))
     + "</span></li><li>Energy(kj)<span>"
-    + alias4(((helper = (helper = helpers.energy || (depth0 != null ? depth0.energy : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"energy","hash":{},"data":data}) : helper)))
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.energy : stack1), depth0))
     + "</span></li><li>Energy(kcal)<span>"
-    + alias4(((helper = (helper = helpers.energy || (depth0 != null ? depth0.energy : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"energy","hash":{},"data":data}) : helper)))
+    + alias4((helpers.toKcar || (depth0 && depth0.toKcar) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.energy : stack1),{"name":"toKcar","hash":{},"data":data}))
     + "</span></li><li>Sugar<span>"
-    + alias4(((helper = (helper = helpers.sugar || (depth0 != null ? depth0.sugar : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"sugar","hash":{},"data":data}) : helper)))
-    + "</span></li></ul></div><a class=\"next\" href=\"#\"></a>";
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.nutrition : depth0)) != null ? stack1.sugar : stack1), depth0))
+    + "</span></li></ul></div><a class=\"next\" href=\"#\"></a></div>";
 },"useData":true});
 
 this["JST"]["menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

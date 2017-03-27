@@ -1,0 +1,20 @@
+<h1>Order Details</h1>
+<table>
+  <thead>
+    <th>item</th>
+    <th></th>
+    <th>quantity</th>
+    <th>price</th>
+  </thead>
+  <tbody>
+    {{#each items}}
+      <li>
+        <td><img src="/images/{{image}}" alt="name"></td>
+        <td>{{name}}</td>
+        <td><input type="number" step="1" value="{{quantity}}"></td>
+        <td>{{price}}</td>
+      </li>
+    {{/each}}
+  </tbody>
+</table>
+<p><small>total:</small><strong>${{toFixed price}}</strong></p>

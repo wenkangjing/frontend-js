@@ -17,6 +17,7 @@ html
         main
           div#menu
           div#menu-detail
+          div#order-detail
         footer 
           p This is a practice project for learning purpose only  
 
@@ -24,7 +25,7 @@ html
     +javascript_include_tag("router")
     +javascript_include_tag("models/menu_item")
     +javascript_include_tag("collections/menu", "collections/cart")
-    +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_info", "views/cart_detail")
+    +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_info", "views/cart_detail", "views/checkout")
     script(type="text/javascript").
       App.menu_items  = new Menu(!{JSON.stringify(menu_items)});
       App.cart_items = new Cart();

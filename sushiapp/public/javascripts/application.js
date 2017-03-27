@@ -4,8 +4,9 @@ var App = {
   createViews: function() {
     this.menuView = new MenuView({collection: this.menu_items});
     this.detailView = new MenuDetailView();
-    this.cartInfo = new CartInfoView({count: 7});
-    this.cartDetail = new CartDetailView({collection: this.cart_items});
+    this.cartInfoView = new CartInfoView({count: 7});
+    this.cartDetailView = new CartDetailView({collection: this.cart_items});
+    this.checkoutView = new CheckoutView({collection: this.cart_items});
   },
   createRouter: function() {
     this.router  = new AppRouter();
@@ -29,6 +30,13 @@ var App = {
       this.router.navigate("/", {trigger: true});
     }
   },
+  renderCheckout: function() {
+    this.menuView.hide();
+    this.detailView.hide();
+    this.cartDetailView.hide();
+    this.checkoutView.render();
+    this.router.navigate("/checkout", {trigger: true});
+  },
   addToCart: function(id) {
     var model = this.menu_items.findWhere({id: id});
 
@@ -40,9 +48,6 @@ var App = {
   emptyCart: function() {
     this.cart_items.empty();
   },
-  checkout: function() {
-    console.log("go to checkout view");
-  },
   bindEvents: function() {
     this.off()
       .on("detail", this.renderDetail.bind(this))
@@ -50,7 +55,7 @@ var App = {
       .on("add_to_cart", this.addToCart.bind(this))
       .on("remove_from_cart", this.removeFromCart.bind(this))
       .on("empty_cart", this.emptyCart.bind(this))
-      .on("checkout", this.checkout.bind(this));
+      .on("checkout", this.renderCheckout.bind(this));
   },
   init: function() {
     _.extend(this, Backbone.Events);

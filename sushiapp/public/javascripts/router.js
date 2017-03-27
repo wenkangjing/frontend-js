@@ -11,7 +11,7 @@ AppRouter = Backbone.Router.extend({
     App.renderDetail(id);
   },
   checkout: function() {
-    App.checkout();
+    App.renderCheckout();
   },
 });
 

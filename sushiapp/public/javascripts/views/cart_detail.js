@@ -19,6 +19,9 @@ var CartDetailView = Backbone.View.extend({
     e.preventDefault();
     App.trigger("checkout");
   },
+  hide: function() {
+    this.$el.hide();
+  },
   render: function() {
     var len = this.collection.length;
     if (len === 0) {

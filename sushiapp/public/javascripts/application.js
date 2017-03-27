@@ -20,11 +20,15 @@ var App = {
     this.menuView.render();
   },
   renderDetail: function(id) {
-    this.menuView.hide();
-    var model = App.menu_items.get(id);
-    this.detailView.model = model;
-    this.detailView.render();
-    this.router.navigate("/menu/" + id, {trigger: true});
+    if (id >= 1  && id <= this.menu_items.length) {
+      this.menuView.hide();
+      var model = App.menu_items.get(id);
+      this.detailView.model = model;
+      this.detailView.render();
+      this.router.navigate("/menu/" + id, {trigger: true});
+    } else {
+      this.router.navigate("/", {trigger: true});
+    }
   },
   bindEvents: function() {
     // close detail view when click outside element

@@ -15,12 +15,3 @@ AppRouter = Backbone.Router.extend({
   },
 });
 
-
-
-
-// get ride of '/', backbone assumming / will be there
-// $(document).on("click", "a[href^='/']", function(e) {
-//   e.preventDefault();
-//   var fregment = $(e.currentTarget).attr("href").replace(/^\//, "");
-//   router.navigate(fregment, {trigger: true});
-// });

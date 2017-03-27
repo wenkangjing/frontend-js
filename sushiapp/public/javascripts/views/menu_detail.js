@@ -2,16 +2,21 @@ var MenuDetailView = Backbone.View.extend({
   el: "#menu-detail",
   template: App.templates.menu_detail,
   events: {
-    "click a.prev": "goPrev",
-    "click a.next": "goNext",
+    "click a.prev": "prev",
+    "click a.next": "next",
+    "click a.add-to-cart": "addToCart"
   },
-  goPrev: function(e) {
+  prev: function(e) {
     e.preventDefault();
     App.trigger("detail", this.getId() - 1);
   },
-  goNext: function(e) {
+  next: function(e) {
     e.preventDefault();
     App.trigger("detail", this.getId() + 1);
+  },
+  addToCart: function(e) {
+    e.preventDefault();
+    App.trigger("add_to_cart", this.getId());
   },
   render: function() {
     this.$el.attr("data-id", this.model.get("id"));

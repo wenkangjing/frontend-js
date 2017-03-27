@@ -10,8 +10,9 @@ html
     div#application
       div#wrapper
         header
-          div#logo
-          div#cart-info
+          div
+            div#logo
+            div#cart-info
           div#cart-detail
         main
           div#menu
@@ -22,8 +23,8 @@ html
     +javascript_include_tag("application")
     +javascript_include_tag("router")
     +javascript_include_tag("models/menu_item")
-    +javascript_include_tag("collections/menu")
-    +javascript_include_tag("views/menu", "views/menu_detail")
+    +javascript_include_tag("collections/menu", "collections/cart")
+    +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_info", "views/cart_detail")
     script(type="text/javascript").
       App.menu_items  = new Menu(!{JSON.stringify(menu_items)});
       App.init();

@@ -63,11 +63,47 @@ h3 {
   width: 100%;
 }
 #logo {
+  display: inline-block;
   height: 80px;
+  width: 140px;
   padding: 0 0 40px 0;
   background: url("images/logo.png") no-repeat;
 }
-#cart-info .button,
+#cart-info {
+  float: right;
+  height: 28px;
+  line-height: 28px;
+  vertical-align: middle;
+  font-size: 10px;
+  text-transform: uppercase;
+  background-color: #000;
+  padding-left: 10px;
+  letter-spacing: 1px;
+}
+#cart-info a {
+  color: #bababa;
+}
+#cart-info a .button {
+  display: inline-block;
+  position: relative;
+  color: #fff;
+  letter-spacing: 1px;
+  padding: 0 26px 0 28px;
+  background: linear-gradient(to bottom, #d60041 0%, #a90040 100%);
+}
+#cart-info a .button:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 14px solid #000;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #000;
+}
 #cart-detail .button {
   background: -webkit-linear-gradient(#d60041 0%, #a90040 100%);
   background: -moz-linear-gradient(#d60041 0%, #a90040 100%);

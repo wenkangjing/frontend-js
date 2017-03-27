@@ -20,5 +20,10 @@ var Cart = Backbone.Collection.extend({
   },
   empty: function() {
     this.reset();
-  }
+  },
+  getTotal: function() {
+    return this.toJSON().reduce(function(total, item) {
+      return total + Number(item.quantity) * Number(item.price);
+    }, 0)
+  },
 });

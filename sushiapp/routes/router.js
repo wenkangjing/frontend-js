@@ -27,4 +27,10 @@ router.get('/menu/:id', function(req, res, next) {
   });
 });
 
+router.get('/checkout', function(req, res, next) {
+  res.render('layout', { 
+    menu_items: menu.getItems()
+  });
+});
+
 module.exports = router;

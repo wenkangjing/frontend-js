@@ -13,7 +13,8 @@ var CartInfoView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.count = options.count;
-    this.listenTo(App.cart_items, "update", this.render.bind(this));
+    this.render();
+    this.listenTo(App.cart_items, "update reset", this.render.bind(this));
   }
 });
 

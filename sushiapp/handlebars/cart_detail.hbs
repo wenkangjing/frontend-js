@@ -1,1 +1,16 @@
-<div>cart detail</div>
+<ul>
+  {{#each items}}
+  <li class="cart-item">
+    <img src="/images/{{image}}" alt="{{name}}"/>
+    <p>{{quantity}}<span class="op">x</span>${{toFixed price}}</p>
+  </li>
+  {{/each}}
+</ul>
+<div> 
+  <p>Your </br>Shopping cart</p>
+  <h3>$ {{toFixed total}}</h3>
+  <div>
+    <a id="empty" href="#">Empty cart</a>
+    <span id="checkout" class="angle-button" href="#">checkout</span>
+  </div>
+</div>

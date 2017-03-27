@@ -48,6 +48,29 @@ h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
+.angle-button {
+  display: inline-block;
+  height: 28px;
+  line-height: 28px;
+  position: relative;
+  color: #fff;
+  letter-spacing: 1px;
+  padding: 0 20px 0 28px;
+  background: linear-gradient(to bottom, #d60041 0%, #a90040 100%);
+}
+.angle-button:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top: 14px solid #000;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 14px solid #000;
+}
 #application {
   margin: 50px 0 50px 0;
 }
@@ -83,32 +106,63 @@ h3 {
 #cart-info a {
   color: #bababa;
 }
-#cart-info a .button {
+#cart-detail {
+  margin-bottom: 20px;
+  background: #000;
+}
+#cart-detail > ul {
   display: inline-block;
-  position: relative;
-  color: #fff;
-  letter-spacing: 1px;
-  padding: 0 26px 0 28px;
-  background: linear-gradient(to bottom, #d60041 0%, #a90040 100%);
+  width: 800px;
+  vertical-align: top;
 }
-#cart-info a .button:before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-top: 14px solid #000;
-  border-right: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  border-left: 14px solid #000;
+#cart-detail > ul .cart-item {
+  display: inline-block;
+  width: 100px;
 }
-#cart-detail .button {
-  background: -webkit-linear-gradient(#d60041 0%, #a90040 100%);
-  background: -moz-linear-gradient(#d60041 0%, #a90040 100%);
-  background: -o-linear-gradient(#d60041 0%, #a90040 100%);
-  background: linear-gradient(#d60041 0%, #a90040 100%);
+#cart-detail > ul .cart-item img {
+  width: 100%;
+}
+#cart-detail > ul .cart-item p {
+  display: inline-block;
+  float: right;
+  padding: 2px 0;
+}
+#cart-detail > ul .cart-item p span {
+  font-size: 10px;
+}
+#cart-detail > div {
+  display: inline-block;
+  width: 200px;
+  padding: 20px 5px 5px 15px;
+  background: #1f1f1f;
+}
+#cart-detail > div p {
+  color: #bababa;
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+#cart-detail > div .price {
+  padding: 10px 0;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+#cart-detail > div div {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #d60041;
+  background: #1f1f1f;
+  vertical-align: middle;
+}
+#cart-detail > div div #empty {
+  color: #d60041;
+}
+#cart-detail > div div .angle-button {
+  padding: 0 10px 0 28px;
+}
+#cart-detail > div div .angle-button:before {
+  border-top: 14px solid #1f1f1f;
+  border-left: 14px solid #1f1f1f;
 }
 .menu-item {
   position: relative;

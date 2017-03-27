@@ -27,4 +27,5 @@ html
     +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_info", "views/cart_detail")
     script(type="text/javascript").
       App.menu_items  = new Menu(!{JSON.stringify(menu_items)});
+      App.cart_items = new Cart();
       App.init();

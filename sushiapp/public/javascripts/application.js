@@ -1,17 +1,11 @@
 var App = {
   $el: $("#application"),
   templates: JST,
-  createView: function() {
-    if (!this.menuView) {
-      this.menuView = new MenuView({collection: this.menu_items});
-    } 
-    if (!this.detailView) {
-      this.detailView = new MenuDetailView();
-    }
-    if (!this.cartInfo) {
-      this.cart_items = new Cart();
-      this.cartInfo = new CartInfoView({count: 7});
-    }
+  createViews: function() {
+    this.menuView = new MenuView({collection: this.menu_items});
+    this.detailView = new MenuDetailView();
+    this.cartInfo = new CartInfoView({count: 7});
+    
   },
   createRouter: function() {
     this.router  = new AppRouter();
@@ -34,30 +28,36 @@ var App = {
       this.router.navigate("/", {trigger: true});
     }
   },
-  renderCartInfo: function() {
-    this.cartInfo.render();
-  },
   addToCart: function(id) {
     var model = this.menu_items.findWhere({id: id});
+    if (!this.cartDetail) {
+      this.cartDetail = new CartDetailView({collection: this.cart_items});
+    }
     this.cart_items.addItem(model);
   },
   removeFromCart: function(id) {
     this.cart_items.removeItem(id);
   },
+  emptyCart: function() {
+    this.cart_items.empty();
+  },
+  checkout: function() {
+    console.log("go to checkout view");
+  },
   bindEvents: function() {
-    // close detail view when click outside element
-    //this.$el.on("click", this.removeDetail.bind(this));
     this.off()
       .on("detail", this.renderDetail.bind(this))
       .on("menu", this.renderMenu.bind(this))
-      .on("add_to_cart", this.addToCart.bind(this));
+      .on("add_to_cart", this.addToCart.bind(this))
+      .on("remove_from_cart", this.removeFromCart.bind(this))
+      .on("empty_cart", this.emptyCart.bind(this))
+      .on("checkout", this.checkout.bind(this));
   },
   init: function() {
     _.extend(this, Backbone.Events);
-    this.createView();
+    this.createViews();
     this.bindEvents();
     this.renderMenu();
-    this.renderCartInfo();
     this.createRouter();
   }
 }

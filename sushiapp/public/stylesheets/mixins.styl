@@ -42,10 +42,34 @@ basics()
     font-family: Arial, Helvetica, sans-serif
     font-weight: bold
 
-  
+  .angle-button
+    display: inline-block
+    height: 28px
+    line-height: 28px
+    position: relative
+    color: #fff
+    letter-spacing: 1px
+    padding: 0 20px 0 28px
+    background: linear-gradient(to bottom, rgba(214,0,65,1) 0%,rgba(169,0,64,1) 100%)
+    &:before
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-top: 14px solid #000;
+      border-right: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      border-left: 14px solid #000;
+
 colors = {
   text: #fff,
   background: #0c0c0c url('images/background-image.png'),
+  cart: {
+      bg: #d60041
+  },
   menu: {
     bg: #fff,
     border: #999,

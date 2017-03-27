@@ -1,13 +1,31 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["cart_detail"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div>cart detail</div>";
+this["JST"]["cart_detail"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<li class=\"cart-item\"><img src=\"/images/"
+    + alias4(((helper = (helper = helpers.image || (depth0 != null ? depth0.image : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"image","hash":{},"data":data}) : helper)))
+    + "\" alt=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\"/><p>"
+    + alias4(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quantity","hash":{},"data":data}) : helper)))
+    + "<span class=\"op\">x</span>$"
+    + alias4((helpers.toFixed || (depth0 && depth0.toFixed) || alias2).call(alias1,(depth0 != null ? depth0.price : depth0),{"name":"toFixed","hash":{},"data":data}))
+    + "</p></li>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "<ul>"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.items : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul><div> <p>Your </br>Shopping cart</p><h3>$ "
+    + container.escapeExpression((helpers.toFixed || (depth0 && depth0.toFixed) || helpers.helperMissing).call(alias1,(depth0 != null ? depth0.total : depth0),{"name":"toFixed","hash":{},"data":data}))
+    + "</h3><div><a id=\"empty\" href=\"#\">Empty cart</a><span id=\"checkout\" class=\"angle-button\" href=\"#\">checkout</span></div></div>";
 },"useData":true});
 
 this["JST"]["cart_info"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<a href=\"#\">Shopping Cart<span class=\"button\"><span>"
+  return "<a href=\"#\">Shopping Cart<span class=\"angle-button\"><span>"
     + container.escapeExpression(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"count","hash":{},"data":data}) : helper)))
     + "</span> items</span></a>";
 },"useData":true});

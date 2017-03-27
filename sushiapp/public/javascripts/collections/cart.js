@@ -9,21 +9,38 @@ var Cart = Backbone.Collection.extend({
       found.set("quantity", 1);
       this.push(found);
     }
+    this.saveCart();
   },
   removeItem: function(id) {
     var model = this.findWhere({id: id});
-    if (model.quantity > 1) {
-      model.quantity--;
+    var quantity = model.get("quantity");
+    if (quantity > 1) {
+      model.set("quantity", quantity - 1);
     } else {
-      model.remove();
+      this.remove(model);
     }
+    this.saveCart();
   },
   empty: function() {
     this.reset();
+    this.saveCart();
   },
   getTotal: function() {
     return this.toJSON().reduce(function(total, item) {
       return total + Number(item.quantity) * Number(item.price);
     }, 0)
   },
+  saveCart: function() {
+    localStorage.setItem("cart", JSON.stringify(this.toJSON()));
+  },
+  loadCart: function() {
+    var json = localStorage.getItem("cart");
+    if (json) {
+      this.reset(JSON.parse(json));
+      this.trigger("update");
+    }
+  },
+  initialize: function() {
+    this.loadCart();
+  }
 });

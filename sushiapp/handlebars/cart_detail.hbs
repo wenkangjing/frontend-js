@@ -1,8 +1,7 @@
 <ul>
   {{#each items}}
-  <li class="cart-item">
-    <img src="/images/{{image}}" alt="{{name}}"/>
-    <div class="mask"></div>
+  <li class="cart-item" data-id={{id}}>
+    <a href="#"><img src="/images/{{image}}" alt="{{name}}"/></a>
     <p>{{quantity}}<span class="op">x</span>${{toFixed price}}</p>
   </li>
   {{/each}}

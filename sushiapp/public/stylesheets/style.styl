@@ -9,9 +9,7 @@ basics()
   margin: 50px 0 50px 0
 
 #application #wrapper
-  max-width: 1000px
-  min-width: 300px
-  min-height: 800px
+  width: 1000px
   margin:  0 auto
 
 #application header,
@@ -46,40 +44,39 @@ basics()
   margin-bottom: 20px
   background: #000
   > ul
-    display: inline-block
+    display: table-cell
     width: 800px
     vertical-align: top
     .cart-item
+      position: relative
       display: inline-block
       width: 100px
-      .mask
-        position: absolute
-        display: none
-        content: ""
-        top: 0
-        left: 0
-        width: 100px
-        height: 100px      
-      img
+      a
         position: relative
         width: 100%
+        display: block
+        img
+          width: 100%
+        &:after
+          position: absolute
+          display: block
+          content: ""
+          top: 0
+          left: 0
+          width: 100px
+          height: 100px
+          background-color: rgba(0,0,0,0)
         &:hover
-          cursor: pointer
-          & + .mask
-            top: 0
-            left: 0
-            width: 100px
-            height: 100px               
-            display: block
-            border: 1px solid red
-            background: rgba(0,0,0,0.8) url("./images/remove-icon.png") center center no-repeat
-      p 
-        display: inline-block
+          cursor: default
+        &:hover:after
+          background: rgba(0,0,0,0.7) url("./images/remove-icon.png") center center no-repeat
+      p
+        float: right
         padding: 2px 0
         span
           font-size: 10px
   > div 
-    display: inline-block
+    display: table-cell
     width: 200px
     padding 20px 5px 5px 15px
     background: #1f1f1f

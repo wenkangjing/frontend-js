@@ -5,7 +5,7 @@ var App = {
     this.menuView = new MenuView({collection: this.menu_items});
     this.detailView = new MenuDetailView();
     this.cartInfo = new CartInfoView({count: 7});
-    
+    this.cartDetail = new CartDetailView({collection: this.cart_items});
   },
   createRouter: function() {
     this.router  = new AppRouter();
@@ -16,6 +16,7 @@ var App = {
   renderMenu: function() {
     this.detailView.hide();
     this.menuView.render();
+    this.router.navigate("/", {trigger: true});
   },
   renderDetail: function(id) {
     if (id >= 1  && id <= this.menu_items.length) {
@@ -30,9 +31,7 @@ var App = {
   },
   addToCart: function(id) {
     var model = this.menu_items.findWhere({id: id});
-    if (!this.cartDetail) {
-      this.cartDetail = new CartDetailView({collection: this.cart_items});
-    }
+
     this.cart_items.addItem(model);
   },
   removeFromCart: function(id) {
@@ -57,7 +56,7 @@ var App = {
     _.extend(this, Backbone.Events);
     this.createViews();
     this.bindEvents();
-    this.renderMenu();
     this.createRouter();
+    this.renderMenu();
   }
 }

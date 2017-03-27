@@ -58,6 +58,10 @@ h3 {
   padding: 0 20px 0 28px;
   background: linear-gradient(to bottom, #d60041 0%, #a90040 100%);
 }
+.angle-button:hover {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #a90040 0%, #d60041 100%);
+}
 .angle-button:before {
   content: "";
   display: block;
@@ -75,9 +79,7 @@ h3 {
   margin: 50px 0 50px 0;
 }
 #application #wrapper {
-  max-width: 1000px;
-  min-width: 300px;
-  min-height: 800px;
+  width: 1000px;
   margin: 0 auto;
 }
 #application header,
@@ -111,48 +113,48 @@ h3 {
   background: #000;
 }
 #cart-detail > ul {
-  display: inline-block;
+  display: table-cell;
   width: 800px;
   vertical-align: top;
 }
 #cart-detail > ul .cart-item {
+  position: relative;
   display: inline-block;
   width: 100px;
 }
-#cart-detail > ul .cart-item .mask {
+#cart-detail > ul .cart-item a {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+#cart-detail > ul .cart-item a img {
+  width: 100%;
+}
+#cart-detail > ul .cart-item a:after {
   position: absolute;
-  display: none;
+  display: block;
   content: "";
   top: 0;
   left: 0;
   width: 100px;
   height: 100px;
+  background-color: rgba(0,0,0,0);
 }
-#cart-detail > ul .cart-item img {
-  position: relative;
-  width: 100%;
+#cart-detail > ul .cart-item a:hover {
+  cursor: default;
 }
-#cart-detail > ul .cart-item img:hover {
-  cursor: pointer;
-}
-#cart-detail > ul .cart-item img:hover + .mask {
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  display: block;
-  border: 1px solid #f00;
-  background: rgba(0,0,0,0.8) url("./images/remove-icon.png") center center no-repeat;
+#cart-detail > ul .cart-item a:hover:after {
+  background: rgba(0,0,0,0.7) url("./images/remove-icon.png") center center no-repeat;
 }
 #cart-detail > ul .cart-item p {
-  display: inline-block;
+  float: right;
   padding: 2px 0;
 }
 #cart-detail > ul .cart-item p span {
   font-size: 10px;
 }
 #cart-detail > div {
-  display: inline-block;
+  display: table-cell;
   width: 200px;
   padding: 20px 5px 5px 15px;
   background: #1f1f1f;

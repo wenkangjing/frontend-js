@@ -119,12 +119,33 @@ h3 {
   display: inline-block;
   width: 100px;
 }
+#cart-detail > ul .cart-item .mask {
+  position: absolute;
+  display: none;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
 #cart-detail > ul .cart-item img {
+  position: relative;
   width: 100%;
+}
+#cart-detail > ul .cart-item img:hover {
+  cursor: pointer;
+}
+#cart-detail > ul .cart-item img:hover + .mask {
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  display: block;
+  border: 1px solid #f00;
+  background: rgba(0,0,0,0.8) url("./images/remove-icon.png") center center no-repeat;
 }
 #cart-detail > ul .cart-item p {
   display: inline-block;
-  float: right;
   padding: 2px 0;
 }
 #cart-detail > ul .cart-item p span {

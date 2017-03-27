@@ -2,6 +2,7 @@
   {{#each items}}
   <li class="cart-item">
     <img src="/images/{{image}}" alt="{{name}}"/>
+    <div class="mask"></div>
     <p>{{quantity}}<span class="op">x</span>${{toFixed price}}</p>
   </li>
   {{/each}}

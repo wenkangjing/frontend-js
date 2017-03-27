@@ -52,11 +52,29 @@ basics()
     .cart-item
       display: inline-block
       width: 100px
+      .mask
+        position: absolute
+        display: none
+        content: ""
+        top: 0
+        left: 0
+        width: 100px
+        height: 100px      
       img
+        position: relative
         width: 100%
+        &:hover
+          cursor: pointer
+          & + .mask
+            top: 0
+            left: 0
+            width: 100px
+            height: 100px               
+            display: block
+            border: 1px solid red
+            background: rgba(0,0,0,0.8) url("./images/remove-icon.png") center center no-repeat
       p 
         display: inline-block
-        float: right
         padding: 2px 0
         span
           font-size: 10px

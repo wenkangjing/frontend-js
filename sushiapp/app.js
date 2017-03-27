@@ -6,8 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus'); // stylesheets
 var nib = require('nib'); // for stylus mixins
-var index = require('./routes/index'); // routes
-var users = require('./routes/users'); // routes
+var router = require('./routes/router'); // routes
 
 var app = express();
 
@@ -33,8 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

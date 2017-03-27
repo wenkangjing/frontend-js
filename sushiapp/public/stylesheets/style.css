@@ -52,7 +52,6 @@ h3 {
   margin: 50px 0 50px 0;
 }
 #application #wrapper {
-  position: relative;
   max-width: 1000px;
   min-width: 300px;
   min-height: 800px;
@@ -130,7 +129,7 @@ h3 {
   background: #d60041;
 }
 #menu-detail {
-  position: absolute;
+  display: none;
   width: 1000px;
   z-index: 1;
   top: 130px;

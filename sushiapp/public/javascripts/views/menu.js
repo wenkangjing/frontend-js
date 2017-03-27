@@ -1,5 +1,5 @@
 var MenuView = Backbone.View.extend({
-  el: "#application main",
+  el: "#menu",
   template: App.templates.menu,
   events: {
     "click .info": "detail"
@@ -13,8 +13,8 @@ var MenuView = Backbone.View.extend({
     this.$el.hide();
   },
   render: function() {
-    this.$el.show();
     this.$el.html(this.template({items: this.collection.toJSON()}));
+    this.$el.show();
   },
   initialize: function() {
   }

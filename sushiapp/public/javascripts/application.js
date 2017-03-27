@@ -1,25 +1,30 @@
 var App = {
   $el: $("#application"),
   templates: JST,
-  renderMenu: function() {
+  createView: function() {
     if (!this.menuView) {
       this.menuView = new MenuView({collection: App.menu_items});
     } 
+    if (!this.detailView) {
+      this.detailView = new MenuDetailView();
+    }
+  },
+  createRouter: function() {
+    this.router  = new AppRouter();
+    Backbone.history.start({
+      pushState: true
+    });
+  },
+  renderMenu: function() {
+    this.detailView.hide();
     this.menuView.render();
   },
   renderDetail: function(id) {
     this.menuView.hide();
     var model = App.menu_items.get(id);
-    if (!this.detailView) {
-      this.detailView = new MenuDetailView({
-        parent: this.$el.find("#wrapper")
-      });
-    } 
     this.detailView.model = model;
     this.detailView.render();
-  },
-  removeDetail: function(e) {
-
+    this.router.navigate("/menu/" + id, {trigger: true});
   },
   bindEvents: function() {
     // close detail view when click outside element
@@ -29,7 +34,9 @@ var App = {
   },
   init: function() {
     _.extend(this, Backbone.Events);
+    this.createView();
     this.bindEvents();
     this.renderMenu();
+    this.createRouter();
   }
 }

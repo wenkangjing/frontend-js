@@ -1,14 +1,14 @@
 var MenuDetailView = Backbone.View.extend({
-  tagName: "div",
-  id: "menu-detail",
-  className: "clearfix",
+  el: "#menu-detail",
   template: App.templates.menu_detail,
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
-    this.$el.appendTo(this.parent);
+    this.$el.show();
   },
-  initialize: function(options) {
-    this.parent = options.parent;
+  hide: function() {
+    this.$el.hide();
+  },
+  initialize: function() {
     Handlebars.registerHelper('toFixed', function(amount, options) {
       amount = Number(amount);
       return amount.toFixed(2);

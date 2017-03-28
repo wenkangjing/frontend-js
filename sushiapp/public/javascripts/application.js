@@ -8,42 +8,25 @@ var App = {
     });
   },
   renderMenu: function() {
-    if (!this.cartDetail) {
-      this.cartDetail = new CartDetailView({collection: this.cart_items});
-    }    
-    if (this.view) {
-      this.view.remove();
-    }
-    this.view = new MenuView({collection: this.menu_items});
+    App.cart_visibility = true;
+    new MenuView({collection: this.menu_items});
     this.router.navigate("/", {trigger: true});
   },
   renderDetail: function(id) {
-    if (!this.cartDetail) {
-      this.cartDetail = new CartDetailView({collection: this.cart_items});
-    }    
+    App.cart_visibility = true;
     if (id >= 1  && id <= this.menu_items.length) {
       var model = App.menu_items.get(id);
-      if (this.view) {
-        this.view.remove();
-      }
-      this.view = new MenuDetailView({model: model});
+      new MenuDetailView({model: model});
       this.router.navigate("/menu/" + id, {trigger: true});
     }
   },
   renderCheckout: function() {
-    if (this.cartDetail) {
-      this.cartDetail.$el.hide();
-    }
-    if (this.view) {
-      this.view.remove();
-    }
-    this.view = new CheckoutView({collection: this.cart_items});
+    App.cart_visibility = false;
+    App.cart_items.trigger("update");
+    new CheckoutView({collection: this.cart_items});
     this.router.navigate("/checkout", {trigger: true});
   },
   addToCart: function(id) {
-    if (!this.cartDetail) {
-      this.cartDetail = new CartDetailView({collection: this.cart_items});
-    }
     var model = this.menu_items.findWhere({id: id});
     this.cart_items.addItem(model);
   },
@@ -57,11 +40,18 @@ var App = {
     this.off().on({
       "detail": this.renderDetail.bind(this),
       "menu": this.renderMenu.bind(this),
+      "checkout": this.renderCheckout.bind(this),
       "add_to_cart": this.addToCart.bind(this),
       "delete_from_cart": this.deleteFromCart.bind(this),
       "empty_cart": this.emptyCart.bind(this),
-      "checkout": this.renderCheckout.bind(this)
     });
+    $(document).on("click", "a[href^='/']", this.goto.bind(this));
+    $(document).on("click", ".menu-item .mask[href^='/']", this.goto.bind(this));
+  },
+  goto: function(e) {
+    e.preventDefault();
+    var fregment = $(e.currentTarget).attr("href").replace(/^\//, "");
+    this.router.navigate(fregment, {trigger: true});
   },
   buildTemplates: function() {
     Handlebars.registerHelper('toFixed', function(amount, options) {
@@ -78,6 +68,6 @@ var App = {
     this.bindEvents();
     this.buildTemplates();
     this.createRouter();
-    this.cartInfo = new CartInfoView();
+    new CartDetailView({collection: this.cart_items});
   }
 }

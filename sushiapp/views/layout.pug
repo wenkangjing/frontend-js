@@ -13,6 +13,8 @@ html
           div
             div#logo
             div#cart-info
+              a(href="/") Shopping Cart
+                span.angle-button 0 items
           div#cart-detail
         main
           //- div#menu
@@ -25,7 +27,7 @@ html
     +javascript_include_tag("router")
     +javascript_include_tag("models/menu_item")
     +javascript_include_tag("collections/menu", "collections/cart")
-    +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_info", "views/cart_detail", "views/checkout")
+    +javascript_include_tag("views/menu", "views/menu_detail", "views/cart_detail", "views/checkout")
     script(type="text/javascript").
       App.menu_items  = new Menu(!{JSON.stringify(menu_items)});
       App.cart_items = new Cart();

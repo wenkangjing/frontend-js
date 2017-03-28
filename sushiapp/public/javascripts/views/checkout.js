@@ -8,11 +8,11 @@ var CheckoutView = Backbone.View.extend({
   },
   cancelOrder: function(e) {
     e.preventDefault();
-    App.trigger("empty_cart menu");
+    App.trigger("empty_cart");
   },
   orderNow: function(e) {
     e.preventDefault();
-    App.trigger("empty_cart menu");
+    App.trigger("empty_cart");
   },
   updateCart: function(e) {
     e.preventDefault();

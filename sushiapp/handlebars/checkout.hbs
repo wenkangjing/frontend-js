@@ -17,7 +17,7 @@
         <td>
           <span>{{name}}</span>
         </td>        
-        <td><input class="quantity" type="number" step="1" value="{{quantity}}"></td>
+        <td><input class="quantity" type="number" step="1" min="0" value="{{quantity}}"></td>
         <td>${{toFixed price}}</td>
       </tr>
     {{/each}}
@@ -26,6 +26,6 @@
 <p><small>total:</small><strong>${{toFixed total}}</strong></p>
 
 <div class="ops">
-  <a class="cancel-order" href="#">clear order</a> 
-  <a class="order-now button" href="#">order now!</a>
+  <a class="cancel-order" href="/">clear order</a> 
+  <a class="order-now button" href="/">order now!</a>
 </div>

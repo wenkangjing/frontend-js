@@ -62,6 +62,6 @@ var App = {
     this.createViews();
     this.bindEvents();
     this.createRouter();
-    this.renderMenu();
+    //this.renderMenu();
   }
 }

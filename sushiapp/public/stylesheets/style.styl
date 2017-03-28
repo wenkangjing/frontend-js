@@ -243,7 +243,62 @@ basics()
 
 #order-detail
   background: #fff
-  padding: 30px
+  padding: 50px
+  color: #000
+  h1
+    color: #000
+    font-size: 3em
+    margin-bottom: 40px
+  table
+    width: 100%
+    border-collapse: collapse
+  tr
+    padding: 1px 0
+    border-bottom: 1pt solid #bababa
+    overflow: hidden
+  th
+    color: #000
+    text-transform: uppercase
+    text-align: left
+  td
+    font-size: 2em
+    color: #000
+    input[type="number"]
+      font-size: 1em
+      width: 100px
+      padding: 5px
+      color: #787878;
+    .image
+      width: 200px;
+      height: 100px
+      overflow: hidden;
+      margin-right: 40px
+    &:first-child
+      width: 200px
+  p
+    text-align: right
+    padding: 50px 0 20px 0
+    small 
+      font-size: 1em
+    strong
+      font-size: 3em
+      font-weight: normal
+      padding 10px
+  div.ops
+    text-align: right
+    a
+      display: inline-block
+      text-transform: uppercase
+      padding: 20px
+    a.cancel-order
+      color: #d60041
+    a.order-now
+      color: #fff
+      background: rgb(214,0,65);
+      &:hover
+        background: linear-gradient(to bottom, rgba(169,0,64,1) 0%,rgba(214,0,65,1) 100%)
+
+
 
 //
 // footer

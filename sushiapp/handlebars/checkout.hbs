@@ -8,13 +8,24 @@
   </thead>
   <tbody>
     {{#each items}}
-      <li>
-        <td><img src="/images/{{image}}" alt="name"></td>
-        <td>{{name}}</td>
+      <tr data-id={{id}}>
+        <td>
+          <div class="image">
+            <img src="/images/{{image}}"./ alt="{{name}}">
+          </div>
+        </td>
+        <td>
+          <span>{{name}}</span>
+        </td>        
         <td><input type="number" step="1" value="{{quantity}}"></td>
-        <td>{{price}}</td>
-      </li>
+        <td>${{toFixed price}}</td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
-<p><small>total:</small><strong>${{toFixed price}}</strong></p>
+<p><small>total:</small><strong>${{toFixed total}}</strong></p>
+
+<div class="ops">
+  <a class="cancel-order" href="#">clear order</a> 
+  <a class="order-now button" href="#">order now!</a>
+</div>

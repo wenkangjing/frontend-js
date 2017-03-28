@@ -345,7 +345,76 @@ h3 {
 }
 #order-detail {
   background: #fff;
-  padding: 30px;
+  padding: 50px;
+  color: #000;
+}
+#order-detail h1 {
+  color: #000;
+  font-size: 3em;
+  margin-bottom: 40px;
+}
+#order-detail table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#order-detail tr {
+  padding: 1px 0;
+  border-bottom: 1pt solid #bababa;
+  overflow: hidden;
+}
+#order-detail th {
+  color: #000;
+  text-transform: uppercase;
+  text-align: left;
+}
+#order-detail td {
+  font-size: 2em;
+  color: #000;
+}
+#order-detail td input[type="number"] {
+  font-size: 1em;
+  width: 100px;
+  padding: 5px;
+  color: #787878;
+}
+#order-detail td .image {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+  margin-right: 40px;
+}
+#order-detail td:first-child {
+  width: 200px;
+}
+#order-detail p {
+  text-align: right;
+  padding: 50px 0 20px 0;
+}
+#order-detail p small {
+  font-size: 1em;
+}
+#order-detail p strong {
+  font-size: 3em;
+  font-weight: normal;
+  padding: 10px;
+}
+#order-detail div.ops {
+  text-align: right;
+}
+#order-detail div.ops a {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 20px;
+}
+#order-detail div.ops a.cancel-order {
+  color: #d60041;
+}
+#order-detail div.ops a.order-now {
+  color: #fff;
+  background: #d60041;
+}
+#order-detail div.ops a.order-now:hover {
+  background: linear-gradient(to bottom, #a90040 0%, #d60041 100%);
 }
 #application footer {
   color: #999;

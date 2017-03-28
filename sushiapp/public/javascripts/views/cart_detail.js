@@ -2,14 +2,14 @@ var CartDetailView = Backbone.View.extend({
   el: "#cart-detail",
   template: App.templates.cart_detail,
   events: {
-    "click ul a": "remove",
+    "click ul a": "delete",
     "click #empty": "empty",
     "click #checkout": "checkout"
   },
-  remove: function(e) {
+  delete: function(e) {
     e.preventDefault();
     var id = $(e.target).closest(".cart-item").data("id");
-    App.trigger("remove_from_cart", id);
+    App.trigger("delete_from_cart", id);
   },
   empty: function(e) {
     e.preventDefault();
@@ -19,18 +19,15 @@ var CartDetailView = Backbone.View.extend({
     e.preventDefault();
     App.trigger("checkout");
   },
-  hide: function() {
-    this.$el.hide();
-  },
   render: function() {
     var len = this.collection.length;
+    this.$el.html(this.template({
+      total: this.collection.getTotal(),
+      items: this.collection.toJSON().slice(0, len > 8 ? 8 : len)
+    }));
     if (len === 0) {
       this.$el.hide();
     } else {
-      this.$el.html(this.template({
-        total: this.collection.getTotal(),
-        items: this.collection.toJSON().slice(0, len > 8 ? 8 : len)
-      }));
       this.$el.show();
     }
   },

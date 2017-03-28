@@ -1,5 +1,5 @@
 var MenuView = Backbone.View.extend({
-  el: "#menu",
+  id: "menu",
   template: App.templates.menu,
   events: {
     "click .info": "detail",
@@ -15,13 +15,11 @@ var MenuView = Backbone.View.extend({
     var id = Number($(e.target).closest(".menu-item").data("id"));
     App.trigger("add_to_cart", id);
   },
-  hide: function() {
-    this.$el.hide();
-  },
   render: function() {
     this.$el.html(this.template({items: this.collection.toJSON()}));
-    this.$el.show();
+    App.$el.find("main").html(this.$el);
   },
   initialize: function() {
+    this.render();
   }
 });

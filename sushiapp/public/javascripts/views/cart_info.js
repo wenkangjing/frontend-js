@@ -11,8 +11,7 @@ var CartInfoView = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template({count: App.cart_items.length}));
   },
-  initialize: function(options) {
-    this.count = options.count;
+  initialize: function() {
     this.render();
     this.listenTo(App.cart_items, "update reset", this.render.bind(this));
   }

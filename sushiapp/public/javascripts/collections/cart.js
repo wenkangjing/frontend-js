@@ -11,7 +11,7 @@ var Cart = Backbone.Collection.extend({
     }
     this.saveCart();
   },
-  removeItem: function(id) {
+  deleteItem: function(id) {
     var model = this.findWhere({id: id});
     var quantity = model.get("quantity");
     if (quantity > 1) {

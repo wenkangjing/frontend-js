@@ -43,7 +43,7 @@ this["JST"]["checkout"] = Handlebars.template({"1":function(container,depth0,hel
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "\"></div></td><td><span>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span></td><td><input type=\"number\" step=\"1\" value=\""
+    + "</span></td><td><input class=\"quantity\" type=\"number\" step=\"1\" value=\""
     + alias4(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"quantity","hash":{},"data":data}) : helper)))
     + "\"></td><td>$"
     + alias4((helpers.toFixed || (depth0 && depth0.toFixed) || alias2).call(alias1,(depth0 != null ? depth0.price : depth0),{"name":"toFixed","hash":{},"data":data}))

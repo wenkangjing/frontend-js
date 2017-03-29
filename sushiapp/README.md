@@ -1,5 +1,4 @@
-### This is a practice prject only
-[demo](https://sushi-store.herokuapp.com/)
+[Click here for a simple demo](https://sushi-store.herokuapp.com/)
 
 ### Stack
 
@@ -15,5 +14,11 @@ Fontend
 - Backbone as client side MVC framework
 - Handlebars for html templating
 - jasmine as clent-side test framework
+
+DevTools
+- npm
+- bower
+- nodemon
+
 
 

@@ -9,7 +9,7 @@ var Cart = Backbone.Collection.extend({
       found.set("quantity", 1);
       this.push(found);
     }
-    this.saveCart();
+    //this.saveCart();
   },
   deleteItem: function(id) {
     var model = this.findWhere({id: id});
@@ -19,11 +19,11 @@ var Cart = Backbone.Collection.extend({
     } else {
       this.remove(model);
     }
-    this.saveCart();
+    //this.saveCart();
   },
   empty: function() {
     this.reset();
-    this.saveCart();
+    //this.saveCart();
   },
   getTotal: function() {
     return this.toJSON().reduce(function(total, item) {
@@ -42,5 +42,7 @@ var Cart = Backbone.Collection.extend({
   },
   initialize: function() {
     this.loadCart();
+    // listen to itself rather than calling saveCart in many places
+    this.listenTo(this, "change add remove reset", this.saveCart.bind(this));
   }
 });

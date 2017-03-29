@@ -1,7 +1,14 @@
 mixin stylesheet_link_tag(src)
   link(rel='stylesheet' href='/stylesheets/' + src + '.css')
 
-mixin javascript_include_tag(src, ...rest)
-  script(type="text/javascript" src="/javascripts/" + src + ".js")
-  each file in rest
+//- mixin javascript_include_tag(src, ...rest)
+//-   script(type="text/javascript" src="/javascripts/" + src + ".js")
+//-   each file in rest
+//-     script(type="text/javascript" src="/javascripts/" + file + ".js")
+
+// Instead of having duplicated code in your javascript_include_tag mixin, 
+// you could use the rest operator for all of the files, 
+// instead of just the ones excluding the first:
+mixin javascript_include_tag(...files)
+  each file in files
     script(type="text/javascript" src="/javascripts/" + file + ".js")

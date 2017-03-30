@@ -4,7 +4,6 @@
   "subscribe": "false",
   "cards": [{
     "id": 1,
-    "idList": 1,
     "comments": 1,
     "description": false,
     "name": "Test router",

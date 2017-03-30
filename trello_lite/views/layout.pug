@@ -8,12 +8,16 @@ html
     +javascript_include_tag("vendor/all")
     +javascript_include_tag("handlebars_templates")
   body
-    header
-    main
+    div#application
+      header
+      div#board
+        header
+        div#lists
+
     +javascript_include_tag("application")
-    +javascript_include_tag("models/card")    
+    +javascript_include_tag("models/card")
     +javascript_include_tag("collections/list")
-    +javascript_include_tag("views/list")    
+    +javascript_include_tag("views/list", "views/card")
     script(type="text/javascript").
-      App.lists  = new List(!{JSON.stringify(lists)});
+      App.board = !{JSON.stringify(lists)};
       App.init();

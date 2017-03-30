@@ -4,7 +4,6 @@
   "subscribe": "true",
   "cards": [{
     "id": 3,
-    "idList": 3,
     "comments": 1,
     "description": false,
     "name": "Impl. menu",

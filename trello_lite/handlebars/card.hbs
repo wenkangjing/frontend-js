@@ -1,6 +1,10 @@
 <div>
-  <div class="labels"></div>
-  <div class="name"></div>
-  <div class="badge"></div>
-  <div class="edit"></div>
+  <div class="labels">{{#each labels}}{{name}}{{/each}}</div>
+  <div class="name">{{name}}</div>
+  <div class="badge">
+    {{#if subscribe}}<div class="subscribe">*-*</div>{{/if}}
+    {{#if due}}<div class="subscribe">{{due}}</div>{{/if}}
+    {{#if comments}}<div class="comments">{{comments}}</div>{{/if}}
+  </div>
+  <div class="edit">...</div>
 </div>

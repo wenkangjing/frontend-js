@@ -10,6 +10,9 @@ PUT  /books/1 ... model.save();
 DEL  /books/1 ... model.destroy();
 ```
 
+- A List/Column in GUI = a json file = `list_{id}.json`
+- A List contains multiple Cards (`List` is `CardCollection`) 
+
 
 ## Frontend
 
@@ -26,9 +29,8 @@ TrelloLite implement it in a different way to fit single-user requirement
 
 
 
-## Journey
 
-### Day 1
+## Journey
 
 MongoDB vs JSON
   - JSON
@@ -37,5 +39,8 @@ normalized vs denormalized
 - JSON can't do proper query
 - save denormalized data directly to json file
 
-tes
+
+
+
+
 

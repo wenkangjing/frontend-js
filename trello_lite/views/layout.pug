@@ -1,0 +1,19 @@
+include _mixins
+doctype html
+html
+  head
+    title Trello Lite 
+    link(rel="shortcut icon" href="/favicon.ico")
+    +stylesheet_link_tag("style")
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
+  body
+    header
+    main
+    +javascript_include_tag("application")
+    +javascript_include_tag("models/card")    
+    +javascript_include_tag("collections/list")
+    +javascript_include_tag("views/list")    
+    script(type="text/javascript").
+      App.lists  = new List(!{JSON.stringify(lists)});
+      App.init();

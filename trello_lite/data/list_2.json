@@ -1,0 +1,16 @@
+{
+  "id": "2",
+  "name": "Backend",
+  "subscribe": "true",
+  "cards": [{
+    "id": 3,
+    "idList": 3,
+    "comments": 1,
+    "description": false,
+    "name": "Impl. menu",
+    "desc": "on the top of view",
+    "due": "2017-04-31T01:00:00.000Z",
+    "idLabels": ["1"],
+    "subscribed": true
+  }]
+}

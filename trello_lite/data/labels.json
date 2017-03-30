@@ -1,0 +1,13 @@
+  [{
+    "id": "1",
+    "name": "Doing",
+    "color": "blue"
+  }, {
+    "id": "2",
+    "name": "Optional",
+    "color": "green"
+  }, {
+    "id": "3",
+    "name": "Test",
+    "color": "pink"
+  }]

@@ -1,0 +1,26 @@
+{
+  "id": "1",
+  "name": "Preparation",
+  "subscribe": "false",
+  "cards": [{
+    "id": 1,
+    "idList": 1,
+    "comments": 1,
+    "description": false,
+    "name": "Test router",
+    "desc": "",
+    "due": "2017-03-31T01:00:00.000Z",
+    "idLabels": ["1"],
+    "subscribed": false
+  }, {
+    "id": 2,
+    "idList": 1,
+    "comments": 1,
+    "description": false,
+    "name": "Install Jasmine",
+    "desc": "",
+    "due": "2017-03-31T01:00:00.000Z",
+    "idLabels": ["2"],
+    "subscribed": false
+  }]
+}

@@ -1,20 +1,26 @@
 var ListView = Backbone.View.extend({
   className: "list",
-  tagName: "div",
   template: App.templates.list,
   render: function() {
-    this.$el.html(this.template(this.raw));
+    this.$el.html(this.template({
+      name: this.name,
+      subscribed: this.subscribed,
+      cards: this.collection.toJSON()
+    }));
+    this.$el.attr("id", this.id);
     this.$el.appendTo($("#lists"));
-    this.raw.cards.forEach(function(card) {
-      console.log("...to render", card);
+    this.collection.each(function(card) {
+      console.log(card);
       new CardView({
-        parent: this.$el,
-        model: new Card(card)
+        parent: this.$el.find(".cards"),
+        model: card
       });
     }.bind(this));
   },
   initialize: function(options) {
-    Object.assign(this, options);
+    this.id = options.id;
+    this.name = options.name;
+    this.subscribed = options.subscribed;
     this.render();
   }
 });

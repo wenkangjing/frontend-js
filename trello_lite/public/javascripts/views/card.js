@@ -1,6 +1,5 @@
 var CardView = Backbone.View.extend({
   className: "card",
-  tagName: "div",
   template: App.templates.card,
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

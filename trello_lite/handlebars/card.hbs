@@ -2,8 +2,8 @@
   <div class="labels">{{#each labels}}{{name}}{{/each}}</div>
   <div class="name">{{name}}</div>
   <div class="badge">
-    {{#if subscribe}}<div class="subscribe">*-*</div>{{/if}}
-    {{#if due}}<div class="subscribe">{{due}}</div>{{/if}}
+    {{#if subscribed}}<div class="subscribed">*-*</div>{{/if}}
+    {{#if due}}<div class="subscribed">{{due}}</div>{{/if}}
     {{#if comments}}<div class="comments">{{comments}}</div>{{/if}}
   </div>
   <div class="edit">...</div>

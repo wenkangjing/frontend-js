@@ -1,7 +1,7 @@
 {
   "id": "2",
   "name": "Backend",
-  "subscribe": "true",
+  "subscribed": "true",
   "cards": [{
     "id": 3,
     "comments": 1,

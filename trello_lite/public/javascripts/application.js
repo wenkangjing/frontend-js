@@ -7,7 +7,12 @@ var App = {
     }.bind(this));
   },
   renderList: function(list) {
-    new ListView({raw: list});
+    new ListView({
+      id: list.id,
+      name: list.name,
+      subscribed: list.subscribed,
+      collection: new List(list.cards)
+    });
   },
   init: function() {
     this.renderBoard();

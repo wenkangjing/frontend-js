@@ -1,4 +1,38 @@
 @import "whitespace-reset.css";
+@import "icons.css";
+.header-btn {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border-radius: 3px;
+  margin-right: 8px;
+  background-color: #0079bf;
+  vertical-align: top;
+}
+.header-btn:hover {
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.3) 100%);
+}
+.header-btn.user-initials {
+  background-color: #cdd2d4;
+}
+.user-initials:before {
+  content: "K";
+  color: #4d4d4d;
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+}
+.header-brand {
+  display: inline-block;
+  height: 30px;
+  width: 80px;
+  margin: 0 auto;
+  background-image: url("/images/header-logo.png");
+  background-color: transparent;
+}
 /* box-sizing reset */
 html {
   box-sizing: border-box;
@@ -24,19 +58,53 @@ select {
   font-size: inherit;
 }
 html {
+  color: #4d4d4d;
   font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  line-height: 18px;
+  background: #026aa7;
+}
+a {
+  text-decoration: none;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+.float-right {
+  float: right;
+}
+#application {
+  margin: 0 auto;
+}
+#application > header {
+  position: relative;
+  height: 40px;
+  color: #c4c9cc;
+  padding: 5px;
+  overflow: hidden;
+  background: #0067a3;
+  z-index: 10;
 }
 #board {
-  user-select: none;
-  white-space: nowrap;
-  margin-bottom: 10px;
-  overflow-x: auto;
-  padding-bottom: 10px;
   position: absolute;
-  top: 0;
+  top: 30px;
   right: 0;
   bottom: 0;
   left: 0;
+  color: #4d4d4d;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  user-select: none;
+  white-space: nowrap;
+  background: #0079bf;
+}
+#board > header {
+  position: relative;
+  color: #fff;
+  padding: 8px 4px 8px 8px;
+  overflow: hidden;
 }
 #lists {
   margin: 10px;
@@ -44,15 +112,57 @@ html {
   height: 100%;
 }
 .list {
+  position: relative;
   display: inline-block;
+  color: #4d4d4d;
   width: 270px;
-  height: 100%;
-  border: 1px solid #808080;
+  max-height: 100%;
+  border-radius: 3px;
   vertical-align: top;
+  flex-direction: column;
+  background: #e2e4e6;
 }
 .list + .list {
   margin-left: 10px;
 }
+.list > header {
+  position: relative;
+  padding: 8px 10px;
+  min-height: 18px;
+}
+.list > header .list-ops {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+.list .cards {
+  padding: 0 4px;
+  margin: 0 4px;
+}
+.list > a {
+  display: block;
+  padding: 8px 10px;
+  color: #4d4d4d;
+  text-decoration: none;
+}
+.list > a:hover {
+  background-color: #cdd2d4;
+  text-decoration: underline;
+}
 .card {
-  background: #808080;
+  position: relative;
+  max-width: 300px;
+  min-height: 20px;
+  color: #4d4d4d;
+  padding: 6px 6px 2px 8px;
+  border-radius: 3px;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  margin-bottom: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 10;
+}
+.card:card:hover {
+  background: #e2e4e6;
 }

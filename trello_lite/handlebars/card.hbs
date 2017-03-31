@@ -1,10 +1,12 @@
-<div>
+<header>
   <div class="labels">{{#each labels}}{{name}}{{/each}}</div>
-  <div class="name">{{name}}</div>
-  <div class="badge">
-    {{#if subscribed}}<div class="subscribed">*-*</div>{{/if}}
-    {{#if due}}<div class="subscribed">{{due}}</div>{{/if}}
-    {{#if comments}}<div class="comments">{{comments}}</div>{{/if}}
+  <div class="card-ops">
+    <a href="#">...</a>
   </div>
-  <div class="edit">...</div>
+</header>
+<div class="name">{{name}}</div>
+<div class="badge">
+  {{#if subscribed}}<div class="subscribed">*-*</div>{{/if}}
+  {{#if due}}<div class="subscribed">{{due}}</div>{{/if}}
+  {{#if comments}}<div class="comments">{{comments}}</div>{{/if}}
 </div>

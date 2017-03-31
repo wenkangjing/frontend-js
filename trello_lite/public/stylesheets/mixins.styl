@@ -1,3 +1,16 @@
+colors = {
+  benchmark: #026AA7,
+  dark: #0067A3,//rgba(0,0,0,.15),
+  light: #0079BF, //rgba(0,0,0,0.3),
+  headerText: #C4C9CC,
+  boardText: #4d4d4d,
+  list:  #E2E4E6,
+  listText: #4d4d4d,
+  card: #fff,
+  cardText: #4d4d4d,
+  cardHover: #E2E4E6
+}
+
 basics()
   /* box-sizing reset */
   html
@@ -18,4 +31,56 @@ basics()
     font-size: inherit
 
   html
-    font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif
+    color: #4d4d4d;
+    font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+    line-height: 18px
+    background: colors.benchmark
+
+  a
+    text-decoration: none
+    &:active,
+    &:hover
+      outline: 0
+  
+  .float-right
+    float: right
+
+//
+// Application header
+//
+
+
+.header-btn
+  display: inline-block
+  height: 30px
+  width: 30px
+  text-align: center;
+  border-radius: 3px
+  margin-right: 8px
+  background-color: colors.light
+  vertical-align: top
+
+.header-btn:hover
+  cursor: pointer
+  color: #fff
+  background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
+
+.header-btn.user-initials
+  background-color: #CDD2D4
+
+.user-initials:before 
+  content: "K"
+  color: #4d4d4d
+  font-size: 16px
+  height: 30px
+  line-height: 30px
+
+.header-brand
+  display: inline-block
+  height: 30px
+  width: 80px
+  margin: 0 auto
+  background-image: url("/images/header-logo.png")
+  background-color: transparent
+
+

@@ -16,6 +16,11 @@ DEL  /books/1 ... model.destroy();
 
 ## Frontend
 
+### styles
+
+https://trello.com/about/branding#logos-and-assets
+
+
 ### notification
 
 www.trello.com notify user if subscribed items changed by other user or about to due

@@ -1,20 +1,41 @@
 @import "whitespace-reset.css"
+@import "icons.css"
 @import "mixins"
 
 basics()
 
+#application
+  margin: 0 auto
+
+#application > header
+  position: relative
+  height: 40px
+  color: colors.headerText
+  padding: 5px
+  overflow: hidden
+  background: colors.dark
+  z-index: 10
+
 #board
-  user-select: none
-  white-space: nowrap
-  margin-bottom: 10px
-  overflow-x: auto
-  //overflow-y: hidden
-  padding-bottom: 10px
   position: absolute
-  top: 0
+  top: 30px
   right: 0
   bottom: 0
   left: 0
+  color: colors.boardText
+  padding-bottom: 10px
+  margin-bottom: 10px
+  overflow-x: auto
+  overflow-y: hidden
+  user-select: none
+  white-space: nowrap
+  background: colors.light
+
+#board > header
+  position: relative
+  color: #fff
+  padding: 8px 4px 8px 8px
+  overflow: hidden
 
 #lists
   margin: 10px
@@ -22,14 +43,49 @@ basics()
   height: 100%
 
 .list
+  position: relative
   display: inline-block
+  color: colors.listText
   width: 270px
-  height: 100%
-  border: 1px solid gray
+  max-height: 100%
+  border-radius: 3px
   vertical-align: top
+  flex-direction: column
+  background: colors.list
   + .list
     margin-left: 10px
-
+  > header
+    position: relative
+    padding: 8px 10px
+    min-height: 18px; 
+    .list-ops
+      position: absolute
+      right: 4px
+      top: 4px
+  .cards
+    padding: 0 4px
+    margin: 0 4px
+  > a
+    display: block
+    padding: 8px 10px
+    color: #4d4d4d;
+    text-decoration: none
+    &:hover
+      background-color: #CDD2D4
+      text-decoration: underline
 
 .card
-  background: gray
+  position: relative
+  max-width: 300px;
+  min-height: 20px  
+  color: colors.cardText
+  padding: 6px 6px 2px 8px
+  border-radius: 3px
+  border-bottom: 1px solid #ccc
+  background: colors.card
+  margin-bottom: 6px;
+  cursor: pointer
+  overflow: hidden
+  z-index: 10
+  &:card:hover
+    background: colors.cardHover

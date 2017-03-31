@@ -145,10 +145,6 @@
   content: "\e921"
 }
 
-.icon-facebook:before {
-  content: "\e922"
-}
-
 .icon-filter:before {
   content: "\e923"
 }
@@ -163,10 +159,6 @@
 
 .icon-gear:before {
   content: "\e926"
-}
-
-.icon-google:before {
-  content: "\e928"
 }
 
 .icon-information:before {
@@ -207,6 +199,10 @@
 
 .icon-overflow-menu-horizontal:before {
   content: "\e93f"
+}
+
+.icon-overflow-menu-horizontal:hover {
+  background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
 }
 
 .icon-power-up:before {

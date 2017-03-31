@@ -130,10 +130,13 @@ a:hover {
   padding: 8px 10px;
   min-height: 18px;
 }
-.list > header .list-ops {
+.list .list-ops {
   position: absolute;
   right: 4px;
   top: 4px;
+}
+.list .list-btn:hover {
+  background-color: #cdd2d4;
 }
 .list .cards {
   padding: 0 4px;
@@ -146,7 +149,6 @@ a:hover {
   text-decoration: none;
 }
 .list > a:hover {
-  background-color: #cdd2d4;
   text-decoration: underline;
 }
 .card {

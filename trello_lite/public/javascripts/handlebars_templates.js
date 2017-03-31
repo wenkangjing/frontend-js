@@ -33,7 +33,7 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
 },"useData":true});
 
 this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "<span class=\"subscribed\">*-*</span>";
+    return "<span class=\"icon-sm icon-subscribe\"></span>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
@@ -41,5 +41,5 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</h2><div class=\"list-ops\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "<a href=\"#\">...</a></div></header><div class=\"cards\"></div><a href=\"#\" class=\"open-card-composer\">Add a card...</a>";
+    + "<a href=\"#\" class=\"list-btn icon-sm icon-overflow-menu-horizontal\"></a></div></header><div class=\"cards\"></div><a href=\"#\" class=\"list-btn open-card-composer\">Add a card...</a>";
 },"useData":true});

@@ -24,4 +24,11 @@ router.get('/labels', function(req, res, next) {
   res.json(Accessor.getLabels()).end();
 });
 
+// Get an array of Label
+router.post('/labels', function(req, res, next) {
+  console.log(req.body);
+  Accessor.setLabels(req.body);
+  res.status(200).end();
+});
+
 module.exports = router;

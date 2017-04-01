@@ -18,4 +18,7 @@ module.exports = {
   getLabels: function() {
     return JSON.parse(fs.readFileSync(labels_path, "utf8"));
   },
+  setLabels: function(label_array) {
+    fs.writeFileSync(labels_path, JSON.stringify(label_array), "utf8");
+  }
 };

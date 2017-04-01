@@ -14,7 +14,7 @@ colors = {
 basics()
   /* box-sizing reset */
   html
-    box-sizing: border-box;
+    box-sizing: border-box
   *
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
@@ -31,8 +31,8 @@ basics()
     font-size: inherit
 
   html
-    color: #4d4d4d;
-    font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif;
+    color: #4d4d4d
+    font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif
     line-height: 18px
     background: colors.benchmark
 
@@ -45,6 +45,33 @@ basics()
   .float-right
     float: right
 
+  .overlay
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(0,0,0,.6)
+    z-index: 20
+
+  textarea
+    padding: 9px 11px 0
+    border-radius: 3px
+    resize: none
+    transition: background 85ms ease-in,border-color 85ms ease-in
+
+  input[type="submit"]
+    outline: 0
+    border: 0
+    background: linear-gradient(to bottom,#61BD4F 0,#5AAC44 100%)
+    box-shadow: 0 1px 0 #3F6F21
+    color: #fff
+    &:hover
+      background: linear-gradient(#5AAC44 0%, #519839 100%)
+  li
+    list-style: none
+
+
 //
 // common styles
 //
@@ -53,7 +80,7 @@ basics()
   display: inline-block
   height: 30px
   width: 30px
-  text-align: center;
+  text-align: center
   border-radius: 3px
   margin-right: 8px
   background-color: colors.light
@@ -62,10 +89,17 @@ basics()
 .header-btn:hover
   cursor: pointer
   color: #fff
-  background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
+  background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%)
 
-.header-btn.user-initials
+.user-initials
+  display: inline-block
+  height: 30px
+  width: 30px
+  text-align: center
+  border-radius: 3px
+  margin-right: 8px
   background-color: #CDD2D4
+  vertical-align: top
 
 .user-initials:before 
   content: "K"
@@ -87,5 +121,55 @@ basics()
 
 .badge-text
   font-size: 9pt
-  padding: 0 2px;
-  white-space: nowrap;  
+  padding: 0 2px
+  white-space: nowrap
+
+.comment-input
+  background: 0 0
+  width: 100%
+  height: 75px
+  margin: 0
+  min-height: 75px
+  border: 0
+  background: #fff
+  &:focus,
+  &:active
+    outline: 0
+    box-shadow: none
+
+.card-modal-btn
+  display: inline-block
+  color: #fff
+  line-height: 22px
+  font-weight: 700
+  text-align: center
+  padding: 7px 20px
+  margin: 8px 4px 0 0
+  border-radius: 3px
+  cursor: pointer
+
+.card-modal-label
+  display: inline-block
+  color: #fff
+  line-height: 22px
+  font-weight: 700
+  text-align: center
+  padding: 4px 10px
+  margin: 0px 4px 4px 0
+  border-radius: 3px
+  cursor: pointer
+  vertical-align: top
+  &:hover
+    opacity: 0.8
+
+.card-modal-add-label
+  display: inline-block
+  color: #8c8c8c
+  border-radius: 3px
+  background: #E2E4E6
+  vertical-align: top
+  cursor: pointer
+  &:hover
+    background: #D6DADC
+    border-radius: 3px
+

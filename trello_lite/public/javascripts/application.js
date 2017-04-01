@@ -8,7 +8,7 @@ var App = {
   },
   renderList: function(list) {
     new ListView({
-      id: list.id,
+      idList: list.id,
       name: list.name,
       subscribed: list.subscribed,
       collection: new List(list.cards)
@@ -36,6 +36,7 @@ var App = {
     });
   },
   init: function() {
+    _.extend(this, Backbone.Events);
     this.buildTemplates();
     this.renderBoard();
   }

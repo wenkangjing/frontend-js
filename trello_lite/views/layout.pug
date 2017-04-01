@@ -30,7 +30,7 @@ html
     +javascript_include_tag("application")
     +javascript_include_tag("models/card")
     +javascript_include_tag("collections/list")
-    +javascript_include_tag("views/list", "views/card")
+    +javascript_include_tag("views/list", "views/card", "views/card_modal")
     script(type="text/javascript").
       App.board = !{JSON.stringify(lists)};
       App.labels = !{JSON.stringify(labels)};

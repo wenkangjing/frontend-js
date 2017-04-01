@@ -18,7 +18,7 @@
     "description": false,
     "name": "Install Jasmine",
     "desc": "",
-    "idLabels": ["2"],
+    "idLabels": ["2","3"],
     "subscribed": false
   }]
 }

@@ -9,7 +9,8 @@ router.param('id', function (req, res, next, id) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('layout', {
-    lists: Accessor.getLists()
+    lists: Accessor.getLists(),
+    labels: Accessor.getLabels()
   });
 });
 

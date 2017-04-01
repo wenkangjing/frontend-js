@@ -1,7 +1,11 @@
+<div class="card-ops">
+  <a class="card-edit icon-sm icon-edit dark-hover" href="#"></a>
+</div>
 <header>
-  <div class="labels">{{#each labels}}{{name}}{{/each}}</div>
-  <div class="card-ops">
-    <a class="card-edit icon-sm icon-edit dark-hover" href="#"></a>
+  <div class="labels">
+    {{#each labels}}
+      <span class="label" style="background:{{color}}"></span>
+    {{/each}}
   </div>
 </header>
 <div class="name">{{name}}</div>

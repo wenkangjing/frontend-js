@@ -33,4 +33,5 @@ html
     +javascript_include_tag("views/list", "views/card")
     script(type="text/javascript").
       App.board = !{JSON.stringify(lists)};
+      App.labels = !{JSON.stringify(labels)};
       App.init();

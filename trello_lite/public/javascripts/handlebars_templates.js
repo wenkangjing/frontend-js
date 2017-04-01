@@ -3,7 +3,9 @@ this["JST"] = this["JST"] || {};
 this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)));
+  return "<span class=\"label\" style=\"background:"
+    + container.escapeExpression(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"color","hash":{},"data":data}) : helper)))
+    + "\"></span>";
 },"3":function(container,depth0,helpers,partials,data) {
     return "<div class=\"badge\"><span class=\"icon-sm icon-subscribe\"></span></div>";
 },"5":function(container,depth0,helpers,partials,data) {
@@ -25,9 +27,9 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
-  return "<header><div class=\"labels\">"
+  return "<div class=\"card-ops\"><a class=\"card-edit icon-sm icon-edit dark-hover\" href=\"#\"></a></div><header><div class=\"labels\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div><div class=\"card-ops\"><a class=\"card-edit icon-sm icon-edit dark-hover\" href=\"#\"></a></div></header><div class=\"name\">"
+    + "</div></header><div class=\"name\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</div><div class=\"badges\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")

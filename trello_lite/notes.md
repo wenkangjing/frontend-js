@@ -30,6 +30,11 @@ TrelloLite implement it in a different way to fit single-user requirement
 - changed appear as activities in notificaiton bar
 - drop the activities in menu bar
 
+
+### timezone
+
+for single user, use local date
+
 ### search
 
 

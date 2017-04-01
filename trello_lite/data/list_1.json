@@ -5,10 +5,10 @@
   "cards": [{
     "id": 1,
     "comments": 1,
-    "description": false,
+    "description": "to scaffold and basic styles",
     "name": "Test router",
     "desc": "",
-    "due": "2017-03-31T01:00:00.000Z",
+    "due": "3/1/2017, 10:00:00 AM",
     "idLabels": ["1"],
     "subscribed": false
   }, {
@@ -18,7 +18,6 @@
     "description": false,
     "name": "Install Jasmine",
     "desc": "",
-    "due": "2017-03-31T01:00:00.000Z",
     "idLabels": ["2"],
     "subscribed": false
   }]

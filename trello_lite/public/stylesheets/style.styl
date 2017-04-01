@@ -1,5 +1,5 @@
 @import "whitespace-reset.css"
-@import "icons.css"
+@import "./3rd/icons.css"
 @import "mixins"
 
 basics()
@@ -62,8 +62,8 @@ basics()
     position: absolute
     right: 4px
     top: 4px
-  .list-btn:hover
-    background-color: #CDD2D4    
+  .list-btn
+    border-radius: 3px
   .cards
     padding: 0 4px
     margin: 0 4px
@@ -74,7 +74,6 @@ basics()
     text-decoration: none
     &:hover
       text-decoration: underline
-
 
 .card
   position: relative
@@ -89,5 +88,30 @@ basics()
   cursor: pointer
   overflow: hidden
   z-index: 10
-  &:card:hover
+  &:hover
     background: colors.cardHover
+  > header
+    position: relative
+  .card-ops
+    position: absolute
+    right: 0
+    top: 0
+    .card-edit
+      border-radius: 3px
+  .name
+    margin: 0 0 4px 0
+  .badge
+    display: inline-block
+    max-width: 100%
+    color: #8c8c8c
+    padding: 1px 2px
+    margin: 0 4px 4px 0
+    overflow: hidden
+    text-decoration: none
+    //text-overflow: ellipsis
+    vertical-align: top
+  .badge.past
+    border-radius: 3px
+    background-color: #EC9488
+    span
+      color: #fff

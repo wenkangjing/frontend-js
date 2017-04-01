@@ -1,5 +1,5 @@
 @import "whitespace-reset.css";
-@import "icons.css";
+@import "./3rd/icons.css";
 .header-btn {
   display: inline-block;
   height: 30px;
@@ -32,6 +32,14 @@
   margin: 0 auto;
   background-image: url("/images/header-logo.png");
   background-color: transparent;
+}
+.dark-hover:hover {
+  background: #cdd2d4;
+}
+.badge-text {
+  font-size: 9pt;
+  padding: 0 2px;
+  white-space: nowrap;
 }
 /* box-sizing reset */
 html {
@@ -135,8 +143,8 @@ a:hover {
   right: 4px;
   top: 4px;
 }
-.list .list-btn:hover {
-  background-color: #cdd2d4;
+.list .list-btn {
+  border-radius: 3px;
 }
 .list .cards {
   padding: 0 4px;
@@ -165,6 +173,37 @@ a:hover {
   overflow: hidden;
   z-index: 10;
 }
-.card:card:hover {
-  background: #e2e4e6;
+.card:hover {
+  background: #edeff0;
+}
+.card > header {
+  position: relative;
+}
+.card .card-ops {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.card .card-ops .card-edit {
+  border-radius: 3px;
+}
+.card .name {
+  margin: 0 0 4px 0;
+}
+.card .badge {
+  display: inline-block;
+  max-width: 100%;
+  color: #8c8c8c;
+  padding: 1px 2px;
+  margin: 0 4px 4px 0;
+  overflow: hidden;
+  text-decoration: none;
+  vertical-align: top;
+}
+.card .badge.past {
+  border-radius: 3px;
+  background-color: #ec9488;
+}
+.card .badge.past span {
+  color: #fff;
 }

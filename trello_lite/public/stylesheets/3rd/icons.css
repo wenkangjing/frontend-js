@@ -1,6 +1,8 @@
 @font-face {
   font-family: trellicons;
-  src: url(https://d78fikflryjgj.cloudfront.net/fonts/b08bd554775eafa560d3ea99519e527e/trellicons.eot?#iefix) format('embedded-opentype'), url(https://d78fikflryjgj.cloudfront.net/fonts/dffc8173a96c4bb2ff17961efb603c95/trellicons.woff) format('woff'), url(https://d78fikflryjgj.cloudfront.net/fonts/ac25df9f836b334cec81a4ae8fbc5adb/trellicons.ttf) format('truetype');
+  src: url("./trellicons.eot") format('embedded-opentype'),
+       url("./trellicons.woff") format('woff'),
+       url("./trellicons.ttf") format('truetype');
   font-weight: 400;
   font-style: normal
 }
@@ -45,20 +47,12 @@
   content: "\e900"
 }
 
-.icon-add-member:before {
-  content: "\e901"
-}
-
 .icon-add:before {
   content: "\e902"
 }
 
 .icon-archive:before {
   content: "\e905"
-}
-
-.icon-attachment:before {
-  content: "\e906"
 }
 
 .icon-back:before {
@@ -69,16 +63,8 @@
   content: "\e908"
 }
 
-.icon-business-class:before {
-  content: "\e90a"
-}
-
 .icon-calendar:before {
   content: "\e90b"
-}
-
-.icon-camera:before {
-  content: "\e90c"
 }
 
 .icon-card-cover:before {
@@ -199,10 +185,6 @@
 
 .icon-overflow-menu-horizontal:before {
   content: "\e93f"
-}
-
-.icon-overflow-menu-horizontal:hover {
-  background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%);
 }
 
 .icon-power-up:before {

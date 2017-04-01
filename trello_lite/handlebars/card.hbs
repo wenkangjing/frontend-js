@@ -1,12 +1,32 @@
 <header>
   <div class="labels">{{#each labels}}{{name}}{{/each}}</div>
   <div class="card-ops">
-    <a href="#">...</a>
+    <a class="card-edit icon-sm icon-edit dark-hover" href="#"></a>
   </div>
 </header>
 <div class="name">{{name}}</div>
-<div class="badge">
-  {{#if subscribed}}<div class="subscribed">*-*</div>{{/if}}
-  {{#if due}}<div class="subscribed">{{due}}</div>{{/if}}
-  {{#if comments}}<div class="comments">{{comments}}</div>{{/if}}
+<div class="badges">
+  {{#if subscribed}}
+  <div class="badge">
+    <span class="icon-sm icon-subscribe"></span>
+  </div>
+  {{/if}}
+  {{#if due}}
+  <div class="badge due {{isDuePast due}}">
+    <span class="icon-sm icon-clock"></span>
+    <span class="badge-text">{{formateDate due}}</span>
+    </div>
+  {{/if}}
+  {{#if description}}
+  <div class="badge">
+    <span class="icon-sm icon-description"></span>
+  </div>
+  {{/if}}
+  {{#if comments}}
+  <div class="badge">
+    <span class="icon-sm icon-comment"></span>
+    <span class="badge-text">{{comments}}</span>
+  </div>
+  {{/if}}
 </div>
+

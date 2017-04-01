@@ -348,6 +348,15 @@ li {
   padding: 8px 12px;
   margin-right: 4px;
 }
+.card-modal > header .dialog-close-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  text-decoration: none;
+}
+.card-modal > header .dialog-close-btn:hover {
+  color: rgba(0,0,0,0.6);
+}
 .card-modal > header a {
   color: #8c8c8c;
   cursor: pointer;
@@ -406,4 +415,7 @@ li {
 }
 .card-modal > sidebar .card-modal-btn-link:hover {
   background: #298fca;
+}
+.card-modal > sidebar .card-modal-btn-link:focus {
+  color: inherit;
 }

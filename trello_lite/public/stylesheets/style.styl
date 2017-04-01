@@ -157,9 +157,18 @@ basics()
   p
     color: #8c8c8c
 
-.card-modal  > header
+
+
+.card-modal > header
   padding: 8px 12px
   margin-right: 4px
+  .dialog-close-btn
+    position: absolute
+    top: 2px
+    right 2px
+    text-decoration: none
+    &:hover
+      color: rgba(0,0,0,.6)
   a
     color: #8c8c8c
     cursor: pointer
@@ -212,4 +221,6 @@ basics()
     background: linear-gradient(to bottom,#fff 0,#F8F9F9 100%)
     &:hover
       background: #298FCA
+    &:focus
+      color: inherit
 

@@ -4,9 +4,6 @@ var CardView = Backbone.View.extend({
   events: {
     
   },
-  bindEvents: function() {
-    this.$el.on("click", ".card", this.editCard.bind(this));
-  },
   editCard: function(e) {
     e.preventDefault();
     new CardModalView({model: this.model});
@@ -19,7 +16,7 @@ var CardView = Backbone.View.extend({
 
   initialize: function(options) {
     this.parent = options.parent;
-   // this.bindEvents();
     this.render();
+    this.listenTo(this.model, "update", this.render.bind(this));
   }
 });

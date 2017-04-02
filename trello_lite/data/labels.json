@@ -1,13 +1,1 @@
-  [{
-    "id": "1",
-    "name": "Doing",
-    "color": "blue"
-  }, {
-    "id": "2",
-    "name": "Dot Started",
-    "color": "red"
-  }, {
-    "id": "3",
-    "name": "Test",
-    "color": "yellow"
-  }]
+[{"name":"Not Started","color":"red","id":"Hy1mrrA3l"},{"name":"Done","color":"green","id":"HJvXSSC2e"},{"name":"Doing","color":"blue","id":"r1RXSSChl"}]

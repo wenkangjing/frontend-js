@@ -19,6 +19,7 @@ var CardModalView = Backbone.View.extend({
     this.popover = new LabelsPopover({
       parent: this.$el.find(".card-modal"),
       position: this.popoverPosition(e),
+      idLabels: this.model.get("idLabels"),
       collection: new Labels(App.labels)
     });
   },

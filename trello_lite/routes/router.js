@@ -10,13 +10,19 @@ router.param('id', function (req, res, next, id) {
 router.get('/', function(req, res, next) {
   res.render('layout', {
     lists: Accessor.getLists(),
-    labels: Accessor.getLabels()
+    labels: Accessor.getLabels(),
+    colors: Accessor.getColors()
   });
 });
 
 // Get an array of List
 router.get('/lists', function(req, res, next) {
   res.json(Accessor.getLists()).end();
+});
+
+// Get an array of Color
+router.get('/colors', function(req, res, next) {
+  res.json(Accessor.getColors()).end();
 });
 
 // Get an array of Label

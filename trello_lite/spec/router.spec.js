@@ -1,7 +1,7 @@
 var request = require("request");
 var root = "http://localhost:3000";
 
-describe("List", function() {
+describe("Router Spect", function() {
   it("returns an array of List", function(done) {
     request.get(root + "/lists", function(error, response, body) {
       var json = response.toJSON();
@@ -19,6 +19,15 @@ describe("List", function() {
       done();
     });
   });  
+
+  it("returns an array of Color", function(done) {
+    request.get(root + "/colors", function(error, response, body) {
+      var json = response.toJSON();
+      expect(json.statusCode).toEqual(200);
+      expect(json.body.length).toBeGreaterThan(0);
+      done();
+    });
+  });   
 });
 
 

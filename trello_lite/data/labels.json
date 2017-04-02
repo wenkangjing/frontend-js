@@ -1,13 +1,13 @@
   [{
     "id": "1",
     "name": "Doing",
-    "color": "#0079BF"
+    "color": "blue"
   }, {
     "id": "2",
-    "name": "Optional",
-    "color": "#EB5A46"
+    "name": "Dot Started",
+    "color": "red"
   }, {
     "id": "3",
     "name": "Test",
-    "color": "#61BD4F"
+    "color": "yellow"
   }]

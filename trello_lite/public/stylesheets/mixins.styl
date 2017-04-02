@@ -30,6 +30,13 @@ basics()
     font-family: inherit
     font-size: inherit
 
+  /* clearfix */
+  .clearfix::after
+    content: ""
+    display: block
+    visibility: hidden
+    clear: both
+
   html
     color: #4d4d4d
     font: 14px "Helvetica Neue",Arial,Helvetica,sans-serif
@@ -173,3 +180,35 @@ basics()
     background: #D6DADC
     border-radius: 3px
 
+
+.pop-over
+  position: absolute
+  width: 300px
+  background: #fff
+  border-radius: 3px
+  border: 1px solid #D6DADC
+  border-bottom-color: #C4C9CC
+  box-shadow: 0 1px 6px rgba(0,0,0,.15)
+  overflow: hidden
+  z-index: 70
+  .pop-over-header
+    height: 36px
+    margin-bottom: 8px
+    text-align: center
+  .pop-over-header-title
+    color: #8c8c8c
+    display: block
+    line-height: 36px
+    border-bottom: 1px solid #D6DADC
+    margin: 0 10px
+  .pop-over-header-close-btn
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px
+    height: 36px
+    line-height: 36px
+    color: #4d4d4d
+    z-index: 2
+  .pop-over-content
+    padding: 0 10px 10px

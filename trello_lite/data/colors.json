@@ -1,0 +1,45 @@
+[{
+  "name": "green",
+  "color": "#61BD4F",
+  "hover": "#519839"
+}, {
+  "name": "yellow",
+  "color": "#F2D600",
+  "hover": "#D9B51C"
+}, {
+  "name": "orange",
+  "color": "#FFAB4A",
+  "hover": "#D29034"
+}, {
+  "name": "red",
+  "color": "#EB5A46",
+  "hover": "#B04632"
+}, {
+  "name": "purple",
+  "color": "#C377E0",
+  "hover": "#89609E"
+}, {
+  "name": "blue",
+  "color": "#0079BF",
+  "hover": "#89609E"
+}, {
+  "name": "sky",
+  "color": "#00C2E0",
+  "hover": "#0098B7"
+}, {
+  "name": "lime",
+  "color": "#51E898",
+  "hover": "#4DC26B"
+}, {
+  "name": "pink",
+  "color": "#FF80CE",
+  "hover": "#CD5A91"
+}, {
+  "name": "black",
+  "color": "#4d4d4d",
+  "hover": "#272727"
+}, {
+  "name": "nocolor",
+  "color": "#B6BBBF",
+  "hover": "#519839"
+}]

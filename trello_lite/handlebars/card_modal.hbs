@@ -1,5 +1,5 @@
 <div class="overlay"></div>
-<div class="card-modal">
+<div class="card-modal clearfix">
   <header>
     <h2>
       <span class="icon-lg icon-card indent"></span>
@@ -14,7 +14,7 @@
         <h3>Labels</h3>
         <div>
           {{#each labels}}
-            <span class="card-modal-label" style="background-color:{{color}}">{{name}}</span>
+            <span class="card-modal-label" data-id="{{id}}" style="background-color:{{rgb}}">{{name}}</span>
           {{/each}}
           <span class="card-modal-add-label dark-hover icon-lg icon-add"></span>
         </div>
@@ -59,15 +59,15 @@
   <sidebar>
     <section>
       <h2>Add</h2>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-label"></span>&nbsp;Labels</a>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-clock"></span>&nbsp;Due Date</a>
+      <a class="card-modal-btn-link card-modal-labels" href="#"><span class="icon-sm icon-label"></span>&nbsp;Labels</a>
+      <a class="card-modal-btn-link card-modal-due-date" href="#"><span class="icon-sm icon-clock"></span>&nbsp;Due Date</a>
     </section>
     <section>
       <h2>Actions</h2>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-move"></span>&nbsp;Move</a>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-card"></span>&nbsp;Copy</a>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-subscribe"></span>&nbsp;Subscribe</a>
-      <a class="card-modal-btn-link" href="#"><span class="icon-sm icon-archive"></span>&nbsp;Archive</a>
+      <a class="card-modal-btn-link card-modal-move" href="#"><span class="icon-sm icon-move"></span>&nbsp;Move</a>
+      <a class="card-modal-btn-link card-modal-copy" href="#"><span class="icon-sm icon-card"></span>&nbsp;Copy</a>
+      <a class="card-modal-btn-link card-modal-subscribe" href="#"><span class="icon-sm icon-subscribe"></span>&nbsp;Subscribe</a>
+      <a class="card-modal-btn-link card-modal-archive" href="#"><span class="icon-sm icon-archive"></span>&nbsp;Archive</a>
     </section>
   </sidebar>
 </div>

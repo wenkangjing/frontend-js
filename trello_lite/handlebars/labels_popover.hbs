@@ -1,0 +1,18 @@
+<div class="pop-over card-label-pop-over"> 
+  <div class="pop-over-header">
+    <span class="pop-over-header-title">Labels</span>
+    <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
+  </div>
+  <div class="pop-over-content">
+    <input class="card-label-search" type="text" placeholder="Search labels…" value="" autocomplete="off">
+    <ul class="card-label-list">
+      {{#each labels}}
+      <li>
+        <a class="card-label-edit-btn icon-sm icon-edit" href="#"></a>
+        <span class="card-label {{#if selected}} selected {{/if}}" data-id="{{id}}" style="background:{{rgb}};">{{name}}<span class="icon-sm icon-check"></span></span>
+      </li>
+      {{/each}}
+    </ul>
+    <a class="card-label-add" href="#">Create a new label</a>
+  </div>
+</div>

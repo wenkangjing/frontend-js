@@ -3,6 +3,7 @@ var path = require("path");
 
 var lists_dir = path.resolve(path.dirname(__dirname), "data");
 var labels_path = path.resolve(path.dirname(__dirname), "data/labels.json");
+var colors_path = path.resolve(path.dirname(__dirname), "data/colors.json");
 
 module.exports = {
   getLists: function() {
@@ -14,6 +15,9 @@ module.exports = {
       }
     });
     return lists;
+  },
+  getColors: function() {
+    return JSON.parse(fs.readFileSync(colors_path, "utf8"));
   },
   getLabels: function() {
     return JSON.parse(fs.readFileSync(labels_path, "utf8"));

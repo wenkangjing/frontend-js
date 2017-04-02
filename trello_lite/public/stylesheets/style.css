@@ -492,7 +492,12 @@ li {
   box-shadow: -8px 0 rgba(0,0,0,0.5);
 }
 .card-label-pop-over .card-label .icon-check {
+  display: none;
   float: right;
+  color: #fff;
+}
+.card-label-pop-over .card-label.selected .icon-check {
+  display: block;
 }
 .card-label-pop-over .card-label-edit-btn {
   float: right;

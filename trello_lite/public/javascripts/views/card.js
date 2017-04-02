@@ -2,21 +2,26 @@ var CardView = Backbone.View.extend({
   className: "card",
   template: App.templates.card,
   events: {
-    
+    "click": "onClick", // target on this.el
   },
-  editCard: function(e) {
+  onClick: function(e) {
     e.preventDefault();
-    new CardModalView({model: this.model});
+    if ($(e.target).hasClass("card-edit")) {
+      console.log("cardPopover - inline card editor");
+    } else {
+      new CardModalView({model: this.model});
+    }
   },
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    var json = this.model.toJSON();
+    json.labels = Helper.getLabelsByIds(this.model.get("idLabels"));
+    this.$el.html(this.template(json));
     this.$el.attr("data-id", this.model.id);
     this.$el.appendTo(this.parent);
   },
-
   initialize: function(options) {
     this.parent = options.parent;
     this.render();
-    this.listenTo(this.model, "update", this.render.bind(this));
+    this.listenTo(this.model, "change:idLabels", this.render.bind(this));
   }
 });

@@ -9,6 +9,33 @@ var App = {
   renderList: function(list) {
     new ListView({model: new List(list)});
   },
+  init: function() {
+    _.extend(this, Backbone.Events);
+    Helper.buildTemplates();
+    this.renderBoard();
+  }
+};
+
+var Helper = {
+  getLabelsByIds: function(ids) {
+    var labels = [];
+    var ids = ids || [];
+    ids.forEach(function(id) {
+      var label = _(App.labels).findWhere({id: id});
+      label.rgb = _(App.colors).findWhere({name: label.color}).color;
+      labels.push(label);
+    });
+    return labels;
+  },
+  getCardsByIds: function(ids) {
+    var cards = [];
+    var ids = ids || [];
+    ids.forEach(function(id) {
+      var card = _(App.cards).findWhere({id: id});
+      cards.push(card);
+    }); 
+    return cards;
+  },  
   buildTemplates: function() {
     Handlebars.registerHelper('formateDate', function(dateString, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -30,9 +57,4 @@ var App = {
       }
     });
   },
-  init: function() {
-    _.extend(this, Backbone.Events);
-    this.buildTemplates();
-    this.renderBoard();
-  }
-};
+}

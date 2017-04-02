@@ -10,9 +10,21 @@ var LabelsPopover = Backbone.View.extend({
     e.preventDefault();
     this.collection.reset();
     this.remove();
+    App.popover = null;
   },
   toggleLabel: function(e) {
     e.preventDefault();
+    var idLabels = _.clone(this.card.get("idLabels"));
+    var $lb = $(e.target).closest(".card-label");
+    var id = $lb.data("id");
+    if ($lb.hasClass("selected")) {
+      $lb.removeClass("selected");
+      idLabels = _(idLabels).without(id);
+    } else {
+      $lb.addClass("selected");
+      idLabels.push(id);
+    }
+    this.card.set("idLabels", idLabels);
   },
   editLabel: function(e) {
     e.preventDefault();
@@ -21,19 +33,29 @@ var LabelsPopover = Backbone.View.extend({
     e.preventDefault();
   },
   render: function() {
+    var labels = this.collection.toJSON();
+    var idLabels = this.card.get("idLabels");
+    labels.forEach(function(label) {
+      if (idLabels.indexOf(label.id) !== -1) {
+        label.selected = true;
+      } else {
+        label.selected = false;
+      }
+    }.bind(this));
     this.$el.html(this.template({
-      labels: this.collection.toJSON()
+      labels: labels
     }));
     this.$el.find(".pop-over").css({
       top: this.position.top,
       left: this.position.left
     });
     this.$el.appendTo(this.parent);
+    this.delegateEvents();
   },
   initialize: function(options) {
     this.parent = options.parent;
     this.position = options.position;
-    this.idLabels = options.idLabels;
+    this.card = options.card;
     this.render();
   }
 });

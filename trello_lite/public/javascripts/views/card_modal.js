@@ -20,7 +20,7 @@ var CardModalView = Backbone.View.extend({
     this.popover = new LabelsPopover({
       parent: this.$el.find(".card-modal"),
       position: this.popoverPosition(e),
-      idLabels: this.model.get("idLabels"),
+      card: this.model,
       collection: new Labels(App.labels)
     });
   },
@@ -38,11 +38,18 @@ var CardModalView = Backbone.View.extend({
     return result;
   },
   render: function() {
-    this.$el.html(this.template(this.model.toJSON()));
+    var json = this.model.toJSON();
+    json.labels = Helper.getLabelsByIds(this.model.get("idLabels"));
+    this.$el.html(this.template(json));
     this.$el.find(".card-modal").attr("data-id", this.model.id);
     this.$el.appendTo(App.$el);
+    if (this.popover) {
+      this.popover.parent = this.$el.find(".card-modal");
+      this.popover.render();
+    }
   },
   initialize: function(options) {
     this.render();
+    this.listenTo(this.model, "change:idLabels", this.render.bind(this));
   }
 });

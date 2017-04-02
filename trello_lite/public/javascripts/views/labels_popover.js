@@ -8,6 +8,7 @@ var LabelsPopover = Backbone.View.extend({
   },
   closePopover: function(e) {
     e.preventDefault();
+    this.collection.reset();
     this.remove();
   },
   toggleLabel: function(e) {

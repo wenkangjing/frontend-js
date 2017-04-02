@@ -28,11 +28,12 @@ html
         div#lists
 
     +javascript_include_tag("application")
-    +javascript_include_tag("models/card", "models/label")
-    +javascript_include_tag("collections/list", "collections/labels")
+    +javascript_include_tag("models/card", "models/label", "models/list")
+    +javascript_include_tag("collections/cards", "collections/labels")
     +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/labels_popover")
     script(type="text/javascript").
-      App.board = !{JSON.stringify(lists)};
+      App.lists = !{JSON.stringify(lists)};
+      App.cards = !{JSON.stringify(cards)};
       App.labels = !{JSON.stringify(labels)};
       App.colors = !{JSON.stringify(colors)};
       App.init();

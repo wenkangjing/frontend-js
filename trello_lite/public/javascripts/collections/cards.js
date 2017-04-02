@@ -1,4 +1,4 @@
 // List is the Card Collection
-var List = Backbone.Collection.extend({
+var Cards = Backbone.Collection.extend({
   model: Card,
 });

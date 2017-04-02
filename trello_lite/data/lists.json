@@ -1,16 +1,16 @@
 [{
-  "name": "Preparation",
+  "name": "System Design",
   "subscribed": false,
   "id": "H1ENnS0hx",
-  "idCards": []
+  "idCards": ["rkLi9BRhg"]
 }, {
-  "name": "Presentation",
+  "name": "Todos",
   "subscribed": true,
   "id": "rJQS2SAhx",
-  "idCards": []
+  "idCards": ["SybmsBC2x", "SJiNiH0ng"]
 }, {
   "name": "Presentation",
   "subscribed": true,
   "id": "HkXLhrAnx",
-  "idCards": []
+  "idCards": ["Bk-UirAnl"]
 }]

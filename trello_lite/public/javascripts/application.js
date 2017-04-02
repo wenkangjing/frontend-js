@@ -2,17 +2,12 @@ var App = {
   $el: $("#application"),
   templates: JST,
   renderBoard: function() {
-    this.board.forEach(function(list) {
+    this.lists.forEach(function(list) {
       this.renderList(list);
     }.bind(this));
   },
   renderList: function(list) {
-    new ListView({
-      idList: list.id,
-      name: list.name,
-      subscribed: list.subscribed,
-      collection: new List(list.cards)
-    });
+    new ListView({model: new List(list)});
   },
   buildTemplates: function() {
     Handlebars.registerHelper('formateDate', function(dateString, options) {

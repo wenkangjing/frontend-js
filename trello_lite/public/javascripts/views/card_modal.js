@@ -14,6 +14,7 @@ var CardModalView = Backbone.View.extend({
   popoverLabels: function(e) {
     e.preventDefault();
     if (this.popover) { 
+      this.popover.collection.reset();
       this.popover.remove(); 
     }
     this.popover = new LabelsPopover({

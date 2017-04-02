@@ -7,27 +7,22 @@ var ListView = Backbone.View.extend({
   editCard: function(e) {
     e.preventDefault();
     var id = $(e.target).closest(".card").data("id");
-    new CardModalView({model: this.collection.get(id)});
+    new CardModalView({model: this.model});
   },
   render: function() {
-    this.$el.html(this.template({
-      name: this.name,
-      subscribed: this.subscribed,
-      cards: this.collection.toJSON()
-    }));
-    this.$el.attr("data-id", this.idList);
+    this.$el.html(this.template(this.model.toJSON()));
+    this.$el.attr("data-id", this.model.id);
     this.$el.appendTo($("#lists"));
-    this.collection.each(function(card) {
+
+    var parent = this.$el.find(".cards");
+    this.model.get("cards").forEach(function(card) {
       new CardView({
-        parent: this.$el.find(".cards"),
-        model: card
+        parent: parent,
+        model: new Card(card)
       });
     }.bind(this));
   },
   initialize: function(options) {
-    this.idList = options.idList,
-    this.name = options.name;
-    this.subscribed = options.subscribed;
     this.render();
   }
 });

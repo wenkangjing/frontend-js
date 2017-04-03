@@ -2,8 +2,15 @@ var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
     "click .dialog-close-btn": "closeModal",
-    "click .card-modal-labels": "labelsPopover",
-    "click .card-modal-archive": "archiveCard",
+    "click .description .card-modal-edit-description": "editDescription",
+    "click .description .card-modal-create-description": "editDescription",
+    "click .description-close-btn": "closeDescription",
+    "submit .description": "saveDescription",
+    "submit .comment": "addComment",
+    "click .card-modal-label": "labelsPopover",
+    "click .card-modal-add-label": "labelsPopover",
+    "click card-modal-btn-link.card-modal-labels": "labelsPopover",
+    "click card-modal-btn-link.card-modal-archive": "archiveCard",
   },
   closeModal: function(e) {
     e.preventDefault();
@@ -18,6 +25,27 @@ var CardModalView = Backbone.View.extend({
     App.cards.remove(this.model);
     this.closeModal(e);
   },  
+  editDescription: function(e) {
+    e.preventDefault();
+    this.$desc.prev().hide();
+    this.$desc.show();
+  },
+  saveDescription: function(e) {
+    e.preventDefault();
+    var description = this.$desc.text();
+    this.model.set("description", description);
+    this.$desc.prev().show();
+    this.$desc.hide();
+  },
+  closeDescription: function(e) {
+    e.preventDefault();
+    this.$desc.prev().show();
+    this.$desc.hide();    
+  },
+  addComment: function(e) {
+    e.preventDefault();
+    console.log("add comment");
+  },
   labelsPopover: function(e) {
     e.preventDefault();
     if (this.popover) { 
@@ -31,9 +59,9 @@ var CardModalView = Backbone.View.extend({
     });
   },
   popoverPosition: function(e) {
-    var pos = $(e.target).closest(".card-modal-labels").position();
+    var pos = $(e.target).position();
     var result = {
-      top: pos.top + 38
+      top: pos.top + 50
     };
     var windowWidth = $(document.body).innerWidth();
     if (pos.left + 350 > windowWidth) {
@@ -58,5 +86,7 @@ var CardModalView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(this.model, "change", App.trigger.bind(App, "save_card", this.model));
+    this.listenTo(App, "render_board", this.remove.bind(this));
+    this.$desc = this.$el.find(".description form");
   }
 });

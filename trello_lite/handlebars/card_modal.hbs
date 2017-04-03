@@ -21,11 +21,16 @@
       </div>
       <div class="description">
         {{#if description}}
-          <h3>Description</h3><a>Edit</a>
-          <p>{{discriotion}}</p>
+          <h3>Description</h3><a class="card-modal-edit-description">Edit</a>
+          <p>{{description}}</p>
         {{else}}
-          <a class="card-modal-edit-description"><span class="icon-sm icon-description"></span>Edit the description...</a>
+          <a class="card-modal-create-description"><span class="icon-sm icon-description"></span>Edit the description...</a>
         {{/if}}
+        <form action="">
+          <textarea class="description-input" name="description" placeholder="Write a comment...">{{#if description}}{{description}}{{/if}}</textarea>
+          <input class="card-modal-btn" type="submit" value="Save">
+          <a class="icon-lg icon-close description-close-btn" href="#"></a>
+        </form>
       </div>
     </section>
     <section class="comment">
@@ -38,7 +43,6 @@
         <textarea class="comment-input" name="comment" placeholder="Write a comment..."></textarea>
         <input class="card-modal-btn" type="submit" value="Send">
       </form>
-      </textarea>
     </section>
     <section class="Activity">
       <h2>

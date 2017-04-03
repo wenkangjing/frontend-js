@@ -455,6 +455,7 @@ li {
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  color: #4d4d4d;
   background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
 }
 .card-modal > sidebar .card-modal-btn-link:hover {

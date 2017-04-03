@@ -1,37 +1,53 @@
 var App = {
   $el: $("#application"),
   templates: JST,
+  createRouter: function() {
+    this.router  = new AppRouter();
+    Backbone.history.start({
+      pushState: true
+    });
+  },  
   renderBoard: function() {
     this.lists.forEach(function(list) {
-      this.renderList(list);
+      new ListView({model: list});
     }.bind(this));
   },
-  renderList: function(list) {
-    new ListView({model: new List(list)});
+  renderCardModal: function(id) {
+    new CardModalView({model: this.cards.findWhere({id: id})});
+  },
+  renderCardPopover: function(model) {l
+    console.log("cardPopover - inline card editor");
+  },
+  buildEvents: function() {
+    this.off().on({
+      "card_popover": this.renderCardPopover.bind(this),
+    });
   },
   init: function() {
     _.extend(this, Backbone.Events);
     Helper.buildTemplates();
-    this.renderBoard();
+    this.buildEvents();
+    this.createRouter();
   }
 };
 
 var Helper = {
-  getLabelsByIds: function(ids) {
+  // returns plain object
+  getLabelObjects: function(ids) {
     var labels = [];
     var ids = ids || [];
     ids.forEach(function(id) {
-      var label = _(App.labels).findWhere({id: id});
-      label.rgb = _(App.colors).findWhere({name: label.color}).color;
+      var label = App.labels.findWhere({id: id}).toJSON();
       labels.push(label);
     });
     return labels;
   },
-  getCardsByIds: function(ids) {
+  // returns an array of card model
+  getCardModels: function(ids) {
     var cards = [];
     var ids = ids || [];
     ids.forEach(function(id) {
-      var card = _(App.cards).findWhere({id: id});
+      var card = App.cards.findWhere({id: id});
       cards.push(card);
     }); 
     return cards;

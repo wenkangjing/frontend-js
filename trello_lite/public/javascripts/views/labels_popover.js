@@ -8,7 +8,6 @@ var LabelsPopover = Backbone.View.extend({
   },
   closePopover: function(e) {
     e.preventDefault();
-    this.collection.reset();
     this.remove();
     App.popover = null;
   },
@@ -56,6 +55,7 @@ var LabelsPopover = Backbone.View.extend({
     this.parent = options.parent;
     this.position = options.position;
     this.card = options.card;
+    //this.labels = options.labels;
     this.render();
   }
 });

@@ -10,10 +10,10 @@ var ListView = Backbone.View.extend({
     this.$el.appendTo($("#lists"));
 
     var parent = this.$el.find(".cards");
-    Helper.getCardsByIds(this.model.get("idCards")).forEach(function(card) {
+    Helper.getCardModels(this.model.get("idCards")).forEach(function(card) {
       new CardView({
         parent: parent,
-        model: new Card(card)
+        model: card
       });
     }.bind(this));
   },

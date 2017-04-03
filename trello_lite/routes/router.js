@@ -11,7 +11,7 @@ router.param('id', function (req, res, next, id) {
   next();
 });
 
-/* GET home page. */
+/* GET board page. */
 router.get('/', function(req, res, next) {
   res.render('layout', {
     lists: ListsAccessor.get(),
@@ -20,6 +20,19 @@ router.get('/', function(req, res, next) {
     colors: ColorsAccessor.get()
   });
 });
+
+
+/* GET card modal page. */
+router.get('/cards/:id', function(req, res, next) {
+  res.render('layout', {
+    lists: ListsAccessor.get(),
+    cards: CardsAccessor.get(),
+    labels: LabelsAccessor.get(),
+    colors: ColorsAccessor.get()
+  });
+});
+
+
 
 //
 // List

@@ -2,7 +2,7 @@ var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
     "click .dialog-close-btn": "closeModal",
-    "click .card-modal-labels": "popoverLabels"
+    "click .card-modal-labels": "labelsPopover"
   },
   closeModal: function(e) {
     e.preventDefault();
@@ -10,18 +10,18 @@ var CardModalView = Backbone.View.extend({
       this.popover.remove(); 
     }
     this.remove();
+    App.router.navigate("/", {trigger: true});
   },
-  popoverLabels: function(e) {
+  labelsPopover: function(e) {
     e.preventDefault();
     if (this.popover) { 
-      this.popover.collection.reset();
       this.popover.remove(); 
     }
     this.popover = new LabelsPopover({
       parent: this.$el.find(".card-modal"),
       position: this.popoverPosition(e),
       card: this.model,
-      collection: new Labels(App.labels)
+      collection: App.labels
     });
   },
   popoverPosition: function(e) {
@@ -39,7 +39,7 @@ var CardModalView = Backbone.View.extend({
   },
   render: function() {
     var json = this.model.toJSON();
-    json.labels = Helper.getLabelsByIds(this.model.get("idLabels"));
+    json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
     this.$el.html(this.template(json));
     this.$el.find(".card-modal").attr("data-id", this.model.id);
     this.$el.appendTo(App.$el);

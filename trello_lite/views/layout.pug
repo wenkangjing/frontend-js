@@ -28,12 +28,13 @@ html
         div#lists
 
     +javascript_include_tag("application")
+    +javascript_include_tag("router")
     +javascript_include_tag("models/card", "models/label", "models/list")
-    +javascript_include_tag("collections/cards", "collections/labels")
+    +javascript_include_tag("collections/cards", "collections/labels", "collections/lists")
     +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/labels_popover")
     script(type="text/javascript").
-      App.lists = !{JSON.stringify(lists)};
-      App.cards = !{JSON.stringify(cards)};
-      App.labels = !{JSON.stringify(labels)};
-      App.colors = !{JSON.stringify(colors)};
+      App.colors = !{JSON.stringify(colors)}; // immutable
+      App.lists = new Lists(!{JSON.stringify(lists)});
+      App.cards = new Cards(!{JSON.stringify(cards)});
+      App.labels = new Labels(!{JSON.stringify(labels)});
       App.init();

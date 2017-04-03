@@ -30,7 +30,6 @@ var CardModalView = Backbone.View.extend({
       collection: App.labels
     });
   },
-
   popoverPosition: function(e) {
     var pos = $(e.target).closest(".card-modal-labels").position();
     var result = {

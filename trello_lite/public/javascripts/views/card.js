@@ -11,7 +11,7 @@ var CardView = Backbone.View.extend({
       App.trigger("card_popover", id);
     } else {
       App.renderCardModal(id);
-      App.router.navigate("/cards/" + id);
+      App.goto("/cards/" + id);
     }
   },
   render: function() {

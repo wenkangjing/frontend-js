@@ -27,8 +27,7 @@ html
         header
         div#lists
 
-    +javascript_include_tag("application")
-    +javascript_include_tag("router")
+    +javascript_include_tag("application", "router", "helper", "client")
     +javascript_include_tag("models/card", "models/label", "models/list")
     +javascript_include_tag("collections/cards", "collections/labels", "collections/lists")
     +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/labels_popover")

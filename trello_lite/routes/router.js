@@ -63,6 +63,7 @@ router.get('/cards', function(req, res, next) {
 });
 router.post('/cards', function(req, res, next) {
   var card = req.body;
+  console.log(card);
   var array = CardsAccessor.get();
   if (card.id) { // edit
     card= CardsAccessor.update(card);

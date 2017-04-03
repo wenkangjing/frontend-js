@@ -2,15 +2,17 @@ var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
     "click .dialog-close-btn": "closeModal",
-    "click .card-modal-labels": "labelsPopover"
+    "click .card-modal-labels": "labelsPopover",
+    "click .card-modal-archive": "archiveCard",
   },
   closeModal: function(e) {
     e.preventDefault();
     if (this.popover) { 
       this.popover.remove(); 
     }
+    App.trigger("save_card", this.model);
     this.remove();
-    App.router.navigate("/");
+    App.goto("/");
   },
   labelsPopover: function(e) {
     e.preventDefault();
@@ -23,6 +25,12 @@ var CardModalView = Backbone.View.extend({
       card: this.model,
       collection: App.labels
     });
+  },
+  archiveCard: function(e) {
+    e.preventDefault();
+    //App.trigger("delete_card", this.model.get("id"));
+    this.remove();
+    App.goto("/");
   },
   popoverPosition: function(e) {
     var pos = $(e.target).closest(".card-modal-labels").position();

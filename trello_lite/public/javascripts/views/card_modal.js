@@ -10,11 +10,19 @@ var CardModalView = Backbone.View.extend({
     // comment
     "submit .comment": "addComment",
     // labels
-    "click .card-modal-label": "labelsPopover",
+    "click .card-modal-btn-link.card-modal-label": "labelsPopover",
     "click .card-modal-add-label": "labelsPopover",
     "click .card-modal-labels": "labelsPopover",
+    // due date
+    "click .card-modal-btn-link.card-modal-due-date": "duedatePopover",
+    // subscribe
+    "click .card-modal-btn-link.card-modal-subscribe": "toggleSubscribe",
+    // move 
+    "click .card-modal-btn-link.card-modal-move": "movePopover",
+    // copy
+   "click .card-modal-btn-link.card-modal-copy": "copyPopover",
     // archive
-    "click .card-modal-archive": "archiveCard",
+    "click .card-modal-btn-link.card-modal-archive": "archiveCard",
   },
   closeModal: function(e) {
     e.preventDefault();
@@ -51,6 +59,11 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     console.log("add comment");
   },
+  toggleSubscribe: function(e) {
+    e.preventDefault();
+    var status = !this.model.get("subscribed");
+    this.model.set("subscribed", status);
+  },
   labelsPopover: function(e) {
     e.preventDefault();
     if (App.popover) { 
@@ -63,6 +76,27 @@ var CardModalView = Backbone.View.extend({
       collection: App.labels
     });
   },
+  duedatePopover: function(e) {
+    e.preventDefault();
+    if (App.popover) { 
+      App.popover.remove(); 
+    }
+    console.log("due date");
+  },  
+  movePopover: function(e) {
+    e.preventDefault();
+    if (App.popover) { 
+      App.popover.remove(); 
+    }
+    console.log("move");
+  },   
+  copyPopover: function(e) {
+    e.preventDefault();
+    if (App.popover) { 
+      App.popover.remove(); 
+    }
+    console.log("copy");
+  },   
   popoverPosition: function(e) {
     var pos = $(e.currentTarget).position();
     var result = {

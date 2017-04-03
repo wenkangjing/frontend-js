@@ -479,6 +479,11 @@ li {
 .card-modal > sidebar .card-modal-btn-link:focus {
   color: inherit;
 }
+.card-modal > sidebar .card-modal-subscribe .icon-check {
+  float: right;
+  border-radius: 3px;
+  background: #61bd4f;
+}
 .card-label-pop-over .card-label-search {
   display: block;
   width: 100%;

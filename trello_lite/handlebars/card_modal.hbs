@@ -70,7 +70,13 @@
       <h2>Actions</h2>
       <a class="card-modal-btn-link card-modal-move" href="#"><span class="icon-sm icon-move"></span>&nbsp;Move</a>
       <a class="card-modal-btn-link card-modal-copy" href="#"><span class="icon-sm icon-card"></span>&nbsp;Copy</a>
-      <a class="card-modal-btn-link card-modal-subscribe" href="#"><span class="icon-sm icon-subscribe"></span>&nbsp;Subscribe</a>
+      <a class="card-modal-btn-link card-modal-subscribe" href="#">
+        <span class="icon-sm icon-subscribe"></span>
+        &nbsp;Subscribe
+        {{#if subscribed}} 
+        <span class="icon-sm icon-check light"></span>
+        {{/if}}
+        </a>
       <a class="card-modal-btn-link card-modal-archive" href="#"><span class="icon-sm icon-archive"></span>&nbsp;Archive</a>
     </section>
   </sidebar>

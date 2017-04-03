@@ -91,6 +91,10 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
     + "</div>";
 },"useData":true});
 
+this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"pop-over card-label-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Labels</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><input type=\"text\" id=\"pika-datepicker\"><div id=\"pika-container\"></div></div></div>";
+},"useData":true});
+
 this["JST"]["labels_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 

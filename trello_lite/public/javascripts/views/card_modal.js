@@ -81,7 +81,7 @@ var CardModalView = Backbone.View.extend({
     if (App.popover) { 
       App.popover.remove(); 
     }
-    console.log("due date");
+    App.popover = new DueDatePopover();
   },  
   movePopover: function(e) {
     e.preventDefault();

@@ -17,13 +17,15 @@ var CardView = Backbone.View.extend({
   render: function() {
     var json = this.model.toJSON();
     json.labels = Helper.getLabelObjects(this.model.get("idLabels"));
+    var idList = this.model.get("idList");
+    var parent = App.$el.find(".list[data-id=" + idList + "] .cards");
     this.$el.html(this.template(json));
     this.$el.attr("data-id", this.model.id);
-    this.$el.appendTo(this.parent);
+    this.$el.appendTo(parent);
   },
-  initialize: function(options) {
-    this.parent = options.parent;
+  initialize: function() {
     this.render();
-    this.listenTo(this.model, "change:idLabels", this.render.bind(this));
+    this.listenTo(this.model, "change", this.render.bind(this));
+    this.listenTo(this.model, "remove", this.remove.bind(this));
   }
 });

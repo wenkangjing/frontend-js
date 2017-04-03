@@ -10,10 +10,14 @@ var CardModalView = Backbone.View.extend({
     if (this.popover) { 
       this.popover.remove(); 
     }
-    App.trigger("save_card", this.model);
     this.remove();
     App.goto("/");
   },
+  archiveCard: function(e) {
+    App.trigger("delete_card", this.model.get("id"));
+    App.cards.remove(this.model);
+    this.closeModal(e);
+  },  
   labelsPopover: function(e) {
     e.preventDefault();
     if (this.popover) { 
@@ -26,12 +30,7 @@ var CardModalView = Backbone.View.extend({
       collection: App.labels
     });
   },
-  archiveCard: function(e) {
-    e.preventDefault();
-    //App.trigger("delete_card", this.model.get("id"));
-    this.remove();
-    App.goto("/");
-  },
+
   popoverPosition: function(e) {
     var pos = $(e.target).closest(".card-modal-labels").position();
     var result = {
@@ -58,6 +57,7 @@ var CardModalView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.render();
-    this.listenTo(this.model, "change:idLabels", this.render.bind(this));
+    this.listenTo(this.model, "change remove", this.render.bind(this));
+    this.listenTo(this.model, "change", App.trigger.bind(App, "save_card", this.model));
   }
 });

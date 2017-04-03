@@ -1,16 +1,13 @@
 [{
   "name": "System Design",
   "subscribed": false,
-  "id": "H1ENnS0hx",
-  "idCards": ["rkLi9BRhg"]
+  "id": "H1ENnS0hx"
 }, {
   "name": "Todos",
   "subscribed": true,
-  "id": "rJQS2SAhx",
-  "idCards": ["SybmsBC2x", "SJiNiH0ng"]
+  "id": "rJQS2SAhx"
 }, {
   "name": "Presentation",
   "subscribed": true,
-  "id": "HkXLhrAnx",
-  "idCards": ["Bk-UirAnl"]
+  "id": "HkXLhrAnx"
 }]

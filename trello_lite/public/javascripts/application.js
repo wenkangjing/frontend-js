@@ -12,11 +12,14 @@ var App = {
     this.lists.forEach(function(list) {
       new ListView({model: list});
     }.bind(this));
+    this.cards.forEach(function(card) {
+      new CardView({model: card});
+    }.bind(this));
   },
   renderCardModal: function(id) {
     new CardModalView({model: this.cards.findWhere({id: id})});
   },
-  renderCardPopover: function(model) {l
+  renderCardPopover: function(model) {
     console.log("cardPopover - inline card editor");
   },
   goto: function(fregment, trigger) {

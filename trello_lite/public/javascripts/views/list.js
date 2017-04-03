@@ -19,5 +19,6 @@ var ListView = Backbone.View.extend({
   },
   initialize: function(options) {
     this.render();
+    this.listenTo(App, "render_board", this.remove.bind(this));
   }
 });

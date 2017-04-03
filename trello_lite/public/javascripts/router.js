@@ -7,6 +7,7 @@ AppRouter = Backbone.Router.extend({
     App.renderBoard();
   },
   cardModal: function(id) {
+    App.renderBoard();
     App.renderCardModal(id);
   },
 });

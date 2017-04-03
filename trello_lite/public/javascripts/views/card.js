@@ -6,10 +6,12 @@ var CardView = Backbone.View.extend({
   },
   onClick: function(e) {
     e.preventDefault();
+    var id =  this.model.get("id");
     if ($(e.target).hasClass("card-edit")) {
-      App.trigger("card_popover", this.model.get("id"));
+      App.trigger("card_popover", id);
     } else {
-      App.router.navigate("/cards/" + this.model.get("id"), {trigger: true});
+      App.renderCardModal(id);
+      App.router.navigate("/cards/" + id);
     }
   },
   render: function() {

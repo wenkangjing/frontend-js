@@ -10,7 +10,7 @@ var CardModalView = Backbone.View.extend({
       this.popover.remove(); 
     }
     this.remove();
-    App.router.navigate("/", {trigger: true});
+    App.router.navigate("/");
   },
   labelsPopover: function(e) {
     e.preventDefault();

@@ -8,6 +8,7 @@ var App = {
     });
   },  
   renderBoard: function() {
+    App.trigger("render_board");
     this.lists.forEach(function(list) {
       new ListView({model: list});
     }.bind(this));

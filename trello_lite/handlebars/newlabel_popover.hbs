@@ -1,0 +1,22 @@
+<div class="pop-over card-new-label-pop-over"> 
+  <div class="pop-over-header">
+    <a href="#" class="pop-over-header-back-btn icon-sm icon-back"></a>
+    <span class="pop-over-header-title">Create Label</span>
+    <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
+  </div>
+  <div class="pop-over-content">
+    <h2>Name</h2>
+    <input class="card-label-search" type="text" value="" autocomplete="off">
+    <h2>Select a color</h2>
+    <div class="card-label-color-list">
+      {{#each colors}}
+      <span class="new-label-color-btn" data-color="{{name}}" style="background:{{color}}"><span class="icon-sm icon-check"></span></span>
+      {{/each}}
+    </div>
+    <div class="nocolor-notes">
+      <p>No Color.</p>
+      <p>This won't show up on the front of cards</p>
+    </div>
+    <span class="card-modal-btn new-label-create">Create</span>
+  </div>
+</div>

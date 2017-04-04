@@ -121,6 +121,10 @@
   overflow: hidden;
   z-index: 70;
 }
+.pop-over h2 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
 .pop-over .pop-over-header {
   height: 36px;
   margin-bottom: 8px;
@@ -132,6 +136,16 @@
   line-height: 36px;
   border-bottom: 1px solid #d6dadc;
   margin: 0 10px;
+}
+.pop-over .pop-over-header-back-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  color: #4d4d4d;
+  z-index: 2;
 }
 .pop-over .pop-over-header-close-btn {
   position: absolute;
@@ -559,10 +573,6 @@ li {
   width: 130px;
   display: inline-block;
 }
-.card-duedate-pop-over .card-duedate-date h2,
-.card-duedate-pop-over .card-duedate-time h2 {
-  font-size: 14px;
-}
 .card-duedate-pop-over .card-duedate-time {
   float: right;
 }
@@ -655,4 +665,54 @@ li {
 }
 .pika-lendar .is-selected .pika-button:hover {
   opacity: 0.5;
+}
+.card-new-label-pop-over .card-label-search {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  margin: 4px 0 9pt;
+  border: 1px solid #cdd2d4;
+  border-color: #a5acb0;
+  background-color: #e2e4e6;
+  border-radius: 3px;
+  margin-bottom: 9pt;
+}
+.card-new-label-pop-over .card-label-color-list {
+  display: inline;
+}
+.card-new-label-pop-over .card-label-color-list .new-label-color-btn {
+  display: inline-block;
+  width: 45px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 3px;
+  margin: 0 6px 3px 0;
+  cursor: pointer;
+  vertical-align: top;
+}
+.card-new-label-pop-over .card-label-color-list .new-label-color-btn:hover {
+  opacity: 0.5;
+}
+.card-new-label-pop-over .card-label-color-list .new-label-color-btn .icon-check {
+  display: none;
+}
+.card-new-label-pop-over .card-label-color-list .new-label-color-btn.selected .icon-check {
+  display: inline-block;
+  color: #fff;
+}
+.card-new-label-pop-over .nocolor-notes {
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+}
+.card-new-label-pop-over .new-label-create {
+  outline: 0;
+  border: 0;
+  background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
+  box-shadow: 0 1px 0 #3f6f21;
+  color: #fff;
+}
+.card-new-label-pop-over .new-label-create:hover {
+  background: linear-gradient(#5aac44 0%, #519839 100%);
 }

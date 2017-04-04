@@ -293,8 +293,6 @@ basics()
   .card-duedate-date, .card-duedate-time  
     width: 130px
     display: inline-block
-    h2
-      font-size: 14px
   .card-duedate-time
     float: right
   .card-duedate-time input, 
@@ -364,3 +362,45 @@ basics()
     &:hover
       opacity: 0.5
 
+.card-new-label-pop-over
+  .card-label-search
+    display: block
+    width: 100%
+    padding: 7px
+    margin: 4px 0 9pt
+    border: 1px solid #CDD2D4
+    border-color: #A5ACB0
+    background-color: #E2E4E6
+    border-radius: 3px
+    margin-bottom: 9pt
+  .card-label-color-list
+    display: inline
+    .new-label-color-btn
+      display: inline-block
+      width: 45px
+      height: 35px
+      line-height: 35px
+      text-align: center
+      border-radius: 3px
+      margin: 0 6px 3px 0
+      cursor: pointer
+      vertical-align: top
+      &:hover
+        opacity: 0.5
+      .icon-check
+        display: none
+    .new-label-color-btn.selected .icon-check
+      display: inline-block
+      color: #fff
+  .nocolor-notes
+    width: 200px;
+    display: inline-block;
+    vertical-align: top
+  .new-label-create
+    outline: 0
+    border: 0
+    background: linear-gradient(to bottom,#61BD4F 0,#5AAC44 100%)
+    box-shadow: 0 1px 0 #3F6F21
+    color: #fff
+    &:hover
+      background: linear-gradient(#5AAC44 0%, #519839 100%)

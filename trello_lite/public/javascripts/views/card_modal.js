@@ -132,6 +132,5 @@ var CardModalView = Backbone.View.extend({
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(this.model, "change", App.trigger.bind(App, "save_card", this.model));
     this.listenTo(App, "render_board", this.remove.bind(this));
-
   }
 });

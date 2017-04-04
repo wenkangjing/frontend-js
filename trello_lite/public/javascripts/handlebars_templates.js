@@ -92,7 +92,7 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
 },"useData":true});
 
 this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"pop-over card-label-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Labels</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><input type=\"text\" id=\"pika-datepicker\"><div id=\"pika-container\"></div></div></div>";
+    return "<div class=\"pop-over card-duedate-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Change Due Date</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><div><div class=\"card-duedate-date\"><h2>Date</h2><input type=\"text\" id=\"pika-datepicker\"></div><div class=\"card-duedate-time\"><h2>Time</h2><input type=\"text\" placeholder=\"Enter time...\" value=\"12:00\"></div></div><div id=\"pika-container\"></div><div><input class=\"card-modal-btn duedate-save\" type=\"submit\" value=\"Save\"><input class=\"card-modal-btn duedate-remove\" type=\"reset\" value=\"Remove\"></div></div></div>";
 },"useData":true});
 
 this["JST"]["labels_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

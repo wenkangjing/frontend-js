@@ -1,5 +1,6 @@
 @import "whitespace-reset.css";
 @import "./3rd/icons.css";
+@import "./3rd/pikaday.css";
 .header-btn {
   display: inline-block;
   height: 30px;
@@ -78,7 +79,7 @@
   font-weight: 700;
   text-align: center;
   padding: 7px 20px;
-  margin: 8px 4px 0 0;
+  margin: 8px 4px 8px 0;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -216,6 +217,15 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
   background: linear-gradient(#5aac44 0%, #519839 100%);
+}
+input[type="reset"] {
+  outline: 0;
+  border: 0;
+  color: #b04632;
+}
+input[type="reset"]:hover {
+  color: #fff;
+  background: linear-gradient(to bottom, #cf513d 0, #b04632 100%);
 }
 li {
   list-style: none;
@@ -543,4 +553,106 @@ li {
 .card-label-pop-over .card-label-add:hover {
   background: #d6dadc;
   color: #4d4d4d;
+}
+.card-duedate-pop-over .card-duedate-date,
+.card-duedate-pop-over .card-duedate-time {
+  width: 130px;
+  display: inline-block;
+}
+.card-duedate-pop-over .card-duedate-date h2,
+.card-duedate-pop-over .card-duedate-time h2 {
+  font-size: 14px;
+}
+.card-duedate-pop-over .card-duedate-time {
+  float: right;
+}
+.card-duedate-pop-over .card-duedate-time input,
+.card-duedate-pop-over .card-duedate-date input {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  margin: 4px 0;
+  border-radius: 3px;
+  border: 1px solid #cdd2d4;
+  background-color: #e2e4e6;
+}
+.card-duedate-pop-over .card-duedate-time input:focus,
+.card-duedate-pop-over .card-duedate-date input:focus {
+  background: #fff;
+  border-color: #298fca;
+  outline: none;
+  box-shadow: 0 0 2px #298fca;
+}
+.card-duedate-pop-over .card-duedate-time input.invalid,
+.card-duedate-pop-over .card-duedate-date input.invalid {
+  border-color: #eb5a46;
+}
+.card-duedate-pop-over .duedate-save,
+.card-duedate-pop-over .duedate-remove {
+  display: inline-block;
+  width: 100px;
+}
+.card-duedate-pop-over .duedate-remove {
+  float: right;
+}
+.pika-single {
+  border-radius: 3px;
+}
+.pika-lendar {
+  margin: 0 auto;
+  float: none;
+}
+.pika-lendar .pika-prev,
+.pika-lendar .pika-next {
+  width: auto;
+  text-indent: 0;
+  padding: 0 4px;
+  border-radius: 3px;
+  background-image: none;
+  text-decoration: underline;
+}
+.pika-lendar .pika-prev:hover,
+.pika-lendar .pika-next:hover {
+  color: #4d4d4d;
+  background-color: #d6dadc;
+}
+.pika-lendar .pika-select-month,
+.pika-lendar .pika-select-year {
+  padding: 0 4px;
+  border-radius: 3px;
+  text-decoration: underline;
+}
+.pika-lendar .pika-select-month:hover,
+.pika-lendar .pika-select-year:hover {
+  color: #4d4d4d;
+  background-color: #d6dadc;
+}
+.pika-lendar table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.pika-lendar th,
+.pika-lendar td {
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #d6dadc;
+}
+.pika-lendar th {
+  color: #4d4d4d;
+}
+.pika-lendar .pika-button {
+  line-height: 22px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 0;
+}
+.pika-lendar .pika-button:hover {
+  background-color: #d6dadc;
+}
+.pika-lendar .is-selected .pika-button {
+  color: #fff;
+  background: #0079bf;
+}
+.pika-lendar .is-selected .pika-button:hover {
+  opacity: 0.5;
 }

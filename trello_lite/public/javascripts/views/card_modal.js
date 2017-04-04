@@ -81,7 +81,11 @@ var CardModalView = Backbone.View.extend({
     if (App.popover) { 
       App.popover.remove(); 
     }
-    App.popover = new DueDatePopover();
+    App.popover = new DueDatePopover({
+      parent: this.$el.find(".card-modal"),
+      position: this.popoverPosition(e),
+      card: this.model
+    });
   },  
   movePopover: function(e) {
     e.preventDefault();

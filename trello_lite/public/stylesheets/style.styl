@@ -1,5 +1,6 @@
 @import "whitespace-reset.css"
 @import "./3rd/icons.css"
+@import "./3rd/pikaday.css"
 @import "mixins"
 
 basics()
@@ -287,3 +288,79 @@ basics()
     &:hover
       background: #D6DADC
       color: #4d4d4d
+
+.card-duedate-pop-over
+  .card-duedate-date, .card-duedate-time  
+    width: 130px
+    display: inline-block
+    h2
+      font-size: 14px
+  .card-duedate-time
+    float: right
+  .card-duedate-time input, 
+  .card-duedate-date input
+    display: block
+    width: 100%
+    padding: 7px
+    margin: 4px 0
+    border-radius: 3px
+    border: 1px solid #CDD2D4
+    background-color: #E2E4E6
+    &:focus
+      background: #fff
+      border-color: #298FCA
+      outline: none
+      box-shadow: 0 0 2px #298FCA
+    &.invalid
+      border-color: #EB5A46
+  .duedate-save, .duedate-remove
+    display: inline-block
+    width: 100px
+  .duedate-remove
+    float: right
+
+// pikaday theme
+.pika-single
+  border-radius: 3px
+.pika-lendar
+  margin: 0 auto
+  float: none
+  .pika-prev, .pika-next
+    width: auto
+    text-indent: 0
+    padding: 0 4px
+    border-radius: 3px
+    background-image: none
+    text-decoration: underline
+    &:hover
+      color: #4d4d4d;
+      background-color: #D6DADC;
+  .pika-select-month, .pika-select-year
+    padding: 0 4px
+    border-radius: 3px
+    text-decoration: underline
+    &:hover
+      color: #4d4d4d;
+      background-color: #D6DADC;
+  table
+    border-collapse: collapse
+    border-spacing: 0
+  th, td
+    font-size: 14px
+    text-align: center
+    border: 1px solid #D6DADC
+  th
+    color: #4d4d4d
+  .pika-button
+    line-height: 22px;
+    font-size: 14px
+    text-align: center
+    border-radius: 0
+    &:hover
+      background-color: #D6DADC
+  .is-selected .pika-button
+    color: #fff
+    background: #0079BF
+    &:hover
+      opacity: 0.5
+

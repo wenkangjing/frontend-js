@@ -20,24 +20,27 @@ var Helper = {
     return cards;
   },  
   buildTemplates: function() {
-    Handlebars.registerHelper('formateDate', function(dateString, options) {
+    Handlebars.registerHelper('formateDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var now = new Date();
-      var date = new Date(dateString);
+      var date = new Date(dateValue);
       if (now.getFullYear() === date.getFullYear()) {
         return date.getDate() + " " + monthNames[date.getMonth()]
       } else {
         return date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
       }
     });
-    Handlebars.registerHelper('isDuePast', function(dateString, options) {
+    Handlebars.registerHelper('isDuePast', function(dateValue, options) {
       var now = new Date();
-      var date = new Date(dateString);
-      if (now.valueOf() > date.valueOf()) {
+      if (now.valueOf() > dateValue) {
         return "past";
       } else {
         return "";
       }
     });
+  },
+  validateTime: function(time_stirng) {
+    var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    return re.test(time_stirng);
   },
 }

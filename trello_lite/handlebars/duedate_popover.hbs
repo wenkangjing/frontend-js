@@ -1,10 +1,23 @@
-<div class="pop-over card-label-pop-over"> 
+<div class="pop-over card-duedate-pop-over"> 
   <div class="pop-over-header">
-    <span class="pop-over-header-title">Labels</span>
+    <span class="pop-over-header-title">Change Due Date</span>
     <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
   </div>
   <div class="pop-over-content">
-    <input type="text" id="pika-datepicker">
+    <div>
+      <div class="card-duedate-date">
+        <h2>Date</h2>
+        <input type="text" id="pika-datepicker">
+      </div>
+      <div class="card-duedate-time">
+        <h2>Time</h2>
+        <input type="text" placeholder="Enter time..." value="12:00">
+      </div>
+    </div>
     <div id="pika-container"></div>
+    <div>
+      <input class="card-modal-btn duedate-save" type="submit" value="Save">
+      <input class="card-modal-btn duedate-remove" type="reset" value="Remove">
+    </div>
   </div>
 </div>

@@ -66,27 +66,20 @@ var CardModalView = Backbone.View.extend({
   },
   labelsPopover: function(e) {
     e.preventDefault();
-    if (App.popover) { 
-      App.popover.remove(); 
-    }
-    App.popover = new LabelsPopover({
+    App.trigger("popover_labels", {
+      e: e,
       parent: this.$el.find(".card-modal"),
-      position: this.popoverPosition(e),
-      card: this.model,
-      collection: App.labels
+      idCard: this.model.get("id")
     });
   },
   duedatePopover: function(e) {
     e.preventDefault();
-    if (App.popover) { 
-      App.popover.remove(); 
-    }
-    App.popover = new DueDatePopover({
+    App.trigger("popover_duedate", {
+      e: e,
       parent: this.$el.find(".card-modal"),
-      position: this.popoverPosition(e),
-      card: this.model
+      idCard: this.model.get("id")
     });
-  },  
+  },
   movePopover: function(e) {
     e.preventDefault();
     if (App.popover) { 
@@ -100,20 +93,7 @@ var CardModalView = Backbone.View.extend({
       App.popover.remove(); 
     }
     console.log("copy");
-  },   
-  popoverPosition: function(e) {
-    var pos = $(e.currentTarget).position();
-    var result = {
-      top: pos.top + 50
-    };
-    var windowWidth = $(document.body).innerWidth();
-    if (pos.left + 350 > windowWidth) {
-      result.left = windowWidth - 350;
-    } else {
-      result.left = pos.left;
-    }
-    return result;
-  },
+  }, 
   render: function() {
     var json = this.model.toJSON();
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));

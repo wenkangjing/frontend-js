@@ -86,6 +86,8 @@
 .card-modal-label {
   display: inline-block;
   color: #fff;
+  height: 30px;
+  min-width: 45px;
   line-height: 22px;
   font-weight: 700;
   text-align: center;
@@ -522,7 +524,7 @@ li {
 .card-label-pop-over .card-label {
   display: block;
   width: 230px;
-  min-height: 18px;
+  min-height: 36px;
   padding: 8px;
   color: #fff;
   font-weight: 700;
@@ -607,6 +609,7 @@ li {
 }
 .pika-single {
   border-radius: 3px;
+  padding: 5px;
 }
 .pika-lendar {
   margin: 0 auto;
@@ -666,7 +669,7 @@ li {
 .pika-lendar .is-selected .pika-button:hover {
   opacity: 0.5;
 }
-.card-new-label-pop-over .card-label-search {
+.card-label-edit-pop-over .card-label-name {
   display: block;
   width: 100%;
   padding: 7px;
@@ -677,42 +680,42 @@ li {
   border-radius: 3px;
   margin-bottom: 9pt;
 }
-.card-new-label-pop-over .card-label-color-list {
+.card-label-edit-pop-over .card-label-color-list {
   display: inline;
 }
-.card-new-label-pop-over .card-label-color-list .new-label-color-btn {
+.card-label-edit-pop-over .card-label-color-list .label-edit-color-btn {
   display: inline-block;
   width: 45px;
   height: 35px;
   line-height: 35px;
   text-align: center;
   border-radius: 3px;
-  margin: 0 6px 3px 0;
+  margin: 5px;
   cursor: pointer;
   vertical-align: top;
 }
-.card-new-label-pop-over .card-label-color-list .new-label-color-btn:hover {
+.card-label-edit-pop-over .card-label-color-list .label-edit-color-btn:hover {
   opacity: 0.5;
 }
-.card-new-label-pop-over .card-label-color-list .new-label-color-btn .icon-check {
+.card-label-edit-pop-over .card-label-color-list .label-edit-color-btn .icon-check {
   display: none;
 }
-.card-new-label-pop-over .card-label-color-list .new-label-color-btn.selected .icon-check {
+.card-label-edit-pop-over .card-label-color-list .label-edit-color-btn.selected .icon-check {
   display: inline-block;
   color: #fff;
 }
-.card-new-label-pop-over .nocolor-notes {
+.card-label-edit-pop-over .nocolor-notes {
   width: 200px;
   display: inline-block;
   vertical-align: top;
 }
-.card-new-label-pop-over .new-label-create {
+.card-label-edit-pop-over .label-edit-save {
   outline: 0;
   border: 0;
   background: linear-gradient(to bottom, #61bd4f 0, #5aac44 100%);
   box-shadow: 0 1px 0 #3f6f21;
   color: #fff;
 }
-.card-new-label-pop-over .new-label-create:hover {
+.card-label-edit-pop-over .label-edit-save:hover {
   background: linear-gradient(#5aac44 0%, #519839 100%);
 }

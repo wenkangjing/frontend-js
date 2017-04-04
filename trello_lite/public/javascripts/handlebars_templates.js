@@ -6,7 +6,7 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
   return "<span class=\"card-modal-label\" data-id=\""
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\" style=\"background-color:"
-    + alias4(((helper = (helper = helpers.rgb || (depth0 != null ? depth0.rgb : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rgb","hash":{},"data":data}) : helper)))
+    + alias4((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))
     + "\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>";
@@ -51,12 +51,12 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 },"useData":true});
 
 this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "<span class=\"label\" data-id=\""
-    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\" style=\"background:"
-    + alias4(((helper = (helper = helpers.rgb || (depth0 != null ? depth0.rgb : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rgb","hash":{},"data":data}) : helper)))
+    + alias3((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))
     + "\"></span>";
 },"3":function(container,depth0,helpers,partials,data) {
     return "<div class=\"badge\"><span class=\"icon-sm icon-subscribe\"></span></div>";
@@ -95,6 +95,22 @@ this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
     return "<div class=\"pop-over card-duedate-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Change Due Date</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><div><div class=\"card-duedate-date\"><h2>Date</h2><input type=\"text\" id=\"pika-datepicker\"></div><div class=\"card-duedate-time\"><h2>Time</h2><input type=\"text\" placeholder=\"Enter time...\" value=\"12:00\"></div></div><div id=\"pika-container\"></div><div><input class=\"card-modal-btn duedate-save\" type=\"submit\" value=\"Save\"><input class=\"card-modal-btn duedate-remove\" type=\"reset\" value=\"Remove\"></div></div></div>";
 },"useData":true});
 
+this["JST"]["labeledit_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<span class=\"label-edit-color-btn\" data-color=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\" style=\"background:"
+    + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
+    + "\"><span class=\"icon-sm icon-check\"></span></span>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"pop-over card-label-edit-pop-over\"> <div class=\"pop-over-header\"><a href=\"#\" class=\"pop-over-header-back-btn icon-sm icon-back\"></a><span class=\"pop-over-header-title\">Create Label</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><h2>Name</h2><input class=\"card-label-name\" type=\"text\" value=\"\" autocomplete=\"off\"><h2>Select a color</h2><div class=\"card-label-color-list\">"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.colors : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div><div class=\"nocolor-notes\"><p>No Color.</p><p>This won't show up on the front of cards</p></div><span class=\"card-modal-btn label-edit-save\">Create</span></div></div>";
+},"useData":true});
+
 this["JST"]["labels_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -103,7 +119,7 @@ this["JST"]["labels_popover"] = Handlebars.template({"1":function(container,dept
     + "\" data-id=\""
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\" style=\"background:"
-    + alias4(((helper = (helper = helpers.rgb || (depth0 != null ? depth0.rgb : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"rgb","hash":{},"data":data}) : helper)))
+    + alias4((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))
     + ";\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "<span class=\"icon-sm icon-check\"></span></span></li>";
@@ -127,20 +143,4 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + "</h2><div class=\"list-ops\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<a href=\"#\" class=\"list-btn icon-sm dark-hover icon-overflow-menu-horizontal\"></a></div></header><div class=\"cards\"></div><a href=\"#\" class=\"list-btn dark-hover open-card-composer\">Add a card...</a>";
-},"useData":true});
-
-this["JST"]["newlabel_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-  return "<span class=\"new-label-color-btn\" data-color=\""
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\" style=\"background:"
-    + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
-    + "\"><span class=\"icon-sm icon-check\"></span></span>";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return "<div class=\"pop-over card-new-label-pop-over\"> <div class=\"pop-over-header\"><a href=\"#\" class=\"pop-over-header-back-btn icon-sm icon-back\"></a><span class=\"pop-over-header-title\">Create Label</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><h2>Name</h2><input class=\"card-label-search\" type=\"text\" value=\"\" autocomplete=\"off\"><h2>Select a color</h2><div class=\"card-label-color-list\">"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.colors : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div><div class=\"nocolor-notes\"><p>No Color.</p><p>This won't show up on the front of cards</p></div><span class=\"card-modal-btn new-label-create\">Create</span></div></div>";
 },"useData":true});

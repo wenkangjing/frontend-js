@@ -30,6 +30,13 @@ var LabelsPopover = Backbone.View.extend({
   },
   newLabel: function(e) {
     e.preventDefault();
+    App.trigger("popover_labeledit", {
+      e: e,
+      parent: this.parent,
+      position: this.position,
+      idCard: this.card.get("id")
+    });
+    this.remove();
   },
   render: function() {
     var labels = this.collection.toJSON();
@@ -57,5 +64,6 @@ var LabelsPopover = Backbone.View.extend({
     this.card = options.card;
     //this.labels = options.labels;
     this.render();
+    this.listenTo(App.labels, "change update", this.render.bind(this));
   }
 });

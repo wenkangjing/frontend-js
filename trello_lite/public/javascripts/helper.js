@@ -38,6 +38,10 @@ var Helper = {
         return "";
       }
     });
+    Handlebars.registerHelper('toRGB', function(colorName, options) {
+      var obj = _(App.colors).findWhere({name: colorName || "nocolor"}) || {};
+      return obj.color;
+    });
   },
   validateTime: function(time_stirng) {
     var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;

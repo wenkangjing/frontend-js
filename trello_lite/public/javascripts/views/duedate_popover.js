@@ -33,7 +33,6 @@ var DueDatePopover = Backbone.View.extend({
     $time.val("12:00");
     this.checkTime()
   },
-
   render: function() {
     // handlebars
     this.$el.html(this.template());

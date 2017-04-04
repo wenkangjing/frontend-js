@@ -30,8 +30,8 @@ module.exports = {
   },
   update: function(item) {
     var array = this.get();
-    var old = _(array).findWhere({id: item.id});
-    Object.assign(old, item);
+    array = _(array).reject({id: item.id});
+    array.push(item);
     this.set(array);
     return item;
   },

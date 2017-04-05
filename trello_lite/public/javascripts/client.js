@@ -104,7 +104,6 @@ var Client = {
      data: json
     }).done(function(json) {
       Client.getComments();
-      Client.getCards(); // maybe no need to cache comments count in cards.json
     }).fail(function() {
       console.error("Fail to add comment");
       App.goto("/");
@@ -117,7 +116,6 @@ var Client = {
      data: {id: id}
     }).done(function(json) {
       Client.getComments();
-      Client.getCards();
     }).fail(function() {
       console.error("Fail to delete comments: " + id);
       App.goto("/");

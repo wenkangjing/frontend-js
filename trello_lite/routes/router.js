@@ -2,10 +2,11 @@ var express = require('express');
 var router = express.Router();
 var accessor = require('./accessor');
 
-var LabelsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'labels' }});
-var ColorsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'colors' }});
-var CardsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'cards' }});
 var ListsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'lists' }});
+var CardsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'cards' }});
+var LabelsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'labels' }});
+var CommentsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'comments' }});
+var ColorsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'colors' }});
 
 router.param('id', function (req, res, next, id) {
   next();
@@ -74,6 +75,28 @@ router.post('/cards', function(req, res, next) {
 });
 router.delete('/cards', function(req, res) {
   CardsAccessor.delete(req.body.id);
+  res.status(200).end();
+});
+
+//
+// comments
+//////////////////////////////////////////////////////////
+router.get('/comments', function(req, res, next) {
+  res.json(CommentsAccessor.get()).end();
+});
+router.post('/comments', function(req, res, next) {
+  var comment = req.body;
+  console.log(comment);
+  var array = CommentsAccessor.get();
+  if (comment.id) { // edit
+    comment= CommentsAccessor.update(comment);
+  } else { // new
+    comment = CommentsAccessor.add(comment);
+  }
+  res.json(comment).end();
+});
+router.delete('/comments', function(req, res) {
+  CommentsAccessor.delete(req.body.id);
   res.status(200).end();
 });
 

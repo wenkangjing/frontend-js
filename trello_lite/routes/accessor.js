@@ -8,7 +8,8 @@ var dict = {
   labels: path.resolve(dir, "labels.json"),
   colors: path.resolve(dir, "colors.json"),
   cards: path.resolve(dir, "cards.json"),
-  lists: path.resolve(dir, "lists.json")
+  lists: path.resolve(dir, "lists.json"),
+  comments: path.resolve(dir, "comments.json"),
 };
 
 module.exports = {

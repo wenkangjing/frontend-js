@@ -18,7 +18,8 @@ router.get('/', function(req, res, next) {
     lists: ListsAccessor.get(),
     cards: CardsAccessor.get(),
     labels: LabelsAccessor.get(),
-    colors: ColorsAccessor.get()
+    colors: ColorsAccessor.get(),
+    comments: CommentsAccessor.get(),
   });
 });
 
@@ -29,7 +30,8 @@ router.get('/cards/:id', function(req, res, next) {
     lists: ListsAccessor.get(),
     cards: CardsAccessor.get(),
     labels: LabelsAccessor.get(),
-    colors: ColorsAccessor.get()
+    colors: ColorsAccessor.get(),
+    comments: CommentsAccessor.get(),
   });
 });
 

@@ -131,6 +131,11 @@ basics()
     background-color: #EC9488
     span
       color: #fff
+  .badge.completed
+    background-color: #5AAC44;
+    border-radius: 3px;
+    span
+      color: #fff
 
 .card-modal
   position: relative
@@ -193,9 +198,12 @@ basics()
   .description-close-btn
     text-decoration: none
     vertical-align: middle
-  .card-modal-edit-description
+  .card-modal-edit-description,
+  .card-modal-edit-comment,
+  .card-modal-delete-comment
     text-decoration: underline
     cursor: pointer
+    margin: 5px
   .card-modal-create-description
     display: block
     width: 100%
@@ -206,6 +214,19 @@ basics()
     &:hover
       background: #D6DADC
       border-radius: 3px
+  .activity
+    .user-initials-sm
+      vertical-align: middle
+    .comment
+      display: inline-block
+      max-width: auto
+      padding: 5px
+      border-radius: 3px
+      margin: 5px 0
+      background: #fff
+      vertical-align: middle
+    .comment-ops
+      font-size: 12px
 
 .card-modal > sidebar
   float: right

@@ -12,16 +12,11 @@ var Helper = {
     });
     return labels;
   },
-  // returns an array of card model
-  getCardModels: function(ids) {
-    var cards = [];
-    var ids = ids || [];
-    ids.forEach(function(id) {
-      var card = App.cards.findWhere({id: id});
-      cards.push(card);
-    }); 
-    return cards;
-  },  
+  getCommentsByCard: function(idCard) {
+    return App.comments.toJSON().filter(function(cmt) {
+      return cmt.idCard === idCard;
+    })
+  },
   buildTemplates: function() {
     Handlebars.registerHelper('formateDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -45,6 +40,22 @@ var Helper = {
       var obj = _(App.colors).findWhere({name: colorName || "nocolor"}) || {};
       return obj.color;
     });
+    Handlebars.registerHelper('formatDatetime', function(dateValue, options) {
+      var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var now = new Date();
+      var datetime = new Date(dateValue);
+      var formatedString;
+      if (now.getFullYear() === datetime.getFullYear()) {
+        formatedString = datetime.getDate() + " " + monthNames[datetime.getMonth()]
+      } else {
+        formatedString = datetime.getDate() + " " + monthNames[datetime.getMonth()] + " " + datetime.getFullYear();
+      }
+      formatedString += " at ";
+      formatedString += datetime.getHours() + ":" + datetime.getMinutes();
+      return formatedString;
+    });
+    
+    
   },
   validateTime: function(time_stirng) {
     var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;

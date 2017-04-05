@@ -71,6 +71,8 @@ var App = {
       "delete_card": Client.deleteCard.bind(Client),
       "save_label": Client.saveLabel.bind(Client),
       "delete_label": Client.deleteLabel.bind(Client),
+      "save_comment": Client.saveComment.bind(Client),
+      "delete_comment": Client.deleteComment.bind(Client),
     });
   },
   init: function() {

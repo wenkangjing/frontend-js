@@ -104,7 +104,7 @@ basics()
   color: #fff
   background: linear-gradient(to bottom,rgba(255,255,255,.4) 0,rgba(255,255,255,.3) 100%)
 
-.user-initials
+.user-initials, .user-initials-sm
   display: inline-block
   height: 30px
   width: 30px
@@ -113,13 +113,19 @@ basics()
   margin-right: 8px
   background-color: #CDD2D4
   vertical-align: top
+.user-initials-sm
+  width: 24px
+  height: 24px
 
-.user-initials:before 
+.user-initials:before, .user-initials-sm:before
   content: "K"
   color: #4d4d4d
   font-size: 16px
   height: 30px
   line-height: 30px
+.user-initials-sm:before
+  height: 24px
+  line-height: 24px
 
 .header-brand
   display: inline-block

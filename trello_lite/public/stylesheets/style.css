@@ -16,7 +16,8 @@
   color: #fff;
   background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.3) 100%);
 }
-.user-initials {
+.user-initials,
+.user-initials-sm {
   display: inline-block;
   height: 30px;
   width: 30px;
@@ -26,12 +27,21 @@
   background-color: #cdd2d4;
   vertical-align: top;
 }
-.user-initials:before {
+.user-initials-sm {
+  width: 24px;
+  height: 24px;
+}
+.user-initials:before,
+.user-initials-sm:before {
   content: "K";
   color: #4d4d4d;
   font-size: 16px;
   height: 30px;
   line-height: 30px;
+}
+.user-initials-sm:before {
+  height: 24px;
+  line-height: 24px;
 }
 .header-brand {
   display: inline-block;
@@ -388,6 +398,13 @@ li {
 .card .badge.past span {
   color: #fff;
 }
+.card .badge.completed {
+  background-color: #5aac44;
+  border-radius: 3px;
+}
+.card .badge.completed span {
+  color: #fff;
+}
 .card-modal {
   position: relative;
   width: 730px;
@@ -462,9 +479,12 @@ li {
   text-decoration: none;
   vertical-align: middle;
 }
-.card-modal > main .card-modal-edit-description {
+.card-modal > main .card-modal-edit-description,
+.card-modal > main .card-modal-edit-comment,
+.card-modal > main .card-modal-delete-comment {
   text-decoration: underline;
   cursor: pointer;
+  margin: 5px;
 }
 .card-modal > main .card-modal-create-description {
   display: block;
@@ -477,6 +497,21 @@ li {
 .card-modal > main .card-modal-create-description:hover {
   background: #d6dadc;
   border-radius: 3px;
+}
+.card-modal > main .activity .user-initials-sm {
+  vertical-align: middle;
+}
+.card-modal > main .activity .comment {
+  display: inline-block;
+  max-width: auto;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 5px 0;
+  background: #fff;
+  vertical-align: middle;
+}
+.card-modal > main .activity .comment-ops {
+  font-size: 12px;
 }
 .card-modal > sidebar {
   float: right;

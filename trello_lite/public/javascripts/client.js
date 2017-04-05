@@ -1,4 +1,7 @@
 var Client = {
+  // 
+  // cards
+  ////////////////////////////////////////  
   getCards: function() {
     $.ajax({
      method: "get",
@@ -36,6 +39,9 @@ var Client = {
       App.goto("/");
     });
   },
+  // 
+  // labels
+  ////////////////////////////////////////  
   getLabels: function() {
     $.ajax({
      method: "get",
@@ -74,4 +80,45 @@ var Client = {
       App.goto("/");
     });
   },  
+  // 
+  // comments
+  ////////////////////////////////////////
+  getComments: function() {
+    $.ajax({
+     method: "get",
+     url: "/comments",
+    }).done(function(json) {
+      App.comments.set(json);
+    }).fail(function() {
+      console.error("Fail to get comments");
+      App.goto("/");
+    });
+  },
+  saveComment: function(label) {
+    var json = JSON.stringify(label);
+    console.log(json)
+    $.ajax({
+     method: "post",
+     url: "/comments",
+     contentType: "application/json",
+     data: json
+    }).done(function(json) {
+      Client.getComments();
+    }).fail(function() {
+      console.error("Fail to add comment");
+      App.goto("/");
+    });
+  },
+  deleteComment: function(id) {
+    $.ajax({
+     method: "delete",
+     url: "/comments",
+     data: {id: id}
+    }).done(function(json) {
+      Client.getComments();
+    }).fail(function() {
+      console.error("Fail to delete comments: " + id);
+      App.goto("/");
+    });
+  },   
 };

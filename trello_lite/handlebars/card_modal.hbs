@@ -44,16 +44,21 @@
         <input class="card-modal-btn" type="submit" value="Send">
       </form>
     </section>
-    <section class="Activity">
+    <section class="activity">
       <h2>
         <span class="icon-lg icon-activity indent"></span>
         <span>Activity</span>
       </h2>
       <ul>
         {{#each activities}}
-          <li>
-            <span class="icon-sm user-initials"></span>
-            {{text}}
+          <li data-id="{{id}}">
+            <span class="user-initials-sm indent"></span>
+            <p class="comment">{{content}}</p>
+            <p class="comment-ops">
+              {{formatDatetime datetime}}
+              <span class="card-modal-edit-comment">Edit</span>
+              <span class="card-modal-delete-comment">Delete</span>
+            </p>
           </li>
         {{/each}}
         <li></li>

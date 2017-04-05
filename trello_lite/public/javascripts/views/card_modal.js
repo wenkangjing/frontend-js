@@ -59,7 +59,13 @@ var CardModalView = Backbone.View.extend({
   },
   addComment: function(e) {
     e.preventDefault();
-    console.log("add comment");
+    var $f = this.$el.find(".comment form");
+    var comment = $f.serializeArray()[0].value;
+    App.trigger("save_comment", {
+      content: comment,
+      datetime: (new Date()).valueOf(),
+      idCard: this.model.get("id")
+    });
   },
   toggleSubscribe: function(e) {
     e.preventDefault();
@@ -86,8 +92,19 @@ var CardModalView = Backbone.View.extend({
     console.log("copy");
   }, 
   render: function() {
+    // retrieve data
     var json = this.model.toJSON();
+    json.activities = [];
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
+    var comments = Helper.getCommentsByCard(this.model.get("id"));
+    comments = _(comments).sortBy(function(it) {
+      return -it.datetime.valueOf();
+    });
+    if (comments.length > 0) {
+      json.activities = json.activities.concat(comments);
+    }
+
+    // build html
     this.$el.html(this.template(json));
     this.$el.find(".card-modal").attr("data-id", this.model.id);
     this.$el.appendTo(App.$el);
@@ -101,6 +118,7 @@ var CardModalView = Backbone.View.extend({
   initialize: function(options) {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
+    this.listenTo(App.comments, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
     App.popoverView = null;
     App.popoverOpt = {

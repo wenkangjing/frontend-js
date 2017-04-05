@@ -26,8 +26,9 @@ var CardModalView = Backbone.View.extend({
   },
   closeModal: function(e) {
     e.preventDefault();
-    if (this.popover) { 
-      this.popover.remove(); 
+    if (App.popoverView) { 
+      App.popoverView.remove(); 
+      App.popoverView = null;
     }
     this.remove();
     App.goto("/");
@@ -68,11 +69,13 @@ var CardModalView = Backbone.View.extend({
   },
   popoverLabels: function(e) {
     e.preventDefault();
-    App.trigger("popover_labels", _.extend(App.popoverOpt, {position: Helper.popoverPosition(e)}));
+    App.popoverOpt.position = Helper.popoverPosition(e);
+    App.trigger("popover_labels");
   },
   popoverDuedate: function(e) {
     e.preventDefault();
-    App.trigger("popover_duedate", _.extend(App.popoverOpt, {position: Helper.popoverPosition(e)}));
+    App.popoverOpt.position = Helper.popoverPosition(e);
+    App.trigger("popover_duedate");
   },
   popoverMove: function(e) {
     e.preventDefault();
@@ -89,10 +92,7 @@ var CardModalView = Backbone.View.extend({
     this.$el.find(".card-modal").attr("data-id", this.model.id);
     this.$el.appendTo(App.$el);
     this.$desc = this.$el.find(".description form");
-    App.popoverOpt = {
-      parent: this.$el.find(".card-modal"),
-      idCard: this.model.get("id"),
-    }
+    App.popoverOpt.parent = this.$el.find(".card-modal"); // parent has been recreated
     if (App.popoverView) {
       App.popoverView.render();
     }
@@ -102,6 +102,7 @@ var CardModalView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
+    App.popoverView = null;
     App.popoverOpt = {
       parent: this.$el.find(".card-modal"),
       idCard: this.model.get("id"),

@@ -38,10 +38,10 @@ var DueDatePopover = Backbone.View.extend({
     // handlebars
     this.$el.html(this.template());
     this.$el.find(".pop-over").css({
-      top: this.position.top || 0,
-      left: this.position.left || 0
+      top: App.popoverOpt.position.top || 0,
+      left: App.popoverOpt.position.left || 0
     });
-    this.$el.appendTo(this.parent);
+    this.$el.appendTo(App.popoverOpt.parent);
     // pidaday
     var $date = this.$el.find(".card-duedate-date input");
     var $time = this.$el.find(".card-duedate-time input");
@@ -64,9 +64,8 @@ var DueDatePopover = Backbone.View.extend({
     this.delegateEvents();
   },
 
-  initialize: function(opt) {
-    _.extend(this, opt);
-    this.card = App.cards.get(this.idCard);
+  initialize: function() {
+    this.card = App.cards.get(App.popoverOpt.idCard);
     this.render();
   }
 });

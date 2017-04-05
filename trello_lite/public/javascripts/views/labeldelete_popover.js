@@ -11,7 +11,7 @@ var LabelDeletePopover = Backbone.View.extend({
   },
   backToLabels: function(e) {
     e.preventDefault();
-    App.trigger("popover_labels", App.popoverOpt);
+    App.trigger("popover_labels");
     this.closePopover(e);
   },
   deleteConfirm: function(e) {
@@ -24,14 +24,13 @@ var LabelDeletePopover = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template());
-    this.$el.appendTo(this.parent);
+    this.$el.appendTo(App.popoverOpt.parent);
     this.$el.find(".pop-over").css({
-      top: this.position.top || 0,
-      left: this.position.left || 0
+      top: App.popoverOpt.position.top || 0,
+      left: App.popoverOpt.position.left || 0
     });
   },
-  initialize: function(opt) {
-    _.extend(this, opt);
+  initialize: function() {
     this.render();
   }
 });

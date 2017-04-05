@@ -1,6 +1,6 @@
 var Client = {
   saveCard: function(card) {
-    var json = JSON.stringify(card.toJSON());
+    var json = JSON.stringify(card);
     $.ajax({
      method: "post",
      url: "/cards",
@@ -30,14 +30,14 @@ var Client = {
      method: "get",
      url: "/labels",
     }).done(function(json) {
-      App.labels = new Labels(json);
+      App.labels.set(json);
     }).fail(function() {
       console.error("Fail to get labels: " + label.toJSON());
       App.goto("/");
     });
   },
   saveLabel: function(label) {
-    var json = JSON.stringify(label.toJSON());
+    var json = JSON.stringify(label);
     console.log(json)
     $.ajax({
      method: "post",

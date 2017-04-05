@@ -14,7 +14,6 @@ var LabelEditPopover = Backbone.View.extend({
   backToLabels: function(e) {
     e.preventDefault();
     App.trigger("popover_labels", {
-      e: e,
       parent: this.parent,
       position: this.position,
       idCard: this.card.get("id"),
@@ -30,7 +29,7 @@ var LabelEditPopover = Backbone.View.extend({
     e.preventDefault();
     var color = this.$el.find(".label-edit-color-btn.selected").data("color");
     var name = this.$el.find(".card-label-name").val();
-    App.trigger("save_label", new Label({name: name, color: color}));
+    App.trigger("save_label", {name: name, color: color});
     this.backToLabels(e);
   },
   render: function() {

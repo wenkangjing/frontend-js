@@ -67,16 +67,16 @@ var CardModalView = Backbone.View.extend({
   labelsPopover: function(e) {
     e.preventDefault();
     App.trigger("popover_labels", {
-      e: e,
       parent: this.$el.find(".card-modal"),
+      position: Helper.popoverPosition(e),
       idCard: this.model.get("id")
     });
   },
   duedatePopover: function(e) {
     e.preventDefault();
     App.trigger("popover_duedate", {
-      e: e,
       parent: this.$el.find(".card-modal"),
+      position: Helper.popoverPosition(e),      
       idCard: this.model.get("id")
     });
   },
@@ -110,7 +110,7 @@ var CardModalView = Backbone.View.extend({
   initialize: function(options) {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
-    this.listenTo(this.model, "all", App.trigger.bind(App, "save_card", this.model));
+    this.listenTo(this.model, "all", App.trigger.bind(App, "save_card", this.model.toJSON()));
     this.listenTo(App, "render_board", this.remove.bind(this));
   }
 });

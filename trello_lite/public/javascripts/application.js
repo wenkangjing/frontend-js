@@ -29,7 +29,7 @@ var App = {
     }
     App.popover = new LabelsPopover({
       parent: opt.parent,
-      position: this.popoverPosition(opt.e),
+      position: opt.position,
       card: App.cards.get(opt.idCard),
       collection: App.labels
     });
@@ -50,7 +50,7 @@ var App = {
     }
     App.popover = new DueDatePopover({
       parent: opt.parent,
-      position: this.popoverPosition(opt.e),
+      position: opt.position,
       card: App.cards.get(opt.idCard),
     });
   },  
@@ -62,19 +62,6 @@ var App = {
   },
   popoverConfirm: function(opt) {
     console.log("confirm");
-  },
-  popoverPosition: function(e) {
-    var pos = $(e.currentTarget).position();
-    var result = {
-      top: pos.top + 50
-    };
-    var windowWidth = $(document.body).innerWidth();
-    if (pos.left + 350 > windowWidth) {
-      result.left = windowWidth - 350;
-    } else {
-      result.left = pos.left;
-    }
-    return result;
   },
   goto: function(fregment, trigger) {
     trigger = trigger || false;

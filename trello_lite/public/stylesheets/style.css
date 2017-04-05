@@ -521,6 +521,9 @@ li {
   border-radius: 3px;
   margin-bottom: 9pt;
 }
+.card-label-pop-over .card-label-search:hover {
+  background: #fff;
+}
 .card-label-pop-over .card-label {
   display: block;
   width: 230px;
@@ -679,6 +682,9 @@ li {
   background-color: #e2e4e6;
   border-radius: 3px;
   margin-bottom: 9pt;
+}
+.card-label-edit-pop-over .card-label-name:hover {
+  background: #fff;
 }
 .card-label-edit-pop-over .card-label-color-list {
   display: inline;

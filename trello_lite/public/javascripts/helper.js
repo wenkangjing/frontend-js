@@ -47,4 +47,17 @@ var Helper = {
     var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
     return re.test(time_stirng);
   },
+  popoverPosition: function(e) {
+    var pos = $(e.currentTarget).position();
+    var result = {
+      top: pos.top + 50
+    };
+    var windowWidth = $(document.body).innerWidth();
+    if (pos.left + 350 > windowWidth) {
+      result.left = windowWidth - 350;
+    } else {
+      result.left = pos.left;
+    }
+    return result;
+  },  
 }

@@ -119,7 +119,18 @@ router.post('/labels', function(req, res, next) {
   res.json(label).end();
 });
 router.delete('/labels', function(req, res) {
-  LabelsAccessor.delete(req.body.id);
+  var idLabel = req.body.id;
+  LabelsAccessor.delete(idLabel);
+  var cards = CardsAccessor.get();
+  for (var i = 0; i < cards.length; i++) {
+    if (cards[i].idLabels.length) {
+      var idLabels = cards[i].idLabels.filter(function(id) {
+        return id !== idLabel;
+      });
+      cards[i].idLabels = idLabels;
+      CardsAccessor.update(cards[i]);
+    }
+  }
   res.status(200).end();
 });
 

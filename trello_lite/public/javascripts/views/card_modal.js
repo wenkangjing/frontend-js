@@ -119,6 +119,7 @@ var CardModalView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(App.comments, "change update", this.render.bind(this));
+    this.listenTo(App.labels, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
     App.popoverView = null;
     App.popoverOpt = {

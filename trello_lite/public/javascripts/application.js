@@ -23,36 +23,27 @@ var App = {
     console.log("popoverCardEdit - inline card editor");
   },
   popoverLabels: function(opt) {
-    console.log("labels");
     if (App.popover) { 
       App.popover.remove(); 
     }
-    App.popover = new LabelsPopover({
-      parent: opt.parent,
-      position: opt.position,
-      card: App.cards.get(opt.idCard),
-      collection: App.labels
-    });
+    App.popover = new LabelsPopover(opt);
   },
   popoverLabelEdit: function(opt) {
     if (App.popover) { 
       App.popover.remove(); 
     }
-    App.popover = new LabelEditPopover({
-      parent: opt.parent,
-      position: opt.position,
-      card: App.cards.get(opt.idCard),
-    });
+    App.popover = new LabelEditPopover(opt);
   },
   popoverDueDate: function(opt) {
     if (App.popover) { 
       App.popover.remove(); 
     }
-    App.popover = new DueDatePopover({
-      parent: opt.parent,
-      position: opt.position,
-      card: App.cards.get(opt.idCard),
-    });
+    App.popover = new DueDatePopover(opt)
+    // App.popover = new DueDatePopover({
+    //   parent: opt.parent,
+    //   position: opt.position,
+    //   card: App.cards.get(opt.idCard),
+    // });
   },  
   popoverMove: function(opt) {
     console.log("move");
@@ -81,6 +72,7 @@ var App = {
       "save_card": Client.saveCard.bind(Client),
       "delete_card": Client.deleteCard.bind(Client),
       "save_label": Client.saveLabel.bind(Client),
+      "delete_label": Client.deleteLabel.bind(Client),
     });
   },
   init: function() {

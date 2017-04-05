@@ -725,3 +725,6 @@ li {
 .card-label-edit-pop-over .label-edit-save:hover {
   background: linear-gradient(#5aac44 0%, #519839 100%);
 }
+.card-label-edit-pop-over .label-edit-delete {
+  float: right;
+}

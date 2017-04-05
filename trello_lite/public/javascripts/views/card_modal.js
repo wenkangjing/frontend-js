@@ -46,6 +46,7 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var description = this.$desc.serializeArray()[0].value;
     this.model.set("description", description);
+    App.trigger("save_card", this.model.toJSON());
     this.$desc.prev().show();
     this.$desc.hide();
   },
@@ -63,6 +64,7 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
+    App.trigger("save_card", this.model.toJSON());
   },
   labelsPopover: function(e) {
     e.preventDefault();
@@ -110,7 +112,7 @@ var CardModalView = Backbone.View.extend({
   initialize: function(options) {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
-    this.listenTo(this.model, "all", App.trigger.bind(App, "save_card", this.model.toJSON()));
+    //this.listenTo(this.model, "all", App.trigger.bind(App, "save_card", this.model.toJSON())); // too aggressive
     this.listenTo(App, "render_board", this.remove.bind(this));
   }
 });

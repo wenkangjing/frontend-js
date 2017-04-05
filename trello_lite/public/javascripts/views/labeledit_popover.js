@@ -4,7 +4,8 @@ var LabelEditPopover = Backbone.View.extend({
     "click .pop-over-header-close-btn": "closePopover",
     "click .pop-over-header-back-btn": "backToLabels",
     "click .label-edit-color-btn": "selectColor",
-    "click .label-edit-save": "saveLabel"
+    "click .label-edit-save": "saveLabel",
+    "click .label-edit-delete": "deleteLabel"
   },
   closePopover: function(e) {
     e.preventDefault();
@@ -16,7 +17,7 @@ var LabelEditPopover = Backbone.View.extend({
     App.trigger("popover_labels", {
       parent: this.parent,
       position: this.position,
-      idCard: this.card.get("id"),
+      idCard: this.idCard
     });
   },
   selectColor: function(e) {
@@ -29,23 +30,42 @@ var LabelEditPopover = Backbone.View.extend({
     e.preventDefault();
     var color = this.$el.find(".label-edit-color-btn.selected").data("color");
     var name = this.$el.find(".card-label-name").val();
-    App.trigger("save_label", {name: name, color: color});
+    if (this.model) {
+      App.trigger("save_label", {id: this.model.get("id"), name: name, color: color});
+    } else {
+      App.trigger("save_label", {name: name, color: color});
+    }
+    this.backToLabels(e);
+  },
+  deleteLabel: function(e) {
+    e.preventDefault();
+    if (this.model) {
+      App.trigger("delete_label", this.model.get("id"));
+    }
     this.backToLabels(e);
   },
   render: function() {
+    var label = (this.model) ? this.model.toJSON() : undefined;
     this.$el.html(this.template({
-      colors: App.colors
+      colors: App.colors,
+      new: !this.model 
     }));
     this.$el.find(".pop-over").css({
       top: this.position.top || 0,
       left: this.position.left || 0
     });
     this.$el.appendTo(this.parent);
+
+    if (this.model) {
+      var selected = this.$el.find(".label-edit-color-btn").filter(function(index, el) {
+        return this.model.get("color") === $(el).data("color");
+      }.bind(this));
+      var name = this.$el.find(".card-label-name").val(this.model.get("color"));
+      selected.addClass("selected");
+    }
   },
-  initialize: function(options) {
-    this.parent = options.parent || App.$el;
-    this.card = options.card;
-    this.position = options.position || {};
+  initialize: function(opt) {
+    _.extend(this, opt);
     this.render();
   }
 });

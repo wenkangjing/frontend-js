@@ -24,9 +24,19 @@ var LabelsPopover = Backbone.View.extend({
       idLabels.push(id);
     }
     this.card.set("idLabels", idLabels);
+    App.trigger("save_card", this.card.toJSON());
   },
   editLabel: function(e) {
     e.preventDefault();
+    var $lb = $(e.target).siblings(".card-label");
+    var id = $lb.data("id");    
+    App.trigger("popover_labeledit", {
+      parent: this.parent,
+      position: this.position,
+      idCard: this.card.get("id"),
+      model: this.collection.get(id)
+    });
+    this.remove();
   },
   newLabel: function(e) {
     e.preventDefault();
@@ -57,10 +67,10 @@ var LabelsPopover = Backbone.View.extend({
     this.$el.appendTo(this.parent);
     this.delegateEvents();
   },
-  initialize: function(options) {
-    this.parent = options.parent;
-    this.position = options.position;
-    this.card = options.card;
+  initialize: function(opt) {
+    _.extend(this, opt);
+    this.card = App.cards.get({id: opt.idCard});
+    this.collection = App.labels;
     this.render();
     this.listenTo(App.labels, "change update", this.render.bind(this));
   }

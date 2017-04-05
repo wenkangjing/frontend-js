@@ -4,8 +4,11 @@ var Helper = {
     var labels = [];
     var ids = ids || [];
     ids.forEach(function(id) {
-      var label = App.labels.findWhere({id: id}).toJSON();
-      labels.push(label);
+      var found = App.labels.findWhere({id: id});
+      if (found) {
+        var label = found.toJSON();
+        labels.push(label);
+      }
     });
     return labels;
   },

@@ -96,6 +96,10 @@ this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
 },"useData":true});
 
 this["JST"]["labeledit_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "<span class=\"pop-over-header-title\">Create Label</span>";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "<span class=\"pop-over-header-title\">Change Label</span>";
+},"5":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<span class=\"label-edit-color-btn\" data-color=\""
@@ -103,12 +107,24 @@ this["JST"]["labeledit_popover"] = Handlebars.template({"1":function(container,d
     + "\" style=\"background:"
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
     + "\"><span class=\"icon-sm icon-check\"></span></span>";
+},"7":function(container,depth0,helpers,partials,data) {
+    return "Create";
+},"9":function(container,depth0,helpers,partials,data) {
+    return "Save";
+},"11":function(container,depth0,helpers,partials,data) {
+    return "<input class=\"card-modal-btn label-edit-delete\" type=\"reset\" value=\"Delete\">";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=depth0 != null ? depth0 : {};
 
-  return "<div class=\"pop-over card-label-edit-pop-over\"> <div class=\"pop-over-header\"><a href=\"#\" class=\"pop-over-header-back-btn icon-sm icon-back\"></a><span class=\"pop-over-header-title\">Create Label</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><h2>Name</h2><input class=\"card-label-name\" type=\"text\" value=\"\" autocomplete=\"off\"><h2>Select a color</h2><div class=\"card-label-color-list\">"
-    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.colors : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div><div class=\"nocolor-notes\"><p>No Color.</p><p>This won't show up on the front of cards</p></div><span class=\"card-modal-btn label-edit-save\">Create</span></div></div>";
+  return "<div class=\"pop-over card-label-edit-pop-over\"> <div class=\"pop-over-header\"><a href=\"#\" class=\"pop-over-header-back-btn icon-sm icon-back\"></a>"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0["new"] : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
+    + "<a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><h2>Name</h2><input class=\"card-label-name\" type=\"text\" autocomplete=\"off\"><h2>Select a color</h2><div class=\"card-label-color-list\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.colors : depth0),{"name":"each","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div><div class=\"nocolor-notes\"><p>No Color.</p><p>This won't show up on the front of cards</p></div><div><input class=\"card-modal-btn label-edit-save\" type=\"submit\" value=\""
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0["new"] : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
+    + "\">"
+    + ((stack1 = helpers.unless.call(alias1,(depth0 != null ? depth0["new"] : depth0),{"name":"unless","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div></div></div>";
 },"useData":true});
 
 this["JST"]["labels_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

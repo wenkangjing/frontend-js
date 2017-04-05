@@ -1,4 +1,15 @@
 var Client = {
+  getCards: function() {
+    $.ajax({
+     method: "get",
+     url: "/cards",
+    }).done(function(json) {
+      App.cards.set(json);
+    }).fail(function() {
+      console.error("Fail to get cards");
+      App.goto("/");
+    });
+  },  
   saveCard: function(card) {
     var json = JSON.stringify(card);
     $.ajax({
@@ -7,9 +18,9 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
+      Client.getCards();
     }).fail(function() {
-      console.error("Fail to save card: " + card.toJSON());
+      console.error("Fail to save card: " + card);
       App.goto("/");
     });
   },
@@ -19,7 +30,7 @@ var Client = {
      url: "/cards",
      data: {id: id}
     }).done(function(json) {
-      console.log(json);
+      Client.getCards();
     }).fail(function() {
       console.error("Fail to delete card: " + id);
       App.goto("/");
@@ -32,7 +43,7 @@ var Client = {
     }).done(function(json) {
       App.labels.set(json);
     }).fail(function() {
-      console.error("Fail to get labels: " + label.toJSON());
+      console.error("Fail to get labels");
       App.goto("/");
     });
   },
@@ -47,7 +58,7 @@ var Client = {
     }).done(function(json) {
       Client.getLabels();
     }).fail(function() {
-      console.error("Fail to save label: " + label.toJSON());
+      console.error("Fail to save label");
       App.goto("/");
     });
   },
@@ -57,7 +68,7 @@ var Client = {
      url: "/labels",
      data: {id: id}
     }).done(function(json) {
-      console.log(json);
+      Client.getLabels();
     }).fail(function() {
       console.error("Fail to delete label: " + id);
       App.goto("/");

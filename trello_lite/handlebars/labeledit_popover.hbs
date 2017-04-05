@@ -1,12 +1,16 @@
 <div class="pop-over card-label-edit-pop-over"> 
   <div class="pop-over-header">
     <a href="#" class="pop-over-header-back-btn icon-sm icon-back"></a>
+    {{#if new}}
     <span class="pop-over-header-title">Create Label</span>
+    {{else}}
+    <span class="pop-over-header-title">Change Label</span>
+    {{/if}}
     <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
   </div>
   <div class="pop-over-content">
     <h2>Name</h2>
-    <input class="card-label-name" type="text" value="" autocomplete="off">
+    <input class="card-label-name" type="text" autocomplete="off">
     <h2>Select a color</h2>
     <div class="card-label-color-list">
       {{#each colors}}
@@ -17,6 +21,11 @@
       <p>No Color.</p>
       <p>This won't show up on the front of cards</p>
     </div>
-    <span class="card-modal-btn label-edit-save">Create</span>
+    <div>
+      <input class="card-modal-btn label-edit-save" type="submit" value="{{#if new}}Create{{else}}Save{{/if}}">
+      {{#unless new}}
+      <input class="card-modal-btn label-edit-delete" type="reset" value="Delete">
+      {{/unless}}
+    </div>
   </div>
 </div>

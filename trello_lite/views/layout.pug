@@ -30,7 +30,7 @@ html
     +javascript_include_tag("application", "router", "helper", "client")
     +javascript_include_tag("models/card", "models/label", "models/list")
     +javascript_include_tag("collections/cards", "collections/labels", "collections/lists")
-    +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/labels_popover", "views/duedate_popover", "views/labeledit_popover")
+    +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/labels_popover", "views/duedate_popover", "views/labeledit_popover", "views/labeldelete_popover")
     script(type="text/javascript").
       App.colors = !{JSON.stringify(colors)}; // immutable
       App.lists = new Lists(!{JSON.stringify(lists)});

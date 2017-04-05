@@ -9,7 +9,6 @@ var LabelsPopover = Backbone.View.extend({
   closePopover: function(e) {
     e.preventDefault();
     this.remove();
-    App.popover = null;
   },
   toggleLabel: function(e) {
     e.preventDefault();
@@ -29,22 +28,13 @@ var LabelsPopover = Backbone.View.extend({
   editLabel: function(e) {
     e.preventDefault();
     var $lb = $(e.target).siblings(".card-label");
-    var id = $lb.data("id");    
-    App.trigger("popover_labeledit", {
-      parent: this.parent,
-      position: this.position,
-      idCard: this.card.get("id"),
-      model: this.collection.get(id)
-    });
+    var id = $lb.data("id");
+    App.trigger("popover_labeledit", _.extend({}, App.popoverOpt, { model: this.collection.get(id) }));
     this.remove();
   },
   newLabel: function(e) {
     e.preventDefault();
-    App.trigger("popover_labeledit", {
-      parent: this.parent,
-      position: this.position,
-      idCard: this.card.get("id")
-    });
+    App.trigger("popover_labeledit", App.popoverOpt);
     this.remove();
   },
   render: function() {
@@ -61,15 +51,15 @@ var LabelsPopover = Backbone.View.extend({
       labels: labels
     }));
     this.$el.find(".pop-over").css({
-      top: this.position.top,
-      left: this.position.left
+      top: this.position.top || 0,
+      left: this.position.left || 0
     });
     this.$el.appendTo(this.parent);
     this.delegateEvents();
   },
   initialize: function(opt) {
     _.extend(this, opt);
-    this.card = App.cards.get({id: opt.idCard});
+    this.card = App.cards.get({id: App.popoverOpt.idCard});
     this.collection = App.labels;
     this.render();
     this.listenTo(App.labels, "change update", this.render.bind(this));

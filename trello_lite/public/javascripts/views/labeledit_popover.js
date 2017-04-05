@@ -10,15 +10,11 @@ var LabelEditPopover = Backbone.View.extend({
   closePopover: function(e) {
     e.preventDefault();
     this.remove();
-    App.popover = null;
   },
   backToLabels: function(e) {
     e.preventDefault();
-    App.trigger("popover_labels", {
-      parent: this.parent,
-      position: this.position,
-      idCard: this.idCard
-    });
+    App.trigger("popover_labels", App.popoverOpt);
+    this.closePopover(e);
   },
   selectColor: function(e) {
     e.preventDefault();
@@ -40,9 +36,8 @@ var LabelEditPopover = Backbone.View.extend({
   deleteLabel: function(e) {
     e.preventDefault();
     if (this.model) {
-      App.trigger("delete_label", this.model.get("id"));
+      App.trigger("popover_labeldelete", _.extend({}, App.popoverOpt, { model: this.model}));
     }
-    this.backToLabels(e);
   },
   render: function() {
     var label = (this.model) ? this.model.toJSON() : undefined;
@@ -52,7 +47,7 @@ var LabelEditPopover = Backbone.View.extend({
     }));
     this.$el.find(".pop-over").css({
       top: this.position.top || 0,
-      left: this.position.left || 0
+      left: this.position.left || 0,
     });
     this.$el.appendTo(this.parent);
 
@@ -60,7 +55,7 @@ var LabelEditPopover = Backbone.View.extend({
       var selected = this.$el.find(".label-edit-color-btn").filter(function(index, el) {
         return this.model.get("color") === $(el).data("color");
       }.bind(this));
-      var name = this.$el.find(".card-label-name").val(this.model.get("color"));
+      var name = this.$el.find(".card-label-name").val(this.model.get("name"));
       selected.addClass("selected");
     }
   },

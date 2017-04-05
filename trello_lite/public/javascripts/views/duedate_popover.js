@@ -10,7 +10,6 @@ var DueDatePopover = Backbone.View.extend({
   closePopover: function(e) {
     e.preventDefault();
     this.remove();
-    App.popover = null;
   },  
   saveDueDate: function(e) {
     this.card.set("due", this.picker.getDate().getTime());
@@ -39,8 +38,8 @@ var DueDatePopover = Backbone.View.extend({
     // handlebars
     this.$el.html(this.template());
     this.$el.find(".pop-over").css({
-      top: this.position.top,
-      left: this.position.left
+      top: this.position.top || 0,
+      left: this.position.left || 0
     });
     this.$el.appendTo(this.parent);
     // pidaday

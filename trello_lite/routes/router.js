@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var _ = require('underscore');
 var accessor = require('./accessor');
 
 var ListsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'lists' }});
@@ -88,12 +89,22 @@ router.get('/comments', function(req, res, next) {
 });
 router.post('/comments', function(req, res, next) {
   var comment = req.body;
-  console.log(comment);
   var array = CommentsAccessor.get();
   if (comment.id) { // edit
     comment= CommentsAccessor.update(comment);
   } else { // new
     comment = CommentsAccessor.add(comment);
+    // update comments count in Card
+    var cards = CardsAccessor.get();
+    var found = _(cards).findWhere({id: comment.idCard});
+    if (found) {
+      if (found.comments) {
+        found.comments = found.comments + 1
+      } else {
+        found.comments = 1;
+      }
+      CardsAccessor.update(found);
+    }
   }
   res.json(comment).end();
 });

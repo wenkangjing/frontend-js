@@ -1,12 +1,23 @@
 var App = {
   $el: $("#application"),
   templates: JST,
+  //
+  // router
+  ////////////////////////////////
   createRouter: function() {
     this.router  = new AppRouter();
     Backbone.history.start({
       pushState: true
     });
-  },  
+  },
+  goto: function(fregment, trigger) {
+    trigger = trigger || false;
+    this.router.navigate(fregment, {trigger: trigger});
+  },
+
+  //
+  // render
+  ////////////////////////////////////
   renderBoard: function() {
     App.trigger("render_board");
     this.lists.forEach(function(list) {
@@ -17,11 +28,20 @@ var App = {
     }.bind(this));
   },
   renderCardModal: function(id) {
-    new CardModalView({model: this.cards.findWhere({id: id})});
+    new CardModalView({
+      model: this.cards.findWhere({id: id})
+    });
   },
-  renderCardEditor: function(id) {
-    new CardEditorView({model: this.cards.findWhere({id: id})});
+  renderCardEditor: function(id, pos) {
+    new CardEditorView({
+      pos: pos,
+      model: this.cards.findWhere({id: id})
+    });
   },
+
+  //
+  // popover
+  ////////////////////////////////////
   popoverLabels: function(opt) {
     if (this.popoverView) { 
       this.popoverView.remove(); 
@@ -52,10 +72,9 @@ var App = {
     }
     this.popoverView = new LabelDeletePopover(opt)
   },
-  goto: function(fregment, trigger) {
-    trigger = trigger || false;
-    this.router.navigate(fregment, {trigger: trigger});
-  },
+  // 
+  // callbacks
+  /////////////////////////////////////////////
   buildEvents: function() {
     this.off().on({
       // UI state

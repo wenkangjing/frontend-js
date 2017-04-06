@@ -172,6 +172,42 @@
 .pop-over .pop-over-content {
   padding: 0 10px 10px;
 }
+.label-sm {
+  float: left;
+  color: #fff;
+  height: 8px;
+  padding: 3px 6px;
+  margin: 0 3px 3px 0;
+  width: 42px;
+  max-width: 100%;
+  border-radius: 3px;
+  text-overflow: ellipsis;
+}
+.badge {
+  display: inline-block;
+  max-width: 100%;
+  color: #8c8c8c;
+  padding: 1px 2px;
+  margin: 0 4px 4px 0;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+.badge.past {
+  border-radius: 3px;
+  background-color: #ec9488;
+}
+.badge.past span {
+  color: #fff;
+}
+.badge.completed {
+  background-color: #5aac44;
+  border-radius: 3px;
+}
+.badge.completed span {
+  color: #fff;
+}
 /* box-sizing reset */
 html {
   box-sizing: border-box;
@@ -367,43 +403,8 @@ li {
   position: relative;
   overflow: hidden;
 }
-.card .label {
-  float: left;
-  color: #fff;
-  height: 8px;
-  padding: 3px 6px;
-  margin: 0 3px 3px 0;
-  width: 42px;
-  max-width: 100%;
-  border-radius: 3px;
-  text-overflow: ellipsis;
-}
 .card .name {
   margin: 0 0 4px 0;
-}
-.card .badge {
-  display: inline-block;
-  max-width: 100%;
-  color: #8c8c8c;
-  padding: 1px 2px;
-  margin: 0 4px 4px 0;
-  overflow: hidden;
-  text-decoration: none;
-  vertical-align: top;
-}
-.card .badge.past {
-  border-radius: 3px;
-  background-color: #ec9488;
-}
-.card .badge.past span {
-  color: #fff;
-}
-.card .badge.completed {
-  background-color: #5aac44;
-  border-radius: 3px;
-}
-.card .badge.completed span {
-  color: #fff;
 }
 .card-editor {
   position: fixed;
@@ -414,30 +415,42 @@ li {
   background: rgba(0,0,0,0.6);
   z-index: 20;
 }
-.card-editor-close-btn {
-  position: absolute;
+.card-editor .card-editor-close-btn {
+  position: fixed;
   top: 2px;
   right: 2px;
 }
-.card-editor-body {
+.card-editor .card-editor-body {
   position: absolute;
   background: transparent;
+  width: 410px;
 }
-.card-editor-body .card-editor-content {
-  position: absolute;
+.card-editor .card-editor-main {
+  display: inline-block;
   width: 250px;
-  top: 0;
-  left: 0;
+  vertical-align: top;
 }
-.card-editor-body .card-editor-content .card-editor-input {
+.card-editor .card-editor-ops {
+  width: 160px;
+  float: right;
+  vertical-align: top;
+  background: transparent;
+}
+.card-editor .card-editor-wrapper {
+  padding: 5px;
+  background: #fff;
+  border-radius: 3px;
+}
+.card-editor .card-editor-input {
   width: 240px;
   height: 90px;
-  resize: none;
+  padding: 5px 0;
+  outline: 0;
   word-wrap: break-word;
   overflow: hidden;
   background: #fff;
 }
-.card-editor-body .card-editor-content .card-editor-save {
+.card-editor .card-editor-save {
   display: inline-block;
   color: #fff;
   line-height: 22px;
@@ -448,15 +461,7 @@ li {
   border-radius: 3px;
   cursor: pointer;
 }
-.card-editor-body .card-editor-ops {
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  left: 250px;
-  top: 0;
-  background: transparent;
-}
-.card-editor-body .card-editor-ops .card-editor-btn-link {
+.card-editor .card-editor-btn-link {
   float: left;
   clear: both;
   color: #e6e6e6;
@@ -467,10 +472,19 @@ li {
   text-decoration: none;
   background: rgba(0,0,0,0.6);
 }
-.card-editor-body .card-editor-ops .card-editor-btn-link:hover {
+.card-editor .card-editor-btn-link:hover {
   background: rgba(0,0,0,0.8);
   color: #fff;
   transform: translateX(5px);
+}
+.card-editor .card-editor-ops.left {
+  float: left;
+}
+.card-editor .card-editor-ops.left .card-editor-btn-link {
+  float: right;
+}
+.card-editor .card-editor-ops.left .card-editor-btn-link:hover {
+  transform: translateX(-5px);
 }
 .card-modal {
   position: relative;

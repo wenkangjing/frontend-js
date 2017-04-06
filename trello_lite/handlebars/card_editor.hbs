@@ -1,20 +1,41 @@
 <div class="card-editor">
   <span class="icon-lg icon-close card-editor-close-btn"></span>
   <div class="card-editor-body clearfix">
-    <div class="card-editor-content">
-      <header>
+    <div class="card-editor-main">
+      <div class="card-editor-wrapper">
         <div class="labels">
           {{#each labels}}
-            <span class="label" data-id="{{id}}" style="background:{{toRGB color}}"></span>
+            <span class="label-sm" data-id="{{id}}" style="background:{{toRGB color}}"></span>
           {{/each}}
-        </div>    
-      </header>
-      <form action="">
-        <textarea class="card-editor-input">{{name}}</textarea>    
-        <input class="card-editor-save" type="submit" value="Save">
-      </form>
+        </div>
+        <textarea class="card-editor-input">{{name}}</textarea>
+        <div class="badges">
+          {{#if subscribed}}
+          <div class="badge">
+            <span class="icon-sm icon-subscribe"></span>
+          </div>
+          {{/if}}
+          {{#if due}}
+          <div class="badge due {{isDuePast due}}">
+            <span class="icon-sm icon-clock"></span>
+            <span class="badge-text">{{formateDate due}}</span>
+            </div>
+          {{/if}}
+          {{#if description}}
+          <div class="badge">
+            <span class="icon-sm icon-description"></span>
+          </div>
+          {{/if}}
+          {{#if comments}}
+          <div class="badge">
+            <span class="icon-sm icon-comment"></span>
+            <span class="badge-text">{{comments}}</span>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+      <input class="card-editor-save" type="submit" value="Save">
     </div>
-    <div>
     <div class="card-editor-ops">
       <a class="card-editor-btn-link card-editor-labels" href="#">
         <span class="icon-sm icon-label light"></span>
@@ -31,6 +52,10 @@
       <a class="card-editor-btn-link card-editor-due-date" href="#">
         <span class="icon-sm icon-clock light"></span>
         <span>Change Due Date</span>
+      </a>
+      <a class="card-editor-btn-link card-editor-subscribe" href="#">
+        <span class="icon-sm icon-subscribe light"></span>
+        <span>Subscribe</span>
       </a>
       <a class="card-editor-btn-link card-editor-archive" href="#">
         <span class="icon-sm icon-archive light"></span>

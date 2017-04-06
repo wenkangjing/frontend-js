@@ -3,19 +3,42 @@ this["JST"] = this["JST"] || {};
 this["JST"]["card_editor"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
-  return "<span class=\"label\" data-id=\""
+  return "<span class=\"label-sm\" data-id=\""
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\" style=\"background:"
     + alias3((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))
     + "\"></span>";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"badge\"><span class=\"icon-sm icon-subscribe\"></span></div>";
+},"5":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "<div class=\"badge due "
+    + alias3((helpers.isDuePast || (depth0 && depth0.isDuePast) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"isDuePast","hash":{},"data":data}))
+    + "\"><span class=\"icon-sm icon-clock\"></span><span class=\"badge-text\">"
+    + alias3((helpers.formateDate || (depth0 && depth0.formateDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formateDate","hash":{},"data":data}))
+    + "</span></div>";
+},"7":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"badge\"><span class=\"icon-sm icon-description\"></span></div>";
+},"9":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<div class=\"badge\"><span class=\"icon-sm icon-comment\"></span><span class=\"badge-text\">"
+    + container.escapeExpression(((helper = (helper = helpers.comments || (depth0 != null ? depth0.comments : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"comments","hash":{},"data":data}) : helper)))
+    + "</span></div>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
-  return "<div class=\"card-editor\"><span class=\"icon-lg icon-close card-editor-close-btn\"></span><div class=\"card-editor-body clearfix\"><div class=\"card-editor-content\"><header><div class=\"labels\">"
+  return "<div class=\"card-editor\"><span class=\"icon-lg icon-close card-editor-close-btn\"></span><div class=\"card-editor-body clearfix\"><div class=\"card-editor-main\"><div class=\"card-editor-wrapper\"><div class=\"labels\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</div></header><form action=\"\"><textarea class=\"card-editor-input\">"
+    + "</div><textarea class=\"card-editor-input\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</textarea><input class=\"card-editor-save\" type=\"submit\" value=\"Save\"></form></div><div><div class=\"card-editor-ops\"><a class=\"card-editor-btn-link card-editor-labels\" href=\"#\"><span class=\"icon-sm icon-label light\"></span><span>Edit Labels</span></a><a class=\"card-editor-btn-link card-editor-move\" href=\"#\"><span class=\"icon-sm icon-move light\"></span><span>Move</span></a><a class=\"card-editor-btn-link card-editor-copy\" href=\"#\"><span class=\"icon-sm icon-card light\"></span><span>Copy</span></a><a class=\"card-editor-btn-link card-editor-due-date\" href=\"#\"><span class=\"icon-sm icon-clock light\"></span><span>Change Due Date</span></a><a class=\"card-editor-btn-link card-editor-archive\" href=\"#\"><span class=\"icon-sm icon-archive light\"></span><span>Archive</span></a></div></div></div>";
+    + "</textarea><div class=\"badges\">"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.comments : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div></div><input class=\"card-editor-save\" type=\"submit\" value=\"Save\"></div><div class=\"card-editor-ops\"><a class=\"card-editor-btn-link card-editor-labels\" href=\"#\"><span class=\"icon-sm icon-label light\"></span><span>Edit Labels</span></a><a class=\"card-editor-btn-link card-editor-move\" href=\"#\"><span class=\"icon-sm icon-move light\"></span><span>Move</span></a><a class=\"card-editor-btn-link card-editor-copy\" href=\"#\"><span class=\"icon-sm icon-card light\"></span><span>Copy</span></a><a class=\"card-editor-btn-link card-editor-due-date\" href=\"#\"><span class=\"icon-sm icon-clock light\"></span><span>Change Due Date</span></a><a class=\"card-editor-btn-link card-editor-subscribe\" href=\"#\"><span class=\"icon-sm icon-subscribe light\"></span><span>Subscribe</span></a><a class=\"card-editor-btn-link card-editor-archive\" href=\"#\"><span class=\"icon-sm icon-archive light\"></span><span>Archive</span></a></div></div></div>";
 },"useData":true});
 
 this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -89,7 +112,7 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
-  return "<span class=\"label\" data-id=\""
+  return "<span class=\"label-sm\" data-id=\""
     + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\" style=\"background:"
     + alias3((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))

@@ -7,8 +7,9 @@ var CardView = Backbone.View.extend({
   onClick: function(e) {
     e.preventDefault();
     var id =  this.model.get("id");
-    if ($(e.target).hasClass("card-editor-btn")) {
-      App.renderCardEditor(id);
+    var $e = $(e.target);
+    if ($e.hasClass("card-editor-btn")) {
+      App.renderCardEditor(id, $e.closest(".card").offset()); // relative to the document
     } else {
       App.renderCardModal(id);
       App.goto("/cards/" + id);

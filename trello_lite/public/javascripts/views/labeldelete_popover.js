@@ -8,6 +8,7 @@ var LabelDeletePopover = Backbone.View.extend({
   closePopover: function(e) {
     e.preventDefault();
     this.remove();
+    App.popoverView = null;
   },
   backToLabels: function(e) {
     e.preventDefault();

@@ -17,7 +17,7 @@ var CardView = Backbone.View.extend({
   render: function() {
     var json = this.model.toJSON();
     json.labels = Helper.getLabelObjects(this.model.get("idLabels"));
-    json.comments = Helper.getCommentsByCard(this.model.get("id")).length;
+    json.comments = Helper.getCommentsCount(this.model.get("id"));
     var idList = this.model.get("idList");
     var parent = App.$el.find(".list[data-id=" + idList + "] .cards");
     this.$el.html(this.template(json));
@@ -28,6 +28,6 @@ var CardView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "change", this.render.bind(this));
     this.listenTo(this.model, "remove", this.remove.bind(this));
-    this.listenTo(App.comments, "change update", this.render.bind(this));
+    this.listenTo(App.activities, "change update", this.render.bind(this));
   }
 });

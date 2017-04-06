@@ -215,19 +215,29 @@ basics()
       background: #D6DADC
       border-radius: 3px
   .activity
+    li
+      padding: 10px 0
+      border-bottom: 1px solid #E2E4E6
     .user-initials-sm
       vertical-align: middle
+    .action
+      display: inline-block
     .comment
       display: inline-block
-      max-width: auto
+      max-width: 100%
       padding: 5px
       border-radius: 3px
       margin: 5px 0
       background: #fff
       vertical-align: middle
+      overflow: hidden
     .comment-ops
       font-size: 12px
-
+    .timestamp
+      font-size: 12px
+      cursor: pointer
+      &:hover
+        text-decoration: underline
 .card-modal > sidebar
   float: right
   padding: 8px 12px

@@ -9,7 +9,7 @@ var dict = {
   colors: path.resolve(dir, "colors.json"),
   cards: path.resolve(dir, "cards.json"),
   lists: path.resolve(dir, "lists.json"),
-  comments: path.resolve(dir, "comments.json"),
+  activities: path.resolve(dir, "activities.json"),
 };
 
 module.exports = {

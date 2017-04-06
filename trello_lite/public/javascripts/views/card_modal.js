@@ -48,6 +48,10 @@ var CardModalView = Backbone.View.extend({
     var description = this.$desc.serializeArray()[0].value;
     this.model.set("description", description);
     App.trigger("save_card", this.model.toJSON());
+    App.trigger("save_action", {
+      action: "modified description",
+      idCard: this.model.get("id")
+    });
     this.$desc.prev().show();
     this.$desc.hide();
   },
@@ -62,8 +66,7 @@ var CardModalView = Backbone.View.extend({
     var $f = this.$el.find(".comment form");
     var comment = $f.serializeArray()[0].value;
     App.trigger("save_comment", {
-      content: comment,
-      datetime: (new Date()).valueOf(),
+      comment: comment,
       idCard: this.model.get("id")
     });
   },
@@ -72,6 +75,10 @@ var CardModalView = Backbone.View.extend({
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
     App.trigger("save_card", this.model.toJSON());
+    App.trigger("save_action", {
+      action: (status) ? "subscribed" : "unsubscribed" + " this card",
+      idCard: this.model.get("id")
+    });
   },
   popoverLabels: function(e) {
     e.preventDefault();
@@ -96,12 +103,9 @@ var CardModalView = Backbone.View.extend({
     var json = this.model.toJSON();
     json.activities = [];
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
-    var comments = Helper.getCommentsByCard(this.model.get("id"));
-    comments = _(comments).sortBy(function(it) {
-      return -it.datetime.valueOf();
-    });
-    if (comments.length > 0) {
-      json.activities = json.activities.concat(comments);
+    var activities = Helper.getActivitiesByCard(this.model.get("id"));
+    if (activities.length > 0) {
+      json.activities = json.activities.concat(activities);
     }
 
     // build html
@@ -118,7 +122,7 @@ var CardModalView = Backbone.View.extend({
   initialize: function(options) {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));
-    this.listenTo(App.comments, "change update", this.render.bind(this));
+    this.listenTo(App.activities, "change update", this.render.bind(this));
     this.listenTo(App.labels, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
     App.popoverView = null;

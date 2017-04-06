@@ -10,15 +10,25 @@ var DueDatePopover = Backbone.View.extend({
   closePopover: function(e) {
     e.preventDefault();
     this.remove();
+    App.popoverView = null;
   },  
   saveDueDate: function(e) {
-    this.card.set("due", this.picker.getDate().getTime());
+    var due = this.picker.getDate();
+    this.card.set("due", due.getTime());
     App.trigger("save_card", this.card.toJSON());
+    App.trigger("save_action", {
+      action: "set this card to be dued " + due.toLocaleString(),
+      idCard: this.card.get("id")
+    });
     this.closePopover(e);
   },
   removeDueDate: function(e) {
     this.card.set("due", false);
     App.trigger("save_card", this.card.toJSON());
+    App.trigger("save_action", {
+      action: "removed due date from this card",
+      idCard: this.card.get("id")
+    });
     this.closePopover(e);
   },  
   checkTime: function() {

@@ -72,7 +72,8 @@ var App = {
       "save_label": Client.saveLabel.bind(Client),
       "delete_label": Client.deleteLabel.bind(Client),
       "save_comment": Client.saveComment.bind(Client),
-      "delete_comment": Client.deleteComment.bind(Client),
+      "save_action": Client.saveAction.bind(Client),
+      "delete_activity": Client.deleteActivity.bind(Client),
     });
   },
   init: function() {

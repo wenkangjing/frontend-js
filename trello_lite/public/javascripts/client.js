@@ -14,6 +14,7 @@ var Client = {
     });
   },  
   saveCard: function(card) {
+    delete card.comments;
     var json = JSON.stringify(card);
     $.ajax({
      method: "post",
@@ -79,43 +80,59 @@ var Client = {
       console.error("Fail to delete label: " + id);
       App.goto("/");
     });
-  },  
+  },
+
   // 
   // comments
   ////////////////////////////////////////
-  getComments: function() {
+  getActivities: function() {
     $.ajax({
      method: "get",
-     url: "/comments",
+     url: "/activities",
     }).done(function(json) {
-      App.comments.set(json);
+      App.activities.set(json);
     }).fail(function() {
-      console.error("Fail to get comments");
+      console.error("Fail to get activities");
       App.goto("/");
     });
   },
-  saveComment: function(label) {
-    var json = JSON.stringify(label);
-    console.log(json)
+  saveComment: function(comment) {
+    comment.datetime = (new Date()).valueOf();
+    var json = JSON.stringify(comment);
     $.ajax({
      method: "post",
-     url: "/comments",
+     url: "/activities",
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      Client.getComments();
+      Client.getActivities();
     }).fail(function() {
       console.error("Fail to add comment");
       App.goto("/");
     });
   },
-  deleteComment: function(id) {
+  saveAction: function(action) {
+    action.datetime = (new Date()).valueOf();
+    var json = JSON.stringify(action);
+    $.ajax({
+     method: "post",
+     url: "/activities",
+     contentType: "application/json",
+     data: json
+    }).done(function(json) {
+      Client.getActivities();
+    }).fail(function() {
+      console.error("Fail to add action");
+      App.goto("/");
+    });
+  },  
+  deleteActivity: function(id) {
     $.ajax({
      method: "delete",
-     url: "/comments",
+     url: "/activities",
      data: {id: id}
     }).done(function(json) {
-      Client.getComments();
+      Client.getActivities();
     }).fail(function() {
       console.error("Fail to delete comments: " + id);
       App.goto("/");

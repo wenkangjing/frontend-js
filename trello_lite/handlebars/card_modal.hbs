@@ -53,12 +53,16 @@
         {{#each activities}}
           <li data-id="{{id}}">
             <span class="user-initials-sm indent"></span>
-            <p class="comment">{{content}}</p>
+            {{#if comment}}
+            <p class="comment">{{comment}}</p>
             <p class="comment-ops">
-              {{formatDatetime datetime}}
+              <a class="timestamp">{{formatDatetime datetime}}</a>
               <span class="card-modal-edit-comment">Edit</span>
               <span class="card-modal-delete-comment">Delete</span>
             </p>
+            {{else}}
+              <p class="action">{{action}} at <a class="timestamp">{{formatDatetime datetime}}</a></p>
+            {{/if}}
           </li>
         {{/each}}
         <li></li>

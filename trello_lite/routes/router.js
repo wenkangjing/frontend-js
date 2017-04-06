@@ -6,7 +6,7 @@ var accessor = require('./accessor');
 var ListsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'lists' }});
 var CardsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'cards' }});
 var LabelsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'labels' }});
-var CommentsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'comments' }});
+var ActivitiesAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'activities' }});
 var ColorsAccessor = Object.create(accessor, {name: { writable: false, configurable:true, value: 'colors' }});
 
 router.param('id', function (req, res, next, id) {
@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
     cards: CardsAccessor.get(),
     labels: LabelsAccessor.get(),
     colors: ColorsAccessor.get(),
-    comments: CommentsAccessor.get(),
+    activities: ActivitiesAccessor.get(),
   });
 });
 
@@ -32,10 +32,9 @@ router.get('/cards/:id', function(req, res, next) {
     cards: CardsAccessor.get(),
     labels: LabelsAccessor.get(),
     colors: ColorsAccessor.get(),
-    comments: CommentsAccessor.get(),
+    activities: ActivitiesAccessor.get(),
   });
 });
-
 
 
 //
@@ -82,29 +81,18 @@ router.delete('/cards', function(req, res) {
 });
 
 //
-// comments
+// activities
 //////////////////////////////////////////////////////////
-router.get('/comments', function(req, res, next) {
-  res.json(CommentsAccessor.get()).end();
+router.get('/activities', function(req, res, next) {
+  res.json(ActivitiesAccessor.get()).end();
 });
-router.post('/comments', function(req, res, next) {
+router.post('/activities', function(req, res, next) {
   var comment = req.body;
-  var array = CommentsAccessor.get();
+  var array = ActivitiesAccessor.get();
   if (comment.id) { // edit
-    comment= CommentsAccessor.update(comment);
+    comment= ActivitiesAccessor.update(comment);
   } else { // new
-    comment = CommentsAccessor.add(comment);
-    // update comments count in Card
-    var cards = CardsAccessor.get();
-    var found = _(cards).findWhere({id: comment.idCard});
-    if (found) {
-      if (found.comments) {
-        found.comments = found.comments + 1
-      } else {
-        found.comments = 1;
-      }
-      CardsAccessor.update(found);
-    }
+    comment = ActivitiesAccessor.add(comment);
   }
   res.json(comment).end();
 });

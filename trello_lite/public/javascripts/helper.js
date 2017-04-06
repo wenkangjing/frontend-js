@@ -12,11 +12,22 @@ var Helper = {
     });
     return labels;
   },
-  getCommentsByCard: function(idCard) {
-    return App.comments.toJSON().filter(function(cmt) {
+  getActivitiesByCard: function(idCard) {
+    return App.activities.toJSON().filter(function(cmt) {
       return cmt.idCard === idCard;
-    })
+    }).sort(function(a, b) {
+      return a.datetime < b.datetime;
+    });    
   },
+  getCommentsCount: function(idCard) {
+    return App.activities.toJSON().reduce(function(count, cmt) {
+       if (cmt.idCard === idCard && !!cmt.comment) {
+         return count + 1
+       } else {
+         return count;
+       }
+    }, 0);
+  },  
   buildTemplates: function() {
     Handlebars.registerHelper('formateDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

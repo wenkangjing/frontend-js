@@ -48,10 +48,6 @@ var CardModalView = Backbone.View.extend({
     var description = this.$desc.serializeArray()[0].value;
     this.model.set("description", description);
     App.trigger("save_card", this.model.toJSON());
-    App.trigger("save_action", {
-      action: "modified description",
-      idCard: this.model.get("id")
-    });
     this.$desc.prev().show();
     this.$desc.hide();
   },
@@ -75,10 +71,6 @@ var CardModalView = Backbone.View.extend({
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
     App.trigger("save_card", this.model.toJSON());
-    App.trigger("save_action", {
-      action: (status) ? "subscribed" : "unsubscribed" + " this card",
-      idCard: this.model.get("id")
-    });
   },
   popoverLabels: function(e) {
     e.preventDefault();

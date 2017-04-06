@@ -360,7 +360,7 @@ li {
   top: 4px;
   z-index: 20;
 }
-.card .card-ops .card-edit {
+.card .card-ops .card-editor-btn {
   border-radius: 3px;
 }
 .card > header {
@@ -404,6 +404,73 @@ li {
 }
 .card .badge.completed span {
   color: #fff;
+}
+.card-editor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 20;
+}
+.card-editor-close-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+.card-editor-body {
+  position: absolute;
+  background: transparent;
+}
+.card-editor-body .card-editor-content {
+  position: absolute;
+  width: 250px;
+  top: 0;
+  left: 0;
+}
+.card-editor-body .card-editor-content .card-editor-input {
+  width: 240px;
+  height: 90px;
+  resize: none;
+  word-wrap: break-word;
+  overflow: hidden;
+  background: #fff;
+}
+.card-editor-body .card-editor-content .card-editor-save {
+  display: inline-block;
+  color: #fff;
+  line-height: 22px;
+  font-weight: 700;
+  text-align: center;
+  padding: 7px 20px;
+  margin: 8px 4px 8px 0;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.card-editor-body .card-editor-ops {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  left: 250px;
+  top: 0;
+  background: transparent;
+}
+.card-editor-body .card-editor-ops .card-editor-btn-link {
+  float: left;
+  clear: both;
+  color: #e6e6e6;
+  display: block;
+  padding: 6px 9pt 6px 8px;
+  border-radius: 3px;
+  margin: 0 0 4px 8px;
+  text-decoration: none;
+  background: rgba(0,0,0,0.6);
+}
+.card-editor-body .card-editor-ops .card-editor-btn-link:hover {
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  transform: translateX(5px);
 }
 .card-modal {
   position: relative;

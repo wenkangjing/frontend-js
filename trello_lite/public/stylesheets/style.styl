@@ -99,7 +99,7 @@ basics()
     right: 4px
     top: 4px
     z-index: 20
-    .card-edit
+    .card-editor-btn
       border-radius: 3px
   > header
     position: relative
@@ -132,10 +132,70 @@ basics()
     span
       color: #fff
   .badge.completed
-    background-color: #5AAC44;
-    border-radius: 3px;
+    background-color: #5AAC44
+    border-radius: 3px
     span
       color: #fff
+
+.card-editor
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(0,0,0,.6)
+    z-index: 20
+  .card-editor-close-btn
+    position: absolute
+    top: 2px
+    right 2px
+  .card-editor-body
+    position: absolute
+    background: transparent
+    .card-editor-content
+      position: absolute
+      width: 250px
+      top: 0
+      left: 0
+      .card-editor-input
+        width: 240px
+        height: 90px // fixme to be autogrow
+        resize: none
+        word-wrap: break-word
+        overflow: hidden 
+        background: #fff
+      .card-editor-save
+        display: inline-block
+        color: #fff
+        line-height: 22px
+        font-weight: 700
+        text-align: center
+        padding: 7px 20px
+        margin: 8px 4px 8px 0
+        border-radius: 3px
+        cursor: pointer
+    .card-editor-ops
+      position: absolute
+      width: 240px
+      height: 240px
+      left: 250px
+      top: 0
+      background: transparent
+      .card-editor-btn-link
+        float: left
+        clear: both
+        color: #e6e6e6
+        display: block
+        padding: 6px 9pt 6px 8px
+        border-radius: 3px
+        margin: 0 0 4px 8px
+        text-decoration: none
+        background: rgba(0,0,0,.6)
+        &:hover
+          background: rgba(0,0,0,.8)
+          color: #fff
+          transform: translateX(5px)
+
 
 .card-modal
   position: relative
@@ -365,15 +425,15 @@ basics()
     background-image: none
     text-decoration: underline
     &:hover
-      color: #4d4d4d;
-      background-color: #D6DADC;
+      color: #4d4d4d
+      background-color: #D6DADC
   .pika-select-month, .pika-select-year
     padding: 0 4px
     border-radius: 3px
     text-decoration: underline
     &:hover
-      color: #4d4d4d;
-      background-color: #D6DADC;
+      color: #4d4d4d
+      background-color: #D6DADC
   table
     border-collapse: collapse
     border-spacing: 0
@@ -384,7 +444,7 @@ basics()
   th
     color: #4d4d4d
   .pika-button
-    line-height: 22px;
+    line-height: 22px
     font-size: 14px
     text-align: center
     border-radius: 0
@@ -429,8 +489,8 @@ basics()
       display: inline-block
       color: #fff
   .nocolor-notes
-    width: 200px;
-    display: inline-block;
+    width: 200px
+    display: inline-block
     vertical-align: top
   .label-edit-save
     outline: 0

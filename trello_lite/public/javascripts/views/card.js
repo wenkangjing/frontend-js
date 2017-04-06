@@ -7,8 +7,8 @@ var CardView = Backbone.View.extend({
   onClick: function(e) {
     e.preventDefault();
     var id =  this.model.get("id");
-    if ($(e.target).hasClass("card-edit")) {
-      App.trigger("card_popover", id);
+    if ($(e.target).hasClass("card-editor-btn")) {
+      App.renderCardEditor(id);
     } else {
       App.renderCardModal(id);
       App.goto("/cards/" + id);

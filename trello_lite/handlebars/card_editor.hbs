@@ -1,0 +1,41 @@
+<div class="card-editor">
+  <span class="icon-lg icon-close card-editor-close-btn"></span>
+  <div class="card-editor-body clearfix">
+    <div class="card-editor-content">
+      <header>
+        <div class="labels">
+          {{#each labels}}
+            <span class="label" data-id="{{id}}" style="background:{{toRGB color}}"></span>
+          {{/each}}
+        </div>    
+      </header>
+      <form action="">
+        <textarea class="card-editor-input">{{name}}</textarea>    
+        <input class="card-editor-save" type="submit" value="Save">
+      </form>
+    </div>
+    <div>
+    <div class="card-editor-ops">
+      <a class="card-editor-btn-link card-editor-labels" href="#">
+        <span class="icon-sm icon-label light"></span>
+        <span>Edit Labels</span>
+      </a>
+      <a class="card-editor-btn-link card-editor-move" href="#">
+        <span class="icon-sm icon-move light"></span>
+        <span>Move</span>
+      </a>
+      <a class="card-editor-btn-link card-editor-copy" href="#">
+        <span class="icon-sm icon-card light"></span>
+        <span>Copy</span>
+      </a>
+      <a class="card-editor-btn-link card-editor-due-date" href="#">
+        <span class="icon-sm icon-clock light"></span>
+        <span>Change Due Date</span>
+      </a>
+      <a class="card-editor-btn-link card-editor-archive" href="#">
+        <span class="icon-sm icon-archive light"></span>
+        <span>Archive</span>
+      </a>
+    </div>
+  </div>
+</div>

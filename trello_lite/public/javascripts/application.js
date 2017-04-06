@@ -19,8 +19,8 @@ var App = {
   renderCardModal: function(id) {
     new CardModalView({model: this.cards.findWhere({id: id})});
   },
-  popoverCardEdit: function(model) {
-    console.log("popoverCardEdit - inline card editor");
+  renderCardEditor: function(id) {
+    new CardEditorView({model: this.cards.findWhere({id: id})});
   },
   popoverLabels: function(opt) {
     if (this.popoverView) { 
@@ -59,7 +59,6 @@ var App = {
   buildEvents: function() {
     this.off().on({
       // UI state
-      "popover_cardedit": this.popoverCardEdit.bind(this),
       "popover_labels": this.popoverLabels.bind(this),
       "popover_labeledit": this.popoverLabelEdit.bind(this),
       "popover_labeldelete": this.popoverLabelConfirm.bind(this),

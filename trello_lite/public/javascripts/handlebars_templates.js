@@ -60,6 +60,8 @@ this["JST"]["card_editor"] = Handlebars.template({"1":function(container,depth0,
 },"useData":true});
 
 this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "<span class=\"icon-sm icon-subscribe\"></span>";
+},"3":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "<span class=\"card-modal-label\" data-id=\""
@@ -69,61 +71,73 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
     + "\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>";
-},"3":function(container,depth0,helpers,partials,data) {
+},"5":function(container,depth0,helpers,partials,data) {
+    var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "<div class=\"badge due "
+    + alias3((helpers.isDuePast || (depth0 && depth0.isDuePast) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"isDuePast","hash":{},"data":data}))
+    + "\"><span class=\"icon-sm icon-clock\"></span><span class=\"badge-text\">"
+    + alias3((helpers.formateDate || (depth0 && depth0.formateDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formateDate","hash":{},"data":data}))
+    + "</span></div>";
+},"7":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "<h3>Description</h3><a class=\"card-modal-edit-description\">Edit</a><p>"
     + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
     + "</p>";
-},"5":function(container,depth0,helpers,partials,data) {
+},"9":function(container,depth0,helpers,partials,data) {
     return "<a class=\"card-modal-create-description\"><span class=\"icon-sm icon-description\"></span>Edit the description...</a>";
-},"7":function(container,depth0,helpers,partials,data) {
+},"11":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)));
-},"9":function(container,depth0,helpers,partials,data) {
+},"13":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
   return "<li data-id=\""
     + container.escapeExpression(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "\"><span class=\"user-initials-sm indent\"></span>"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.comment : depth0),{"name":"if","hash":{},"fn":container.program(10, data, 0),"inverse":container.program(12, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.comment : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.program(16, data, 0),"data":data})) != null ? stack1 : "")
     + "</li>";
-},"10":function(container,depth0,helpers,partials,data) {
+},"14":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "<p class=\"comment\">"
     + alias3(((helper = (helper = helpers.comment || (depth0 != null ? depth0.comment : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"comment","hash":{},"data":data}) : helper)))
     + "</p><p class=\"comment-ops\"><a class=\"timestamp\">"
-    + alias3((helpers.formatDatetime || (depth0 && depth0.formatDatetime) || alias2).call(alias1,(depth0 != null ? depth0.datetime : depth0),{"name":"formatDatetime","hash":{},"data":data}))
+    + alias3((helpers.formatDatetime || (depth0 && depth0.formatDatetime) || alias2).call(alias1,(depth0 != null ? depth0.created : depth0),{"name":"formatDatetime","hash":{},"data":data}))
     + "</a><span class=\"card-modal-edit-comment\">Edit</span><span class=\"card-modal-delete-comment\">Delete</span></p>";
-},"12":function(container,depth0,helpers,partials,data) {
+},"16":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
   return "<p class=\"action\">"
     + alias3(((helper = (helper = helpers.action || (depth0 != null ? depth0.action : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"action","hash":{},"data":data}) : helper)))
     + " at <a class=\"timestamp\">"
-    + alias3((helpers.formatDatetime || (depth0 && depth0.formatDatetime) || alias2).call(alias1,(depth0 != null ? depth0.datetime : depth0),{"name":"formatDatetime","hash":{},"data":data}))
+    + alias3((helpers.formatDatetime || (depth0 && depth0.formatDatetime) || alias2).call(alias1,(depth0 != null ? depth0.created : depth0),{"name":"formatDatetime","hash":{},"data":data}))
     + "</a></p>";
-},"14":function(container,depth0,helpers,partials,data) {
+},"18":function(container,depth0,helpers,partials,data) {
     return " <span class=\"icon-sm icon-check light\"></span>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<div class=\"overlay\"><div class=\"card-modal clearfix\"><header><h2><span class=\"icon-lg icon-card indent\"></span><span>"
+  return "<div class=\"overlay\"><div class=\"card-modal clearfix\"><header><h2><span class=\"icon-lg icon-card indent\"></span><span class=\"card-modal-title\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span></h2><p>in list <a href=\"#\">"
+    + "</span>"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</h2><p>in list <a href=\"#\">"
     + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
     + "</a></p><a class=\"icon-lg icon-close dialog-close-btn\" href=\"#\"></a></header><main><section class=\"name\"><div class=\"labels\"><h3>Labels</h3><div>"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "<span class=\"card-modal-add-label dark-hover icon-lg icon-add\"></span></div></div><div class=\"description\">"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "<span class=\"card-modal-add-label dark-hover icon-lg icon-add\"></span></div></div>"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "<div class=\"description\">"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data})) != null ? stack1 : "")
     + "<form action=\"\"><textarea class=\"description-input\" name=\"description\" placeholder=\"Write a comment...\">"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</textarea><input class=\"card-modal-btn\" type=\"submit\" value=\"Save\"><a class=\"icon-lg icon-close description-close-btn\" href=\"#\"></a></form></div></section><section class=\"comment\"><h2><span class=\"icon-lg icon-comment indent\"></span><span>Add Comment</span></h2><form action=\"\"><span class=\"user-initials indent\"></span><textarea class=\"comment-input\" name=\"comment\" placeholder=\"Write a comment...\"></textarea><input class=\"card-modal-btn\" type=\"submit\" value=\"Send\"></form></section><section class=\"activity\"><h2><span class=\"icon-lg icon-activity indent\"></span><span>Activity</span></h2><ul>"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.activities : depth0),{"name":"each","hash":{},"fn":container.program(13, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<li></li></ul></section></main><sidebar><section><h2>Add</h2><a class=\"card-modal-btn-link card-modal-labels\" href=\"#\"><span class=\"icon-sm icon-label\"></span>&nbsp;Labels</a><a class=\"card-modal-btn-link card-modal-due-date\" href=\"#\"><span class=\"icon-sm icon-clock\"></span>&nbsp;Due Date</a></section><section><h2>Actions</h2><a class=\"card-modal-btn-link card-modal-move\" href=\"#\"><span class=\"icon-sm icon-move\"></span>&nbsp;Move</a><a class=\"card-modal-btn-link card-modal-copy\" href=\"#\"><span class=\"icon-sm icon-card\"></span>&nbsp;Copy</a><a class=\"card-modal-btn-link card-modal-subscribe\" href=\"#\"><span class=\"icon-sm icon-subscribe\"></span>&nbsp;Subscribe"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(18, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</a><a class=\"card-modal-btn-link card-modal-archive\" href=\"#\"><span class=\"icon-sm icon-archive\"></span>&nbsp;Archive</a></section></sidebar></div></div>";
 },"useData":true});
 
@@ -239,5 +253,15 @@ this["JST"]["list"] = Handlebars.template({"1":function(container,depth0,helpers
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</h2><div class=\"list-ops\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "<a href=\"#\" class=\"list-btn icon-sm dark-hover icon-overflow-menu-horizontal\"></a></div></header><div class=\"cards\"></div><a href=\"#\" class=\"list-btn dark-hover open-card-composer\">Add a card...</a>";
+    + "<a href=\"#\" class=\"list-btn icon-sm dark-hover icon-overflow-menu-horizontal open-list-actions\"></a></div></header><div class=\"cards\"></div><a href=\"#\" class=\"list-btn dark-hover open-card-composer\">Add a card...</a>";
+},"useData":true});
+
+this["JST"]["listactions_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "<span class=\"icon-sm icon-check\"></span>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<div class=\"pop-over list-actions-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">List Actions</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><ul class=\"actions\"><li><a class=\"list-actions-add-card\" href=\"#\">Add Card...</a></li><li><a class=\"list-actions-copy-list\" href=\"#\">Copy List...</a></li><li><a class=\"list-actions-move-list\" href=\"#\">Move List...</a></li><li><a class=\"highlight-icon list-actions-subscribe\" href=\"#\">Subscribe&nbsp;"
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</a></li></ul><hr><ul class=\"actions\"><li><a class=\"list-actions-move-cards\" href=\"#\">Move All Cards in This List...</a></li><li><a class=\"list-actions-archive-cards\" href=\"#\">Archive All Cards in This List...</a></li></ul><hr><ul class=\"actions\"><li><a class=\"list-actions-archive-list\" href=\"#\">Archive This List</a></li></ul></div></div>";
 },"useData":true});

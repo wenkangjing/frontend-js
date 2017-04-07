@@ -79,6 +79,20 @@ basics()
     &:hover
       text-decoration: underline
 
+
+.list-actions-pop-over
+  .pop-over-content
+    padding: 0
+  .actions li > a
+    display: block
+    font-weight: 700
+    padding: 5px 10px
+    text-decoration: none
+    cursor: pointer
+    &:hover
+      background-color: #298FCA
+      color: #fff
+
 .card
   position: relative
   max-width: 300px
@@ -106,6 +120,7 @@ basics()
     overflow: hidden
   .name
     margin: 0 0 4px 0
+    white-space: normal
 
 .card-composer
   .card-composer-wrapper
@@ -243,6 +258,11 @@ basics()
 .card-modal > header
   padding: 8px 12px
   margin-right: 4px
+  .card-modal-title
+    max-width: 600px
+    display: inline-block
+    overflow: hidden
+    white-space: nowrap
   .dialog-close-btn
     position: absolute
     top: 2px

@@ -1,5 +1,49 @@
 var Client = {
   // 
+  // lists
+  ////////////////////////////////////////  
+  getLists: function() {
+    $.ajax({
+     method: "get",
+     url: "/lists",
+    }).done(function(json) {
+      App.lists.set(json);
+    }).fail(function() {
+      console.error("Fail to get lists");
+      App.goto("/");
+    });
+  },  
+  saveList: function(list) {
+    if (!list.id) {
+      list.created = (new Date()).valueOf();
+    }
+    var json = JSON.stringify(list);
+    $.ajax({
+     method: "post",
+     url: "/lists",
+     contentType: "application/json",
+     data: json
+    }).done(function(json) {
+      Client.getLists();
+    }).fail(function() {
+      console.error("Fail to save list: " + list);
+      App.goto("/");
+    });
+  },
+  deleteList: function(id) {
+    $.ajax({
+     method: "delete",
+     url: "/lists",
+     data: {id: id}
+    }).done(function(json) {
+      Client.getLists();
+    }).fail(function() {
+      console.error("Fail to delete list: " + id);
+      App.goto("/");
+    });
+  },
+  
+  // 
   // cards
   ////////////////////////////////////////  
   getCards: function() {
@@ -14,7 +58,10 @@ var Client = {
     });
   },  
   saveCard: function(card) {
-    delete card.comments;
+    delete card.comments; // add in CardView for badge
+    if (!card.id) { 
+      card.created = (new Date()).valueOf();
+    }
     var json = JSON.stringify(card);
     $.ajax({
      method: "post",
@@ -56,7 +103,6 @@ var Client = {
   },
   saveLabel: function(label) {
     var json = JSON.stringify(label);
-    console.log(json)
     $.ajax({
      method: "post",
      url: "/labels",
@@ -97,7 +143,9 @@ var Client = {
     });
   },
   saveComment: function(comment) {
-    comment.datetime = (new Date()).valueOf();
+    if (!comment.id) {
+      comment.created = (new Date()).valueOf();
+    }
     var json = JSON.stringify(comment);
     $.ajax({
      method: "post",
@@ -112,7 +160,9 @@ var Client = {
     });
   },
   saveAction: function(action) {
-    action.datetime = (new Date()).valueOf();
+    if (!action.id) {
+      action.created = (new Date()).valueOf();
+    }
     var json = JSON.stringify(action);
     $.ajax({
      method: "post",

@@ -51,13 +51,19 @@ var App = {
     this.off().on({
       "client_save_card": Client.saveCard.bind(Client),
       "client_delete_card": Client.deleteCard.bind(Client),
+      
       "client_save_label": Client.saveLabel.bind(Client),
       "client_delete_label": Client.deleteLabel.bind(Client),
+      
       "client_save_comment": Client.saveComment.bind(Client),
       "client_save_action": Client.saveAction.bind(Client),
       "client_delete_activity": Client.deleteActivity.bind(Client),
+
+      "client_save_list": Client.saveList.bind(Client),
+      "client_delete_list": Client.deleteList.bind(Client),
     });
     this.listenTo(this.cards, "update", this.renderCards.bind(this));
+    this.listenTo(this.lists, "update", this.renderBoard.bind(this));
   },
   init: function() {
     _.extend(this, Backbone.Events);

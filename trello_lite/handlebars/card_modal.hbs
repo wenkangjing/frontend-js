@@ -3,7 +3,10 @@
     <header>
       <h2>
         <span class="icon-lg icon-card indent"></span>
-        <span>{{name}}</span>
+        <span class="card-modal-title">{{name}}</span>
+        {{#if subscribed}}
+        <span class="icon-sm icon-subscribe"></span>
+        {{/if}}
       </h2>
       <p>in list <a href="#">{{list}}</a></p>
       <a class="icon-lg icon-close dialog-close-btn" href="#"></a>
@@ -19,6 +22,12 @@
             <span class="card-modal-add-label dark-hover icon-lg icon-add"></span>
           </div>
         </div>
+        {{#if due}}
+        <div class="badge due {{isDuePast due}}">
+          <span class="icon-sm icon-clock"></span>
+          <span class="badge-text">{{formateDate due}}</span>
+          </div>
+        {{/if}}
         <div class="description">
           {{#if description}}
             <h3>Description</h3><a class="card-modal-edit-description">Edit</a>
@@ -56,12 +65,12 @@
               {{#if comment}}
               <p class="comment">{{comment}}</p>
               <p class="comment-ops">
-                <a class="timestamp">{{formatDatetime datetime}}</a>
+                <a class="timestamp">{{formatDatetime created}}</a>
                 <span class="card-modal-edit-comment">Edit</span>
                 <span class="card-modal-delete-comment">Delete</span>
               </p>
               {{else}}
-                <p class="action">{{action}} at <a class="timestamp">{{formatDatetime datetime}}</a></p>
+                <p class="action">{{action}} at <a class="timestamp">{{formatDatetime created}}</a></p>
               {{/if}}
             </li>
           {{/each}}

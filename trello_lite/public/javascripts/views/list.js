@@ -2,7 +2,15 @@ var ListView = Backbone.View.extend({
   className: "list",
   template: App.templates.list,
   events: {
-    "click .open-card-composer": "onAdd"
+    "click .open-list-actions": "onOptions",
+    "click .open-card-composer": "onAdd",
+  },
+  onOptions: function(e) {
+    e.preventDefault();
+    PopoverUtil.listActions({
+      list: this.model,
+      pos: PopoverUtil.adjustPosition(e, 18)
+    });
   },
   onAdd: function(e) {
     e.preventDefault();
@@ -30,6 +38,10 @@ var ListView = Backbone.View.extend({
     this.$el.attr("data-id", this.model.id);
     $("#lists").find(".list[data-id=" + this.model.id + "]").remove();
     this.$el.appendTo($("#lists"));
+
+    if (PopoverUtil.current) {
+      PopoverUtil.renderCurrent();
+    }
   },
   initialize: function() {
     this.render();

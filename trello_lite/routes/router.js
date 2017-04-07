@@ -54,7 +54,14 @@ router.post('/lists', function(req, res, next) {
   res.json(list).end();
 });
 router.delete('/lists', function(req, res) {
-  ListsAccessor.delete(req.body.id);
+  var idList = req.body.id;
+  ListsAccessor.delete(idList);
+  // remove associated cards
+  var cards = CardsAccessor.get();
+  cards = cards.filter(function(c) {
+    return c.idList !== idList;
+  });
+  CardsAccessor.set(cards);
   res.status(200).end();
 });
 

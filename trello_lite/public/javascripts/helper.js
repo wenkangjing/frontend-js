@@ -18,7 +18,7 @@ var Helper = {
     return App.activities.toJSON().filter(function(cmt) {
       return cmt.idCard === idCard;
     }).sort(function(a, b) {
-      return a.datetime < b.datetime;
+      return a.created < b.created;
     });    
   },
   getCommentsCount: function(idCard) {

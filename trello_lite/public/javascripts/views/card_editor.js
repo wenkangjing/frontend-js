@@ -42,14 +42,14 @@ var CardEditorView = Backbone.View.extend({
     e.preventDefault();
     PopoverUtil.labels({
       card: this.model,
-      pos: PopoverUtil.getPosition(e)
+      pos: PopoverUtil.adjustPosition(e, 35)
     });
   },
   popoverDuedate: function(e) {
     e.preventDefault();
     PopoverUtil.duedate({
       card: this.model,
-      pos: PopoverUtil.getPosition(e)
+      pos: PopoverUtil.adjustPosition(e, 35)
     });
   },
   popoverMove: function(e) {

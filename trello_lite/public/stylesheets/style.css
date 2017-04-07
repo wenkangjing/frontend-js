@@ -252,6 +252,14 @@ a:active,
 a:hover {
   outline: 0;
 }
+hr {
+  background: #d6dadc;
+  border: 0;
+  color: #d6dadc;
+  height: 1px;
+  margin: 5pt 0;
+  width: 100%;
+}
 .float-right {
   float: right;
 }
@@ -373,6 +381,20 @@ li {
 .list > a:hover {
   text-decoration: underline;
 }
+.list-actions-pop-over .pop-over-content {
+  padding: 0;
+}
+.list-actions-pop-over .actions li > a {
+  display: block;
+  font-weight: 700;
+  padding: 5px 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.list-actions-pop-over .actions li > a:hover {
+  background-color: #298fca;
+  color: #fff;
+}
 .card {
   position: relative;
   max-width: 300px;
@@ -405,6 +427,7 @@ li {
 }
 .card .name {
   margin: 0 0 4px 0;
+  white-space: normal;
 }
 .card-composer .card-composer-wrapper {
   padding: 5px;
@@ -562,6 +585,12 @@ li {
 .card-modal > header {
   padding: 8px 12px;
   margin-right: 4px;
+}
+.card-modal > header .card-modal-title {
+  max-width: 600px;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .card-modal > header .dialog-close-btn {
   position: absolute;

@@ -24,10 +24,14 @@ var PopoverUtil = {
     this.closeCurrent();
     console.log("copy");
   },
-  getPosition: function(e) {
+  listActions: function(opt) {
+    this.closeCurrent();
+    this.current = new ListActionsPopover(opt);
+  },
+  adjustPosition: function(e, offsetY) {
     var pos = $(e.currentTarget).offset();
     var result = {
-      top: pos.top + 50
+      top: pos.top + offsetY
     };
     var windowWidth = $(document.body).innerWidth();
     if (pos.left + 350 > windowWidth) {

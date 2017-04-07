@@ -78,14 +78,14 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     PopoverUtil.labels({
       card: this.model,
-      pos: PopoverUtil.getPosition(e)
+      pos: PopoverUtil.adjustPosition(e, 37)
     });
   },
   clickDuedate: function(e) {
     e.preventDefault();
     PopoverUtil.duedate({
       card: this.model,
-      pos: PopoverUtil.getPosition(e)
+      pos: PopoverUtil.adjustPosition(e, 37)
     });
   },
   clickMove: function(e) {

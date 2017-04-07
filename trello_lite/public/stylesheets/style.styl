@@ -280,9 +280,25 @@ basics()
   width: 530px
   color: colors.cardText
   padding: 8px 12px
-  .labels
+  .labels, .badges
+    display: inline-block
     margin-right: 28px
     margin-bottom: 16px
+    vertical-align: top
+  .due-date-completed
+    height: 30px;
+    text-align: center;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background-color: #5AAC44
+    cursor: pointer;
+    span
+      color: #fff
+    .badge-text
+      text-decoration: underline
+      font-size: 14px
+      font-weight: normal
+
   .description 
     h3
       display: inline-block

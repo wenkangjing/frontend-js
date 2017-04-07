@@ -35,7 +35,7 @@ var Helper = {
   // display
   /////////////////////////////////////////////////////  
   buildTemplates: function() {
-    Handlebars.registerHelper('formateDate', function(dateValue, options) {
+    Handlebars.registerHelper('formatDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var now = new Date();
       var date = new Date(dateValue);

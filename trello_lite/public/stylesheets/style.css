@@ -612,9 +612,28 @@ li {
   color: #4d4d4d;
   padding: 8px 12px;
 }
-.card-modal > main .labels {
+.card-modal > main .labels,
+.card-modal > main .badges {
+  display: inline-block;
   margin-right: 28px;
   margin-bottom: 16px;
+  vertical-align: top;
+}
+.card-modal > main .due-date-completed {
+  height: 30px;
+  text-align: center;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background-color: #5aac44;
+  cursor: pointer;
+}
+.card-modal > main .due-date-completed span {
+  color: #fff;
+}
+.card-modal > main .due-date-completed .badge-text {
+  text-decoration: underline;
+  font-size: 14px;
+  font-weight: normal;
 }
 .card-modal > main .description h3 {
   display: inline-block;

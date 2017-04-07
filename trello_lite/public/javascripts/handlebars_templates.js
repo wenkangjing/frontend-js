@@ -74,11 +74,11 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 },"5":function(container,depth0,helpers,partials,data) {
     var alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 
-  return "<div class=\"badge due "
+  return "<div class=\"badges\"><h3>Due Date</h3><div class=\"due-date-completed "
     + alias3((helpers.isDuePast || (depth0 && depth0.isDuePast) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"isDuePast","hash":{},"data":data}))
-    + "\"><span class=\"icon-sm icon-clock\"></span><span class=\"badge-text\">"
-    + alias3((helpers.formateDate || (depth0 && depth0.formateDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formateDate","hash":{},"data":data}))
-    + "</span></div>";
+    + "\"><span class=\"icon-sm icon-check card-detail-badge-due-date-complete-icon\"></span><span class=\"badge-text\">"
+    + alias3((helpers.formatDatetime || (depth0 && depth0.formatDatetime) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formatDatetime","hash":{},"data":data}))
+    + "</span></div></div>";
 },"7":function(container,depth0,helpers,partials,data) {
     var helper;
 
@@ -122,11 +122,11 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 
   return "<div class=\"overlay\"><div class=\"card-modal clearfix\"><header><h2><span class=\"icon-lg icon-card indent\"></span><span class=\"card-modal-title\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span>"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</h2><p>in list <a href=\"#\">"
+    + "</span></h2><p>in list <a href=\"#\">"
     + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
-    + "</a></p><a class=\"icon-lg icon-close dialog-close-btn\" href=\"#\"></a></header><main><section class=\"name\"><div class=\"labels\"><h3>Labels</h3><div>"
+    + "</a> "
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</p><a class=\"icon-lg icon-close dialog-close-btn\" href=\"#\"></a></header><main><section class=\"name\"><div class=\"labels\"><h3>Labels</h3><div>"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<span class=\"card-modal-add-label dark-hover icon-lg icon-add\"></span></div></div>"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -157,7 +157,7 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
   return "<div class=\"badge due "
     + alias3((helpers.isDuePast || (depth0 && depth0.isDuePast) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"isDuePast","hash":{},"data":data}))
     + "\"><span class=\"icon-sm icon-clock\"></span><span class=\"badge-text\">"
-    + alias3((helpers.formateDate || (depth0 && depth0.formateDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formateDate","hash":{},"data":data}))
+    + alias3((helpers.formatDate || (depth0 && depth0.formatDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formatDate","hash":{},"data":data}))
     + "</span></div>";
 },"7":function(container,depth0,helpers,partials,data) {
     return "<div class=\"badge\"><span class=\"icon-sm icon-description\"></span></div>";

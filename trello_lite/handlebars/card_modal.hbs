@@ -4,11 +4,8 @@
       <h2>
         <span class="icon-lg icon-card indent"></span>
         <span class="card-modal-title">{{name}}</span>
-        {{#if subscribed}}
-        <span class="icon-sm icon-subscribe"></span>
-        {{/if}}
       </h2>
-      <p>in list <a href="#">{{list}}</a></p>
+      <p>in list <a href="#">{{list}}</a> {{#if subscribed}}<span class="icon-sm icon-subscribe"></span>{{/if}}</p>
       <a class="icon-lg icon-close dialog-close-btn" href="#"></a>
     </header>
     <main>
@@ -23,10 +20,13 @@
           </div>
         </div>
         {{#if due}}
-        <div class="badge due {{isDuePast due}}">
-          <span class="icon-sm icon-clock"></span>
-          <span class="badge-text">{{formateDate due}}</span>
+        <div class="badges">
+          <h3>Due Date</h3>
+          <div class="due-date-completed {{isDuePast due}}">
+            <span class="icon-sm icon-check card-detail-badge-due-date-complete-icon"></span>
+            <span class="badge-text">{{formatDatetime due}}</span>
           </div>
+        </div>
         {{/if}}
         <div class="description">
           {{#if description}}

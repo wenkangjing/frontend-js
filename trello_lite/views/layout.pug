@@ -28,13 +28,15 @@ html
         div#lists
 
     +javascript_include_tag("application", "router", "helper", "client")
-    +javascript_include_tag("models/card", "models/label", "models/list")
-    +javascript_include_tag("collections/cards", "collections/labels", "collections/lists")
-    +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/card_editor", "views/labels_popover", "views/duedate_popover", "views/labeledit_popover", "views/labeldelete_popover")
+    +javascript_include_tag("models/card", "models/label", "models/list", "models/activity")
+    +javascript_include_tag("collections/cards", "collections/labels", "collections/lists", "collections/activities")
+    +javascript_include_tag("views/list", "views/card", "views/card_modal", "views/card_editor", "views/popover_util")
+    +javascript_include_tag("views/popovers/labels_popover", "views/popovers/duedate_popover", "views/popovers/labeledit_popover", "views/popovers/labeldelete_popover")
+    
     script(type="text/javascript").
       App.colors = !{JSON.stringify(colors)}; // immutable
       App.lists = new Lists(!{JSON.stringify(lists)});
       App.cards = new Cards(!{JSON.stringify(cards)});
       App.labels = new Labels(!{JSON.stringify(labels)});
-      App.activities = new Labels(!{JSON.stringify(activities)});
+      App.activities = new Activities(!{JSON.stringify(activities)});
       App.init();

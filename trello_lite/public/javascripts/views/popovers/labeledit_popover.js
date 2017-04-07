@@ -1,21 +1,22 @@
 var LabelEditPopover = Backbone.View.extend({
   template: App.templates.labeledit_popover,
   events: {
-    "click .pop-over-header-close-btn": "closePopover",
+    "click .pop-over-header-close-btn": "close",
     "click .pop-over-header-back-btn": "backToLabels",
     "click .label-edit-color-btn": "selectColor",
     "click .label-edit-save": "saveLabel",
     "click .label-edit-delete": "deleteLabel"
   },
-  closePopover: function(e) {
+  close: function(e) {
     e.preventDefault();
     this.remove();
-    App.popoverView = null;
   },
   backToLabels: function(e) {
     e.preventDefault();
-    App.trigger("popover_labels");
-    this.closePopover(e);
+    PopoverUtil.labels({
+      idCard: this.idCard,
+      pos: this.pos
+    });
   },
   selectColor: function(e) {
     e.preventDefault();
@@ -37,7 +38,11 @@ var LabelEditPopover = Backbone.View.extend({
   deleteLabel: function(e) {
     e.preventDefault();
     if (this.model) {
-      App.trigger("popover_labeldelete", { model: this.model });
+      PopoverUtil.labelDelete({
+          idCard: this.idCard,
+          pos: this.pos,
+          model: this.model
+      });
     }
   },
   render: function() {
@@ -47,10 +52,10 @@ var LabelEditPopover = Backbone.View.extend({
       new: !this.model 
     }));
     this.$el.find(".pop-over").css({
-      top: App.popoverOpt.position.top || 0,
-      left: App.popoverOpt.position.left || 0,
+      top: this.pos.top || 0,
+      left: this.pos.left || 0,
     });
-    this.$el.appendTo(App.popoverOpt.parent);
+    this.$el.appendTo(App.$el);
 
     if (this.model) {
       var selected = this.$el.find(".label-edit-color-btn").filter(function(index, el) {
@@ -60,7 +65,9 @@ var LabelEditPopover = Backbone.View.extend({
       selected.addClass("selected");
     }
   },
-  initialize: function() {
+  initialize: function(opt) {
+    this.idCard = opt.idCard;
+    this.pos = opt.pos;
     this.render();
   }
 });

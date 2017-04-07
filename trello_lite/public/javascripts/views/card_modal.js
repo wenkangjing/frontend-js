@@ -1,7 +1,7 @@
 var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
-    "click .dialog-close-btn": "closeModal",
+    "click .overlay": "close",
     // description
     "click .description .card-modal-edit-description": "editDescription",
     "click .description .card-modal-create-description": "editDescription",
@@ -10,33 +10,35 @@ var CardModalView = Backbone.View.extend({
     // comment
     "submit .comment": "addComment",
     // labels
-    "click .card-modal-btn-link.card-modal-label": "popoverLabels",
-    "click .card-modal-add-label": "popoverLabels",
-    "click .card-modal-labels": "popoverLabels",
+    "click .labels .card-modal-label": "clickLabels",
+    "click .labels .card-modal-add-label": "clickLabels",
+    "click sidebar .card-modal-labels": "clickLabels",
     // due date
-    "click .card-modal-btn-link.card-modal-due-date": "popoverDuedate",
+    "click .card-modal-btn-link.card-modal-due-date": "clickDuedate",
     // subscribe
     "click .card-modal-btn-link.card-modal-subscribe": "toggleSubscribe",
     // move 
-    "click .card-modal-btn-link.card-modal-move": "popoverMove",
+    "click .card-modal-btn-link.card-modal-move": "clickMove",
     // copy
-   "click .card-modal-btn-link.card-modal-copy": "popoverCopy",
+   "click .card-modal-btn-link.card-modal-copy": "clickCopy",
     // archive
-    "click .card-modal-btn-link.card-modal-archive": "archiveCard",
+    "click .card-modal-btn-link.card-modal-archive": "clickArchive",
   },
-  closeModal: function(e) {
-    e.preventDefault();
-    if (App.popoverView) { 
-      App.popoverView.remove(); 
-      App.popoverView = null;
+  close: function(e) {
+    var $e = $(e.target);
+    if ($e.hasClass("overlay") || $e.hasClass("dialog-close-btn")) {
+      e.preventDefault();
+      PopoverUtil.closeCurrent();
+      this.remove();
+      App.goto("/");
     }
-    this.remove();
-    App.goto("/");
   },
-  archiveCard: function(e) {
+  clickArchive: function(e) {
     App.trigger("delete_card", this.model.get("id"));
     App.cards.remove(this.model);
-    this.closeModal(e);
+    PopoverUtil.closeCurrent();
+    this.remove();
+    App.goto("/");
   },  
   editDescription: function(e) {
     e.preventDefault();
@@ -72,21 +74,25 @@ var CardModalView = Backbone.View.extend({
     this.model.set("subscribed", status);
     App.trigger("save_card", this.model.toJSON());
   },
-  popoverLabels: function(e) {
+  clickLabels: function(e) {
     e.preventDefault();
-    App.popoverOpt.position = Helper.popoverPosition(e);
-    App.trigger("popover_labels");
+    PopoverUtil.labels({
+      idCard: this.model.get("id"),
+      pos: PopoverUtil.getPosition(e)
+    });
   },
-  popoverDuedate: function(e) {
+  clickDuedate: function(e) {
     e.preventDefault();
-    App.popoverOpt.position = Helper.popoverPosition(e);
-    App.trigger("popover_duedate");
+    PopoverUtil.duedate({
+      idCard: this.model.get("id"),
+      pos: PopoverUtil.getPosition(e)
+    });
   },
-  popoverMove: function(e) {
+  clickMove: function(e) {
     e.preventDefault();
     console.log("move");
   },   
-  popoverCopy: function(e) {
+  clickCopy: function(e) {
     e.preventDefault();
     console.log("copy");
   }, 
@@ -99,17 +105,13 @@ var CardModalView = Backbone.View.extend({
     if (activities.length > 0) {
       json.activities = json.activities.concat(activities);
     }
-
     // build html
     this.$el.html(this.template(json));
     this.$el.find(".card-modal").attr("data-id", this.model.id);
     this.$el.appendTo(App.$el);
     this.$desc = this.$el.find(".description form");
-    App.popoverOpt.parent = this.$el.find(".card-modal"); // parent has been recreated
-    if (App.popoverView) {
-      App.popoverView.render();
-    }
     this.delegateEvents();
+    PopoverUtil.renderCurrent();
   },
   initialize: function(options) {
     this.render();
@@ -117,10 +119,5 @@ var CardModalView = Backbone.View.extend({
     this.listenTo(App.activities, "change update", this.render.bind(this));
     this.listenTo(App.labels, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
-    App.popoverView = null;
-    App.popoverOpt = {
-      parent: this.$el.find(".card-modal"),
-      idCard: this.model.get("id"),
-    }
   }
 });

@@ -1,92 +1,93 @@
-<div class="overlay"></div>
-<div class="card-modal clearfix">
-  <header>
-    <h2>
-      <span class="icon-lg icon-card indent"></span>
-      <span>{{name}}</span>
-    </h2>
-    <p>in list <a href="#">{{list}}</a></p>
-    <a class="icon-lg icon-close dialog-close-btn" href="#"></a>
-  </header>
-  <main>
-    <section class="name">
-      <div class="labels">
-        <h3>Labels</h3>
-        <div>
-          {{#each labels}}
-            <span class="card-modal-label" data-id="{{id}}" style="background-color:{{toRGB color}}">{{name}}</span>
-          {{/each}}
-          <span class="card-modal-add-label dark-hover icon-lg icon-add"></span>
+<div class="overlay">
+  <div class="card-modal clearfix">
+    <header>
+      <h2>
+        <span class="icon-lg icon-card indent"></span>
+        <span>{{name}}</span>
+      </h2>
+      <p>in list <a href="#">{{list}}</a></p>
+      <a class="icon-lg icon-close dialog-close-btn" href="#"></a>
+    </header>
+    <main>
+      <section class="name">
+        <div class="labels">
+          <h3>Labels</h3>
+          <div>
+            {{#each labels}}
+              <span class="card-modal-label" data-id="{{id}}" style="background-color:{{toRGB color}}">{{name}}</span>
+            {{/each}}
+            <span class="card-modal-add-label dark-hover icon-lg icon-add"></span>
+          </div>
         </div>
-      </div>
-      <div class="description">
-        {{#if description}}
-          <h3>Description</h3><a class="card-modal-edit-description">Edit</a>
-          <p>{{description}}</p>
-        {{else}}
-          <a class="card-modal-create-description"><span class="icon-sm icon-description"></span>Edit the description...</a>
-        {{/if}}
+        <div class="description">
+          {{#if description}}
+            <h3>Description</h3><a class="card-modal-edit-description">Edit</a>
+            <p>{{description}}</p>
+          {{else}}
+            <a class="card-modal-create-description"><span class="icon-sm icon-description"></span>Edit the description...</a>
+          {{/if}}
+          <form action="">
+            <textarea class="description-input" name="description" placeholder="Write a comment...">{{#if description}}{{description}}{{/if}}</textarea>
+            <input class="card-modal-btn" type="submit" value="Save">
+            <a class="icon-lg icon-close description-close-btn" href="#"></a>
+          </form>
+        </div>
+      </section>
+      <section class="comment">
+        <h2>
+          <span class="icon-lg icon-comment indent"></span>
+          <span>Add Comment</span>
+        </h2>
         <form action="">
-          <textarea class="description-input" name="description" placeholder="Write a comment...">{{#if description}}{{description}}{{/if}}</textarea>
-          <input class="card-modal-btn" type="submit" value="Save">
-          <a class="icon-lg icon-close description-close-btn" href="#"></a>
+          <span class="user-initials indent"></span>
+          <textarea class="comment-input" name="comment" placeholder="Write a comment..."></textarea>
+          <input class="card-modal-btn" type="submit" value="Send">
         </form>
-      </div>
-    </section>
-    <section class="comment">
-      <h2>
-        <span class="icon-lg icon-comment indent"></span>
-        <span>Add Comment</span>
-      </h2>
-      <form action="">
-        <span class="user-initials indent"></span>
-        <textarea class="comment-input" name="comment" placeholder="Write a comment..."></textarea>
-        <input class="card-modal-btn" type="submit" value="Send">
-      </form>
-    </section>
-    <section class="activity">
-      <h2>
-        <span class="icon-lg icon-activity indent"></span>
-        <span>Activity</span>
-      </h2>
-      <ul>
-        {{#each activities}}
-          <li data-id="{{id}}">
-            <span class="user-initials-sm indent"></span>
-            {{#if comment}}
-            <p class="comment">{{comment}}</p>
-            <p class="comment-ops">
-              <a class="timestamp">{{formatDatetime datetime}}</a>
-              <span class="card-modal-edit-comment">Edit</span>
-              <span class="card-modal-delete-comment">Delete</span>
-            </p>
-            {{else}}
-              <p class="action">{{action}} at <a class="timestamp">{{formatDatetime datetime}}</a></p>
-            {{/if}}
-          </li>
-        {{/each}}
-        <li></li>
-      </ul>
-    </section>
-  </main>
-  <sidebar>
-    <section>
-      <h2>Add</h2>
-      <a class="card-modal-btn-link card-modal-labels" href="#"><span class="icon-sm icon-label"></span>&nbsp;Labels</a>
-      <a class="card-modal-btn-link card-modal-due-date" href="#"><span class="icon-sm icon-clock"></span>&nbsp;Due Date</a>
-    </section>
-    <section>
-      <h2>Actions</h2>
-      <a class="card-modal-btn-link card-modal-move" href="#"><span class="icon-sm icon-move"></span>&nbsp;Move</a>
-      <a class="card-modal-btn-link card-modal-copy" href="#"><span class="icon-sm icon-card"></span>&nbsp;Copy</a>
-      <a class="card-modal-btn-link card-modal-subscribe" href="#">
-        <span class="icon-sm icon-subscribe"></span>
-        &nbsp;Subscribe
-        {{#if subscribed}} 
-        <span class="icon-sm icon-check light"></span>
-        {{/if}}
-        </a>
-      <a class="card-modal-btn-link card-modal-archive" href="#"><span class="icon-sm icon-archive"></span>&nbsp;Archive</a>
-    </section>
-  </sidebar>
+      </section>
+      <section class="activity">
+        <h2>
+          <span class="icon-lg icon-activity indent"></span>
+          <span>Activity</span>
+        </h2>
+        <ul>
+          {{#each activities}}
+            <li data-id="{{id}}">
+              <span class="user-initials-sm indent"></span>
+              {{#if comment}}
+              <p class="comment">{{comment}}</p>
+              <p class="comment-ops">
+                <a class="timestamp">{{formatDatetime datetime}}</a>
+                <span class="card-modal-edit-comment">Edit</span>
+                <span class="card-modal-delete-comment">Delete</span>
+              </p>
+              {{else}}
+                <p class="action">{{action}} at <a class="timestamp">{{formatDatetime datetime}}</a></p>
+              {{/if}}
+            </li>
+          {{/each}}
+          <li></li>
+        </ul>
+      </section>
+    </main>
+    <sidebar>
+      <section>
+        <h2>Add</h2>
+        <a class="card-modal-btn-link card-modal-labels" href="#"><span class="icon-sm icon-label"></span>&nbsp;Labels</a>
+        <a class="card-modal-btn-link card-modal-due-date" href="#"><span class="icon-sm icon-clock"></span>&nbsp;Due Date</a>
+      </section>
+      <section>
+        <h2>Actions</h2>
+        <a class="card-modal-btn-link card-modal-move" href="#"><span class="icon-sm icon-move"></span>&nbsp;Move</a>
+        <a class="card-modal-btn-link card-modal-copy" href="#"><span class="icon-sm icon-card"></span>&nbsp;Copy</a>
+        <a class="card-modal-btn-link card-modal-subscribe" href="#">
+          <span class="icon-sm icon-subscribe"></span>
+          &nbsp;Subscribe
+          {{#if subscribed}} 
+          <span class="icon-sm icon-check light"></span>
+          {{/if}}
+          </a>
+        <a class="card-modal-btn-link card-modal-archive" href="#"><span class="icon-sm icon-archive"></span>&nbsp;Archive</a>
+      </section>
+    </sidebar>
+  </div>
 </div>

@@ -1,16 +1,15 @@
 var DueDatePopover = Backbone.View.extend({
   template: App.templates.duedate_popover,
   events: {
-    "click .pop-over-header-close-btn": "closePopover",
+    "click .pop-over-header-close-btn": "close",
     "click .duedate-save": "saveDueDate",
     "click .duedate-remove": "removeDueDate",
     "keyup .card-duedate-time input": "checkTime",
     "blur .card-duedate-time input": "resetTime",
   },  
-  closePopover: function(e) {
+  close: function(e) {
     e.preventDefault();
-    this.remove();
-    App.popoverView = null;
+    PopoverUtil.closeCurrent();
   },  
   saveDueDate: function(e) {
     var due = this.picker.getDate();
@@ -20,7 +19,7 @@ var DueDatePopover = Backbone.View.extend({
       action: "set this card to be dued " + due.toLocaleString(),
       idCard: this.card.get("id")
     });
-    this.closePopover(e);
+    PopoverUtil.closeCurrent();
   },
   removeDueDate: function(e) {
     this.card.set("due", false);
@@ -29,7 +28,7 @@ var DueDatePopover = Backbone.View.extend({
       action: "removed due date from this card",
       idCard: this.card.get("id")
     });
-    this.closePopover(e);
+    PopoverUtil.closeCurrent();
   },  
   checkTime: function() {
     var $time = this.$el.find(".card-duedate-time input");
@@ -47,11 +46,11 @@ var DueDatePopover = Backbone.View.extend({
   render: function() {
     // handlebars
     this.$el.html(this.template());
-    this.$el.find(".pop-over").css({
-      top: App.popoverOpt.position.top || 0,
-      left: App.popoverOpt.position.left || 0
+    this.$el.find(".pop-over").offset({
+      top: this.pos.top || 0,
+      left: this.pos.left || 0
     });
-    this.$el.appendTo(App.popoverOpt.parent);
+    this.$el.appendTo(App.$el);
     // pidaday
     var $date = this.$el.find(".card-duedate-date input");
     var $time = this.$el.find(".card-duedate-time input");
@@ -74,8 +73,9 @@ var DueDatePopover = Backbone.View.extend({
     this.delegateEvents();
   },
 
-  initialize: function() {
-    this.card = App.cards.get(App.popoverOpt.idCard);
+  initialize: function(opt) {
+    this.card = App.cards.get(opt.idCard);
+    this.pos = opt.pos;
     this.render();
   }
 });

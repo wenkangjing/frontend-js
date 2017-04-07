@@ -1,29 +1,27 @@
 var CardEditorView = Backbone.View.extend({
   template: App.templates.card_editor,
   events: {
-    "click .card-editor": "closeEditor", // parent
+    "click .card-editor": "close", // parent
     "click .card-editor-save": "saveName",
     "click .card-editor-labels": "popoverLabels",
     "click .card-editor-move": "popoverMove",
     "click .card-editor-copy": "popoverCopy",
-    "click .card-editor-due-date": "popoverDuedate",
+    "click .card-editor-due-date": "popoverDuedate",    
     "click .card-editor-subscribe": "toggleSubscribe",
     "click .card-editor-archive": "archiveCard",
   },
-  closeEditor: function(e) {
+  close: function(e) {
     var $e = $(e.target);
     if ($e.hasClass("card-editor") || $e.hasClass("card-editor-close-btn")) {
       e.preventDefault();
-      if (App.popoverView) { 
-        App.popoverView.remove(); 
-        App.popoverView = null;
-      }
+      PopoverUtil.closeCurrent();
       this.remove();
     }
   },
   archiveCard: function(e) {
     App.trigger("delete_card", this.model.get("id"));
     App.cards.remove(this.model);
+    PopoverUtil.closeCurrent();
     this.remove();
   },  
   saveName: function(e) {
@@ -41,22 +39,26 @@ var CardEditorView = Backbone.View.extend({
   },
   popoverLabels: function(e) {
     e.preventDefault();
-    App.popoverOpt.position = Helper.popoverPosition(e);
-    App.trigger("popover_labels");
+    PopoverUtil.labels({
+      idCard: this.model.get("id"),
+      pos: PopoverUtil.getPosition(e)
+    });
   },
   popoverDuedate: function(e) {
     e.preventDefault();
-    App.popoverOpt.position = Helper.popoverPosition(e);
-    App.trigger("popover_duedate");
+    PopoverUtil.duedate({
+      idCard: this.model.get("id"),
+      pos: PopoverUtil.getPosition(e)
+    });
   },
   popoverMove: function(e) {
     e.preventDefault();
-    console.log("move");
+    PopoverUtil.move();
   },   
   popoverCopy: function(e) {
     e.preventDefault();
-    console.log("copy");
-  }, 
+    PopoverUtil.copy();
+  },   
   render: function() {
     var json = this.model.toJSON();
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
@@ -73,12 +75,8 @@ var CardEditorView = Backbone.View.extend({
       left: this.pos.left + horizontalAdjust
     });
     this.$el.appendTo(App.$el);
-
-    App.popoverOpt.parent = this.$el.find(".card-editor-body"); // parent has been recreated
-    if (App.popoverView) {
-      App.popoverView.render();
-    }
     this.delegateEvents();
+    PopoverUtil.renderCurrent();
   },
   initialize: function(opt) {
     this.pos = opt.pos;
@@ -86,13 +84,6 @@ var CardEditorView = Backbone.View.extend({
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(App.labels, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
-    if (App.popoverView) {
-      App.popoverView.remove();
-      App.popoverView = null;
-    }
-    App.popoverOpt = {
-      parent: this.$el.find(".card-editor-body"),
-      idCard: this.model.get("id"),
-    }
+    PopoverUtil.closeCurrent();
   }
 });

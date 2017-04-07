@@ -29,6 +29,7 @@ var CardView = Backbone.View.extend({
     this.render();
     this.listenTo(this.model, "change", this.render.bind(this));
     this.listenTo(this.model, "remove", this.remove.bind(this));
+    this.listenTo(App.labels, "update", this.render.bind(this));
     this.listenTo(App.activities, "change update", this.render.bind(this));
   }
 });

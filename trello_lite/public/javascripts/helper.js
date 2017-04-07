@@ -1,5 +1,7 @@
 var Helper = {
-  // returns plain object
+  //
+  // data
+  /////////////////////////////////////////////////////
   getLabelObjects: function(ids) {
     var labels = [];
     var ids = ids || [];
@@ -28,6 +30,10 @@ var Helper = {
        }
     }, 0);
   },  
+
+  //
+  // display
+  /////////////////////////////////////////////////////  
   buildTemplates: function() {
     Handlebars.registerHelper('formateDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -65,24 +71,10 @@ var Helper = {
       formatedString += datetime.getHours() + ":" + datetime.getMinutes();
       return formatedString;
     });
-    
-    
   },
   validateTime: function(time_stirng) {
     var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
     return re.test(time_stirng);
   },
-  popoverPosition: function(e) {
-    var pos = $(e.currentTarget).position();
-    var result = {
-      top: pos.top + 50
-    };
-    var windowWidth = $(document.body).innerWidth();
-    if (pos.left + 350 > windowWidth) {
-      result.left = windowWidth - 350;
-    } else {
-      result.left = pos.left;
-    }
-    return result;
-  },  
+ 
 }

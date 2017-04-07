@@ -12,7 +12,7 @@ var LabelDeletePopover = Backbone.View.extend({
   backToLabels: function(e) {
     e.preventDefault();
     PopoverUtil.labels({
-      idCard: this.idCard,
+      card: this.card,
       pos: this.pos
     });
     this.remove();
@@ -20,7 +20,7 @@ var LabelDeletePopover = Backbone.View.extend({
   deleteConfirm: function(e) {
     e.preventDefault();
     if (this.model) {
-      App.trigger("delete_label", this.model.get("id"));
+      App.trigger("client_delete_label", this.model.get("id"));
       App.labels.remove(this.model);
     }
     this.backToLabels(e);
@@ -35,7 +35,7 @@ var LabelDeletePopover = Backbone.View.extend({
   },
   initialize: function(opt) {
     this.pos = opt.pos;
-    this.idCard = opt.idCard;
+    this.card = opt.card;
     this.render();
   }
 });

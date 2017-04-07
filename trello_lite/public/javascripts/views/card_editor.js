@@ -19,7 +19,7 @@ var CardEditorView = Backbone.View.extend({
     }
   },
   archiveCard: function(e) {
-    App.trigger("delete_card", this.model.get("id"));
+    App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
     PopoverUtil.closeCurrent();
     this.remove();
@@ -28,26 +28,26 @@ var CardEditorView = Backbone.View.extend({
     e.preventDefault();
     var name = this.$el.find(".card-editor-input").val();
     this.model.set("name", name);
-    App.trigger("save_card", this.model.toJSON());
+    App.trigger("client_save_card", this.model.toJSON());
     this.remove();
   },
   toggleSubscribe: function(e) {
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
-    App.trigger("save_card", this.model.toJSON());
+    App.trigger("client_save_card", this.model.toJSON());
   },
   popoverLabels: function(e) {
     e.preventDefault();
     PopoverUtil.labels({
-      idCard: this.model.get("id"),
+      card: this.model,
       pos: PopoverUtil.getPosition(e)
     });
   },
   popoverDuedate: function(e) {
     e.preventDefault();
     PopoverUtil.duedate({
-      idCard: this.model.get("id"),
+      card: this.model,
       pos: PopoverUtil.getPosition(e)
     });
   },

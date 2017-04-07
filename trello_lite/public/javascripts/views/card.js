@@ -23,6 +23,8 @@ var CardView = Backbone.View.extend({
     var parent = App.$el.find(".list[data-id=" + idList + "] .cards");
     this.$el.html(this.template(json));
     this.$el.attr("data-id", this.model.id);
+    var $elOld = parent.find(".card[data-id=" + this.model.id + "]");
+    $elOld.remove();
     this.$el.appendTo(parent);
   },
   initialize: function() {

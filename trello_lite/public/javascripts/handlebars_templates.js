@@ -1,5 +1,23 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["card_composer"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "<span class=\"label-sm\" data-id=\""
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\" style=\"background:"
+    + alias3((helpers.toRGB || (depth0 && depth0.toRGB) || alias2).call(alias1,(depth0 != null ? depth0.color : depth0),{"name":"toRGB","hash":{},"data":data}))
+    + "\"></span>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {};
+
+  return "<div class=\"card-composer\"><div class=\"card-composer-wrapper clearfix\"><div class=\"labels\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</div><textarea class=\"card-composer-input\">"
+    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</textarea></div><div class=\"card-composer-ops\"><input class=\"card-composer-confirm\" type=\"submit\" value=\"Add\"><a class=\"icon-lg icon-close dark-hover card-composer-cancel\" href=\"#\"></a><a class=\"icon-lg icon-overflow-menu-horizontal dark-background-hover card-composer-options\" href=\"#\"></a></div></div>";
+},"useData":true});
+
 this["JST"]["card_editor"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 

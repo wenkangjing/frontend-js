@@ -1,0 +1,15 @@
+<div class="card-composer">
+  <div class="card-composer-wrapper clearfix">
+    <div class="labels">
+      {{#each labels}}
+        <span class="label-sm" data-id="{{id}}" style="background:{{toRGB color}}"></span>
+      {{/each}}
+    </div>
+    <textarea class="card-composer-input">{{name}}</textarea>
+  </div>
+  <div class="card-composer-ops">
+    <input class="card-composer-confirm" type="submit" value="Add">
+    <a class="icon-lg icon-close dark-hover card-composer-cancel" href="#"></a>
+    <a class="icon-lg icon-overflow-menu-horizontal dark-background-hover card-composer-options" href="#"></a>
+  </div>
+</div>

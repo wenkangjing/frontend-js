@@ -34,7 +34,7 @@ var CardModalView = Backbone.View.extend({
     }
   },
   clickArchive: function(e) {
-    App.trigger("delete_card", this.model.get("id"));
+    App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
     PopoverUtil.closeCurrent();
     this.remove();
@@ -49,7 +49,7 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var description = this.$desc.serializeArray()[0].value;
     this.model.set("description", description);
-    App.trigger("save_card", this.model.toJSON());
+    App.trigger("client_save_card", this.model.toJSON());
     this.$desc.prev().show();
     this.$desc.hide();
   },
@@ -63,7 +63,7 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var $f = this.$el.find(".comment form");
     var comment = $f.serializeArray()[0].value;
-    App.trigger("save_comment", {
+    App.trigger("client_save_comment", {
       comment: comment,
       idCard: this.model.get("id")
     });
@@ -72,19 +72,19 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
-    App.trigger("save_card", this.model.toJSON());
+    App.trigger("client_save_card", this.model.toJSON());
   },
   clickLabels: function(e) {
     e.preventDefault();
     PopoverUtil.labels({
-      idCard: this.model.get("id"),
+      card: this.model,
       pos: PopoverUtil.getPosition(e)
     });
   },
   clickDuedate: function(e) {
     e.preventDefault();
     PopoverUtil.duedate({
-      idCard: this.model.get("id"),
+      card: this.model,
       pos: PopoverUtil.getPosition(e)
     });
   },

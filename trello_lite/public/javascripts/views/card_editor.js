@@ -29,6 +29,7 @@ var CardEditorView = Backbone.View.extend({
     var name = this.$el.find(".card-editor-input").val();
     this.model.set("name", name);
     App.trigger("client_save_card", this.model.toJSON());
+    PopoverUtil.closeCurrent();
     this.remove();
   },
   toggleSubscribe: function(e) {

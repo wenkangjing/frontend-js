@@ -34,7 +34,7 @@ var Helper = {
   //
   // display
   /////////////////////////////////////////////////////  
-  buildTemplates: function() {
+  registerHelpers: function() {
     Handlebars.registerHelper('formatDate', function(dateValue, options) {
       var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var now = new Date();
@@ -90,4 +90,7 @@ var Helper = {
     }
     return result;
   }, 
+  setupDnD: function() {
+    
+  }
 }

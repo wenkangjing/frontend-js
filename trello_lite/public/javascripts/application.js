@@ -22,11 +22,21 @@ var App = {
     App.trigger("render_board");
     this.renderLists();
     this.renderCards();
+    dragula([document.getElementById("lists")], {
+      moves: function(el, container, handle) {
+        return $(handle).closest(".card").length === 0;
+      }
+    });
   },
   renderLists: function() {
     this.lists.forEach(function(list) {
       new ListView({model: list});
     }.bind(this));
+    var array = [];
+    App.$el.find(".cards").each(function(idx, el) {
+      array.push(el);
+    });
+    dragula(array);
   },
   renderCards: function() {
     this.cards.forEach(function(card) {
@@ -70,7 +80,7 @@ var App = {
   },
   init: function() {
     _.extend(this, Backbone.Events);
-    Helper.buildTemplates();
+    Helper.registerHelpers();
     this.buildEvents();
     this.createRouter();
   }

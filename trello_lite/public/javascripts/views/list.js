@@ -4,6 +4,41 @@ var ListView = Backbone.View.extend({
   events: {
     "click .open-list-actions": "onOptions",
     "click .open-card-composer": "onAdd",
+    "click .list-name-text": "onEdit",
+  },
+  onEdit: function(e) {
+    e.preventDefault();
+    var $text = this.$el.find(".list-name-text").hide();
+    var $input = this.$el.find(".list-name-input").show();
+    var $hiddendiv = this.$el.find(".list-name-input-hiddendiv");
+
+    var oldName = $text.text();
+    $input.val(oldName);
+    $hiddendiv.text(oldName);
+    $input.css('height', $hiddendiv.outerHeight());
+
+    $input.on("keyup", function(e) {
+      var newName = $input.val().trim();
+      $hiddendiv.text(newName);
+      $input.css('height', $hiddendiv.outerHeight());
+      if(newName && (e.which === 13 || e.which === 27)) {
+        this.onEditDone(newName);
+      }
+    }.bind(this));
+    $input.on("blur", function(e) {
+      var newName = $input.text().trim();
+      if(newName) {
+        this.onEditDone(newName);
+      }
+    }.bind(this));
+  },
+  onEditDone: function(name) {
+    var $text = this.$el.find(".list-name-text");
+    var $input = this.$el.find(".list-name-input");
+    $input.hide();
+    $text.show();
+    this.model.set("name", name);
+    App.trigger("client_save_list", this.model.toJSON());
   },
   onOptions: function(e) {
     e.preventDefault();
@@ -31,7 +66,6 @@ var ListView = Backbone.View.extend({
   },
   onCancel: function() {
     this.$add.show();
-    console.log("cancel")
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

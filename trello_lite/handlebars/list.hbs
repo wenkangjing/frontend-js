@@ -1,5 +1,7 @@
 <header>
-  <h2>{{name}}</h2>
+  <h2 class="list-name-text">{{name}}</h2>
+  <textarea class="list-name-input" spellcheck="false" maxlength="512" style=""></textarea>
+  <div class="list-name-input-hiddendiv"></div>
   <div class="list-ops">
     {{#if subscribed}}
     <span class="icon-sm icon-subscribe"></span>

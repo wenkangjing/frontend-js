@@ -24,9 +24,12 @@ var CardComposerView = Backbone.View.extend({
     e.preventDefault();
     PopoverUtil.closeCurrent();
     var $txt = this.$el.find(".card-composer-input");
-    this.model.set("name", $txt.val());
-    this.trigger("card_composer_on_save", this.model.toJSON());
-    this.remove();
+    var newName = $txt.val().trim();
+    if (newName) {
+      this.model.set("name", newName);
+      this.trigger("card_composer_on_save", this.model.toJSON());
+      this.remove();
+    }
   },
   onLabels: function(e) {
     e.preventDefault();

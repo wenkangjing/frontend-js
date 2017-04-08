@@ -359,6 +359,28 @@ li {
   padding: 8px 10px;
   min-height: 18px;
 }
+.list > header .list-name-text {
+  width: 90%;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.list > header .list-name-input,
+.list > header .list-name-input-hiddendiv {
+  display: none;
+  width: 90%;
+  min-height: 32px;
+  font-weight: 700;
+  padding: 3px 5px;
+  border-radius: 3px;
+  margin: -3px -5px;
+  background: #fff;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  overflow: hidden;
+  resize: none;
+  white-space: pre-wrap;
+}
 .list .list-ops {
   position: absolute;
   right: 4px;

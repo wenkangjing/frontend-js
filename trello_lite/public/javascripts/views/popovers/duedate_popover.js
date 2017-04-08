@@ -9,7 +9,7 @@ var DueDatePopover = Backbone.View.extend({
   },  
   close: function(e) {
     e.preventDefault();
-    PopoverUtil.closeCurrent();
+    this.remove();
   },  
   saveDueDate: function(e) {
     var due = this.picker.getDate();
@@ -19,7 +19,7 @@ var DueDatePopover = Backbone.View.extend({
       action: "set this card to be dued " + due.toLocaleString(),
       idCard: this.card.get("id")
     });
-    PopoverUtil.closeCurrent();
+    this.remove();
   },
   removeDueDate: function(e) {
     this.card.set("due", false);
@@ -28,7 +28,7 @@ var DueDatePopover = Backbone.View.extend({
       action: "removed due date from this card",
       idCard: this.card.get("id")
     });
-    PopoverUtil.closeCurrent();
+    this.remove();
   },  
   checkTime: function() {
     var $time = this.$el.find(".card-duedate-time input");
@@ -77,5 +77,6 @@ var DueDatePopover = Backbone.View.extend({
     this.card = opt.card;
     this.pos = opt.pos;
     this.render();
+    this.listenTo(App, "clear_popover", this.remove.bind(this));
   }
 });

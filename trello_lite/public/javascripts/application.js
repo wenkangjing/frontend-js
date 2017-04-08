@@ -49,9 +49,11 @@ var App = {
   /////////////////////////////////////////////
   buildEvents: function() {
     this.off().on({
+      "client_get_cards": Client.getCards.bind(Client),
       "client_save_card": Client.saveCard.bind(Client),
       "client_delete_card": Client.deleteCard.bind(Client),
       
+      "client_get_labels": Client.getLabels.bind(Client),
       "client_save_label": Client.saveLabel.bind(Client),
       "client_delete_label": Client.deleteLabel.bind(Client),
       
@@ -59,6 +61,7 @@ var App = {
       "client_save_action": Client.saveAction.bind(Client),
       "client_delete_activity": Client.deleteActivity.bind(Client),
 
+      "client_get_lists": Client.getLists.bind(Client),
       "client_save_list": Client.saveList.bind(Client),
       "client_delete_list": Client.deleteList.bind(Client),
     });

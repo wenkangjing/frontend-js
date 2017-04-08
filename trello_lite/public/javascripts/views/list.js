@@ -40,12 +40,14 @@ var ListView = Backbone.View.extend({
     this.model.set("name", name);
     App.trigger("client_save_list", this.model.toJSON());
   },
+
   onOptions: function(e) {
     e.preventDefault();
-    PopoverUtil.listActions({
+    new ListActionsPopover({
       list: this.model,
-      pos: PopoverUtil.adjustPosition(e, 18)
+      pos: Helper.adjustPosition(e, 18)
     });
+    this.listenTo(this.listActions, "add_card", this.onAdd.bind(this));
   },
   onAdd: function(e) {
     e.preventDefault();
@@ -72,10 +74,6 @@ var ListView = Backbone.View.extend({
     this.$el.attr("data-id", this.model.id);
     $("#lists").find(".list[data-id=" + this.model.id + "]").remove();
     this.$el.appendTo($("#lists"));
-
-    if (PopoverUtil.current) {
-      PopoverUtil.renderCurrent();
-    }
   },
   initialize: function() {
     this.render();

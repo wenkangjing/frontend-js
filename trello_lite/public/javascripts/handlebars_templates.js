@@ -34,7 +34,7 @@ this["JST"]["card_editor"] = Handlebars.template({"1":function(container,depth0,
   return "<div class=\"badge due "
     + alias3((helpers.isDuePast || (depth0 && depth0.isDuePast) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"isDuePast","hash":{},"data":data}))
     + "\"><span class=\"icon-sm icon-clock\"></span><span class=\"badge-text\">"
-    + alias3((helpers.formateDate || (depth0 && depth0.formateDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formateDate","hash":{},"data":data}))
+    + alias3((helpers.formatDate || (depth0 && depth0.formatDate) || alias2).call(alias1,(depth0 != null ? depth0.due : depth0),{"name":"formatDate","hash":{},"data":data}))
     + "</span></div>";
 },"7":function(container,depth0,helpers,partials,data) {
     return "<div class=\"badge\"><span class=\"icon-sm icon-description\"></span></div>";

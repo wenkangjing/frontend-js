@@ -14,14 +14,13 @@ var CardEditorView = Backbone.View.extend({
     var $e = $(e.target);
     if ($e.hasClass("card-editor") || $e.hasClass("card-editor-close-btn")) {
       e.preventDefault();
-      PopoverUtil.closeCurrent();
       this.remove();
+      App.trigger("clear_popover");
     }
   },
   archiveCard: function(e) {
     App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
-    PopoverUtil.closeCurrent();
     this.remove();
   },  
   saveName: function(e) {
@@ -29,7 +28,6 @@ var CardEditorView = Backbone.View.extend({
     var name = this.$el.find(".card-editor-input").val();
     this.model.set("name", name);
     App.trigger("client_save_card", this.model.toJSON());
-    PopoverUtil.closeCurrent();
     this.remove();
   },
   toggleSubscribe: function(e) {
@@ -40,25 +38,23 @@ var CardEditorView = Backbone.View.extend({
   },
   popoverLabels: function(e) {
     e.preventDefault();
-    PopoverUtil.labels({
+    new LabelsPopover({
       card: this.model,
-      pos: PopoverUtil.adjustPosition(e, 35)
+      pos: Helper.adjustPosition(e, 35)
     });
   },
   popoverDuedate: function(e) {
     e.preventDefault();
-    PopoverUtil.duedate({
+    new DueDatePopover({
       card: this.model,
-      pos: PopoverUtil.adjustPosition(e, 35)
+      pos: Helper.adjustPosition(e, 35)
     });
   },
   popoverMove: function(e) {
     e.preventDefault();
-    PopoverUtil.move();
   },   
   popoverCopy: function(e) {
     e.preventDefault();
-    PopoverUtil.copy();
   },   
   render: function() {
     var json = this.model.toJSON();
@@ -77,7 +73,6 @@ var CardEditorView = Backbone.View.extend({
     });
     this.$el.appendTo(App.$el);
     this.delegateEvents();
-    PopoverUtil.renderCurrent();
   },
   initialize: function(opt) {
     this.pos = opt.pos;
@@ -85,6 +80,5 @@ var CardEditorView = Backbone.View.extend({
     this.listenTo(this.model, "change remove", this.render.bind(this));
     this.listenTo(App.labels, "change update", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
-    PopoverUtil.closeCurrent();
   }
 });

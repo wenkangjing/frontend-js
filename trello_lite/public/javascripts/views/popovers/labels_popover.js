@@ -8,7 +8,7 @@ var LabelsPopover = Backbone.View.extend({
   },
   close: function(e) {
     e.preventDefault();
-    PopoverUtil.closeCurrent();
+    this.remove();
   },
   toggleLabel: function(e) {
     e.preventDefault();
@@ -31,7 +31,7 @@ var LabelsPopover = Backbone.View.extend({
     e.preventDefault();
     var $lb = $(e.target).siblings(".card-label");
     var id = $lb.data("id");
-    PopoverUtil.labelEdit({
+    new LabelEditPopover({
       card: this.card,
       pos: this.pos,
       model: this.collection.get(id) 
@@ -40,13 +40,17 @@ var LabelsPopover = Backbone.View.extend({
   },
   newLabel: function(e) {
     e.preventDefault();
-    PopoverUtil.labelEdit({
+    new LabelEditPopover({
       card: this.card,
       pos: this.pos,
     });
     this.remove();
   },
   render: function() {
+    if (this.pLabelEdit) {
+      this.pLabelEdit.remove();
+      this.pLabelEdit = null;
+    }
     var labels = this.collection.toJSON();
     var idLabels = this.card.get("idLabels");
     labels.forEach(function(label) {
@@ -58,8 +62,7 @@ var LabelsPopover = Backbone.View.extend({
     }.bind(this));
     this.$el.html(this.template({
       labels: labels
-    }));
-
+    })).show();
     this.$el.find(".pop-over").offset({
       top: this.pos.top || 0,
       left: this.pos.left || 0
@@ -73,5 +76,6 @@ var LabelsPopover = Backbone.View.extend({
     this.collection = App.labels;
     this.render();
     this.listenTo(App.labels, "change update", this.render.bind(this));
+    this.listenTo(App, "clear_popover", this.remove.bind(this));
   }
 });

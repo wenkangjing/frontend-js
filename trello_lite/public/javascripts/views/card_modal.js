@@ -28,15 +28,14 @@ var CardModalView = Backbone.View.extend({
     var $e = $(e.target);
     if ($e.hasClass("overlay") || $e.hasClass("dialog-close-btn")) {
       e.preventDefault();
-      PopoverUtil.closeCurrent();
       this.remove();
+      App.trigger("clear_popover");
       App.goto("/");
     }
   },
   clickArchive: function(e) {
     App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
-    PopoverUtil.closeCurrent();
     this.remove();
     App.goto("/");
   },  
@@ -76,16 +75,16 @@ var CardModalView = Backbone.View.extend({
   },
   clickLabels: function(e) {
     e.preventDefault();
-    PopoverUtil.labels({
+    new LabelsPopover({
       card: this.model,
-      pos: PopoverUtil.adjustPosition(e, 37)
+      pos: Helper.adjustPosition(e, 37)
     });
   },
   clickDuedate: function(e) {
     e.preventDefault();
-    PopoverUtil.duedate({
+    new DueDatePopover({
       card: this.model,
-      pos: PopoverUtil.adjustPosition(e, 37)
+      pos: Helper.adjustPosition(e, 37)
     });
   },
   clickMove: function(e) {
@@ -111,7 +110,6 @@ var CardModalView = Backbone.View.extend({
     this.$el.appendTo(App.$el);
     this.$desc = this.$el.find(".description form");
     this.delegateEvents();
-    PopoverUtil.renderCurrent();
   },
   initialize: function(options) {
     this.render();

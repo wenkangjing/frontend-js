@@ -109,7 +109,7 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      Client.getLabels();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to save label");
       App.goto("/");
@@ -121,7 +121,7 @@ var Client = {
      url: "/labels",
      data: {id: id}
     }).done(function(json) {
-      Client.getLabels();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to delete label: " + id);
       App.goto("/");

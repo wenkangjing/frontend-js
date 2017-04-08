@@ -12,11 +12,11 @@ var ListActionsPopover = Backbone.View.extend({
   },
   close: function(e) {
     e.preventDefault();
-    PopoverUtil.closeCurrent();
+    this.remove();
   },
   addCard: function(e) {
     e.preventDefault();
-    console.log("addCard");
+    this.trigger("add_card", e);
   },
   copyList: function(e) {
     e.preventDefault();
@@ -44,7 +44,7 @@ var ListActionsPopover = Backbone.View.extend({
     e.preventDefault();
     App.trigger("client_delete_list", this.list.get("id"));
     App.lists.remove(this.list);
-    PopoverUtil.closeCurrent();
+    this.remove();
   },
   render: function() {
     this.$el.html(this.template(this.list.toJSON()));
@@ -59,5 +59,6 @@ var ListActionsPopover = Backbone.View.extend({
     this.list = opt.list;
     this.pos = opt.pos;
     this.render();
+    this.listenTo(App, "clear_popover", this.remove.bind(this));
   }
 });

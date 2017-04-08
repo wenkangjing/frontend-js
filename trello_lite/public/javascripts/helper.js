@@ -76,5 +76,18 @@ var Helper = {
     var re = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
     return re.test(time_stirng);
   },
- 
+  // popover
+  adjustPosition: function(e, offsetY) {
+    var pos = $(e.currentTarget).offset();
+    var result = {
+      top: pos.top + offsetY
+    };
+    var windowWidth = $(document.body).innerWidth();
+    if (pos.left + 350 > windowWidth) {
+      result.left = windowWidth - 350;
+    } else {
+      result.left = pos.left;
+    }
+    return result;
+  }, 
 }

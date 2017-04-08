@@ -13,8 +13,8 @@ var LabelEditPopover = Backbone.View.extend({
   },
   onBack: function(e) {
     e.preventDefault();
-    this.uninitialize();
     new LabelsPopover({ card: this.card, pos: this.pos });
+    this.uninitialize();
   },
   onSelect: function(e) {
     e.preventDefault();
@@ -34,6 +34,7 @@ var LabelEditPopover = Backbone.View.extend({
       App.trigger("client_save_label", {name: name, color: color});
       App.trigger("client_get_labels");
     }
+    new LabelsPopover({ card: this.card, pos: this.pos });
     this.uninitialize();
   },
   onDelete: function(e) {

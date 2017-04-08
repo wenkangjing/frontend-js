@@ -5,6 +5,7 @@ var LabelsPopover = Backbone.View.extend({
     "click .card-label ": "toggleLabel",
     "click .card-label-edit-btn": "onEdit",
     "click .card-label-add": "onNew",
+    "keyup .card-label-search": "onFilter",
   },
   onClose: function(e) {
     e.preventDefault();
@@ -45,6 +46,20 @@ var LabelsPopover = Backbone.View.extend({
       pos: this.pos,
     });
     this.uninitialize();
+  },
+  onFilter: function(e) {
+    this.filterLabels($(e.target).val().trim());
+    $(e.target).focus();
+  },
+  filterLabels: function(filter) {
+    this.$el.find(".card-label-list li").each(function(idx, li) {
+      var text = $(li).find(".card-label").text().toLowerCase();
+      if (text.indexOf(filter) === -1) {
+        $(li).css({display: "none"});
+      } else {
+        $(li).css({display: "block"});
+      }
+    });
   },
   render: function() {
     if (this.pLabelEdit) {

@@ -1,6 +1,7 @@
 var CardEditorView = Backbone.View.extend({
   template: App.templates.card_editor,
   events: {
+    "keyup .card-editor-input": "onTyping",
     "click .card-editor": "onClose", // parent
     "click .card-editor-save": "onSaveName",
     "click .card-editor-labels": "onLabels",
@@ -21,7 +22,11 @@ var CardEditorView = Backbone.View.extend({
     App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
     this.uninitialize();
-  },  
+  },
+  onTyping: function(e) {
+    this.autogrow();
+  },
+
   onSaveName: function(e) {
     e.preventDefault();
     var name = this.$el.find(".card-editor-input").val();
@@ -55,6 +60,12 @@ var CardEditorView = Backbone.View.extend({
   onCopy: function(e) {
     e.preventDefault();
   },   
+  autogrow: function() {
+    var $input = this.$el.find(".card-editor-input");
+    var $hiddendiv = this.$el.find(".card-editor-input-hiddendiv");
+    $hiddendiv.text($input.val());
+    $input.css('height', $hiddendiv.height());
+  },
   render: function() {
     var json = this.model.toJSON();
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
@@ -71,6 +82,7 @@ var CardEditorView = Backbone.View.extend({
       left: this.pos.left + horizontalAdjust
     });
     this.$el.appendTo(App.$el);
+    this.autogrow();
     this.delegateEvents();
   },
   uninitialize: function() {

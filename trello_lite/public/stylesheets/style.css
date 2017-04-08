@@ -525,15 +525,19 @@ li {
   background: #fff;
   border-radius: 3px;
 }
-.card-editor .card-editor-input {
+.card-editor .card-editor-input,
+.card-editor .card-editor-input-hiddendiv {
   width: 240px;
-  height: 90px;
+  min-height: 90px;
   padding: 5px 0;
   border: 0;
   outline: 0;
   word-wrap: break-word;
   overflow: hidden;
   background: #fff;
+}
+.card-editor .card-editor-input-hiddendiv {
+  display: none;
 }
 .card-editor .card-editor-save {
   display: inline-block;

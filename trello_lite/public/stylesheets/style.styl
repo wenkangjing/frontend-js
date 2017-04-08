@@ -208,15 +208,18 @@ basics()
     padding: 5px
     background: #fff
     border-radius: 3px
-  .card-editor-input
+  .card-editor-input,
+  .card-editor-input-hiddendiv
     width: 240px
-    height: 90px // fixme to be autogrow
+    min-height: 90px 
     padding: 5px 0
     border: 0
     outline: 0
     word-wrap: break-word
     overflow: hidden 
     background: #fff
+  .card-editor-input-hiddendiv
+    display: none
   .card-editor-save
     display: inline-block
     color: #fff

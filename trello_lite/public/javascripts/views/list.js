@@ -15,18 +15,18 @@ var ListView = Backbone.View.extend({
     var oldName = $text.text();
     $input.val(oldName);
     $hiddendiv.text(oldName);
-    $input.css('height', $hiddendiv.outerHeight());
+    $input.css('height', $hiddendiv.height());
 
     $input.on("keyup", function(e) {
       var newName = $input.val().trim();
       $hiddendiv.text(newName);
-      $input.css('height', $hiddendiv.outerHeight());
+      $input.css('height', $hiddendiv.height());
       if(newName && (e.which === 13 || e.which === 27)) {
         this.onEditDone(newName);
       }
     }.bind(this));
     $input.on("blur", function(e) {
-      var newName = $input.text().trim();
+      var newName = $input.val().trim();
       if(newName) {
         this.onEditDone(newName);
       }

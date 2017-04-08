@@ -71,6 +71,8 @@ basics()
       width: 90%
       min-height: 32px
       font-weight: 700
+      font-size: 14px
+      line-height: 18px
       padding: 3px 5px
       border-radius: 3px
       margin: -3px -5px
@@ -258,10 +260,10 @@ basics()
     margin-left: 38px
   .indent
     margin-left: -38px
+    vertical-align: top
   section
     margin-bottom: 20px
   h2
-    height: 30px
     line-height: 30px
     font-size: 18px
     font-weight: 700
@@ -271,19 +273,36 @@ basics()
     color: #8c8c8c
     font-weight: normal
     margin-bottom: 10px
+    overflow: hidden
   p
     color: #8c8c8c
-
-
+    overflow: hidden
 
 .card-modal > header
   padding: 8px 12px
   margin-right: 4px
   .card-modal-title
-    max-width: 600px
+    width: 600px
     display: inline-block
     overflow: hidden
-    white-space: nowrap
+    white-space: pre-wrap
+  .card-modal-title-input, 
+  .card-modal-title-input-hiddendiv
+    display: none
+    width: 600px
+    min-height: 32px
+    line-height: 30px
+    font-size: 18px
+    font-weight: 700
+    padding: 3px 5px
+    border-radius: 3px
+    background: #fff
+    border: none
+    outline: none
+    box-shadow: none
+    overflow: hidden
+    resize: none
+    white-space: pre-wrap
   .dialog-close-btn
     position: absolute
     top: 2px

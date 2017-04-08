@@ -2,6 +2,8 @@ var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
     "click .overlay": "onClose",
+    // title
+    "click .card-modal-title": "onTitle",
     // description
     "click .description .card-modal-edit-description": "editDescription",
     "click .description .card-modal-create-description": "editDescription",
@@ -98,6 +100,40 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     console.log("copy");
   }, 
+  onTitle: function(e) {
+    e.preventDefault();
+    var $text = this.$el.find(".card-modal-title").hide();
+    var $input = this.$el.find(".card-modal-title-input").show();
+    var $hiddendiv = this.$el.find(".card-modal-title-input-hiddendiv");
+
+    var oldName = $text.text();
+    $input.val(oldName);
+    $hiddendiv.text(oldName);
+    $input.css('height', $hiddendiv.height());
+
+    $input.on("keyup", function(e) {
+      var newName = $input.val().trim();
+      $hiddendiv.text(newName);
+      $input.css('height', $hiddendiv.height());
+      if(newName && (e.which === 13 || e.which === 27)) {
+        this.onTitleDone(newName);
+      }
+    }.bind(this));
+    $input.on("blur", function(e) {
+      var newName = $input.val().trim();
+      if(newName) {
+        this.onTitleDone(newName);
+      }
+    }.bind(this));
+  },
+  onTitleDone: function(name) {
+    var $text = this.$el.find(".card-modal-title");
+    var $input = this.$el.find(".card-modal-title-input");
+    $input.hide();
+    $text.show();
+    this.model.set("name", name);
+    App.trigger("client_save_card", this.model.toJSON());
+  },
   render: function() {
     // retrieve data
     var json = this.model.toJSON();

@@ -43,31 +43,40 @@ var ListView = Backbone.View.extend({
 
   onOptions: function(e) {
     e.preventDefault();
-    new ListActionsPopover({
+    this.actions = new ListActionsPopover({
       list: this.model,
       pos: Helper.adjustPosition(e, 18)
     });
-    this.listenTo(this.listActions, "add_card", this.onAdd.bind(this));
+    this.listenTo(this.actions, "add_card", this.onAdd.bind(this));
   },
   onAdd: function(e) {
     e.preventDefault();
+    if (this.$el.find(".card-composer").length > 0) {
+      return; // there is a card composer already
+    }
     // show composer
     var rawCard = new Card({"idList": this.model.get("id")});
     this.composer = new CardComposerView({model: rawCard});
     this.listenTo(this.composer, "card_composer_on_save", this.onSave.bind(this));
     this.listenTo(this.composer, "card_composer_on_cancel", this.onCancel.bind(this));
-    this.$el.find(".cards").append(this.composer.$el);
+    if ($(e.target).hasClass("list-actions-add-card")) {
+      this.$el.find(".cards").prepend(this.composer.$el);
+    } else {
+      this.$el.find(".cards").append(this.composer.$el);
+    }
 
     // hide add button
-    this.$add = $(e.target);
-    this.$add.hide();
+    this.$el.find(".open-card-composer").hide();
   },
   onSave: function(json) {
-    this.$add.show();
+    this.$el.find(".open-card-composer").show();
     App.trigger("client_save_card", json);
   },
   onCancel: function() {
-    this.$add.show();
+    this.$el.find(".open-card-composer").show();
+  },
+  showComposer: function() {
+
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
@@ -76,6 +85,7 @@ var ListView = Backbone.View.extend({
     this.$el.appendTo($("#lists"));
   },
   initialize: function() {
+    this.actions = null; // the context menu
     this.render();
     this.listenTo(App, "render_board", this.remove.bind(this));
   }

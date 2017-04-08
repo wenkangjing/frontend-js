@@ -1,17 +1,17 @@
 var DueDatePopover = Backbone.View.extend({
   template: App.templates.duedate_popover,
   events: {
-    "click .pop-over-header-close-btn": "close",
-    "click .duedate-save": "saveDueDate",
-    "click .duedate-remove": "removeDueDate",
+    "click .pop-over-header-close-btn": "onClose",
+    "click .duedate-save": "onSave",
+    "click .duedate-remove": "onRemove",
     "keyup .card-duedate-time input": "checkTime",
     "blur .card-duedate-time input": "resetTime",
   },  
-  close: function(e) {
+  onClose: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninialize();
   },  
-  saveDueDate: function(e) {
+  onSave: function(e) {
     var due = this.picker.getDate();
     this.card.set("due", due.getTime());
     App.trigger("client_save_card", this.card.toJSON());
@@ -19,16 +19,16 @@ var DueDatePopover = Backbone.View.extend({
       action: "set this card to be dued " + due.toLocaleString(),
       idCard: this.card.get("id")
     });
-    this.remove();
+    this.uninialize();
   },
-  removeDueDate: function(e) {
+  onRemove: function(e) {
     this.card.set("due", false);
     App.trigger("client_save_card", this.card.toJSON());
     App.trigger("client_save_action", {
       action: "removed due date from this card",
       idCard: this.card.get("id")
     });
-    this.remove();
+    this.uninialize();
   },  
   checkTime: function() {
     var $time = this.$el.find(".card-duedate-time input");
@@ -72,7 +72,9 @@ var DueDatePopover = Backbone.View.extend({
     this.picker.setDate(new Date())
     this.delegateEvents();
   },
-
+  uninialize: function() {
+    this.remove();
+  },
   initialize: function(opt) {
     this.card = opt.card;
     this.pos = opt.pos;

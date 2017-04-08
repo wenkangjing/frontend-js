@@ -1,14 +1,14 @@
 var LabelsPopover = Backbone.View.extend({
   template: App.templates.labels_popover,
   events: {
-    "click .pop-over-header-close-btn": "close",
+    "click .pop-over-header-close-btn": "onClose",
     "click .card-label ": "toggleLabel",
-    "click .card-label-edit-btn": "editLabel",
-    "click .card-label-add": "newLabel",
+    "click .card-label-edit-btn": "onEdit",
+    "click .card-label-add": "onNew",
   },
-  close: function(e) {
+  onClose: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninitialize();
   },
   toggleLabel: function(e) {
     e.preventDefault();
@@ -27,7 +27,7 @@ var LabelsPopover = Backbone.View.extend({
       App.trigger("client_save_card", this.card.toJSON());
     }
   },
-  editLabel: function(e) {
+  onEdit: function(e) {
     e.preventDefault();
     var $lb = $(e.target).siblings(".card-label");
     var id = $lb.data("id");
@@ -36,15 +36,15 @@ var LabelsPopover = Backbone.View.extend({
       pos: this.pos,
       model: this.collection.get(id) 
     });
-    this.remove();
+    this.uninitialize();
   },
-  newLabel: function(e) {
+  onNew: function(e) {
     e.preventDefault();
     new LabelEditPopover({
       card: this.card,
       pos: this.pos,
     });
-    this.remove();
+    this.uninitialize();
   },
   render: function() {
     if (this.pLabelEdit) {
@@ -70,6 +70,9 @@ var LabelsPopover = Backbone.View.extend({
     this.$el.appendTo(App.$el);
     this.delegateEvents();
   },
+  uninitialize: function() {
+    this.remove();
+  },  
   initialize: function(opt) {
     this.card = opt.card;
     this.pos = opt.pos;

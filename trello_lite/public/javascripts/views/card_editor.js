@@ -1,34 +1,33 @@
 var CardEditorView = Backbone.View.extend({
   template: App.templates.card_editor,
   events: {
-    "click .card-editor": "close", // parent
-    "click .card-editor-save": "saveName",
-    "click .card-editor-labels": "popoverLabels",
-    "click .card-editor-move": "popoverMove",
-    "click .card-editor-copy": "popoverCopy",
-    "click .card-editor-due-date": "popoverDuedate",    
+    "click .card-editor": "onClose", // parent
+    "click .card-editor-save": "onSaveName",
+    "click .card-editor-labels": "onLabels",
+    "click .card-editor-move": "onMove",
+    "click .card-editor-copy": "onCopy",
+    "click .card-editor-due-date": "onDuedate",
     "click .card-editor-subscribe": "toggleSubscribe",
-    "click .card-editor-archive": "archiveCard",
+    "click .card-editor-archive": "onArchive",
   },
-  close: function(e) {
+  onClose: function(e) {
     var $e = $(e.target);
     if ($e.hasClass("card-editor") || $e.hasClass("card-editor-close-btn")) {
       e.preventDefault();
-      this.remove();
-      App.trigger("clear_popover");
+      this.uninitialize();
     }
   },
-  archiveCard: function(e) {
+  onArchive: function(e) {
     App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
-    this.remove();
+    this.uninitialize();
   },  
-  saveName: function(e) {
+  onSaveName: function(e) {
     e.preventDefault();
     var name = this.$el.find(".card-editor-input").val();
     this.model.set("name", name);
     App.trigger("client_save_card", this.model.toJSON());
-    this.remove();
+    this.uninitialize();
   },
   toggleSubscribe: function(e) {
     e.preventDefault();
@@ -36,24 +35,24 @@ var CardEditorView = Backbone.View.extend({
     this.model.set("subscribed", status);
     App.trigger("client_save_card", this.model.toJSON());
   },
-  popoverLabels: function(e) {
+  onLabels: function(e) {
     e.preventDefault();
     new LabelsPopover({
       card: this.model,
       pos: Helper.adjustPosition(e, 35)
     });
   },
-  popoverDuedate: function(e) {
+  onDuedate: function(e) {
     e.preventDefault();
     new DueDatePopover({
       card: this.model,
       pos: Helper.adjustPosition(e, 35)
     });
   },
-  popoverMove: function(e) {
+  onMove: function(e) {
     e.preventDefault();
   },   
-  popoverCopy: function(e) {
+  onCopy: function(e) {
     e.preventDefault();
   },   
   render: function() {
@@ -73,6 +72,10 @@ var CardEditorView = Backbone.View.extend({
     });
     this.$el.appendTo(App.$el);
     this.delegateEvents();
+  },
+  uninitialize: function() {
+    this.remove();
+    App.trigger("clear_popover");
   },
   initialize: function(opt) {
     this.pos = opt.pos;

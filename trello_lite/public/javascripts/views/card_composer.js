@@ -16,8 +16,7 @@ var CardComposerView = Backbone.View.extend({
     e.preventDefault();
     var $e = $(e.target);
     this.trigger("card_composer_on_cancel", this.model.toJSON());
-    this.remove();
-    App.trigger("clear_popover");
+    this.uninitialize();
   },
   onSave: function(e) {
     e.preventDefault();
@@ -26,8 +25,7 @@ var CardComposerView = Backbone.View.extend({
     if (newName) {
       this.model.set("name", newName);
       this.trigger("card_composer_on_save", this.model.toJSON());
-      this.remove();
-      App.trigger("clear_popover");
+      this.uninitialize();
     }
   },
   onLabels: function(e) {
@@ -42,6 +40,10 @@ var CardComposerView = Backbone.View.extend({
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
     this.$el.html(this.template(json));
   },
+  uninitialize: function() {
+    this.remove();
+    App.trigger("clear_popover");
+  },  
   initialize: function() {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));

@@ -1,7 +1,7 @@
 var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
-    "click .overlay": "close",
+    "click .overlay": "onClose",
     // description
     "click .description .card-modal-edit-description": "editDescription",
     "click .description .card-modal-create-description": "editDescription",
@@ -10,33 +10,32 @@ var CardModalView = Backbone.View.extend({
     // comment
     "submit .comment": "addComment",
     // labels
-    "click .labels .card-modal-label": "clickLabels",
-    "click .labels .card-modal-add-label": "clickLabels",
-    "click sidebar .card-modal-labels": "clickLabels",
+    "click .labels .card-modal-label": "onLabels",
+    "click .labels .card-modal-add-label": "onLabels",
+    "click sidebar .card-modal-labels": "onLabels",
     // due date
-    "click .card-modal-btn-link.card-modal-due-date": "clickDuedate",
+    "click .card-modal-btn-link.card-modal-due-date": "onDuedate",
     // subscribe
     "click .card-modal-btn-link.card-modal-subscribe": "toggleSubscribe",
     // move 
-    "click .card-modal-btn-link.card-modal-move": "clickMove",
+    "click .card-modal-btn-link.card-modal-move": "onMove",
     // copy
-   "click .card-modal-btn-link.card-modal-copy": "clickCopy",
+   "click .card-modal-btn-link.card-modal-copy": "onCopy",
     // archive
-    "click .card-modal-btn-link.card-modal-archive": "clickArchive",
+    "click .card-modal-btn-link.card-modal-archive": "onArchive",
   },
-  close: function(e) {
+  onClose: function(e) {
     var $e = $(e.target);
     if ($e.hasClass("overlay") || $e.hasClass("dialog-close-btn")) {
       e.preventDefault();
-      this.remove();
-      App.trigger("clear_popover");
+      this.uninitialize();
       App.goto("/");
     }
   },
-  clickArchive: function(e) {
+  onArchive: function(e) {
     App.trigger("client_delete_card", this.model.get("id"));
     App.cards.remove(this.model);
-    this.remove();
+    this.uninitialize();
     App.goto("/");
   },  
   editDescription: function(e) {
@@ -47,10 +46,12 @@ var CardModalView = Backbone.View.extend({
   saveDescription: function(e) {
     e.preventDefault();
     var description = this.$desc.serializeArray()[0].value;
-    this.model.set("description", description);
-    App.trigger("client_save_card", this.model.toJSON());
-    this.$desc.prev().show();
-    this.$desc.hide();
+    if (description) {
+      this.model.set("description", description);
+      App.trigger("client_save_card", this.model.toJSON());
+      this.$desc.prev().show();
+      this.$desc.hide();
+    }
   },
   closeDescription: function(e) {
     e.preventDefault();
@@ -62,10 +63,12 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var $f = this.$el.find(".comment form");
     var comment = $f.serializeArray()[0].value;
-    App.trigger("client_save_comment", {
-      comment: comment,
-      idCard: this.model.get("id")
-    });
+    if (comment) {
+      App.trigger("client_save_comment", {
+        comment: comment,
+        idCard: this.model.get("id")
+      });
+    }
   },
   toggleSubscribe: function(e) {
     e.preventDefault();
@@ -73,25 +76,25 @@ var CardModalView = Backbone.View.extend({
     this.model.set("subscribed", status);
     App.trigger("client_save_card", this.model.toJSON());
   },
-  clickLabels: function(e) {
+  onLabels: function(e) {
     e.preventDefault();
     new LabelsPopover({
       card: this.model,
       pos: Helper.adjustPosition(e, 37)
     });
   },
-  clickDuedate: function(e) {
+  onDuedate: function(e) {
     e.preventDefault();
     new DueDatePopover({
       card: this.model,
       pos: Helper.adjustPosition(e, 37)
     });
   },
-  clickMove: function(e) {
+  onMove: function(e) {
     e.preventDefault();
     console.log("move");
   },   
-  clickCopy: function(e) {
+  onCopy: function(e) {
     e.preventDefault();
     console.log("copy");
   }, 
@@ -111,6 +114,10 @@ var CardModalView = Backbone.View.extend({
     this.$desc = this.$el.find(".description form");
     this.delegateEvents();
   },
+  uninitialize: function() {
+    this.remove();
+    App.trigger("clear_popover");
+  },  
   initialize: function(options) {
     this.render();
     this.listenTo(this.model, "change remove", this.render.bind(this));

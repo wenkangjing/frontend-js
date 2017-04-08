@@ -1,18 +1,18 @@
 var LabelDeletePopover = Backbone.View.extend({
   template: App.templates.labeldelete_popover,
   events: {
-    "click .pop-over-header-close-btn": "close",
-    "click .pop-over-header-back-btn": "back",
+    "click .pop-over-header-close-btn": "onClose",
+    "click .pop-over-header-back-btn": "onBack",
     "click .label-delete-confirm": "confirmDelete"
   },
-  close: function(e) {
+  onClose: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninialize();
   },
-  back: function(e) {
+  onBack: function(e) {
     e.preventDefault();
-    this.remove();
     new LabelsPopover({ card: this.card,  pos: this.pos });
+    this.uninialize();
   },
   confirmDelete: function(e) {
     e.preventDefault();
@@ -20,7 +20,8 @@ var LabelDeletePopover = Backbone.View.extend({
       App.trigger("client_delete_label", this.model.get("id"));
       App.labels.remove(this.model);
     }
-    this.back(e);
+    new LabelsPopover({ card: this.card,  pos: this.pos });
+    this.uninialize();
   },
   render: function() {
     this.$el.html(this.template());
@@ -29,6 +30,9 @@ var LabelDeletePopover = Backbone.View.extend({
       top: this.pos.top || 0,
       left: this.pos.left || 0
     });
+  },
+  uninialize: function() {
+    this.remove();
   },
   initialize: function(opt) {
     this.pos = opt.pos;

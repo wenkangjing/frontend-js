@@ -1,50 +1,56 @@
 var ListActionsPopover = Backbone.View.extend({
   template: App.templates.listactions_popover,
   events: {
-    "click .pop-over-header-close-btn": "close",
-    "click .list-actions-add-card": "addCard",
-    "click .list-actions-copy-list": "copyList",
-    "click .list-actions-move-list": "mostList",
-    "click .list-actions-subscribe": "subscribe",
-    "click .list-actions-move-cards": "moveCards",
-    "click .list-actions-archive-cards": "archiveCards",
-    "click .list-actions-archive-list": "archiveList"
+    "click .pop-over-header-close-btn": "onClose",
+    "click .list-actions-add-card": "onAddCard",
+    "click .list-actions-copy-list": "onCopyList",
+    "click .list-actions-move-list": "onMoveList",
+    "click .list-actions-subscribe": "onSubscribe",
+    "click .list-actions-move-cards": "onMoveCards",
+    "click .list-actions-archive-cards": "onArchiveCards",
+    "click .list-actions-archive-list": "onArchiveList"
   },
-  close: function(e) {
+  onClose: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninitialize();
   },
-  addCard: function(e) {
+  onAddCard: function(e) {
     e.preventDefault();
     this.trigger("add_card", e);
+    this.uninitialize();
   },
-  copyList: function(e) {
+  onCopyList: function(e) {
     e.preventDefault();
     console.log("copyList");
+    this.uninitialize();
   },
-  mostList: function(e) {
+  onMoveList: function(e) {
     e.preventDefault();
     console.log("mostList");
+    this.uninitialize();
   },
-  subscribe: function(e) {
+  onSubscribe: function(e) {
     e.preventDefault();
     var status = !this.list.get("subscribed");
     this.list.set("subscribed", status);
     App.trigger("client_save_list", this.list.toJSON());
+    this.uninitialize();
   },
-  moveCards: function(e) {
+  onMoveCards: function(e) {
     e.preventDefault();
     console.log("moveCards");
+    this.uninitialize();
   },
-  archiveCards: function(e) {
+  onArchiveCards: function(e) {
     e.preventDefault();
     console.log("archiveCards");
+    this.uninitialize();
   },
-  archiveList: function(e) {
+  onArchiveList: function(e) {
     e.preventDefault();
     App.trigger("client_delete_list", this.list.get("id"));
     App.lists.remove(this.list);
-    this.remove();
+    this.uninitialize();
   },
   render: function() {
     this.$el.html(this.template(this.list.toJSON()));
@@ -54,6 +60,9 @@ var ListActionsPopover = Backbone.View.extend({
     });
     this.$el.appendTo(App.$el);
     this.delegateEvents();
+  },
+  uninitialize: function() {
+    this.remove();
   },
   initialize: function(opt) {
     this.list = opt.list;

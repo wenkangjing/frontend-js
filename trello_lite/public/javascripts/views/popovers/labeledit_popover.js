@@ -1,28 +1,28 @@
 var LabelEditPopover = Backbone.View.extend({
   template: App.templates.labeledit_popover,
   events: {
-    "click .pop-over-header-close-btn": "close",
-    "click .pop-over-header-back-btn": "back",
-    "click .label-edit-color-btn": "selectColor",
-    "click .label-edit-save": "saveLabel",
-    "click .label-edit-delete": "deleteLabel"
+    "click .pop-over-header-close-btn": "onClose",
+    "click .pop-over-header-back-btn": "onBack",
+    "click .label-edit-color-btn": "onSelect",
+    "click .label-edit-save": "onSave",
+    "click .label-edit-delete": "onDelete"
   },
-  close: function(e) {
+  onClose: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninitialize();
   },
-  back: function(e) {
+  onBack: function(e) {
     e.preventDefault();
-    this.remove();
+    this.uninitialize();
     new LabelsPopover({ card: this.card, pos: this.pos });
   },
-  selectColor: function(e) {
+  onSelect: function(e) {
     e.preventDefault();
     this.$el.find(".label-edit-color-btn").removeClass("selected");
     var $color = $(e.target).closest(".label-edit-color-btn");
     $color.addClass("selected");
   },
-  saveLabel: function(e) {
+  onSave: function(e) {
     e.preventDefault();
     var color = this.$el.find(".label-edit-color-btn.selected").data("color");
     var name = this.$el.find(".card-label-name").val();
@@ -34,9 +34,9 @@ var LabelEditPopover = Backbone.View.extend({
       App.trigger("client_save_label", {name: name, color: color});
       App.trigger("client_get_labels");
     }
-    this.back(e);
+    this.uninitialize();
   },
-  deleteLabel: function(e) {
+  onDelete: function(e) {
     e.preventDefault();
     if (this.model) {
       new LabelDeletePopover({
@@ -44,7 +44,7 @@ var LabelEditPopover = Backbone.View.extend({
           pos: this.pos,
           model: this.model
       });
-      this.remove();
+      this.uninitialize();
     }
   },
   render: function() {
@@ -66,6 +66,9 @@ var LabelEditPopover = Backbone.View.extend({
       var name = this.$el.find(".card-label-name").val(this.model.get("name"));
       selected.addClass("selected");
     }
+  },
+  uninitialize: function() {
+    this.remove();
   },
   initialize: function(opt) {
     this.card = opt.card;

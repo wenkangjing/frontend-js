@@ -351,6 +351,7 @@ li {
   background: #e2e4e6;
   overflow-y: auto;
   overflow-x: hidden;
+  cursor: pointer;
 }
 .list + .list {
   margin-left: 10px;
@@ -998,7 +999,7 @@ li {
 .card-label-delete-pop-over .label-delete-confirm {
   width: 100%;
 }
-.list.list.placeholder {
+.list.list-placeholder {
   background: #0067a3;
   min-height: 75px;
   transform: none;

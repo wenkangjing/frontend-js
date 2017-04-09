@@ -27,28 +27,19 @@ var App = {
         return $(handle).closest(".card").length === 0;
       }
     }).on('drag', function (el, source) {
-      App.dndWidth = $(el).width();
-      App.dndHeight = $(el).height();
-    }).on('drop', function (el, target, source, sibling) {
-
-    }).on('over', function (el, container, source) {
-
-    }).on('out', function (el, container, source) {
-
-    }).on("shadow", function(el, container, source) {
       var $el = $(el);
-      //$el.html("<div></div>");
-      // $el.css ({
-      //   width: App.dndWidth,
-      //   height: App.dndHeight
-      // });
-      $(el).removeClass("gu-transit").addClass('list-placeholder');
-    });;
+      $el.addClass("dragging");
+    }).on('drop', function (el, target, source, sibling) {
+      $(el).removeClass("dragging");
+    }).on('cancel', function (el, container, source) {
+      $(el).removeClass("dragging");
+    });
   },
   renderLists: function() {
     this.lists.forEach(function(list) {
       new ListView({model: list});
     }.bind(this));
+
     var array = [];
     App.$el.find(".cards").each(function(idx, el) {
       array.push(el);

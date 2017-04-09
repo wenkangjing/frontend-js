@@ -22,9 +22,20 @@ html
           a.header-btn
             span.icon-information.icon-lg.light
           a.header-btn
-            span.icon-notification.icon-lg.light
+            span.icon-notification.icon-lg.light.border-notification
       div#board
         header
+          span
+            span.board-header-btn-text.board-name Trello Lite
+            span.icon-sm.icon-star.board-header-btn-icon
+            span.board-header-btn-text
+              span.icon-sm.icon-private.light
+              span Private
+          span.float-right
+            span.board-header-btn-text.text-underline 
+              span.icon-sm.icon-subscribe.light
+              span Subscribed
+            span.board-header-btn-text.text-underline.border-menu Show Menu
         div#lists
 
     +javascript_include_tag("application", "router", "helper", "client")
@@ -41,7 +52,9 @@ html
       "views/popovers/duedate_popover", 
       "views/popovers/labeledit_popover", 
       "views/popovers/labeldelete_popover",
-      "views/popovers/listactions_popover")
+      "views/popovers/listactions_popover",
+      "views/popovers/menu_sidebar",
+      "views/popovers/notification_popover")
 
     script(type="text/javascript").
       App.colors = !{JSON.stringify(colors)}; // immutable

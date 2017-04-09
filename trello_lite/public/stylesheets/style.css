@@ -273,6 +273,12 @@ hr {
   background: rgba(0,0,0,0.6);
   z-index: 20;
 }
+.text-underline {
+  text-decoration: underline;
+}
+.section-divider {
+  margin: 15px 0;
+}
 textarea {
   padding: 9px 11px 0;
   border-radius: 3px;
@@ -315,7 +321,7 @@ li {
 }
 #board {
   position: absolute;
-  top: 30px;
+  top: 40px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -331,11 +337,26 @@ li {
 #board > header {
   position: relative;
   color: #fff;
-  padding: 8px 4px 8px 8px;
+  padding: 8px;
   overflow: hidden;
 }
+#board > header .board-header-btn-text {
+  display: inline-block;
+  height: 30px;
+  padding: 5px 8px;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+#board > header .board-header-btn-text:hover {
+  background: rgba(0,0,0,0.12);
+}
+#board > header .board-name {
+  font-size: 18px;
+  font-weight: 700;
+}
 #lists {
-  margin: 10px;
+  margin: 0 10px;
   width: 100%;
   height: 100%;
 }
@@ -1011,4 +1032,91 @@ li {
 }
 .dragging {
   transform: rotate(5deg);
+}
+.board-menu {
+  position: absolute;
+  width: 305px;
+  top: 40px;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+  background: #edeff0;
+}
+.board-menu .board-menu-header-title {
+  line-height: 20px;
+  margin: 13px 30px;
+  text-align: center;
+}
+.board-menu .board-menu-header-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.board-menu .board-menu-content {
+  padding: 8px;
+}
+.board-menu .board-menu-navigation-item {
+  border-radius: 3px;
+  display: block;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 6px;
+  position: relative;
+  cursor: pointer;
+}
+.board-menu .board-menu-navigation-item:hover {
+  background-color: #d6dadc;
+}
+.board-menu .board-menu-activities {
+  margin-left: 40px;
+}
+.board-menu .board-menu-activities li {
+  padding: 10px 0;
+}
+.board-menu .board-menu-activities li + li {
+  border-top: 1px solid #e2e4e6;
+}
+.board-menu .board-menu-activities p {
+  display: inline-block;
+}
+.board-menu .board-menu-activities .indent {
+  margin-left: -40px;
+}
+.notification {
+  position: absolute;
+  width: 450px;
+  top: 40px;
+  right: 5px;
+  z-index: 30;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+  background: #edeff0;
+}
+.notification .notification-header-title {
+  line-height: 20px;
+  margin: 13px 30px;
+  text-align: center;
+}
+.notification .notification-header-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.notification .notification-content {
+  padding: 8px;
+}
+.notification .notification-content .notification-activities {
+  margin-left: 40px;
+}
+.notification .notification-content .notification-activities li {
+  padding: 10px 0;
+}
+.notification .notification-content .notification-activities li + li {
+  border-top: 1px solid #e2e4e6;
+}
+.notification .notification-content .notification-activities p {
+  display: inline-block;
+}
+.notification .notification-content .notification-activities .indent {
+  margin-left: -40px;
 }

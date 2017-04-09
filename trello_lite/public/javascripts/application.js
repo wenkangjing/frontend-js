@@ -79,13 +79,17 @@ var App = {
       model: this.cards.findWhere({id: id})
     });
   },
-  // 
-  // move
-  /////////////////////////////////////////////
-  moveCard: function(idCard, idList) {
-    var card = App.cards.get(idCard);
-    card.set("idList", idList, {silent: true});
-    Client.saveCard(card.toJSON());
+  renderMenu: function(e) {
+    if (this.menu) {
+      this.menu.remove();
+    }
+    this.menu = new MenuView();
+  },
+  renderNotification: function(e) {
+    if (this.notification) {
+      this.notification.remove();
+    }    
+    this.notification = new NotificationView();
   },
   // 
   // init
@@ -95,7 +99,7 @@ var App = {
       "client_get_cards": Client.getCards.bind(Client),
       "client_save_card": Client.saveCard.bind(Client),
       "client_delete_card": Client.deleteCard.bind(Client),
-      "client_move_card": this.moveCard.bind(this),
+      "client_move_card": Client.moveCard.bind(Client),
 
       "client_get_labels": Client.getLabels.bind(Client),
       "client_save_label": Client.saveLabel.bind(Client),
@@ -111,7 +115,8 @@ var App = {
     });
     this.listenTo(this.cards, "update", this.renderCards.bind(this));
     this.listenTo(this.lists, "update", this.renderBoard.bind(this));
-
+    this.$el.on("click", ".border-notification", this.renderNotification.bind(this));
+    this.$el.on("click", ".border-menu", this.renderMenu.bind(this));
   },
   init: function() {
     _.extend(this, Backbone.Events);
@@ -121,7 +126,7 @@ var App = {
   }
 };
 
-
+// sync card/list in order
 $(window).on("beforeunload", sync);
 
 function sync() {
@@ -136,6 +141,6 @@ function sync() {
   $("#lists .card").each(function(idx, el) {
     var c = App.cards.findWhere({id: $(el).data("id")});
     cards.push(c);
-  });  
+  });
   Client.setCards(cards);
 }

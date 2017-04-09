@@ -20,7 +20,7 @@ basics()
 
 #board
   position: absolute
-  top: 30px
+  top: 40px
   right: 0
   bottom: 0
   left: 0
@@ -36,11 +36,23 @@ basics()
 #board > header
   position: relative
   color: #fff
-  padding: 8px 4px 8px 8px
+  padding: 8px
   overflow: hidden
-
+  .board-header-btn-text
+    display: inline-block
+    height: 30px
+    padding: 5px 8px
+    border-radius: 3px
+    text-decoration: none
+    cursor: pointer
+    &:hover
+      background: rgba(0,0,0,.12)
+   .board-name
+      font-size: 18px
+      font-weight: 700
+ 
 #lists
-  margin: 10px
+  margin: 0 10px
   width: 100%
   height: 100%
 
@@ -613,3 +625,76 @@ basics()
   transform: none
 .dragging
   transform: rotate(5deg);
+
+
+// menu
+
+.board-menu
+  position: absolute
+  width: 305px
+  top: 40px
+  right: 0
+  bottom: 0
+  z-index: 30
+  box-shadow: 0 0 6px rgba(0,0,0,.4)
+  background: #EDEFF0
+  .board-menu-header-title
+    line-height: 20px
+    margin: 13px 30px
+    text-align: center
+  .board-menu-header-close-button
+    position: absolute
+    top: 10px
+    right: 10px
+  .board-menu-content
+    padding 8px
+  .board-menu-navigation-item
+    border-radius: 3px
+    display: block
+    font-weight: 700
+    line-height: 20px
+    padding: 6px
+    position: relative
+    cursor: pointer
+    &:hover
+      background-color: #D6DADC
+  .board-menu-activities
+    margin-left: 40px
+    li
+      padding: 10px 0
+    li + li
+      border-top: 1px solid #E2E4E6
+    p
+      display: inline-block
+    .indent
+      margin-left: -40px
+
+
+.notification
+  position: absolute
+  width: 450px
+  top: 40px
+  right: 5px
+  z-index: 30
+  box-shadow: 0 0 6px rgba(0,0,0,.4)
+  background: #EDEFF0
+  .notification-header-title
+    line-height: 20px
+    margin: 13px 30px
+    text-align: center
+  .notification-header-close-button
+    position: absolute
+    top: 10px
+    right: 10px
+  .notification-content
+    padding 8px
+    .notification-activities
+      margin-left: 40px
+      li
+        padding: 10px 0
+      li + li
+        border-top: 1px solid #E2E4E6
+      p
+        display: inline-block
+      .indent
+        margin-left: -40px

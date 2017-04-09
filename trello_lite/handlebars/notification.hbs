@@ -1,0 +1,30 @@
+<div class="notification">
+  <div class="notification-header">
+    <h3 class="notification-header-title">Notification</h3>
+    <a class="notification-header-close-button icon-lg icon-close" href="#"></a>
+    <hr>
+  </div>
+  <div class="notification-content">
+    <div class="notification-activities">
+      <h2>
+        <span class="icon-lg icon-activity indent"></span>
+        <span>Activity</span>
+      </h2>
+      <ul>
+        {{#each activities}}
+          <li data-id="{{id}}">
+            <span class="user-initials-sm indent"></span>
+            {{#if comment}}
+            <p class="comment">{{comment}}</p>
+            <p class="comment-ops">
+              <a class="timestamp">{{formatDatetime created}}</a>
+            </p>
+            {{else}}
+              <p class="action">{{action}} at <a class="timestamp">{{formatDatetime created}}</a></p>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

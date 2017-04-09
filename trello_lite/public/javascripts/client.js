@@ -115,6 +115,11 @@ var Client = {
       App.goto("/");
     });
   },
+  moveCard: function(idCard, idList) {
+    var card = App.cards.get(idCard);
+    card.set("idList", idList, {silent: true});
+    Client.saveCard(card.toJSON());
+  },
   // 
   // labels
   ////////////////////////////////////////  

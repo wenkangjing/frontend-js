@@ -1,0 +1,44 @@
+<div class="board-menu">
+  <div class="board-menu-header">
+    <h3 class="board-menu-header-title">Menu</h3>
+    <a class="board-menu-header-close-button icon-lg icon-close" href="#"></a>
+    <hr>
+  </div>
+  <div class="board-menu-content">
+    <ul class="board-menu-navigation">
+      <li class="board-menu-navigation-item">
+          <span class="icon-sm icon-gear board-menu-navigation-item-link-icon"></span>
+          &nbsp;Settings
+      </li>
+      <li class="board-menu-navigation-item">
+          <span class="icon-sm icon-label board-menu-navigation-item-link-icon"></span>
+          &nbsp;Labels
+      </li>
+      <li class="board-menu-navigation-item">
+          <span class="icon-sm icon-archive board-menu-navigation-item-link-icon"></span>
+          &nbsp;Archived Items
+      </li>
+    </ul>
+    <hr class"section-divider">
+    <div class="board-menu-activities">
+      <h2>
+        <span class="icon-lg icon-activity indent"></span>
+        <span>Activity</span>
+      </h2>
+      <ul>
+        {{#each activities}}
+          <li data-id="{{id}}">
+            <span class="user-initials-sm indent"></span>
+            {{#if comment}}
+            <p class="comment">{{comment}}</p>
+            <p class="comment-ops">
+              <a class="timestamp">{{formatDatetime created}}</a>
+            </p>
+            {{else}}
+              <p class="action">{{action}} at <a class="timestamp">{{formatDatetime created}}</a></p>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+</div>

@@ -26,7 +26,24 @@ var App = {
       moves: function(el, container, handle) {
         return $(handle).closest(".card").length === 0;
       }
-    });
+    }).on('drag', function (el, source) {
+      App.dndWidth = $(el).width();
+      App.dndHeight = $(el).height();
+    }).on('drop', function (el, target, source, sibling) {
+
+    }).on('over', function (el, container, source) {
+
+    }).on('out', function (el, container, source) {
+
+    }).on("shadow", function(el, container, source) {
+      var $el = $(el);
+      //$el.html("<div></div>");
+      // $el.css ({
+      //   width: App.dndWidth,
+      //   height: App.dndHeight
+      // });
+      $(el).removeClass("gu-transit").addClass('list-placeholder');
+    });;
   },
   renderLists: function() {
     this.lists.forEach(function(list) {
@@ -36,7 +53,28 @@ var App = {
     App.$el.find(".cards").each(function(idx, el) {
       array.push(el);
     });
-    dragula(array);
+    dragula(array).on('drag', function (el, source) {
+      var $el = $(el);
+      $el.addClass("dragging");
+      App.dndWidth = $el.width();
+      App.dndHeight = $el.height();
+    }).on('drop', function (el, target, source, sibling) {
+      var $el = $(el);
+      $el.removeClass("dragging");
+      var idCard = $el.data("id");
+      var idList = $(target).closest(".list").data("id");
+      App.trigger("client_move_card", idCard, idList);
+    }).on('cancel', function (el, container, source) {
+      $(el).removeClass("dragging");
+    }).on("shadow", function(el, container, source) {
+      var $el = $(el);
+      $el.html("<div></div>");
+      $el.css ({
+        width: App.dndWidth,
+        height: App.dndHeight
+      });
+      $(el).removeClass("gu-transit").addClass('card-placeholder');
+    });
   },
   renderCards: function() {
     this.cards.forEach(function(card) {
@@ -55,6 +93,15 @@ var App = {
     });
   },
   // 
+  // move
+  /////////////////////////////////////////////
+  moveCard: function(idCard, idList) {
+    var card = this.cards.get(idCard);
+    card.set("idList", idList);
+    Client.saveCard(card);
+  },
+
+  // 
   // init
   /////////////////////////////////////////////
   buildEvents: function() {
@@ -62,7 +109,8 @@ var App = {
       "client_get_cards": Client.getCards.bind(Client),
       "client_save_card": Client.saveCard.bind(Client),
       "client_delete_card": Client.deleteCard.bind(Client),
-      
+      "client_move_card": this.moveCard.bind(this),
+
       "client_get_labels": Client.getLabels.bind(Client),
       "client_save_label": Client.saveLabel.bind(Client),
       "client_delete_label": Client.deleteLabel.bind(Client),

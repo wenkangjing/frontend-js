@@ -396,6 +396,7 @@ li {
 .list .cards {
   padding: 0 4px;
   margin: 0 4px;
+  min-height: 10px;
 }
 .list > a {
   display: block;
@@ -996,4 +997,17 @@ li {
 }
 .card-label-delete-pop-over .label-delete-confirm {
   width: 100%;
+}
+.list.list.placeholder {
+  background: #0067a3;
+  min-height: 75px;
+  transform: none;
+}
+.card.card-placeholder {
+  background: #c4c9cc;
+  min-height: 20px;
+  transform: none;
+}
+.dragging {
+  transform: rotate(5deg);
 }

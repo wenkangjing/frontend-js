@@ -79,12 +79,15 @@ var Helper = {
   // popover
   adjustPosition: function(e, offsetY) {
     var pos = $(e.currentTarget).offset();
-    var result = {
-      top: pos.top + offsetY
-    };
-    var windowWidth = $(document.body).innerWidth();
-    if (pos.left + 350 > windowWidth) {
-      result.left = windowWidth - 350;
+    var result = {};
+    if (pos.top + offsetY + 400 > innerHeight) {
+      result.top = innerHeight - 400;
+    } else {
+      result.top = pos.top + offsetY;
+    }
+
+    if (pos.left + 350 > innerWidth) {
+      result.left = innerWidth - 350;
     } else {
       result.left = pos.left;
     }

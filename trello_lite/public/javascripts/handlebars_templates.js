@@ -215,7 +215,31 @@ this["JST"]["cardcopy_popover"] = Handlebars.template({"1":function(container,de
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</select></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</select></div><input class=\"card-copy-submit\" type=\"submit\" value=\"Create Card\"></form></form></div></div>";
+    + "</select></div><input class=\"card-copy-submit\" type=\"submit\" value=\"Create Card\"></form></div></div>";
+},"useData":true});
+
+this["JST"]["cardmove_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<option value=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<option>"
+    + container.escapeExpression(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"index","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : {};
+
+  return "<div class=\"pop-over card-move-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Move Card</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form action=\"\"><div class=\"button-link left\"><label>List</label><p class=\"list-value\"></p><select class=\"select-list\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</select></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</select></div><input class=\"card-move-submit\" type=\"submit\" value=\"Move\"></form></div></div>";
 },"useData":true});
 
 this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

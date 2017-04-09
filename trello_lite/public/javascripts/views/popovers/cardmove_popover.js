@@ -1,10 +1,10 @@
-var CardCopyPopover = Backbone.View.extend({
-  template: App.templates.cardcopy_popover,
+var CardMovePopover = Backbone.View.extend({
+  template: App.templates.cardmove_popover,
   events: {
     "click .pop-over-header-close-btn": "onClose",
     "change .select-list": "onList",
     "change .select-position": "onPosition",
-    "submit form": "onCreate"
+    "submit form": "onMove"
   },
   onClose: function(e) {
     e.preventDefault();
@@ -21,27 +21,14 @@ var CardCopyPopover = Backbone.View.extend({
     var pos = $(e.target).val();
     this.$el.find(".position-value").text(pos);
   },
-  onCreate: function(e){
+  onMove: function(e){
     e.preventDefault();
     var $f = $(e.target);
-    var values = $f.serializeArray();
-    var newCard = this.card.toJSON();
-    delete newCard.id;
-    delete newCard.due;
-    newCard.name = values[0].value;
-    if (values.length === 1) { // no labels
-      delete newCard.idLabels;
-    }
-    newCard.idList = $(".select-list").val();
-    App.trigger("client_save_card", newCard);
+    App.trigger("client_move_card", this.card.get("id"), $(".select-list").val());
     this.uninitialize();
   },
   render: function() {
-    this.$el.html(this.template({
-      cardName: this.card.get("name"),
-      labelCount: this.card.get("idLabels").length,
-      lists: App.lists.toJSON()
-    }));
+    this.$el.html(this.template({ lists: App.lists.toJSON() }));
     this.$el.find(".pop-over").offset({
       top: this.pos.top || 0,
       left: this.pos.left || 0
@@ -53,6 +40,7 @@ var CardCopyPopover = Backbone.View.extend({
   },
   uninitialize: function() {
     this.remove();
+    this.trigger("close");
   },  
   initialize: function(opt) {
     this.pos = opt.pos;

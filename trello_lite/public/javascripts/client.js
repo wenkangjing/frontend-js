@@ -98,6 +98,7 @@ var Client = {
      data: json
     }).done(function(json) {
       console.log(json);
+      Client.getCards();
     }).fail(function() {
       console.error("Fail to save card: " + card);
       App.goto("/");

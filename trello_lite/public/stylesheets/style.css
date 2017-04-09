@@ -1148,29 +1148,36 @@ li {
 .notification .notification-content .notification-activities .indent {
   margin-left: -40px;
 }
-.card-copy-pop-over textarea {
+.card-copy-pop-over textarea,
+.card-move-pop-over textarea {
   width: 100%;
   display: block;
   background: #e2e4e6;
 }
-.card-copy-pop-over textarea:focus {
+.card-copy-pop-over textarea:focus,
+.card-move-pop-over textarea:focus {
   background: #fff;
 }
-.card-copy-pop-over input[type="checkbox"] {
+.card-copy-pop-over input[type="checkbox"],
+.card-move-pop-over input[type="checkbox"] {
   vertical-align: middle;
 }
-.card-copy-pop-over p {
+.card-copy-pop-over p,
+.card-move-pop-over p {
   margin: 5px 0;
 }
-.card-copy-pop-over .left {
+.card-copy-pop-over .left,
+.card-move-pop-over .left {
   width: 200px;
   float: left;
 }
-.card-copy-pop-over .right {
+.card-copy-pop-over .right,
+.card-move-pop-over .right {
   width: 75px;
   float: right;
 }
-.card-copy-pop-over .button-link {
+.card-copy-pop-over .button-link,
+.card-move-pop-over .button-link {
   position: relative;
   height: 50px;
   cursor: pointer;
@@ -1179,18 +1186,22 @@ li {
   border-radius: 3px;
   background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
 }
-.card-copy-pop-over .button-link:hover {
+.card-copy-pop-over .button-link:hover,
+.card-move-pop-over .button-link:hover {
   background: #298fca;
   color: #fff;
 }
-.card-copy-pop-over .button-link label {
+.card-copy-pop-over .button-link label,
+.card-move-pop-over .button-link label {
   display: block;
 }
-.card-copy-pop-over .button-link p {
+.card-copy-pop-over .button-link p,
+.card-move-pop-over .button-link p {
   font-size: 18px;
   font-weight: bold;
 }
-.card-copy-pop-over .button-link select {
+.card-copy-pop-over .button-link select,
+.card-move-pop-over .button-link select {
   position: absolute;
   top: 0;
   left: 0;
@@ -1202,7 +1213,10 @@ li {
   border: none;
   cursor: pointer;
 }
-.card-copy-pop-over .card-copy-submit {
+.card-copy-pop-over .card-copy-submit,
+.card-move-pop-over .card-copy-submit,
+.card-copy-pop-over .card-move-submit,
+.card-move-pop-over .card-move-submit {
   display: inline-block;
   color: #fff;
   line-height: 22px;

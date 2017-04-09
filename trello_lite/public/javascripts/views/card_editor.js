@@ -56,14 +56,19 @@ var CardEditorView = Backbone.View.extend({
   },
   onMove: function(e) {
     e.preventDefault();
-  },   
-  onCopy: function(e) {
-    e.preventDefault();
-
-    new CardCopyPopover({
+    this.movePopover = new CardMovePopover({
       card: this.model,
       pos: Helper.adjustPosition(e, 35)
-    })
+    });
+    this.listenTo(this.movePopover, "close", this.remove.bind(this));
+  },
+  onCopy: function(e) {
+    e.preventDefault();
+    this.copyPopover = new CardCopyPopover({
+      card: this.model,
+      pos: Helper.adjustPosition(e, 35)
+    });
+    this.listenTo(this.copyPopover, "close", this.remove.bind(this));
   },   
   autogrow: function() {
     var $input = this.$el.find(".card-editor-input");

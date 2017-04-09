@@ -1,0 +1,39 @@
+<div class="pop-over card-copy-pop-over">
+  <div class="pop-over-header">
+    <span class="pop-over-header-title">Copy Card</span>
+    <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
+  </div>
+  <div class="pop-over-content">
+    <form>
+      <p><strong>Title</strong></p>
+      <textarea class="js-autofocus" name="name">{{cardName}}</textarea>
+      <br>
+      <p><strong>Keep...</strong></p>
+      <div class="check-div u-clearfix">
+        <input id="idKeepLabels" type="checkbox" name="labels" checked="checked">
+        <label for="idKeepLabels">Labels<span>&nbsp;({{labelCount}})</span></label>
+      </div>
+      <br>
+      <p><strong>Copy to...</strong></p>
+      <div class="button-link left">
+        <label>List</label>
+        <p class="list-value"></p>
+        <select class="select-list">
+          {{#each lists}}
+            <option value="{{id}}">{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="button-link right">
+        <label>Position</label>
+        <p class="position-value"></p>
+        <select class="select-position">
+          {{#each lists}}
+            <option>{{@index}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <input class="card-copy-submit" type="submit" value="Create Card"></form>
+    </form>
+  </div>
+</div>

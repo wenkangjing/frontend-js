@@ -190,6 +190,34 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
     + "</div>";
 },"useData":true});
 
+this["JST"]["cardcopy_popover"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<option value=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<option>"
+    + container.escapeExpression(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"index","hash":{},"data":data}) : helper)))
+    + "</option>";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"pop-over card-copy-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Copy Card</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form><p><strong>Title</strong></p><textarea class=\"js-autofocus\" name=\"name\">"
+    + alias4(((helper = (helper = helpers.cardName || (depth0 != null ? depth0.cardName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"cardName","hash":{},"data":data}) : helper)))
+    + "</textarea><br><p><strong>Keep...</strong></p><div class=\"check-div u-clearfix\"><input id=\"idKeepLabels\" type=\"checkbox\" name=\"labels\" checked=\"checked\"><label for=\"idKeepLabels\">Labels<span>&nbsp;("
+    + alias4(((helper = (helper = helpers.labelCount || (depth0 != null ? depth0.labelCount : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"labelCount","hash":{},"data":data}) : helper)))
+    + ")</span></label></div><br><p><strong>Copy to...</strong></p><div class=\"button-link left\"><label>List</label><p class=\"list-value\"></p><select class=\"select-list\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</select></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\">"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</select></div><input class=\"card-copy-submit\" type=\"submit\" value=\"Create Card\"></form></form></div></div>";
+},"useData":true});
+
 this["JST"]["duedate_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div class=\"pop-over card-duedate-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Change Due Date</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><div><div class=\"card-duedate-date\"><h2>Date</h2><input type=\"text\" id=\"pika-datepicker\"></div><div class=\"card-duedate-time\"><h2>Time</h2><input type=\"text\" placeholder=\"Enter time...\" value=\"12:00\"></div></div><div id=\"pika-container\"></div><div><input class=\"card-modal-btn duedate-save\" type=\"submit\" value=\"Save\"><input class=\"card-modal-btn duedate-remove\" type=\"reset\" value=\"Remove\"></div></div></div>";
 },"useData":true});

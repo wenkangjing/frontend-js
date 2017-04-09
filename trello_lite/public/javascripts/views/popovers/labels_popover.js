@@ -77,7 +77,7 @@ var LabelsPopover = Backbone.View.extend({
     }.bind(this));
     this.$el.html(this.template({
       labels: labels
-    })).show();
+    }));
     this.$el.find(".pop-over").offset({
       top: this.pos.top || 0,
       left: this.pos.left || 0

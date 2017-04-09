@@ -999,12 +999,12 @@ li {
 .card-label-delete-pop-over .label-delete-confirm {
   width: 100%;
 }
-.list.list-placeholder {
+.list-placeholder {
   background: #0067a3;
   min-height: 75px;
   transform: none;
 }
-.card.card-placeholder {
+.card-placeholder {
   background: #c4c9cc;
   min-height: 20px;
   transform: none;

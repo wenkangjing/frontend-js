@@ -30,9 +30,11 @@ var App = {
       var $el = $(el);
       $el.addClass("dragging");
     }).on('drop', function (el, target, source, sibling) {
-      $(el).removeClass("dragging");
+      $(el).removeClass("dragging list-placeholder");
     }).on('cancel', function (el, container, source) {
-      $(el).removeClass("dragging");
+      $(el).removeClass("dragging list-placeholder");
+    }).on("shadow", function(el, container, source) {
+      $(el).addClass('list-placeholder');
     });
   },
   renderLists: function() {
@@ -45,26 +47,20 @@ var App = {
       array.push(el);
     });
     dragula(array).on('drag', function (el, source) {
-      var $el = $(el);
-      $el.addClass("dragging");
-      App.dndWidth = $el.width();
-      App.dndHeight = $el.height();
+      $(el).addClass("dragging");
     }).on('drop', function (el, target, source, sibling) {
       var $el = $(el);
-      $el.removeClass("dragging");
+      $el.removeClass("dragging card-placeholder");
       var idCard = $el.data("id");
       var idList = $(target).closest(".list").data("id");
-      App.trigger("client_move_card", idCard, idList);
+      var card = App.cards.findWhere({id: idCard});
+      if (card.get("idList") !== idList) {
+        App.trigger("client_move_card", idCard, idList);
+      }
     }).on('cancel', function (el, container, source) {
       $(el).removeClass("dragging");
     }).on("shadow", function(el, container, source) {
-      var $el = $(el);
-      $el.html("<div></div>");
-      $el.css ({
-        width: App.dndWidth,
-        height: App.dndHeight
-      });
-      $(el).removeClass("gu-transit").addClass('card-placeholder');
+      $(el).addClass('card-placeholder');
     });
   },
   renderCards: function() {
@@ -87,11 +83,10 @@ var App = {
   // move
   /////////////////////////////////////////////
   moveCard: function(idCard, idList) {
-    var card = this.cards.get(idCard);
-    card.set("idList", idList);
-    Client.saveCard(card);
+    var card = App.cards.get(idCard);
+    card.set("idList", idList, {silent: true});
+    Client.saveCard(card.toJSON());
   },
-
   // 
   // init
   /////////////////////////////////////////////
@@ -116,6 +111,7 @@ var App = {
     });
     this.listenTo(this.cards, "update", this.renderCards.bind(this));
     this.listenTo(this.lists, "update", this.renderBoard.bind(this));
+
   },
   init: function() {
     _.extend(this, Backbone.Events);
@@ -126,3 +122,20 @@ var App = {
 };
 
 
+$(window).on("beforeunload", sync);
+
+function sync() {
+  var lists = [];
+  $("#lists .list").each(function(idx, el) {
+    var l = App.lists.findWhere({id: $(el).data("id")});
+    lists.push(l);
+  });
+  Client.setLists(lists);
+
+  var cards = [];
+  $("#lists .card").each(function(idx, el) {
+    var c = App.cards.findWhere({id: $(el).data("id")});
+    cards.push(c);
+  });  
+  Client.setCards(cards);
+}

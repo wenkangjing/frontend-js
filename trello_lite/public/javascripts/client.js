@@ -12,7 +12,21 @@ var Client = {
       console.error("Fail to get lists");
       App.goto("/");
     });
-  },  
+  },
+  setLists: function(lists) {
+    var json = JSON.stringify(lists);
+    $.ajax({
+     method: "put",
+     url: "/lists",
+     contentType: "application/json",
+     data: json
+    }).done(function(json) {
+      console.log(json);
+    }).fail(function() {
+      console.error("Fail to set lists" );
+      App.goto("/");
+    });
+  },
   saveList: function(list) {
     if (!list.id) {
       list.created = (new Date()).valueOf();
@@ -24,7 +38,7 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      Client.getLists();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to save list: " + list);
       App.goto("/");
@@ -36,7 +50,7 @@ var Client = {
      url: "/lists",
      data: {id: id}
     }).done(function(json) {
-      Client.getLists();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to delete list: " + id);
       App.goto("/");
@@ -57,6 +71,20 @@ var Client = {
       App.goto("/");
     });
   },  
+  setCards: function(cards) {
+    var json = JSON.stringify(cards);
+    $.ajax({
+     method: "put",
+     url: "/cards",
+     contentType: "application/json",
+     data: json
+    }).done(function(json) {
+      console.log(json);
+    }).fail(function() {
+      console.error("Fail to set cards" );
+      App.goto("/");
+    });
+  },  
   saveCard: function(card) {
     delete card.comments; // add in CardView for badge
     if (!card.id) { 
@@ -69,7 +97,7 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      Client.getCards();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to save card: " + card);
       App.goto("/");
@@ -81,7 +109,7 @@ var Client = {
      url: "/cards",
      data: {id: id}
     }).done(function(json) {
-      Client.getCards();
+      console.log(json);
     }).fail(function() {
       console.error("Fail to delete card: " + id);
       App.goto("/");

@@ -31,8 +31,11 @@ module.exports = {
   },
   update: function(item) {
     var array = this.get();
-    array = _(array).reject({id: item.id});
-    array.push(item);
+    array.forEach(function(it) {
+      if (it.id === item.id) {
+        Object.assign(it, item);
+      }
+    });
     this.set(array);
     return item;
   },

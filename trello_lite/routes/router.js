@@ -43,6 +43,11 @@ router.get('/cards/:id', function(req, res, next) {
 router.get('/lists', function(req, res, next) {
   res.json(ListsAccessor.get()).end();
 });
+router.put('/lists', function(req, res, next) {
+  var lists = req.body;
+  ListsAccessor.set(lists);
+  res.json(lists).end();
+});
 router.post('/lists', function(req, res, next) {
   var list = req.body;
   var array = ListsAccessor.get();
@@ -70,6 +75,11 @@ router.delete('/lists', function(req, res) {
 //////////////////////////////////////////////////////////
 router.get('/cards', function(req, res, next) {
   res.json(CardsAccessor.get()).end();
+});
+router.put('/cards', function(req, res, next) {
+  var cards = req.body;
+  CardsAccessor.set(cards);
+  res.json(cards).end();
 });
 router.post('/cards', function(req, res, next) {
   var card = req.body;

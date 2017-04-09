@@ -16,7 +16,7 @@
   </div>
   {{/if}}
   {{#if due}}
-  <div class="badge due {{isDuePast due}}">
+  <div class="badge due {{isDuePast due}} {{#if completed}}completed{{/if}}">
     <span class="icon-sm icon-clock"></span>
     <span class="badge-text">{{formatDate due}}</span>
     </div>

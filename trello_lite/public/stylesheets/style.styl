@@ -343,20 +343,39 @@ basics()
     margin-right: 28px
     margin-bottom: 16px
     vertical-align: top
-  .due-date-completed
+  .due-date
     height: 30px
-    text-align: center
-    padding: 4px 10px
+    line-height: 30px
+    padding: 0 10px
     border-radius: 3px
-    background-color: #5AAC44
+    color: #4d4d4d
+    background-color: #E2E4E6
+    text-align: center
     cursor: pointer
-    span
+    .due-date-complete-check
+      color: transparent
+      &:hover
+        color: #E2E4E6
+    &:hover
+      background: #D6DADC
+    &.past
+      background-color: #EC9488
+      .due-date-complete-check
+        color: transparent
+        &:hover
+         color: #E2E4E6
+    &.completed
+      background-color: #5AAC44
+      .due-date-complete-check
+        color: #fff
+    .due-date-complete-check
+      border: 1px solid #fff
+      border-radius: 3px
       color: #fff
     .badge-text
       text-decoration: underline
       font-size: 14px
       font-weight: normal
-
   .description 
     h3
       display: inline-block

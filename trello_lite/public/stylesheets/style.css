@@ -691,18 +691,46 @@ li {
   margin-bottom: 16px;
   vertical-align: top;
 }
-.card-modal > main .due-date-completed {
+.card-modal > main .due-date {
   height: 30px;
-  text-align: center;
-  padding: 4px 10px;
+  line-height: 30px;
+  padding: 0 10px;
   border-radius: 3px;
-  background-color: #5aac44;
+  color: #4d4d4d;
+  background-color: #e2e4e6;
+  text-align: center;
   cursor: pointer;
 }
-.card-modal > main .due-date-completed span {
+.card-modal > main .due-date .due-date-complete-check {
+  color: transparent;
+}
+.card-modal > main .due-date .due-date-complete-check:hover {
+  color: #e2e4e6;
+}
+.card-modal > main .due-date:hover {
+  background: #d6dadc;
+}
+.card-modal > main .due-date.past {
+  background-color: #ec9488;
+}
+.card-modal > main .due-date.past .due-date-complete-check {
+  color: transparent;
+}
+.card-modal > main .due-date.past .due-date-complete-check:hover {
+  color: #e2e4e6;
+}
+.card-modal > main .due-date.completed {
+  background-color: #5aac44;
+}
+.card-modal > main .due-date.completed .due-date-complete-check {
   color: #fff;
 }
-.card-modal > main .due-date-completed .badge-text {
+.card-modal > main .due-date .due-date-complete-check {
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+}
+.card-modal > main .due-date .badge-text {
   text-decoration: underline;
   font-size: 14px;
   font-weight: normal;

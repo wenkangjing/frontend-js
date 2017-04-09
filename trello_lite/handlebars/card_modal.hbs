@@ -24,8 +24,8 @@
         {{#if due}}
         <div class="badges">
           <h3>Due Date</h3>
-          <div class="due-date-completed {{isDuePast due}}">
-            <span class="icon-sm icon-check card-detail-badge-due-date-complete-icon"></span>
+          <div class="due-date {{isDuePast due}} {{#if completed}}completed{{/if}}">
+            <span class="icon-sm icon-check due-date-complete-check"></span>
             <span class="badge-text">{{formatDatetime due}}</span>
           </div>
         </div>

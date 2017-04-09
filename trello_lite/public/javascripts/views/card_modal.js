@@ -19,6 +19,8 @@ var CardModalView = Backbone.View.extend({
     "click .card-modal-btn-link.card-modal-due-date": "onDuedate",
     // subscribe
     "click .card-modal-btn-link.card-modal-subscribe": "toggleSubscribe",
+    // completed
+    "click .due-date-complete-check": "toggleComplete",
     // move 
     "click .card-modal-btn-link.card-modal-move": "onMove",
     // copy
@@ -76,6 +78,12 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
+    App.trigger("client_save_card", this.model.toJSON());
+  },
+  toggleComplete: function(e) {
+    e.preventDefault();
+    var status = !this.model.get("completed");
+    this.model.set("completed", status);
     App.trigger("client_save_card", this.model.toJSON());
   },
   onLabels: function(e) {

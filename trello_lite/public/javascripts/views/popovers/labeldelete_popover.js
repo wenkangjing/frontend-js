@@ -17,8 +17,7 @@ var LabelDeletePopover = Backbone.View.extend({
   confirmDelete: function(e) {
     e.preventDefault();
     if (this.model) {
-      App.trigger("client_delete_label", this.model.get("id"));
-      App.labels.remove(this.model);
+      Client.deleteLabel(this.model.get("id"));
     }
     new LabelsPopover({ card: this.card,  pos: this.pos });
     this.uninialize();

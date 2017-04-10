@@ -38,7 +38,7 @@ var ListView = Backbone.View.extend({
     $input.hide();
     $text.show();
     this.model.set("name", name);
-    App.trigger("client_save_list", this.model.toJSON());
+    Client.saveList(this.model.toJSON());
   },
 
   onOptions: function(e) {
@@ -51,7 +51,7 @@ var ListView = Backbone.View.extend({
   },
   onAdd: function(e) {
     e.preventDefault();
-    if (this.$el.find(".card-composer").length > 0) {
+    if ($(".card-composer").length > 0) {
       return; // there is a card composer already
     }
     // show composer
@@ -64,29 +64,37 @@ var ListView = Backbone.View.extend({
     } else {
       this.$el.find(".cards").append(this.composer.$el);
     }
-
     // hide add button
     this.$el.find(".open-card-composer").hide();
   },
   onSave: function(json) {
     this.$el.find(".open-card-composer").show();
-    App.trigger("client_save_card", json);
+    Client.saveCard(json, function() {
+      Client.getCards();
+    });
   },
   onCancel: function() {
     this.$el.find(".open-card-composer").show();
   },
-  showComposer: function() {
-
-  },
   render: function() {
+    // clone children before render
+    var $elOld = $("#lists").find(".list[data-id=" + this.model.id + "]");
+    var $contained_cards = $elOld.find(".card").clone();
+
     this.$el.html(this.template(this.model.toJSON()));
     this.$el.attr("data-id", this.model.id);
-    $("#lists").find(".list[data-id=" + this.model.id + "]").remove();
-    this.$el.appendTo($("#lists"));
+    var $elOld = $("#lists").find(".list[data-id=" + this.model.id + "]");
+    if ($contained_cards.length > 0) {
+       this.$el.find(".cards").append($contained_cards);
+       $elOld.html(this.$el.html());
+    } else {
+      this.$el.appendTo($("#lists"));
+    }
   },
   initialize: function() {
     this.actions = null; // the context menu
     this.render();
+    this.listenTo(this.model, "change", this.render.bind(this));
     this.listenTo(App, "render_board", this.remove.bind(this));
   }
 });

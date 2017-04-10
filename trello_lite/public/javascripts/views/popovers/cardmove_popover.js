@@ -24,7 +24,9 @@ var CardMovePopover = Backbone.View.extend({
   onMove: function(e){
     e.preventDefault();
     var $f = $(e.target);
-    App.trigger("client_move_card", this.card.get("id"), $(".select-list").val());
+    Client.moveCard(this.card.get("id"), $(".select-list").val(), function() {
+      Client.getCards();
+    });
     this.uninitialize();
   },
   render: function() {

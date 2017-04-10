@@ -19,26 +19,25 @@ var CardEditorView = Backbone.View.extend({
     }
   },
   onArchive: function(e) {
-    App.trigger("client_delete_card", this.model.get("id"));
+    Client.deleteCard(this.model.get("id"));
     App.cards.remove(this.model);
     this.uninitialize();
   },
   onTyping: function(e) {
     this.autogrow();
   },
-
   onSaveName: function(e) {
     e.preventDefault();
     var name = this.$el.find(".card-editor-input").val();
     this.model.set("name", name);
-    App.trigger("client_save_card", this.model.toJSON());
+    Client.saveCard(this.model.toJSON());
     this.uninitialize();
   },
   toggleSubscribe: function(e) {
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
-    App.trigger("client_save_card", this.model.toJSON());
+    Client.saveCard(this.model.toJSON());
   },
   onLabels: function(e) {
     e.preventDefault();

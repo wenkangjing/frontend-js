@@ -29,10 +29,9 @@ var LabelEditPopover = Backbone.View.extend({
     if (this.model) {
       this.model.set("name", name);
       this.model.set("color", color);
-      App.trigger("client_save_label", this.model.toJSON());
+      Client.saveLabel(this.model.toJSON());
     } else {
-      App.trigger("client_save_label", {name: name, color: color});
-      App.trigger("client_get_labels");
+      Client.saveLabel({name: name, color: color});
     }
     new LabelsPopover({ card: this.card, pos: this.pos });
     this.uninitialize();

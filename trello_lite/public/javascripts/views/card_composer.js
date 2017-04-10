@@ -1,4 +1,5 @@
 var CardComposerView = Backbone.View.extend({
+  className: "card-composer-wrapper",
   template: App.templates.card_composer,
   events: {
     "blur .card-composer-input": "onName",
@@ -24,7 +25,24 @@ var CardComposerView = Backbone.View.extend({
     var newName = $txt.val().trim();
     if (newName) {
       this.model.set("name", newName);
-      this.trigger("card_composer_on_save", this.model.toJSON());
+      var json = this.model.toJSON();
+      // get the index to insert to
+      // prev card in the save list
+      var prev_card;
+      if ($(".card-composer").closest(".cards").children().first().hasClass("card")) {
+        prev_card = $(".card-composer").closest(".cards").find(".card").last();
+      } else {
+        prev_card = $(".card-composer").closest(".list").prev().find(".card").last();
+      }
+      // get the index of prev card in App.cards, save the new one after that
+      if (prev_card.length === 0) {
+        json.pos = 0;
+      } else {
+        var id = prev_card.data("id");
+        var idx = App.cards.findIndex({id: id});
+        json.pos = idx + 1;
+      }
+      this.trigger("card_composer_on_save", json);
       this.uninitialize();
     }
   },

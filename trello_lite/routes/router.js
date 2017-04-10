@@ -50,11 +50,13 @@ router.put('/lists', function(req, res, next) {
 });
 router.post('/lists', function(req, res, next) {
   var list = req.body;
+  var pos = list.pos;
+  delete list.pos;
   var array = ListsAccessor.get();
   if (list.id) { // edit
     list= ListsAccessor.update(list);
   } else { // new
-    list = ListsAccessor.add(list);
+    list = ListsAccessor.add(list, pos);
   }
   res.json(list).end();
 });
@@ -84,11 +86,13 @@ router.put('/cards', function(req, res, next) {
 router.post('/cards', function(req, res, next) {
   var card = req.body;
   console.log(card);
+  var pos = card.pos;
+  delete card.pos;
   var array = CardsAccessor.get();
   if (card.id) { // edit
     card= CardsAccessor.update(card);
   } else { // new
-    card = CardsAccessor.add(card);
+    card = CardsAccessor.add(card, pos);
   }
   res.json(card).end();
 });

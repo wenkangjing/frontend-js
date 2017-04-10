@@ -33,7 +33,9 @@ var CardCopyPopover = Backbone.View.extend({
       delete newCard.idLabels;
     }
     newCard.idList = $(".select-list").val();
-    App.trigger("client_save_card", newCard);
+    Client.saveCard(newCard, pos, function(id) {
+      Client.getCards();
+    });
     this.uninitialize();
   },
   render: function() {

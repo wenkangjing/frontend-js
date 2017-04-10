@@ -33,7 +33,7 @@ var ListActionsPopover = Backbone.View.extend({
     e.preventDefault();
     var status = !this.list.get("subscribed");
     this.list.set("subscribed", status);
-    App.trigger("client_save_list", this.list.toJSON());
+    Client.saveList(this.list.toJSON());
     this.uninitialize();
   },
   onMoveCards: function(e) {
@@ -48,7 +48,7 @@ var ListActionsPopover = Backbone.View.extend({
   },
   onArchiveList: function(e) {
     e.preventDefault();
-    App.trigger("client_delete_list", this.list.get("id"));
+    Client.deleteList(this.list.get("id"));
     App.lists.remove(this.list);
     this.uninitialize();
   },

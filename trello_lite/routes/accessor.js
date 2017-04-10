@@ -22,10 +22,15 @@ module.exports = {
   set: function(array) {
     fs.writeFileSync(dict[this.name], JSON.stringify(array), "utf8");
   },
-  add: function(item) {
-    var array = this.get();
+  add: function(item, pos) {
+    pos = pos || 0;
     item.id = shortid.generate();
-    array.push(item);
+    var array = this.get();
+    if (pos > array.length) {
+      array.push(item);
+    } else {
+      array.splice(pos, 0, item);
+    }
     this.set(array);
     return item;
   },
@@ -38,6 +43,11 @@ module.exports = {
     });
     this.set(array);
     return item;
+  },
+  move: function(id, pos) {
+    var array = this.get();
+    var oldPos = _(array).findIndex({id: id});
+    array.splice(pos, 0, array.splice(oldPos, 1)[0]);
   },
   delete: function(id) {
     if (!id) {

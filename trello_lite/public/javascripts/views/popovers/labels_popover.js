@@ -25,7 +25,7 @@ var LabelsPopover = Backbone.View.extend({
     }
     this.card.set("idLabels", idLabels);
     if (this.card.get("id")) {
-      App.trigger("client_save_card", this.card.toJSON());
+      Client.saveCard(this.card.toJSON());
     }
   },
   onEdit: function(e) {

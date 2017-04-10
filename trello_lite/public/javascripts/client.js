@@ -13,7 +13,7 @@ var Client = {
       App.goto("/");
     });
   },
-  setLists: function(lists) {
+  setLists: function(lists, success_cb) {
     var json = JSON.stringify(lists);
     $.ajax({
      method: "put",
@@ -21,13 +21,15 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
+      if (_.isFunction(success_cb)) {
+        success_cb();
+      }
     }).fail(function() {
       console.error("Fail to set lists" );
       App.goto("/");
     });
   },
-  saveList: function(list) {
+  saveList: function(list, success_cb) {
     if (!list.id) {
       list.created = (new Date()).valueOf();
     }
@@ -38,19 +40,23 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
+      if (_.isFunction(success_cb)) {
+        success_cb(json.id);
+      }
     }).fail(function() {
       console.error("Fail to save list: " + list);
       App.goto("/");
     });
   },
-  deleteList: function(id) {
+  deleteList: function(id, success_cb) {
     $.ajax({
      method: "delete",
      url: "/lists",
      data: {id: id}
     }).done(function(json) {
-      console.log(json);
+      if (_.isFunction(success_cb)) {
+        success_cb();
+      }
     }).fail(function() {
       console.error("Fail to delete list: " + id);
       App.goto("/");
@@ -71,7 +77,7 @@ var Client = {
       App.goto("/");
     });
   },  
-  setCards: function(cards) {
+  setCards: function(cards, success_cb) {
     var json = JSON.stringify(cards);
     $.ajax({
      method: "put",
@@ -79,13 +85,15 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
+      if (_.isFunction(success_cb)) {
+        success_cb();
+      }
     }).fail(function() {
       console.error("Fail to set cards" );
       App.goto("/");
     });
   },  
-  saveCard: function(card) {
+  saveCard: function(card, success_cb) {
     delete card.comments; // add in CardView for badge
     if (!card.id) { 
       card.created = (new Date()).valueOf();
@@ -97,29 +105,32 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
-      Client.getCards();
+      if (_.isFunction(success_cb)) {
+        success_cb(json.id);
+      }
     }).fail(function() {
       console.error("Fail to save card: " + card);
       App.goto("/");
     });
   },
-  deleteCard: function(id) {
+  deleteCard: function(id, success_cb) {
     $.ajax({
      method: "delete",
      url: "/cards",
      data: {id: id}
     }).done(function(json) {
-      console.log(json);
+      if (_.isFunction(success_cb)) {
+        success_cb();
+      }
     }).fail(function() {
       console.error("Fail to delete card: " + id);
       App.goto("/");
     });
   },
-  moveCard: function(idCard, idList) {
+  moveCard: function(idCard, idList, success_cb) {
     var card = App.cards.get(idCard);
     card.set("idList", idList, {silent: true});
-    Client.saveCard(card.toJSON());
+    Client.saveCard(card.toJSON(), success_cb);
   },
   // 
   // labels

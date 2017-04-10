@@ -37,7 +37,7 @@ var CardModalView = Backbone.View.extend({
     }
   },
   onArchive: function(e) {
-    App.trigger("client_delete_card", this.model.get("id"));
+    Client.saveCard(this.model.get("id"));
     App.cards.remove(this.model);
     this.uninitialize();
     App.goto("/");
@@ -52,7 +52,7 @@ var CardModalView = Backbone.View.extend({
     var description = this.$desc.serializeArray()[0].value;
     if (description) {
       this.model.set("description", description);
-      App.trigger("client_save_card", this.model.toJSON());
+      Client.saveCard(this.model.toJSON());
       this.$desc.prev().show();
       this.$desc.hide();
     }
@@ -68,7 +68,7 @@ var CardModalView = Backbone.View.extend({
     var $f = this.$el.find(".comment form");
     var comment = $f.serializeArray()[0].value;
     if (comment) {
-      App.trigger("client_save_comment", {
+      Client.saveComment({
         comment: comment,
         idCard: this.model.get("id")
       });
@@ -78,13 +78,13 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var status = !this.model.get("subscribed");
     this.model.set("subscribed", status);
-    App.trigger("client_save_card", this.model.toJSON());
+    Client.saveCard(this.model.toJSON());
   },
   toggleComplete: function(e) {
     e.preventDefault();
     var status = !this.model.get("completed");
     this.model.set("completed", status);
-    App.trigger("client_save_card", this.model.toJSON());
+    Client.saveCard(this.model.toJSON());
   },
   onLabels: function(e) {
     e.preventDefault();
@@ -140,7 +140,7 @@ var CardModalView = Backbone.View.extend({
     $input.hide();
     $text.show();
     this.model.set("name", name);
-    App.trigger("client_save_card", this.model.toJSON());
+    Client.saveCard(this.model.toJSON());
   },
   render: function() {
     // retrieve data

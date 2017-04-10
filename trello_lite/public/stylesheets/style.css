@@ -1149,35 +1149,42 @@ li {
   margin-left: -40px;
 }
 .card-copy-pop-over textarea,
-.card-move-pop-over textarea {
+.card-move-pop-over textarea,
+.list-add-pop-over textarea {
   width: 100%;
   display: block;
   background: #e2e4e6;
 }
 .card-copy-pop-over textarea:focus,
-.card-move-pop-over textarea:focus {
+.card-move-pop-over textarea:focus,
+.list-add-pop-over textarea:focus {
   background: #fff;
 }
 .card-copy-pop-over input[type="checkbox"],
-.card-move-pop-over input[type="checkbox"] {
+.card-move-pop-over input[type="checkbox"],
+.list-add-pop-over input[type="checkbox"] {
   vertical-align: middle;
 }
 .card-copy-pop-over p,
-.card-move-pop-over p {
+.card-move-pop-over p,
+.list-add-pop-over p {
   margin: 5px 0;
 }
 .card-copy-pop-over .left,
-.card-move-pop-over .left {
+.card-move-pop-over .left,
+.list-add-pop-over .left {
   width: 200px;
   float: left;
 }
 .card-copy-pop-over .right,
-.card-move-pop-over .right {
+.card-move-pop-over .right,
+.list-add-pop-over .right {
   width: 75px;
   float: right;
 }
 .card-copy-pop-over .button-link,
-.card-move-pop-over .button-link {
+.card-move-pop-over .button-link,
+.list-add-pop-over .button-link {
   position: relative;
   height: 50px;
   cursor: pointer;
@@ -1187,21 +1194,25 @@ li {
   background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
 }
 .card-copy-pop-over .button-link:hover,
-.card-move-pop-over .button-link:hover {
+.card-move-pop-over .button-link:hover,
+.list-add-pop-over .button-link:hover {
   background: #298fca;
   color: #fff;
 }
 .card-copy-pop-over .button-link label,
-.card-move-pop-over .button-link label {
+.card-move-pop-over .button-link label,
+.list-add-pop-over .button-link label {
   display: block;
 }
 .card-copy-pop-over .button-link p,
-.card-move-pop-over .button-link p {
+.card-move-pop-over .button-link p,
+.list-add-pop-over .button-link p {
   font-size: 18px;
   font-weight: bold;
 }
 .card-copy-pop-over .button-link select,
-.card-move-pop-over .button-link select {
+.card-move-pop-over .button-link select,
+.list-add-pop-over .button-link select {
   position: absolute;
   top: 0;
   left: 0;
@@ -1215,8 +1226,13 @@ li {
 }
 .card-copy-pop-over .card-copy-submit,
 .card-move-pop-over .card-copy-submit,
+.list-add-pop-over .card-copy-submit,
 .card-copy-pop-over .card-move-submit,
-.card-move-pop-over .card-move-submit {
+.card-move-pop-over .card-move-submit,
+.list-add-pop-over .card-move-submit,
+.card-copy-pop-over .list-add-submit,
+.card-move-pop-over .list-add-submit,
+.list-add-pop-over .list-add-submit {
   display: inline-block;
   color: #fff;
   line-height: 22px;

@@ -51,7 +51,11 @@ var App = {
     }    
     this.notification = new NotificationView();
   },
-
+  addList: function(e) {
+    new ListAddPopover({
+      pos: Helper.adjustPosition(e, 35)
+    });
+  },
   //
   // Client 
   //////////////////////////////////////////////
@@ -146,6 +150,7 @@ var App = {
     // user events
     this.$el.on("click", ".border-notification", this.renderNotification.bind(this));
     this.$el.on("click", ".border-menu", this.renderMenu.bind(this));
+    this.$el.on("dblclick", "#lists", this.addList.bind(this) );
   },
   init: function() {
     _.extend(this, Backbone.Events);

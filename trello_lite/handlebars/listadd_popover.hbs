@@ -1,0 +1,24 @@
+<div class="pop-over list-add-pop-over">
+  <div class="pop-over-header">
+    <span class="pop-over-header-title">Copy Card</span>
+    <a href="#" class="pop-over-header-close-btn icon-sm icon-close"></a>
+  </div>
+  <div class="pop-over-content">
+    <form>
+      <div class="list-name left">
+        <p><strong>Name</strong></p>
+        <textarea name="name">List</textarea>
+      </div>
+      <div class="button-link right">
+        <label>Position</label>
+        <p class="position-value"></p>
+        <select class="select-position">
+          {{#each lists}}
+            <option>{{@index}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <input class="list-add-submit" type="submit" value="Add">
+    </form>
+  </div>
+</div>

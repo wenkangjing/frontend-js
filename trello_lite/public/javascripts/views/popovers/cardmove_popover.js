@@ -15,6 +15,12 @@ var CardMovePopover = Backbone.View.extend({
     var idList = $(e.target).val();
     var list = App.lists.findWhere({id: idList});
     this.$el.find(".list-value").text(list.get("name"));
+    var count = Helper.getCardsByIdList(idList).length;
+    var opts = [];
+    for (var i = 1; i <= count + 1; i++) {
+      opts.push("<option>" + i + "</option>");
+    }
+    this.$el.find(".select-position").html(opts);
   },
   onPosition: function(e){
     e.preventDefault();

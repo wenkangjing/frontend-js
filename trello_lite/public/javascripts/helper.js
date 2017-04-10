@@ -30,6 +30,11 @@ var Helper = {
        }
     }, 0);
   },  
+  getCardsByIdList: function(idList) {
+    return App.cards.toJSON().filter(function(c) {
+      return c.idList === idList;
+    })
+  },
 
   //
   // display

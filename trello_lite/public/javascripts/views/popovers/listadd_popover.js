@@ -36,6 +36,12 @@ var ListAddPopover = Backbone.View.extend({
       top: this.pos.top || 0,
       left: this.pos.left || 0
     });
+    var count = App.lists.length;
+    var opts = [];
+    for (var i = 1; i <= count + 1; i++) {
+      opts.push("<option>" + i + "</option>");
+    }
+    this.$el.find(".select-position").html(opts);
     this.$el.appendTo(App.$el);
     this.$el.find(".list-name input").focus().select();
     $(".select-position").trigger("change", 0);

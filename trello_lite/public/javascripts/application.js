@@ -52,9 +52,12 @@ var App = {
     this.notification = new NotificationView();
   },
   addList: function(e) {
-    new ListAddPopover({
-      pos: Helper.adjustPosition(e, 35)
-    });
+    if ($(e.target).attr("id") === "lists") {
+      App.trigger("clear_popover");
+      new ListAddPopover({
+        pos: Helper.adjustPosition(e.clientY, e.clientX)
+      });
+    }
   },
   //
   // Client 
@@ -132,6 +135,8 @@ var App = {
         Client.moveCard(idCard, idList, function() {
           App.trigger("sync_board");
         });
+      } else {
+        App.trigger("sync_board");
       }
     }).on('cancel', function (el, container, source) {
       $(el).removeClass("dragging");

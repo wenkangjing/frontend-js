@@ -45,7 +45,7 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     this.actions = new ListActionsPopover({
       list: this.model,
-      pos: Helper.adjustPosition(e, 18)
+      pos: Helper.adjustPositionOffset(e, 18)
     });
     this.listenTo(this.actions, "add_card", this.onAdd.bind(this));
   },

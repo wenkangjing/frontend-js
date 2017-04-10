@@ -43,21 +43,21 @@ var CardEditorView = Backbone.View.extend({
     e.preventDefault();
     new LabelsPopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 35)
+      pos: Helper.adjustPositionOffset(e, 35)
     });
   },
   onDuedate: function(e) {
     e.preventDefault();
     new DueDatePopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 35)
+      pos: Helper.adjustPositionOffset(e, 35)
     });
   },
   onMove: function(e) {
     e.preventDefault();
     this.movePopover = new CardMovePopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 35)
+      pos: Helper.adjustPositionOffset(e, 35)
     });
     this.listenTo(this.movePopover, "close", this.remove.bind(this));
   },
@@ -65,7 +65,7 @@ var CardEditorView = Backbone.View.extend({
     e.preventDefault();
     this.copyPopover = new CardCopyPopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 35)
+      pos: Helper.adjustPositionOffset(e, 35)
     });
     this.listenTo(this.copyPopover, "close", this.remove.bind(this));
   },   

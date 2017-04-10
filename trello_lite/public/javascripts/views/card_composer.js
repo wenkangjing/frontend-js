@@ -50,7 +50,7 @@ var CardComposerView = Backbone.View.extend({
     e.preventDefault();
     new LabelsPopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 30)
+      pos: Helper.adjustPositionOffset(e, 30)
     });
   },
   render: function() {

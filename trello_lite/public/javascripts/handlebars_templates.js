@@ -335,7 +335,7 @@ this["JST"]["listadd_popover"] = Handlebars.template({"1":function(container,dep
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div class=\"pop-over list-add-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Copy Card</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form><div class=\"list-name left\"><p><strong>Name</strong></p><textarea name=\"name\">List</textarea></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\">"
+  return "<div class=\"pop-over list-add-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Add List</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form><div class=\"list-name left\"><p><strong>Name</strong></p><input type=\"text\" name=\"name\" value=\"List\"></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\">"
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</select></div><input class=\"list-add-submit\" type=\"submit\" value=\"Add\"></form></div></div>";
 },"useData":true});

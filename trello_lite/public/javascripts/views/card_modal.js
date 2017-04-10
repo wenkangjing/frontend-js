@@ -90,28 +90,28 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     new LabelsPopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 37)
+      pos: Helper.adjustPositionOffset(e, 37)
     });
   },
   onDuedate: function(e) {
     e.preventDefault();
     new DueDatePopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 37)
+      pos: Helper.adjustPositionOffset(e, 37)
     });
   },
   onMove: function(e) {
     e.preventDefault();
     this.movePopover = new CardMovePopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 37)
+      pos: Helper.adjustPositionOffset(e, 37)
     });
   },
   onCopy: function(e) {
     e.preventDefault();
     this.copyPopover = new CardCopyPopover({
       card: this.model,
-      pos: Helper.adjustPosition(e, 37)
+      pos: Helper.adjustPositionOffset(e, 37)
     });
   }, 
   onTitle: function(e) {

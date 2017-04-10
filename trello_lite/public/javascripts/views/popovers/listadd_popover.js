@@ -23,7 +23,7 @@ var ListAddPopover = Backbone.View.extend({
     list.name = values[0].value;
     var pos = $(".select-position").val();
     list.pos = pos;
-    Client.saveList(newCard, function(id) {
+    Client.saveList(list, function(id) {
       Client.getLists();
     });
     this.uninitialize();
@@ -37,6 +37,7 @@ var ListAddPopover = Backbone.View.extend({
       left: this.pos.left || 0
     });
     this.$el.appendTo(App.$el);
+    this.$el.find(".list-name input").focus().select();
     $(".select-position").trigger("change", 0);
     this.delegateEvents();
   },

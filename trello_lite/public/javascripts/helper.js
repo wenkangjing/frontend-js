@@ -77,7 +77,7 @@ var Helper = {
     return re.test(time_stirng);
   },
   // popover
-  adjustPosition: function(e, offsetY) {
+  adjustPositionOffset: function(e, offsetY) {
     var pos = $(e.currentTarget).offset();
     var result = {};
     if (pos.top + offsetY + 400 > innerHeight) {
@@ -93,7 +93,17 @@ var Helper = {
     }
     return result;
   }, 
-  setupDnD: function() {
-    
+  adjustPosition: function(top, left) {
+    var pos = {
+      top: top,
+      left: left
+    };
+    if (top + 160 > innerHeight) {
+      pos.top= innerHeight - 160;
+    } 
+    if (left + 300 > innerWidth) {
+      pos.left = innerWidth - 300;
+    } 
+    return pos;
   }
 }

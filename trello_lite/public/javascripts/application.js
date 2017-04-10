@@ -169,7 +169,7 @@ var App = {
     this.buildEvents();
     this.createRouter();
     this.dndList();
-    this.dumpBoard();
+    new SearchBarView();
   }
 };
 

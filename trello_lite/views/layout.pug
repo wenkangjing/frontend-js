@@ -12,8 +12,7 @@ html
       header
         a.header-btn
           span.icon-board.icon-lg.light
-        a.header-btn
-          span.icon-search.icon-lg.light
+        div#header-search
         a.header-brand
         div.float-right
           a.header-btn
@@ -46,7 +45,9 @@ html
       "views/card", 
       "views/card_modal", 
       "views/card_editor", 
-      "views/card_composer")
+      "views/card_composer",
+      "views/search_bar",
+      "views/search_result")
     +javascript_include_tag(
       "views/popovers/labels_popover", 
       "views/popovers/duedate_popover", 

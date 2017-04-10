@@ -1,0 +1,23 @@
+<div class="search-result">
+  <h2>Cards</h2>
+  <ul>
+    {{#each cards}}
+    <li>
+      <div class="card-thumbnail">
+        <header>
+          <div class="labels">
+            {{#each labels}}
+              <span class="label-sm" data-id="{{id}}" style="background:{{toRGB color}}"></span>
+            {{/each}}
+          </div>
+        </header>
+        <div class="name">{{name}}</div>
+      </div>
+      <div class="card-description">
+        <h3>{{name}}</h3>
+        <p>in <spam>{{listName}}</spam>{{listName}} on <span>Trello Lite</span></p>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</div>

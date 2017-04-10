@@ -30,7 +30,7 @@ var CardMovePopover = Backbone.View.extend({
   onMove: function(e){
     e.preventDefault();
     var $f = $(e.target);
-    var pos = $(".select-position").val();
+    var pos = $(".select-position").val() - 1;
     var idList = $(".select-list").val();
 
     var $card = App.$el.find(".card[data-id=" + this.card.get("id") + "]");

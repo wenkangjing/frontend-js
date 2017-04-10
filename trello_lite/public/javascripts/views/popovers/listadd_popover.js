@@ -21,7 +21,7 @@ var ListAddPopover = Backbone.View.extend({
 
     var values = $f.serializeArray();
     list.name = values[0].value;
-    var pos = $(".select-position").val();
+    var pos = $(".select-position").val() - 1;
     list.pos = pos;
     Client.saveList(list, function(id) {
       Client.getLists();

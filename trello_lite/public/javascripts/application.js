@@ -27,9 +27,15 @@ var App = {
       new CardView({model: card});
     }.bind(this));
     this.dndCard();
+    if (this.modal) {
+      this.modal.render();
+    }
   },
   renderCardModal: function(id) {
-    new CardModalView({
+    if (this.modal) {
+      this.modal.remove();
+    }
+    this.modal = new CardModalView({
       model: this.cards.findWhere({id: id})
     });
   },

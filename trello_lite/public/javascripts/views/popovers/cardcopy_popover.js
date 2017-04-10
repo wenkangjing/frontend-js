@@ -39,7 +39,7 @@ var CardCopyPopover = Backbone.View.extend({
       delete newCard.idLabels;
     }
     var idList = $(".select-list").val();
-    var pos = $(".select-position").val();
+    var pos = $(".select-position").val() - 1; // 0 based index
 
     var $prev_card = App.$el.find(".list[data-id=" + idList + "]").find(".card").eq(pos);
     var idx = App.cards.findIndex({id: $prev_card.data("id")});

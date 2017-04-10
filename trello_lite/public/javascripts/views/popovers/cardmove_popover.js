@@ -24,8 +24,19 @@ var CardMovePopover = Backbone.View.extend({
   onMove: function(e){
     e.preventDefault();
     var $f = $(e.target);
-    Client.moveCard(this.card.get("id"), $(".select-list").val(), function() {
-      Client.getCards();
+    var pos = $(".select-position").val();
+    var idList = $(".select-list").val();
+
+    var $card = App.$el.find(".card[data-id=" + this.card.get("id") + "]");
+    var $list_dest = App.$el.find(".list[data-id=" + idList + "]");
+    var $card_dest = $list_dest.find(".card")[pos];
+    if ($card_dest) {
+      $card.insertBefore($card_dest);
+    } else {
+      $card.appendTo($list_dest.find(".cards"));
+    }
+    Client.moveCard(this.card.get("id"), idList, function() {
+      App.trigger("sync_board");
     });
     this.uninitialize();
   },

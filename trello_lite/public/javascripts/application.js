@@ -26,6 +26,7 @@ var App = {
     this.cards.forEach(function(card) {
       new CardView({model: card});
     }.bind(this));
+    this.dndCard();
   },
   renderCardModal: function(id) {
     new CardModalView({
@@ -86,9 +87,11 @@ var App = {
   // 
   // init
   /////////////////////////////////////////////
-  setupDnD: function() {
-    // list
-    dragula([document.getElementById("lists")], {
+  dndList: function() {
+    if (this.listDrake) {
+      this.listDrake.destroy();
+    }
+    this.listDrake = dragula([document.getElementById("lists")], {
       moves: function(el, container, handle) {
         return $(handle).closest(".card").length === 0;
       }
@@ -97,18 +100,23 @@ var App = {
       $el.addClass("dragging");
     }).on('drop', function (el, target, source, sibling) {
       $(el).removeClass("dragging list-placeholder");
+      App.trigger("sync_board");
     }).on('cancel', function (el, container, source) {
       $(el).removeClass("dragging list-placeholder");
     }).on("shadow", function(el, container, source) {
       $(el).addClass('list-placeholder');
     });
-
-    // card
+  },
+  dndCard: function() {
+    if (this.cardDrake) {
+      this.cardDrake.destroy();
+    }    
     var array = [];
     App.$el.find(".cards").each(function(idx, el) {
       array.push(el);
     });
-    dragula(array).on('drag', function (el, source) {
+    
+    this.cardDrake = dragula(array).on('drag', function (el, source) {
       $(el).addClass("dragging");
     }).on('drop', function (el, target, source, sibling) {
       var $el = $(el);
@@ -118,14 +126,14 @@ var App = {
       var card = App.cards.findWhere({id: idCard});
       if (card.get("idList") !== idList) {
         Client.moveCard(idCard, idList, function() {
-          Client.getCards();
+          App.trigger("sync_board");
         });
       }
     }).on('cancel', function (el, container, source) {
       $(el).removeClass("dragging");
     }).on("shadow", function(el, container, source) {
       $(el).addClass('card-placeholder');
-    });    
+    });   
   },
   buildEvents: function() {
     // application events
@@ -144,7 +152,7 @@ var App = {
     Helper.registerHelpers();
     this.buildEvents();
     this.createRouter();
-    this.setupDnD();
+    this.dndList();
     this.dumpBoard();
   }
 };

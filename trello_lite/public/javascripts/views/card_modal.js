@@ -102,11 +102,17 @@ var CardModalView = Backbone.View.extend({
   },
   onMove: function(e) {
     e.preventDefault();
-    console.log("move");
-  },   
+    this.movePopover = new CardMovePopover({
+      card: this.model,
+      pos: Helper.adjustPosition(e, 37)
+    });
+  },
   onCopy: function(e) {
     e.preventDefault();
-    console.log("copy");
+    this.copyPopover = new CardCopyPopover({
+      card: this.model,
+      pos: Helper.adjustPosition(e, 37)
+    });
   }, 
   onTitle: function(e) {
     e.preventDefault();

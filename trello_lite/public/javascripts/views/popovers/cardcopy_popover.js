@@ -32,8 +32,14 @@ var CardCopyPopover = Backbone.View.extend({
     if (values.length === 1) { // no labels
       delete newCard.idLabels;
     }
-    newCard.idList = $(".select-list").val();
-    Client.saveCard(newCard, pos, function(id) {
+    var idList = $(".select-list").val();
+    var pos = $(".select-position").val();
+
+    var $prev_card = App.$el.find(".list[data-id=" + idList + "]").find(".card").eq(pos);
+    var idx = App.cards.findIndex({id: $prev_card.data("id")});
+    newCard.idList = idList;
+    newCard.pos = idx;
+    Client.saveCard(newCard, function(id) {
       Client.getCards();
     });
     this.uninitialize();

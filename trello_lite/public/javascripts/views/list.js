@@ -48,6 +48,8 @@ var ListView = Backbone.View.extend({
       pos: Helper.adjustPositionOffset(e, 18)
     });
     this.listenTo(this.actions, "add_card", this.onAdd.bind(this));
+    this.listenTo(this.actions, "copy_list", this.onCopyList.bind(this));
+    this.listenTo(this.actions, "move_list", this.onMoveList.bind(this));
   },
   onAdd: function(e) {
     e.preventDefault();
@@ -57,8 +59,8 @@ var ListView = Backbone.View.extend({
     // show composer
     var rawCard = new Card({"idList": this.model.get("id")});
     this.composer = new CardComposerView({model: rawCard});
-    this.listenTo(this.composer, "card_composer_on_save", this.onSave.bind(this));
-    this.listenTo(this.composer, "card_composer_on_cancel", this.onCancel.bind(this));
+    this.listenTo(this.composer, "card_composer_on_save", this.addCardConfirm.bind(this));
+    this.listenTo(this.composer, "card_composer_on_cancel", this.addCardCancel.bind(this));
     if ($(e.target).hasClass("list-actions-add-card")) {
       this.$el.find(".cards").prepend(this.composer.$el);
     } else {
@@ -67,13 +69,19 @@ var ListView = Backbone.View.extend({
     // hide add button
     this.$el.find(".open-card-composer").hide();
   },
-  onSave: function(json) {
+  onCopyList: function(e) {
+    new ListCopyPopover({
+      model: this.model,
+      pos: Helper.adjustPositionOffset(e, 18)
+    });
+  },
+  addCardConfirm: function(json) {
     this.$el.find(".open-card-composer").show();
     Client.saveCard(json, function() {
       Client.getCards();
     });
   },
-  onCancel: function() {
+  addCardCancel: function() {
     this.$el.find(".open-card-composer").show();
   },
   render: function() {

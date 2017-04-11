@@ -21,12 +21,12 @@ var ListActionsPopover = Backbone.View.extend({
   },
   onCopyList: function(e) {
     e.preventDefault();
-    console.log("copyList");
+    this.trigger("copy_list", e);
     this.uninitialize();
   },
   onMoveList: function(e) {
     e.preventDefault();
-    console.log("mostList");
+    this.trigger("move_list", e);
     this.uninitialize();
   },
   onSubscribe: function(e) {

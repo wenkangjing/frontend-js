@@ -322,6 +322,14 @@ this["JST"]["listadd_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],
     return "<div class=\"pop-over list-add-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Add List</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form><div class=\"list-name left\"><p><strong>Name</strong></p><input type=\"text\" name=\"name\" value=\"List\"></div><div class=\"button-link right\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\"></select></div><input class=\"list-add-submit\" type=\"submit\" value=\"Add\"></form></div></div>";
 },"useData":true});
 
+this["JST"]["listcopy_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "<div class=\"pop-over list-copy-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Copy List</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form><p><strong>Name</strong></p><textarea class=\"js-autofocus\" name=\"name\">"
+    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"name","hash":{},"data":data}) : helper)))
+    + "</textarea><input class=\"list-copy-submit\" type=\"submit\" value=\"Create List\"></form></div></div>";
+},"useData":true});
+
 this["JST"]["menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 

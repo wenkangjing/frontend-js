@@ -1249,24 +1249,32 @@ li {
 }
 .card-copy-pop-over textarea,
 .card-move-pop-over textarea,
-.list-add-pop-over textarea {
+.list-add-pop-over textarea,
+.list-copy-pop-over textarea,
+.list-move-pop-over textarea {
   width: 100%;
   display: block;
   background: #e2e4e6;
 }
 .card-copy-pop-over textarea:focus,
 .card-move-pop-over textarea:focus,
-.list-add-pop-over textarea:focus {
+.list-add-pop-over textarea:focus,
+.list-copy-pop-over textarea:focus,
+.list-move-pop-over textarea:focus {
   background: #fff;
 }
 .card-copy-pop-over input[type="checkbox"],
 .card-move-pop-over input[type="checkbox"],
-.list-add-pop-over input[type="checkbox"] {
+.list-add-pop-over input[type="checkbox"],
+.list-copy-pop-over input[type="checkbox"],
+.list-move-pop-over input[type="checkbox"] {
   vertical-align: middle;
 }
 .card-copy-pop-over input[type="text"],
 .card-move-pop-over input[type="text"],
-.list-add-pop-over input[type="text"] {
+.list-add-pop-over input[type="text"],
+.list-copy-pop-over input[type="text"],
+.list-move-pop-over input[type="text"] {
   display: block;
   padding: 3px;
   background-color: #fff;
@@ -1275,24 +1283,32 @@ li {
 }
 .card-copy-pop-over p,
 .card-move-pop-over p,
-.list-add-pop-over p {
+.list-add-pop-over p,
+.list-copy-pop-over p,
+.list-move-pop-over p {
   margin: 0 0 5px 0;
 }
 .card-copy-pop-over .left,
 .card-move-pop-over .left,
-.list-add-pop-over .left {
+.list-add-pop-over .left,
+.list-copy-pop-over .left,
+.list-move-pop-over .left {
   width: 200px;
   float: left;
 }
 .card-copy-pop-over .right,
 .card-move-pop-over .right,
-.list-add-pop-over .right {
+.list-add-pop-over .right,
+.list-copy-pop-over .right,
+.list-move-pop-over .right {
   width: 75px;
   float: right;
 }
 .card-copy-pop-over .button-link,
 .card-move-pop-over .button-link,
-.list-add-pop-over .button-link {
+.list-add-pop-over .button-link,
+.list-copy-pop-over .button-link,
+.list-move-pop-over .button-link {
   position: relative;
   height: 50px;
   cursor: pointer;
@@ -1303,24 +1319,32 @@ li {
 }
 .card-copy-pop-over .button-link:hover,
 .card-move-pop-over .button-link:hover,
-.list-add-pop-over .button-link:hover {
+.list-add-pop-over .button-link:hover,
+.list-copy-pop-over .button-link:hover,
+.list-move-pop-over .button-link:hover {
   background: #298fca;
   color: #fff;
 }
 .card-copy-pop-over .button-link label,
 .card-move-pop-over .button-link label,
-.list-add-pop-over .button-link label {
+.list-add-pop-over .button-link label,
+.list-copy-pop-over .button-link label,
+.list-move-pop-over .button-link label {
   display: block;
 }
 .card-copy-pop-over .button-link p,
 .card-move-pop-over .button-link p,
-.list-add-pop-over .button-link p {
+.list-add-pop-over .button-link p,
+.list-copy-pop-over .button-link p,
+.list-move-pop-over .button-link p {
   font-size: 18px;
   font-weight: bold;
 }
 .card-copy-pop-over .button-link select,
 .card-move-pop-over .button-link select,
-.list-add-pop-over .button-link select {
+.list-add-pop-over .button-link select,
+.list-copy-pop-over .button-link select,
+.list-move-pop-over .button-link select {
   position: absolute;
   top: 0;
   left: 0;
@@ -1335,12 +1359,28 @@ li {
 .card-copy-pop-over .card-copy-submit,
 .card-move-pop-over .card-copy-submit,
 .list-add-pop-over .card-copy-submit,
+.list-copy-pop-over .card-copy-submit,
+.list-move-pop-over .card-copy-submit,
 .card-copy-pop-over .card-move-submit,
 .card-move-pop-over .card-move-submit,
 .list-add-pop-over .card-move-submit,
+.list-copy-pop-over .card-move-submit,
+.list-move-pop-over .card-move-submit,
 .card-copy-pop-over .list-add-submit,
 .card-move-pop-over .list-add-submit,
-.list-add-pop-over .list-add-submit {
+.list-add-pop-over .list-add-submit,
+.list-copy-pop-over .list-add-submit,
+.list-move-pop-over .list-add-submit,
+.card-copy-pop-over .list-copy-submit,
+.card-move-pop-over .list-copy-submit,
+.list-add-pop-over .list-copy-submit,
+.list-copy-pop-over .list-copy-submit,
+.list-move-pop-over .list-copy-submit,
+.card-copy-pop-over .list-move-submit,
+.card-move-pop-over .list-move-submit,
+.list-add-pop-over .list-move-submit,
+.list-copy-pop-over .list-move-submit,
+.list-move-pop-over .list-move-submit {
   display: inline-block;
   color: #fff;
   line-height: 22px;

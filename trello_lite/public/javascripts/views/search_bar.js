@@ -13,14 +13,19 @@ var SearchBarView = Backbone.View.extend({
     this.$el.find(".search-input").width(260);
     this.$el.find(".search-start").hide();
     this.$el.find(".search-close").css({display: "block"});
-    this.renderResult();
+   if (!this.result){
+      this.result = new SearchResultView({filter: ""});
+    }
   },
   onTyping: function(e) {
     e.preventDefault();
     var $e = $(e.target);
-    this.filter = $e.val();
+    var filter = $e.val();
     if(e.which === 13) { // enter
-      this.renderResult();
+      if (this.result){
+        this.result.remove();
+      }
+      this.result = new SearchResultView({filter: filter});
     } else if(e.which === 27) {
       if (this.result){
         this.result.remove();
@@ -35,6 +40,7 @@ var SearchBarView = Backbone.View.extend({
     this.$el.find(".search-close").hide();
     if (this.result){
       this.result.remove();
+      this.result = null;
     }
   },
   onFocus: function(e) {
@@ -42,13 +48,9 @@ var SearchBarView = Backbone.View.extend({
     this.$el.find(".search-input").width(260);
     this.$el.find(".search-start").hide();
     this.$el.find(".search-close").css({display: "block"});
-    this.renderResult();
-  },
-  renderResult() {
-    if (this.result){
-      this.result.remove();
+   if (!this.result){
+      this.result = new SearchResultView({filter: ""});
     }
-    this.result = new SearchResultView({filter: this.filter});
   },
   render: function() {
     this.$el.html(this.template());

@@ -4,7 +4,7 @@
     {{#if cards}} 
       {{#each cards}}
       <li class="clearfix" data-id={{id}}>
-        <a class="card-thumbnail" href="/cards/{{id}}">
+        <div class="card-thumbnail">
           <div class="card-thumbnail-fade"></div>
           <header>
             <div class="labels">
@@ -38,7 +38,7 @@
             </div>
             {{/if}}
           </div>
-        </a>
+        </div>
         <div class="card-description">
           <h3>{{name}}</h3>
           <p>in

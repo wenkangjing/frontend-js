@@ -1,23 +1,61 @@
 <div class="search-result">
   <h2>Cards</h2>
-  <ul>
-    {{#each cards}}
-    <li>
-      <div class="card-thumbnail">
-        <header>
-          <div class="labels">
-            {{#each labels}}
-              <span class="label-sm" data-id="{{id}}" style="background:{{toRGB color}}"></span>
-            {{/each}}
+  <ul class="search-result-cards tabIndex="100">
+    {{#if cards}} 
+      {{#each cards}}
+      <li class="clearfix" data-id={{id}}>
+        <a class="card-thumbnail" href="/cards/{{id}}">
+          <div class="card-thumbnail-fade"></div>
+          <header>
+            <div class="labels">
+              {{#each labels}}
+                <span class="label-sm" data-id="{{id}}" style="background:{{toRGB color}}"></span>
+              {{/each}}
+            </div>
+          </header>
+          <div class="name">{{name}}</div>
+          <div class="badges">
+            {{#if subscribed}}
+            <div class="badge">
+              <span class="icon-sm icon-subscribe"></span>
+            </div>
+            {{/if}}
+            {{#if due}}
+            <div class="badge due {{isDuePast due}} {{#if completed}}completed{{/if}}">
+              <span class="icon-sm icon-clock"></span>
+              <span class="badge-text">{{formatDate due}}</span>
+              </div>
+            {{/if}}
+            {{#if description}}
+            <div class="badge">
+              <span class="icon-sm icon-description"></span>
+            </div>
+            {{/if}}
+            {{#if comments}}
+            <div class="badge">
+              <span class="icon-sm icon-comment"></span>
+              <span class="badge-text">{{comments}}</span>
+            </div>
+            {{/if}}
           </div>
-        </header>
-        <div class="name">{{name}}</div>
-      </div>
-      <div class="card-description">
-        <h3>{{name}}</h3>
-        <p>in <spam>{{listName}}</spam>{{listName}} on <span>Trello Lite</span></p>
-      </div>
-    </li>
-    {{/each}}
+        </a>
+        <div class="card-description">
+          <h3>{{name}}</h3>
+          <p>in
+            <spam>{{listName}}</spam>{{listName}} on <span>Trello Lite</span></p>
+        </div>
+      </li>
+      {{/each}}
+    {{else}}
+      <div class="search-warning">We couldn't find any cards or boards that matched your search.</div>
+    {{/if}}
   </ul>
+  <hr>
+  <div class="search-results-section search-result-help">
+    <h4>Looking for help using Trello?</h4>
+    <p>
+      Visit <a href="http://help.trello.com/?source=trello-search" target="help">our help site</a> or read the <a href="https://trello.com/guide?source=trello-search"
+        target="guide">getting started guide</a>
+    </p>
+  </div>
 </div>

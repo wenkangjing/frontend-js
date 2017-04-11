@@ -126,7 +126,7 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 
   return "<div class=\"overlay\"><div class=\"card-modal clearfix\"><header><h2><span class=\"icon-lg icon-card indent\"></span><div class=\"card-modal-title\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</div><textarea class=\"card-modal-title-input\" spellcheck=\"false\" maxlength=\"512\" style=\"\"></textarea><div class=\"card-modal-title-input-hiddendiv\"></div></h2><p>in list <a href=\"#\">"
+    + "</div><textarea class=\"card-modal-title-input\" spellcheck=\"false\" maxlength=\"512\" style=\"\"></textarea><div class=\"card-modal-title-input-hiddendiv\"></div></h2><p>in list <a class=\"card-modal-list-link\" href=\"#\">"
     + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
     + "</a> "
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
@@ -423,11 +423,9 @@ this["JST"]["search_result"] = Handlebars.template({"1":function(container,depth
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.comments : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div></div><div class=\"card-description\"><h3>"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h3><p>in<spam>"
-    + alias4(((helper = (helper = helpers.listName || (depth0 != null ? depth0.listName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"listName","hash":{},"data":data}) : helper)))
-    + "</spam>"
-    + alias4(((helper = (helper = helpers.listName || (depth0 != null ? depth0.listName : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"listName","hash":{},"data":data}) : helper)))
-    + " on <span>Trello Lite</span></p></div></li>";
+    + "</h3><p>in <span>"
+    + alias4(((helper = (helper = helpers.list || (depth0 != null ? depth0.list : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"list","hash":{},"data":data}) : helper)))
+    + "</span> on <span>Trello Lite</span></p></div></li>";
 },"3":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3=container.escapeExpression;
 

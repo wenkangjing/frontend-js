@@ -51,7 +51,14 @@ var Helper = {
     });
     return idCards;
   },
-
+  getListName: function(idList) {
+    var list = App.lists.get(idList);
+    if (list) {
+      return list.get("name");
+    } else {
+      return "not found";
+    }
+  },
   //
   // display
   /////////////////////////////////////////////////////  

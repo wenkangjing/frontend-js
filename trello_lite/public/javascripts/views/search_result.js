@@ -59,6 +59,7 @@ var SearchResultView = Backbone.View.extend({
     // show
     cards.forEach(function(c) {
       c.labels = Helper.getLabelObjects(c.idLabels);
+      c.list = Helper.getListName(c.idList);
     });
     this.$el.html(this.template({cards: cards}));
     this.$el.appendTo(App.$el);

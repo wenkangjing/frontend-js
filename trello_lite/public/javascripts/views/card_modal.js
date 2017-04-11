@@ -4,6 +4,7 @@ var CardModalView = Backbone.View.extend({
     "click .overlay": "onClose",
     // title
     "click .card-modal-title": "onTitle",
+    "click .card-modal-list-link": "onList",
     // description
     "click .description .card-modal-edit-description": "editDescription",
     "click .description .card-modal-create-description": "editDescription",
@@ -176,11 +177,22 @@ var CardModalView = Backbone.View.extend({
     this.model.set("name", name);
     Client.saveCard(this.model.toJSON());
   },
+  onList: function(e) {
+    e.preventDefault();
+    var list = App.lists.get(this.model.get("idList"));
+    if (list) {
+      new ListMovePopover({
+        model: list,
+        pos: Helper.adjustPositionOffset(e, 18)
+      });
+    }
+  },
   render: function() {
     // retrieve data
     var json = this.model.toJSON();
     json.activities = [];
     json.labels =  Helper.getLabelObjects(this.model.get("idLabels"));
+    json.list = this.model.getListName();
     var activities = Helper.getActivitiesByCard(this.model.get("id"));
     if (activities.length > 0) {
       json.activities = json.activities.concat(activities);

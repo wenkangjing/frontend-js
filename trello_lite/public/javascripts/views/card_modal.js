@@ -194,6 +194,7 @@ var CardModalView = Backbone.View.extend({
   },
   uninitialize: function() {
     this.remove();
+    App.modal = null;
     App.trigger("clear_popover");
   },  
   initialize: function(options) {

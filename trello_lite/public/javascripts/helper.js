@@ -35,6 +35,22 @@ var Helper = {
       return c.idList === idList;
     })
   },
+  getSubscribedCards: function() {
+    var idCards = [];
+    var cards = App.cards.toJSON();
+    var lists = App.lists.toJSON();
+    cards.forEach(function(c) {
+      if (c["subscribed"]) {
+        idCards.push(c.id);
+      } else {
+        var l = _(lists).findWhere({id: c.idList});
+        if(l["subscribed"]) {
+          idCards.push(c.id);
+        }
+      }
+    });
+    return idCards;
+  },
 
   //
   // display

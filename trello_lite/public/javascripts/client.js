@@ -154,7 +154,7 @@ var Client = {
      contentType: "application/json",
      data: json
     }).done(function(json) {
-      console.log(json);
+      Client.getLabels();
     }).fail(function() {
       console.error("Fail to save label");
       App.goto("/");

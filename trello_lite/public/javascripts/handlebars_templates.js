@@ -330,6 +330,10 @@ this["JST"]["listcopy_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"]
     + "</textarea><input class=\"list-copy-submit\" type=\"submit\" value=\"Create List\"></form></div></div>";
 },"useData":true});
 
+this["JST"]["listmove_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"pop-over list-move-pop-over\"><div class=\"pop-over-header\"><span class=\"pop-over-header-title\">Move List</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><form action=\"\"><div class=\"button-link\"><label>Position</label><p class=\"position-value\"></p><select class=\"select-position\"></select></div><input class=\"list-move-submit\" type=\"submit\" value=\"Move\"></form></div></div>";
+},"useData":true});
+
 this["JST"]["menu"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 

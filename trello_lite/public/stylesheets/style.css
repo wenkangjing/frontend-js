@@ -1356,31 +1356,7 @@ li {
   border: none;
   cursor: pointer;
 }
-.card-copy-pop-over .card-copy-submit,
-.card-move-pop-over .card-copy-submit,
-.list-add-pop-over .card-copy-submit,
-.list-copy-pop-over .card-copy-submit,
-.list-move-pop-over .card-copy-submit,
-.card-copy-pop-over .card-move-submit,
-.card-move-pop-over .card-move-submit,
-.list-add-pop-over .card-move-submit,
-.list-copy-pop-over .card-move-submit,
-.list-move-pop-over .card-move-submit,
-.card-copy-pop-over .list-add-submit,
-.card-move-pop-over .list-add-submit,
-.list-add-pop-over .list-add-submit,
-.list-copy-pop-over .list-add-submit,
-.list-move-pop-over .list-add-submit,
-.card-copy-pop-over .list-copy-submit,
-.card-move-pop-over .list-copy-submit,
-.list-add-pop-over .list-copy-submit,
-.list-copy-pop-over .list-copy-submit,
-.list-move-pop-over .list-copy-submit,
-.card-copy-pop-over .list-move-submit,
-.card-move-pop-over .list-move-submit,
-.list-add-pop-over .list-move-submit,
-.list-copy-pop-over .list-move-submit,
-.list-move-pop-over .list-move-submit {
+.pop-over input[type="submit"] {
   display: inline-block;
   color: #fff;
   line-height: 22px;

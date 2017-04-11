@@ -75,6 +75,12 @@ var ListView = Backbone.View.extend({
       pos: Helper.adjustPositionOffset(e, 18)
     });
   },
+  onMoveList: function(e) {
+    new ListMovePopover({
+      model: this.model,
+      pos: Helper.adjustPositionOffset(e, 18)
+    });
+  },  
   addCardConfirm: function(json) {
     this.$el.find(".open-card-composer").show();
     Client.saveCard(json, function() {

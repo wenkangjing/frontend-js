@@ -315,7 +315,7 @@ this["JST"]["listactions_popover"] = Handlebars.template({"1":function(container
 
   return "<div class=\"pop-over list-actions-pop-over\"> <div class=\"pop-over-header\"><span class=\"pop-over-header-title\">List Actions</span><a href=\"#\" class=\"pop-over-header-close-btn icon-sm icon-close\"></a></div><div class=\"pop-over-content\"><ul class=\"actions\"><li><a class=\"list-actions-add-card\" href=\"#\">Add Card...</a></li><li><a class=\"list-actions-copy-list\" href=\"#\">Copy List...</a></li><li><a class=\"list-actions-move-list\" href=\"#\">Move List...</a></li><li><a class=\"highlight-icon list-actions-subscribe\" href=\"#\">Subscribe&nbsp;"
     + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.subscribed : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</a></li></ul><hr><ul class=\"actions\"><li><a class=\"list-actions-move-cards\" href=\"#\">Move All Cards in This List...</a></li><li><a class=\"list-actions-archive-cards\" href=\"#\">Archive All Cards in This List...</a></li></ul><hr><ul class=\"actions\"><li><a class=\"list-actions-archive-list\" href=\"#\">Archive This List</a></li></ul></div></div>";
+    + "</a></li></ul><hr><ul class=\"actions\"><li><a class=\"list-actions-archive-list\" href=\"#\">Archive This List</a></li></ul></div></div>";
 },"useData":true});
 
 this["JST"]["listadd_popover"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

@@ -6,8 +6,6 @@ var ListActionsPopover = Backbone.View.extend({
     "click .list-actions-copy-list": "onCopyList",
     "click .list-actions-move-list": "onMoveList",
     "click .list-actions-subscribe": "onSubscribe",
-    "click .list-actions-move-cards": "onMoveCards",
-    "click .list-actions-archive-cards": "onArchiveCards",
     "click .list-actions-archive-list": "onArchiveList"
   },
   onClose: function(e) {
@@ -34,16 +32,6 @@ var ListActionsPopover = Backbone.View.extend({
     var status = !this.list.get("subscribed");
     this.list.set("subscribed", status);
     Client.saveList(this.list.toJSON());
-    this.uninitialize();
-  },
-  onMoveCards: function(e) {
-    e.preventDefault();
-    console.log("moveCards");
-    this.uninitialize();
-  },
-  onArchiveCards: function(e) {
-    e.preventDefault();
-    console.log("archiveCards");
     this.uninitialize();
   },
   onArchiveList: function(e) {

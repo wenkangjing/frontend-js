@@ -23,7 +23,7 @@ var ListCopyPopover = Backbone.View.extend({
       cards.forEach(function(c) {
         delete c.id;
         c.idList = id;
-        c.pos = Infinity;
+        c.pos = 0;
         Client.saveCard(c, function() {
           Client.getCards();
         });

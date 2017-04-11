@@ -115,6 +115,11 @@ basics()
   user-select: none
   white-space: nowrap
   background: colors.light
+  &::-webkit-scrollbar
+    width: 12px
+  &::-webkit-scrollbar-thumb
+    border-radius: 10px
+    background: #CDD2D4
 
 #board > header
   position: relative
@@ -133,7 +138,8 @@ basics()
    .board-name
       font-size: 18px
       font-weight: 700
- 
+
+
 #lists
   position: absolute
   top: 40px
@@ -152,8 +158,7 @@ basics()
   vertical-align: top
   flex-direction: column
   background: colors.list
-  overflow-y: auto
-  overflow-x: hidden
+  overflow-y: hidden
   cursor: pointer
   + .list
     margin-left: 10px
@@ -191,6 +196,15 @@ basics()
     z-index: 20
   .list-btn
     border-radius: 3px
+  .cards-wrapper
+    overflow-y: auto
+    overflow-x: hidden
+    max-height: 550px
+    &::-webkit-scrollbar
+      width: 10px
+    &::-webkit-scrollbar-thumb
+      border-radius: 8px
+      background: #C4C9CC
   .cards
     padding: 0 4px
     margin: 0 4px
@@ -874,4 +888,4 @@ basics()
     border-radius: 3px
     cursor: pointer
 
-  
+ 

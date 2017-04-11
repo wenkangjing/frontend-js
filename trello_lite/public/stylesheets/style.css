@@ -433,6 +433,13 @@ li {
   white-space: nowrap;
   background: #0079bf;
 }
+#board::-webkit-scrollbar {
+  width: 12px;
+}
+#board::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #cdd2d4;
+}
 #board > header {
   position: relative;
   color: #fff;
@@ -472,8 +479,7 @@ li {
   vertical-align: top;
   flex-direction: column;
   background: #e2e4e6;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
   cursor: pointer;
 }
 .list + .list {
@@ -516,6 +522,18 @@ li {
 }
 .list .list-btn {
   border-radius: 3px;
+}
+.list .cards-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 550px;
+}
+.list .cards-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+.list .cards-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c4c9cc;
 }
 .list .cards {
   padding: 0 4px;

@@ -10,7 +10,10 @@ var CardModalView = Backbone.View.extend({
     "click .description .description-close-btn": "closeDescription",
     "submit .description": "saveDescription",
     // comment
-    "submit .comment": "addComment",
+    "submit .add-comment-form": "addComment",
+    "click .card-modal-edit-comment": "showEditComment",
+    "click .card-modal-delete-comment": "deleteComment",
+    "submit .edit-comment-form": "updateComment",
     // labels
     "click .labels .card-modal-label": "onLabels",
     "click .labels .card-modal-add-label": "onLabels",
@@ -65,7 +68,7 @@ var CardModalView = Backbone.View.extend({
   },
   addComment: function(e) {
     e.preventDefault();
-    var $f = this.$el.find(".comment form");
+    var $f = this.$el.find(".add-comment-form");
     var comment = $f.serializeArray()[0].value;
     if (comment) {
       Client.saveComment({
@@ -73,6 +76,31 @@ var CardModalView = Backbone.View.extend({
         idCard: this.model.get("id")
       });
     }
+  },
+  showEditComment: function(e) {
+    e.preventDefault();
+    var $li = $(e.target).closest("li");
+    var txt = $li.find(".comment").hide().text();
+    $li.html(this.$el.find("#comment-edit-form").html());
+    $li.find("form textarea").val(txt);
+  },
+  updateComment: function(e) {
+    e.preventDefault();
+    var idComment = $(e.target).closest("li").data("id");
+    var $f = this.$el.find(".edit-comment-form");
+    var comment = $f.serializeArray()[0].value;
+    if (comment) {
+      Client.saveComment({
+        id: idComment,
+        comment: comment,
+        idCard: this.model.get("id")
+      });
+    }
+  },
+  deleteComment: function(e) {
+    e.preventDefault();
+    var idComment = $(e.target).closest("li").data("id");
+    Client.deleteActivity(idComment);
   },
   toggleSubscribe: function(e) {
     e.preventDefault();

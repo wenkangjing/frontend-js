@@ -117,8 +117,8 @@ router.post('/activities', function(req, res, next) {
   }
   res.json(comment).end();
 });
-router.delete('/comments', function(req, res) {
-  CommentsAccessor.delete(req.body.id);
+router.delete('/activities', function(req, res) {
+  ActivitiesAccessor.delete(req.body.id);
   res.status(200).end();
 });
 

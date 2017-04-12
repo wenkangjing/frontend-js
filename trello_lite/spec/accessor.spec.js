@@ -2,7 +2,7 @@ var accessor = require("../routes/accessor");
 var Labels = Object.create(accessor);
 Labels.name = "labels";
 var Comments = Object.create(accessor);
-Comments.name = "comments";
+Comments.name = "activities";
 
 var tempId;
 var origLength;

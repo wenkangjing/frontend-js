@@ -1344,6 +1344,8 @@ li {
   border: 1px solid #e2e4e6;
   border-radius: 3px;
   background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
+  white-space: pre-wrap;
+  overflow: hidden;
 }
 .card-copy-pop-over .button-link:hover,
 .card-move-pop-over .button-link:hover,
@@ -1367,6 +1369,9 @@ li {
 .list-move-pop-over .button-link p {
   font-size: 18px;
   font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .card-copy-pop-over .button-link select,
 .card-move-pop-over .button-link select,

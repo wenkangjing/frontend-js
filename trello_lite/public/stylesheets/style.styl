@@ -861,6 +861,8 @@ basics()
     border: 1px solid #E2E4E6
     border-radius: 3px
     background: linear-gradient(to bottom,#fff 0,#F8F9F9 100%)
+    white-space: pre-wrap
+    overflow: hidden
     &:hover
       background: #298FCA
       color: #fff
@@ -869,6 +871,9 @@ basics()
     p
       font-size: 18px
       font-weight: bold
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
     select
       position: absolute
       top: 0

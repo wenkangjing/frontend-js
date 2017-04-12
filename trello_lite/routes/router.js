@@ -93,6 +93,11 @@ router.post('/cards', function(req, res, next) {
     card= CardsAccessor.update(card);
   } else { // new
     card = CardsAccessor.add(card, pos);
+    ActivitiesAccessor.add({
+      idCard: card.id,
+      action: "created",
+      created: (new Date()).valueOf()
+    });
   }
   res.json(card).end();
 });

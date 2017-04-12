@@ -44,9 +44,12 @@ var SearchResultView = Backbone.View.extend({
         var searched_labels =App.labels.toJSON().filter(function(lb) {
           return lb.name.toLowerCase().indexOf(searched_string) !== -1;
         });
-        cards.filter(function(c) {
+        cards = cards.filter(function(c) {
+          return c.idLabels.length > 0;
+        });
+        cards = cards.filter(function(c) {
           return searched_labels.some(function(lb) {
-            return c.idLabels.indexOc(lb.id) !== -1
+             return c.idLabels.indexOf(lb.id) !== -1;
           });
         });
       } else { // search keyword

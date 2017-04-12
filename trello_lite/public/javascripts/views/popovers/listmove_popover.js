@@ -17,9 +17,10 @@ var ListMovePopover = Backbone.View.extend({
   onMove: function(e){
     e.preventDefault();
     var pos = +$(".select-position").val();
-    var $before = App.$el.find("#lists .list").eq(pos);
+    var $lists = App.$el.find("#lists .list");
+    var $before = $lists.eq(pos);
     var $list = App.$el.find("#lists .list[data-id=" + this.model.get("id") + "]");
-    if (pos === 4) {
+    if (pos === $lists.length) {
       $list.appendTo(App.$el.find("#lists"));
     } else if (pos === 1) {
        $list.prependTo(App.$el.find("#lists"));

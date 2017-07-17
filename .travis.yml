@@ -6,3 +6,5 @@ install:
   - grunt
 script:
   npm test
+notifications:
+  email: false

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "jasmine-node spec --verbose --autotest --color --watch ."
+    "dev": "jasmine-node spec --verbose --autotest --color --watch .",
+    "test": "jasmine-node spec ."
   },
   "dependencies": {
     "body-parser": "~1.16.0",
